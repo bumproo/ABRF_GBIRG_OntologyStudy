@@ -1,0 +1,210 @@
+---
+title: "DAVID Work - ABRF GBIRG"
+author: "Charlie Whittaker"
+date: "12/20/2020"
+output: 
+  html_document: default
+  html_notebook: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+*Load libraries*
+
+```{r, warning=FALSE,error=FALSE,message=FALSE}
+library(openxlsx)
+library(ggplot2)
+library(tidyverse)
+library(RDAVIDWebService)
+library(org.Hs.eg.db)
+library(org.Mm.eg.db)
+```
+
+*Import Biological Concept Data*
+
+```{r}
+PPAR <- read.xlsx("../shared_data/KEGG_PPAR_SIGNALING_PATHWAY_withMouse.xlsx", colNames=TRUE, rowNames=FALSE)
+E2F <- read.xlsx("../shared_data/HALLMARK_E2F_TARGETS.xlsx", colNames=TRUE, rowNames=FALSE)
+TNF  <- read.xlsx("../shared_data/HALLMARK_TNFA_SIGNALING_VIA_NFKB.xlsx", colNames=TRUE, rowNames=FALSE)
+MUSC <- read.xlsx("../shared_data/GO_SKELETAL_MUSCLE_CONTRACTION.xlsx", colNames=TRUE, rowNames=FALSE)
+```
+
+*Run DAVID on Biological Concept Data
+
+```{r}
+hsPPAR <- na.omit(PPAR$HGNCSym)
+mmPPAR <- na.omit(PPAR$MGISym)
+
+mmPPAR.ensID <- mapIds(org.Mm.eg.db, keys = mmPPAR, keytype = "SYMBOL", column="ENSEMBL")
+E2F.ensID <- mapIds(org.Hs.eg.db, keys = E2F$HALLMARK_E2F_TARGETS, keytype = "SYMBOL", column="ENSEMBL")
+TNF.ensID <- mapIds(org.Hs.eg.db, keys = TNF$HALLMARK_TNFA_SIGNALING_VIA_NFKB, keytype = "SYMBOL", column="ENSEMBL")
+MUSC.ensID <- mapIds(org.Hs.eg.db, keys = MUSC$GO_SKELETAL_MUSCLE_CONTRACTION, keytype = "SYMBOL", column="ENSEMBL")
+##
+david<-DAVIDWebService$new(email="charliew@mit.edu", url="https://david.ncifcrf.gov/webservice/services/DAVIDWebService")
+
+result<-addList(david, mmPPAR.ensID, idType="ENSEMBL_GENE_ID", 
+                listName="mmPPAR", listType="Gene")
+
+setAnnotationCategories(david, c("GOTERM_BP_DIRECT","GOTERM_MF_DIRECT", "GOTERM_CC_DIRECT", 
+                                 "KEGG_PATHWAY", "REACTOME_PATHWAY","BIOCARTA"))
+
+setCurrentGeneListPosition(david, 1)
+setCurrentBackgroundPosition(david, 1)
+setCurrentSpecies(david, 1)
+getFunctionalAnnotationChartFile(david, "PPAR.DAVID.txt")
+##
+david<-DAVIDWebService$new(email="charliew@mit.edu", url="https://david.ncifcrf.gov/webservice/services/DAVIDWebService")
+
+result<-addList(david, E2F.ensID, idType="ENSEMBL_GENE_ID", 
+                listName="E2F", listType="Gene")
+
+setAnnotationCategories(david, c("GOTERM_BP_DIRECT","GOTERM_MF_DIRECT", "GOTERM_CC_DIRECT", 
+                                 "KEGG_PATHWAY", "REACTOME_PATHWAY","BIOCARTA"))
+
+setCurrentGeneListPosition(david, 1)
+setCurrentBackgroundPosition(david, 1)
+setCurrentSpecies(david, 1)
+getFunctionalAnnotationChartFile(david, "E2F.DAVID.txt")
+##
+david<-DAVIDWebService$new(email="charliew@mit.edu", url="https://david.ncifcrf.gov/webservice/services/DAVIDWebService")
+
+result<-addList(david, TNF.ensID, idType="ENSEMBL_GENE_ID", 
+                listName="TNF", listType="Gene")
+
+setAnnotationCategories(david, c("GOTERM_BP_DIRECT","GOTERM_MF_DIRECT", "GOTERM_CC_DIRECT", 
+                                 "KEGG_PATHWAY", "REACTOME_PATHWAY","BIOCARTA"))
+
+setCurrentGeneListPosition(david, 1)
+setCurrentBackgroundPosition(david, 1)
+setCurrentSpecies(david, 1)
+getFunctionalAnnotationChartFile(david, "TNF.DAVID.txt")
+##
+david<-DAVIDWebService$new(email="charliew@mit.edu", url="https://david.ncifcrf.gov/webservice/services/DAVIDWebService")
+
+result<-addList(david, MUSC.ensID, idType="ENSEMBL_GENE_ID", 
+                listName="Musc", listType="Gene")
+
+setAnnotationCategories(david, c("GOTERM_BP_DIRECT","GOTERM_MF_DIRECT", "GOTERM_CC_DIRECT", 
+                                 "KEGG_PATHWAY", "REACTOME_PATHWAY","BIOCARTA"))
+
+setCurrentGeneListPosition(david, 1)
+setCurrentBackgroundPosition(david, 1)
+setCurrentSpecies(david, 1)
+getFunctionalAnnotationChartFile(david, "MUSC.DAVID.txt")
+```
+
+*Load Differential Expression Results for Comparisons*
+
+```{r}
+evc <- read.xlsx("../shared_data/EvC_data.xlsx", colNames=TRUE, rowNames=TRUE)
+g1vrev <- read.xlsx("../shared_data/G1vRev_data.xlsx", colNames=TRUE, rowNames=TRUE)
+hmp3avc <- read.xlsx("../shared_data/hpm3_AvC_data.xlsx", colNames=TRUE, rowNames=TRUE)
+muscsvc <- read.xlsx("../shared_data/musc_SkeVHeart.xlsx", colNames=TRUE, rowNames=TRUE)
+
+evc <- tibble::rownames_to_column(evc,"Gene")
+evc.degs <- evc %>% filter(adp <= 0.05 & abs(logFC) >= 1)
+evc.bkground <- evc %>% dplyr::select(c("Gene"))
+
+evc.degs.ensID <- na.omit(mapIds(org.Mm.eg.db, keys = evc.degs$Gene, keytype = "SYMBOL", column="ENSEMBL"))
+evc.bkground.ensID <- na.omit(mapIds(org.Mm.eg.db, keys = evc.bkground$Gene, keytype = "SYMBOL", column="ENSEMBL"))
+
+david<-DAVIDWebService$new(email="charliew@mit.edu", url="https://david.ncifcrf.gov/webservice/services/DAVIDWebService")
+
+result<-addList(david, evc.degs.ensID, idType="ENSEMBL_GENE_ID", 
+                listName="evc.degs", listType="Gene")
+
+result<-addList(david, evc.bkground.ensID, idType="ENSEMBL_GENE_ID", 
+                listName="evc.bkground", listType="Background")
+
+setAnnotationCategories(david, c("GOTERM_BP_DIRECT","GOTERM_MF_DIRECT", "GOTERM_CC_DIRECT", 
+                                 "KEGG_PATHWAY", "REACTOME_PATHWAY","BIOCARTA"))
+
+setCurrentGeneListPosition(david, 1)
+setCurrentBackgroundPosition(david, 2)
+setCurrentSpecies(david, 1)
+
+getFunctionalAnnotationChartFile(david, "evcDEGS.DAVID.txt")
+
+###
+g1vrev <- tibble::rownames_to_column(g1vrev,"Gene")
+g1vrev.degs <- g1vrev %>% filter(adp <= 0.05 & abs(logFC) >= 1)
+g1vrev.bkground <- g1vrev %>% dplyr::select(c("Gene"))
+
+g1vrev.degs.ensID <- na.omit(mapIds(org.Hs.eg.db, keys = g1vrev.degs$Gene, keytype = "SYMBOL", column="ENSEMBL"))
+g1vrev.bkground.ensID <- na.omit(mapIds(org.Hs.eg.db, keys = g1vrev.bkground$Gene, keytype = "SYMBOL", column="ENSEMBL"))
+
+david<-DAVIDWebService$new(email="charliew@mit.edu", url="https://david.ncifcrf.gov/webservice/services/DAVIDWebService")
+
+result<-addList(david, g1vrev.degs.ensID, idType="ENSEMBL_GENE_ID", 
+                listName="g1vrev.degs", listType="Gene")
+
+result<-addList(david, g1vrev.bkground.ensID, idType="ENSEMBL_GENE_ID", 
+                listName="g1vrev.bkground", listType="Background")
+
+setAnnotationCategories(david, c("GOTERM_BP_DIRECT","GOTERM_MF_DIRECT", "GOTERM_CC_DIRECT", 
+                                 "KEGG_PATHWAY", "REACTOME_PATHWAY","BIOCARTA"))
+
+setCurrentGeneListPosition(david, 1)
+setCurrentBackgroundPosition(david, 2)
+setCurrentSpecies(david, 1)
+
+getFunctionalAnnotationChartFile(david, "g1vRevDEGS.DAVID.txt")
+###
+hmp3avc <- tibble::rownames_to_column(hmp3avc,"Gene")
+hmp3avc.degs <- hmp3avc %>% filter(adp <= 0.05 & abs(logFC) >= 1)
+hmp3avc.bkground <- hmp3avc %>% dplyr::select(c("Gene"))
+
+hmp3avc.degs.ensID <- na.omit(mapIds(org.Hs.eg.db, keys = hmp3avc.degs$Gene, keytype = "SYMBOL", column="ENSEMBL"))
+hmp3avc.bkground.ensID <- na.omit(mapIds(org.Hs.eg.db, keys = hmp3avc.bkground$Gene, keytype = "SYMBOL", column="ENSEMBL"))
+
+david<-DAVIDWebService$new(email="charliew@mit.edu", url="https://david.ncifcrf.gov/webservice/services/DAVIDWebService")
+
+result<-addList(david, hmp3avc.degs.ensID, idType="ENSEMBL_GENE_ID", 
+                listName="hmp3avc.degs", listType="Gene")
+
+result<-addList(david, hmp3avc.bkground.ensID, idType="ENSEMBL_GENE_ID", 
+                listName="hmp3avc.bkground", listType="Background")
+
+setAnnotationCategories(david, c("GOTERM_BP_DIRECT","GOTERM_MF_DIRECT", "GOTERM_CC_DIRECT", 
+                                 "KEGG_PATHWAY", "REACTOME_PATHWAY","BIOCARTA"))
+
+setCurrentGeneListPosition(david, 1)
+setCurrentBackgroundPosition(david, 2)
+setCurrentSpecies(david, 1)
+
+getFunctionalAnnotationChartFile(david, "hpm3avc.DEGS.DAVID.txt")
+
+###
+muscsvc <- tibble::rownames_to_column(muscsvc,"Gene")
+muscsvc.degs <- muscsvc %>% filter(adp <= 0.05 & abs(logFC) >= 1)
+muscsvc.bkground <- muscsvc %>% dplyr::select(c("Gene"))
+
+muscsvc.degs.ensID <- na.omit(mapIds(org.Hs.eg.db, keys = muscsvc.degs$Gene, keytype = "SYMBOL", column="ENSEMBL"))
+muscsvc.bkground.ensID <- na.omit(mapIds(org.Hs.eg.db, keys = muscsvc.bkground$Gene, keytype = "SYMBOL", column="ENSEMBL"))
+
+david<-DAVIDWebService$new(email="charliew@mit.edu", url="https://david.ncifcrf.gov/webservice/services/DAVIDWebService")
+
+result<-addList(david, muscsvc.degs.ensID, idType="ENSEMBL_GENE_ID", 
+                listName="muscsvc.degs", listType="Gene")
+
+result<-addList(david, muscsvc.bkground.ensID, idType="ENSEMBL_GENE_ID", 
+                listName="muscsvc.bkground", listType="Background")
+
+setAnnotationCategories(david, c("GOTERM_BP_DIRECT","GOTERM_MF_DIRECT", "GOTERM_CC_DIRECT", 
+                                 "KEGG_PATHWAY", "REACTOME_PATHWAY","BIOCARTA"))
+
+setCurrentGeneListPosition(david, 1)
+setCurrentBackgroundPosition(david, 2)
+setCurrentSpecies(david, 1)
+
+getFunctionalAnnotationChartFile(david, "muscsvc.DEGS.DAVID.txt")
+```
+
+## write session info*
+
+```{r}
+sessionInfo()
+writeLines(capture.output(sessionInfo()), "sessionInfo.txt")
+```

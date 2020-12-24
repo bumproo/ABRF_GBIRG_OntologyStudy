@@ -1,0 +1,4 @@
+"0",""
+"0","MuscleSvC <- MuscleSvC.DAVID %>% filter(Bonferroni <= 0.05)"
+"0","MuscleSvC <- tibble::rownames_to_column(MuscleSvC,""Name"")"
+"0","ggplot() + geom_jitter(data=MuscleSvC, aes(x=""Group"",y=FDR, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.2)) + scale_size_manual(values=c(3, 2)) + scale_color_manual(values=c(""red"",""black""))+ coord_flip() + theme_void() + ggtitle(""MuscleSvC"") "

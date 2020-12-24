@@ -1,0 +1,4 @@
+"0",""
+"0","hpm3AvC <- hpm3AvC.GSEA %>% filter(FDR <= 0.05) %>% filter(Collection %in% c(""h"",""c2cgp"",""c2cp"",""c5bp"", ""c5mf"", ""c5cc""))"
+"0","hpm3AvC <- tibble::rownames_to_column(hpm3AvC,""Name"")"
+"0","ggplot() + geom_jitter(data=hpm3AvC, aes(x=""Group"",y=FDR, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.05)) + scale_size_manual(values=c(3, 1)) + scale_color_manual(values=c(""red"",""black""))+ coord_flip() + theme_void() + ggtitle(""hpm3AvC"") "
