@@ -1,0 +1,2 @@
+"","query","significant","p_value","term_size","query_size","intersection_size","precision","recall","term_id","source","term_name","effective_domain_size","source_order","parents"
+"1","query_1",TRUE,8.85546771291989e-72,421,77,54,0.701298701298701,0.128266033254157,"GO:0006631","GO:BP","fatty acid metabolic process",21331,2637,

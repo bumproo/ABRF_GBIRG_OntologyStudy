@@ -1,0 +1,22 @@
+"0","muscsvc <- tibble::rownames_to_column(muscsvc,""Gene"")
+muscsvc.degs <- muscsvc %>% filter(adp <= 0.05 & abs(logFC) >= 1)
+muscsvc.bkground <- muscsvc %>% dplyr::select(c(""Gene""))
+
+muscsvc.degs.ensID <- na.omit(mapIds(org.Hs.eg.db, keys = muscsvc.degs$Gene, keytype = ""SYMBOL"", column=""ENSEMBL""))
+"
+"2","'select()' returned 1:many mapping between keys and columns
+"
+"0","muscsvc.bkground.ensID <- na.omit(mapIds(org.Hs.eg.db, keys = muscsvc.bkground$Gene, keytype = ""SYMBOL"", column=""ENSEMBL""))"
+"2","'select()' returned 1:many mapping between keys and columns
+"
+"0","david<-DAVIDWebService$new(email=""charliew@mit.edu"", url=""https://david.ncifcrf.gov/webservice/services/DAVIDWebService"")"
+"0",""
+"0","result<-addList(david, muscsvc.degs.ensID, idType=""ENSEMBL_GENE_ID"", "
+"0","                listName=""muscsvc.degs"", listType=""Gene"")"
+"0",""
+"0","result<-addList(david, muscsvc.bkground.ensID, idType=""ENSEMBL_GENE_ID"", "
+"0","                listName=""muscsvc.bkground"", listType=""Background"")"
+"0",""
+"0","setAnnotationCategories(david, c(""GOTERM_BP_DIRECT"",""GOTERM_MF_DIRECT"", ""GOTERM_CC_DIRECT"", "
+"0","                                 ""KEGG_PATHWAY"", ""REACTOME_PATHWAY"",""BIOCARTA""))"
+"0",""

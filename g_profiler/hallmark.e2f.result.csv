@@ -1,0 +1,709 @@
+"","term_name","source","p_value"
+"1","cell cycle process","GO:BP",9.06863810358487e-73
+"2","mitotic cell cycle process","GO:BP",3.35657290216124e-70
+"3","cell cycle","GO:BP",5.13795208643204e-68
+"4","mitotic cell cycle","GO:BP",2.7055264923683e-66
+"5","DNA metabolic process","GO:BP",7.83163042027051e-57
+"6","chromosome organization","GO:BP",1.03322860173113e-56
+"7","DNA replication","GO:BP",1.27864719019451e-48
+"8","cell cycle phase transition","GO:BP",5.47304854142352e-47
+"9","mitotic cell cycle phase transition","GO:BP",1.10420599523309e-46
+"10","cellular response to DNA damage stimulus","GO:BP",3.23705729418454e-40
+"11","DNA repair","GO:BP",1.01949113577811e-37
+"12","DNA-dependent DNA replication","GO:BP",3.8336702217609e-37
+"13","cell cycle DNA replication","GO:BP",2.82730204827056e-33
+"14","nuclear division","GO:BP",9.830465338957e-33
+"15","nuclear DNA replication","GO:BP",1.42539181881355e-32
+"16","regulation of cell cycle","GO:BP",1.53174424016846e-32
+"17","cell division","GO:BP",3.97664957430383e-32
+"18","organelle organization","GO:BP",2.84713850010612e-31
+"19","organelle fission","GO:BP",1.70666289895045e-30
+"20","nucleobase-containing compound metabolic process","GO:BP",1.14819938906925e-29
+"21","regulation of mitotic cell cycle","GO:BP",1.41833791593408e-29
+"22","heterocycle metabolic process","GO:BP",8.51902574248559e-29
+"23","cellular aromatic compound metabolic process","GO:BP",2.24875533790711e-28
+"24","nucleic acid metabolic process","GO:BP",9.77283788813803e-28
+"25","regulation of cell cycle process","GO:BP",9.97042217689932e-28
+"26","mitotic nuclear division","GO:BP",2.52822338998447e-27
+"27","organic cyclic compound metabolic process","GO:BP",4.82598857759959e-27
+"28","chromosome segregation","GO:BP",5.94005432354157e-27
+"29","sister chromatid segregation","GO:BP",6.32202007972509e-27
+"30","G1/S transition of mitotic cell cycle","GO:BP",8.39896214161462e-26
+"31","DNA recombination","GO:BP",4.41189179934806e-25
+"32","cell cycle G1/S phase transition","GO:BP",1.68438692158741e-24
+"33","negative regulation of cell cycle","GO:BP",2.02200692303969e-24
+"34","cellular nitrogen compound metabolic process","GO:BP",2.11593852604133e-24
+"35","nuclear chromosome segregation","GO:BP",3.17207958785499e-24
+"36","cell cycle checkpoint","GO:BP",2.07036558299764e-23
+"37","negative regulation of cell cycle process","GO:BP",3.79961434276141e-23
+"38","mitotic cell cycle checkpoint","GO:BP",4.22751392669246e-23
+"39","cellular response to stress","GO:BP",6.27933038962003e-23
+"40","DNA strand elongation","GO:BP",2.56548197248588e-22
+"41","telomere maintenance","GO:BP",3.15497807312096e-22
+"42","double-strand break repair","GO:BP",4.76083773272412e-22
+"43","regulation of mitotic cell cycle phase transition","GO:BP",8.26835956633684e-22
+"44","regulation of cell cycle phase transition","GO:BP",1.93448036728633e-21
+"45","mitotic sister chromatid segregation","GO:BP",2.80048919692932e-21
+"46","telomere organization","GO:BP",2.90608037431679e-21
+"47","cellular component organization or biogenesis","GO:BP",6.75896936825513e-21
+"48","negative regulation of mitotic cell cycle","GO:BP",1.26125744454607e-20
+"49","DNA conformation change","GO:BP",4.89168393182008e-20
+"50","cellular component organization","GO:BP",4.59686941247133e-19
+"51","meiotic cell cycle","GO:BP",5.13963884721348e-19
+"52","negative regulation of cell cycle phase transition","GO:BP",2.75459480313911e-18
+"53","negative regulation of mitotic cell cycle phase transition","GO:BP",4.52177944597209e-18
+"54","telomere maintenance via semi-conservative replication","GO:BP",8.9587379777284e-18
+"55","DNA integrity checkpoint","GO:BP",3.00687078665219e-17
+"56","DNA strand elongation involved in DNA replication","GO:BP",2.22236462185391e-16
+"57","signal transduction by p53 class mediator","GO:BP",3.59891406885622e-16
+"58","double-strand break repair via homologous recombination","GO:BP",3.84725277623027e-16
+"59","recombinational repair","GO:BP",5.30670303407572e-16
+"60","cellular macromolecule metabolic process","GO:BP",5.87116477958188e-16
+"61","cell cycle G2/M phase transition","GO:BP",9.65672189866294e-16
+"62","regulation of chromosome organization","GO:BP",1.05677033949975e-15
+"63","G2/M transition of mitotic cell cycle","GO:BP",1.95371189505104e-15
+"64","nitrogen compound metabolic process","GO:BP",2.00297028447687e-15
+"65","DNA damage checkpoint","GO:BP",2.1200018120508e-15
+"66","meiotic cell cycle process","GO:BP",3.10107931533752e-15
+"67","DNA geometric change","GO:BP",4.41174371870161e-15
+"68","nucleotide-excision repair, DNA gap filling","GO:BP",5.73794051082418e-15
+"69","regulation of chromosome segregation","GO:BP",8.8649891629962e-15
+"70","spindle organization","GO:BP",1.16615752046843e-14
+"71","microtubule cytoskeleton organization involved in mitosis","GO:BP",1.51894390663985e-14
+"72","macromolecule metabolic process","GO:BP",1.54649965991429e-14
+"73","DNA replication initiation","GO:BP",3.00036513886046e-14
+"74","positive regulation of cell cycle","GO:BP",1.02090094248651e-13
+"75","microtubule cytoskeleton organization","GO:BP",1.11086496575135e-13
+"76","mitotic DNA integrity checkpoint","GO:BP",3.21281821485791e-13
+"77","DNA biosynthetic process","GO:BP",5.25015395708166e-13
+"78","regulation of cell cycle G2/M phase transition","GO:BP",6.59524966341287e-13
+"79","macromolecule biosynthetic process","GO:BP",9.33302779578773e-13
+"80","cellular macromolecule biosynthetic process","GO:BP",1.14586343723435e-12
+"81","mitotic spindle organization","GO:BP",1.40604836612445e-12
+"82","mitotic DNA damage checkpoint","GO:BP",1.92910032911836e-12
+"83","mismatch repair","GO:BP",2.09314624834616e-12
+"84","sister chromatid cohesion","GO:BP",2.57365824363904e-12
+"85","primary metabolic process","GO:BP",5.01320813303985e-12
+"86","positive regulation of cell cycle process","GO:BP",6.39240884199626e-12
+"87","negative regulation of chromosome organization","GO:BP",6.76166836256025e-12
+"88","cellular metabolic process","GO:BP",7.60209374608003e-12
+"89","DNA duplex unwinding","GO:BP",8.54098676871888e-12
+"90","chromosome separation","GO:BP",9.65334201813486e-12
+"91","meiotic nuclear division","GO:BP",1.68367682886e-11
+"92","regulation of G2/M transition of mitotic cell cycle","GO:BP",1.68397308309109e-11
+"93","anatomical structure homeostasis","GO:BP",2.0854404511669e-11
+"94","protein-DNA complex subunit organization","GO:BP",5.45889372853063e-11
+"95","organic substance biosynthetic process","GO:BP",7.15976589976458e-11
+"96","organic substance metabolic process","GO:BP",7.52535128783758e-11
+"97","meiosis I cell cycle process","GO:BP",7.65376783020392e-11
+"98","regulation of DNA metabolic process","GO:BP",8.48550462625364e-11
+"99","nucleic acid phosphodiester bond hydrolysis","GO:BP",1.30946912460675e-10
+"100","nucleobase-containing compound biosynthetic process","GO:BP",1.33128367622172e-10
+"101","regulation of mitotic sister chromatid separation","GO:BP",1.60948003484809e-10
+"102","cellular biosynthetic process","GO:BP",1.64960446551972e-10
+"103","biosynthetic process","GO:BP",2.16956726376613e-10
+"104","regulation of signal transduction by p53 class mediator","GO:BP",2.8358402351757e-10
+"105","mitotic sister chromatid separation","GO:BP",3.16796929526138e-10
+"106","heterocycle biosynthetic process","GO:BP",3.61018563966825e-10
+"107","microtubule-based process","GO:BP",4.1771754753394e-10
+"108","aromatic compound biosynthetic process","GO:BP",4.18986580630437e-10
+"109","organic cyclic compound biosynthetic process","GO:BP",4.74452850694711e-10
+"110","regulation of chromosome separation","GO:BP",4.87447533454493e-10
+"111","response to stress","GO:BP",5.09810050738266e-10
+"112","DNA damage response, detection of DNA damage","GO:BP",5.78634056623224e-10
+"113","meiosis I","GO:BP",6.06783213724511e-10
+"114","regulation of mitotic nuclear division","GO:BP",6.54682314616327e-10
+"115","postreplication repair","GO:BP",6.62392048605576e-10
+"116","regulation of nuclear division","GO:BP",6.86213621054399e-10
+"117","regulation of sister chromatid segregation","GO:BP",6.88472354473752e-10
+"118","negative regulation of G1/S transition of mitotic cell cycle","GO:BP",1.02204842027117e-09
+"119","regulation of mitotic sister chromatid segregation","GO:BP",1.62786828576235e-09
+"120","negative regulation of cell cycle G1/S phase transition","GO:BP",2.15703099881162e-09
+"121","signal transduction involved in DNA integrity checkpoint","GO:BP",2.37081989005802e-09
+"122","signal transduction involved in DNA damage checkpoint","GO:BP",2.37081989005802e-09
+"123","nucleotide-excision repair","GO:BP",2.44916571642239e-09
+"124","metaphase/anaphase transition of mitotic cell cycle","GO:BP",2.70159223731139e-09
+"125","signal transduction involved in cell cycle checkpoint","GO:BP",2.84848581573079e-09
+"126","signal transduction in response to DNA damage","GO:BP",3.47296602897196e-09
+"127","metaphase/anaphase transition of cell cycle","GO:BP",4.15833683520453e-09
+"128","spindle assembly","GO:BP",4.17726699166878e-09
+"129","DNA packaging","GO:BP",4.55745823438194e-09
+"130","mitotic DNA replication","GO:BP",4.59047642232676e-09
+"131","cellular component biogenesis","GO:BP",6.79259795837078e-09
+"132","chromatin organization","GO:BP",1.04076592107497e-08
+"133","nucleotide-excision repair, DNA incision, 5'-to lesion","GO:BP",1.15777744454596e-08
+"134","negative regulation of organelle organization","GO:BP",1.38334004934791e-08
+"135","protein-DNA complex assembly","GO:BP",1.40140283505191e-08
+"136","nucleotide-excision repair, DNA incision","GO:BP",2.0729879032763e-08
+"137","DNA synthesis involved in DNA repair","GO:BP",2.30022327204876e-08
+"138","double-strand break repair via break-induced replication","GO:BP",2.72754246096295e-08
+"139","cell cycle arrest","GO:BP",2.81844372311429e-08
+"140","regulation of DNA-dependent DNA replication","GO:BP",2.86102692468853e-08
+"141","regulation of mitotic metaphase/anaphase transition","GO:BP",4.36577175734549e-08
+"142","metabolic process","GO:BP",4.47257596293877e-08
+"143","translesion synthesis","GO:BP",4.66205378425656e-08
+"144","regulation of DNA replication","GO:BP",5.34553670084872e-08
+"145","regulation of metaphase/anaphase transition of cell cycle","GO:BP",6.54880551511032e-08
+"146","negative regulation of sister chromatid segregation","GO:BP",7.71234506179419e-08
+"147","pre-replicative complex assembly","GO:BP",9.25800724382355e-08
+"148","pre-replicative complex assembly involved in cell cycle DNA replication","GO:BP",9.25800724382355e-08
+"149","pre-replicative complex assembly involved in nuclear cell cycle DNA replication","GO:BP",9.25800724382355e-08
+"150","negative regulation of chromosome segregation","GO:BP",9.82135889627037e-08
+"151","error-free translesion synthesis","GO:BP",1.07758882839558e-07
+"152","negative regulation of nuclear division","GO:BP",1.16834039612179e-07
+"153","regulation of cyclin-dependent protein serine/threonine kinase activity","GO:BP",1.3231662455501e-07
+"154","mitotic G1 DNA damage checkpoint","GO:BP",1.6880406882205e-07
+"155","response to UV","GO:BP",1.89807819263192e-07
+"156","positive regulation of DNA metabolic process","GO:BP",1.99362941202346e-07
+"157","G1 DNA damage checkpoint","GO:BP",2.01889880092972e-07
+"158","mitotic G1/S transition checkpoint","GO:BP",2.01889880092972e-07
+"159","regulation of cyclin-dependent protein kinase activity","GO:BP",2.20289882696238e-07
+"160","negative regulation of cellular macromolecule biosynthetic process","GO:BP",2.35299342802163e-07
+"161","mitotic spindle assembly","GO:BP",2.40692065204498e-07
+"162","negative regulation of macromolecule biosynthetic process","GO:BP",2.80938655315764e-07
+"163","cellular nitrogen compound biosynthetic process","GO:BP",2.8168213528856e-07
+"164","regulation of G1/S transition of mitotic cell cycle","GO:BP",2.94623454356266e-07
+"165","negative regulation of nucleobase-containing compound metabolic process","GO:BP",3.66394114439387e-07
+"166","DNA damage response, signal transduction by p53 class mediator","GO:BP",4.03865831433443e-07
+"167","negative regulation of mitotic nuclear division","GO:BP",4.55460955979839e-07
+"168","negative regulation of mitotic sister chromatid separation","GO:BP",6.49625487595131e-07
+"169","regulation of organelle organization","GO:BP",6.7657119213255e-07
+"170","response to radiation","GO:BP",7.08038790638325e-07
+"171","cellular component assembly","GO:BP",7.31464117120024e-07
+"172","transcription-coupled nucleotide-excision repair","GO:BP",7.59865479885587e-07
+"173","negative regulation of chromosome separation","GO:BP",8.30278464470041e-07
+"174","chromatin assembly","GO:BP",8.37340215747308e-07
+"175","cellular response to radiation","GO:BP",9.04272378888424e-07
+"176","negative regulation of cellular biosynthetic process","GO:BP",1.09249651645385e-06
+"177","signal transduction involved in mitotic G1 DNA damage checkpoint","GO:BP",1.18513415594027e-06
+"178","intracellular signal transduction involved in G1 DNA damage checkpoint","GO:BP",1.18513415594027e-06
+"179","negative regulation of mitotic sister chromatid segregation","GO:BP",1.32836824274854e-06
+"180","reproductive process","GO:BP",1.36916074517538e-06
+"181","reproduction","GO:BP",1.45803195848253e-06
+"182","regulation of cell cycle G1/S phase transition","GO:BP",1.6457753517136e-06
+"183","base-excision repair","GO:BP",1.66406806502747e-06
+"184","DNA-dependent DNA replication maintenance of fidelity","GO:BP",1.66406806502747e-06
+"185","signal transduction involved in mitotic DNA damage checkpoint","GO:BP",1.6915912632002e-06
+"186","signal transduction involved in mitotic DNA integrity checkpoint","GO:BP",1.6915912632002e-06
+"187","signal transduction involved in mitotic cell cycle checkpoint","GO:BP",1.6915912632002e-06
+"188","negative regulation of biosynthetic process","GO:BP",2.01175302647244e-06
+"189","regulation of nucleobase-containing compound metabolic process","GO:BP",2.86158108363436e-06
+"190","error-prone translesion synthesis","GO:BP",3.68089426511927e-06
+"191","chromatin assembly or disassembly","GO:BP",5.37807498775307e-06
+"192","negative regulation of cell cycle G2/M phase transition","GO:BP",5.80992446816657e-06
+"193","protein localization to chromosome","GO:BP",6.09644448398002e-06
+"194","G2 DNA damage checkpoint","GO:BP",7.01363637706357e-06
+"195","nuclear transport","GO:BP",7.50543451095356e-06
+"196","negative regulation of mitotic metaphase/anaphase transition","GO:BP",1.12896481701526e-05
+"197","meiotic chromosome segregation","GO:BP",1.25280467018989e-05
+"198","negative regulation of metaphase/anaphase transition of cell cycle","GO:BP",1.41656888203871e-05
+"199","negative regulation of RNA metabolic process","GO:BP",1.66745534939341e-05
+"200","negative regulation of macromolecule metabolic process","GO:BP",1.67937836566854e-05
+"201","double-strand break repair via nonhomologous end joining","GO:BP",1.76084646839046e-05
+"202","response to ionizing radiation","GO:BP",1.87440690156848e-05
+"203","DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest","GO:BP",1.97528571200892e-05
+"204","regulation of gene expression, epigenetic","GO:BP",2.32465328909052e-05
+"205","DNA unwinding involved in DNA replication","GO:BP",2.459520296634e-05
+"206","telomeric 3' overhang formation","GO:BP",2.88858587516736e-05
+"207","chromatin organization involved in regulation of transcription","GO:BP",3.04222160392655e-05
+"208","response to abiotic stimulus","GO:BP",3.28504809820203e-05
+"209","non-recombinational repair","GO:BP",4.12430612699514e-05
+"210","positive regulation of cell cycle arrest","GO:BP",4.62201798633151e-05
+"211","regulation of cell cycle arrest","GO:BP",5.56675942928383e-05
+"212","pyrimidine nucleotide metabolic process","GO:BP",7.00805298026622e-05
+"213","negative regulation of nucleic acid-templated transcription","GO:BP",7.01643463916933e-05
+"214","negative regulation of RNA biosynthetic process","GO:BP",7.30352492607878e-05
+"215","G0 to G1 transition","GO:BP",8.36620315135748e-05
+"216","RNA metabolic process","GO:BP",8.93712168830661e-05
+"217","regulation of cytokinesis","GO:BP",9.20819678496755e-05
+"218","cellular response to UV","GO:BP",9.20819678496755e-05
+"219","regulation of cell division","GO:BP",9.31787410525801e-05
+"220","negative regulation of transcription, DNA-templated","GO:BP",9.46577950084049e-05
+"221","female meiotic nuclear division","GO:BP",9.61301712208739e-05
+"222","mitotic G2/M transition checkpoint","GO:BP",9.61301712208739e-05
+"223","cellular protein-containing complex assembly","GO:BP",9.70707802892887e-05
+"224","chromatin organization involved in negative regulation of transcription","GO:BP",0.000108555808957405
+"225","cell population proliferation","GO:BP",0.000114514755703356
+"226","negative regulation of gene expression","GO:BP",0.00012924750574544
+"227","chromosome organization involved in meiotic cell cycle","GO:BP",0.000148414379254955
+"228","cytokinesis","GO:BP",0.000151001987758417
+"229","mitotic spindle assembly checkpoint","GO:BP",0.00018674458136898
+"230","spindle assembly checkpoint","GO:BP",0.00018674458136898
+"231","mitotic spindle checkpoint","GO:BP",0.00018674458136898
+"232","spindle checkpoint","GO:BP",0.00018674458136898
+"233","negative regulation of cellular process","GO:BP",0.000194733576877233
+"234","cell aging","GO:BP",0.000200547960788962
+"235","regulation of transferase activity","GO:BP",0.000204919061084686
+"236","nucleocytoplasmic transport","GO:BP",0.000204973614885841
+"237","mitotic recombination","GO:BP",0.000216840790484357
+"238","regulation of nitrogen compound metabolic process","GO:BP",0.000227447239220746
+"239","negative regulation of G2/M transition of mitotic cell cycle","GO:BP",0.00023541632158801
+"240","negative regulation of cellular metabolic process","GO:BP",0.000264936546208871
+"241","reciprocal meiotic recombination","GO:BP",0.000300367465331732
+"242","negative regulation of gene expression, epigenetic","GO:BP",0.000304181315388364
+"243","negative regulation of metabolic process","GO:BP",0.000331802909982633
+"244","chromatin silencing","GO:BP",0.000344448566347832
+"245","homologous recombination","GO:BP",0.000347136566700338
+"246","response to gamma radiation","GO:BP",0.000400018568581885
+"247","regulation of cellular metabolic process","GO:BP",0.000405559581971843
+"248","protein-containing complex subunit organization","GO:BP",0.00040791726898473
+"249","cytoskeleton organization","GO:BP",0.000427640258069399
+"250","chromosome localization","GO:BP",0.000481220854816002
+"251","establishment of chromosome localization","GO:BP",0.000481220854816002
+"252","regulation of DNA recombination","GO:BP",0.000500261204592959
+"253","replicative senescence","GO:BP",0.000577281363569374
+"254","pyrimidine-containing compound biosynthetic process","GO:BP",0.000590306424983995
+"255","negative regulation of G0 to G1 transition","GO:BP",0.000590306424983995
+"256","regulation of primary metabolic process","GO:BP",0.000605842126155128
+"257","positive regulation of mitotic cell cycle","GO:BP",0.000610582087205559
+"258","negative regulation of nitrogen compound metabolic process","GO:BP",0.000659365014082653
+"259","protein-containing complex assembly","GO:BP",0.000677897244614188
+"260","anaphase-promoting complex-dependent catabolic process","GO:BP",0.00073542924515697
+"261","negative regulation of biological process","GO:BP",0.00077415812698881
+"262","viral process","GO:BP",0.00077775315979563
+"263","metaphase plate congression","GO:BP",0.000780781983577228
+"264","pyrimidine-containing compound metabolic process","GO:BP",0.000814739887382156
+"265","regulation of G0 to G1 transition","GO:BP",0.00114784927104195
+"266","intra-S DNA damage checkpoint","GO:BP",0.00123706020187535
+"267","regulation of macromolecule metabolic process","GO:BP",0.00134613480580377
+"268","negative regulation of cellular component organization","GO:BP",0.00171066389048308
+"269","DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator","GO:BP",0.00173680938792919
+"270","cellular response to ionizing radiation","GO:BP",0.00180751441742271
+"271","positive regulation of chromosome organization","GO:BP",0.00185389454007331
+"272","nucleosome organization","GO:BP",0.00185389454007331
+"273","protein export from nucleus","GO:BP",0.0019642667196519
+"274","nucleoside monophosphate metabolic process","GO:BP",0.00225692419347341
+"275","cellular response to environmental stimulus","GO:BP",0.00230960689607474
+"276","cellular response to abiotic stimulus","GO:BP",0.00230960689607474
+"277","DNA damage response, signal transduction resulting in transcription","GO:BP",0.00238328408073634
+"278","negative regulation of cyclin-dependent protein serine/threonine kinase activity","GO:BP",0.00240212449391151
+"279","symbiotic process","GO:BP",0.00272612623466976
+"280","centrosome cycle","GO:BP",0.0027337256694059
+"281","negative regulation of cyclin-dependent protein kinase activity","GO:BP",0.00290906856445564
+"282","regulation of microtubule cytoskeleton organization","GO:BP",0.00307880040072608
+"283","somatic diversification of immune receptors","GO:BP",0.00310803518188597
+"284","regulation of response to DNA damage stimulus","GO:BP",0.0031473588989491
+"285","regulation of macromolecule biosynthetic process","GO:BP",0.00340388378792259
+"286","regulation of cellular component organization","GO:BP",0.00348098703739905
+"287","positive regulation of DNA-directed DNA polymerase activity","GO:BP",0.003484818504211
+"288","regulation of DNA-directed DNA polymerase activity","GO:BP",0.003484818504211
+"289","replication fork protection","GO:BP",0.003484818504211
+"290","protein K6-linked ubiquitination","GO:BP",0.003484818504211
+"291","deoxyribonucleoside monophosphate biosynthetic process","GO:BP",0.003484818504211
+"292","negative regulation of DNA replication","GO:BP",0.00350012645847384
+"293","deoxyribonucleotide metabolic process","GO:BP",0.00350012645847384
+"294","negative regulation of DNA-dependent DNA replication","GO:BP",0.00423576333887365
+"295","cellular response to light stimulus","GO:BP",0.0044785302934189
+"296","regulation of DNA repair","GO:BP",0.0044785302934189
+"297","interstrand cross-link repair","GO:BP",0.00467571433399275
+"298","telomere capping","GO:BP",0.00467571433399275
+"299","RNA biosynthetic process","GO:BP",0.00531228864009964
+"300","blastocyst growth","GO:BP",0.00550970155851582
+"301","nuclear export","GO:BP",0.005511106018774
+"302","microtubule organizing center organization","GO:BP",0.00625570633881941
+"303","phosphorylation","GO:BP",0.00644248732817742
+"304","protein localization to nucleus","GO:BP",0.00661660749879019
+"305","regulation of centrosome cycle","GO:BP",0.00757281307496581
+"306","regulation of DNA biosynthetic process","GO:BP",0.00781154823769561
+"307","import into nucleus","GO:BP",0.00802169602582138
+"308","response to light stimulus","GO:BP",0.00828062781380596
+"309","regulation of cellular macromolecule biosynthetic process","GO:BP",0.0088392292993796
+"310","homologous chromosome segregation","GO:BP",0.009505489792381
+"311","nucleic acid-templated transcription","GO:BP",0.00959458484889657
+"312","mitotic G2 DNA damage checkpoint","GO:BP",0.011202403661403
+"313","somatic diversification of immunoglobulins","GO:BP",0.011832151429514
+"314","chromatin remodeling","GO:BP",0.0126116630204613
+"315","deoxyribonucleoside monophosphate metabolic process","GO:BP",0.0133384082505112
+"316","spindle midzone assembly","GO:BP",0.0133384082505112
+"317","DNA double-strand break processing","GO:BP",0.0138778365903321
+"318","regulation of RNA metabolic process","GO:BP",0.0145776689066747
+"319","nucleoside monophosphate biosynthetic process","GO:BP",0.0146075728718068
+"320","regulation of cellular biosynthetic process","GO:BP",0.0148302831368998
+"321","RNA processing","GO:BP",0.0158269987185812
+"322","somatic cell DNA recombination","GO:BP",0.0161961293129823
+"323","somatic diversification of immune receptors via germline recombination within a single locus","GO:BP",0.0161961293129823
+"324","regulation of biosynthetic process","GO:BP",0.0163023491737611
+"325","protein import into nucleus","GO:BP",0.016665098670502
+"326","regulation of ubiquitin protein ligase activity","GO:BP",0.0170285328832001
+"327","telomere maintenance via recombination","GO:BP",0.0191001609284881
+"328","somatic hypermutation of immunoglobulin genes","GO:BP",0.0191001609284881
+"329","positive regulation of G2/M transition of mitotic cell cycle","GO:BP",0.0207119313754474
+"330","nucleobase-containing small molecule interconversion","GO:BP",0.0207119313754474
+"331","positive regulation of transferase activity","GO:BP",0.0207257739676794
+"332","positive regulation of DNA biosynthetic process","GO:BP",0.0218192936412363
+"333","mitotic metaphase plate congression","GO:BP",0.0248011352406498
+"334","regulation of chromatin organization","GO:BP",0.0260028161940078
+"335","cell cycle DNA replication initiation","GO:BP",0.0261170505665658
+"336","mitotic DNA replication initiation","GO:BP",0.0261170505665658
+"337","nuclear cell cycle DNA replication initiation","GO:BP",0.0261170505665658
+"338","organelle assembly","GO:BP",0.0262709486500328
+"339","somatic diversification of immune receptors via somatic mutation","GO:BP",0.0265093127544556
+"340","inner cell mass cell proliferation","GO:BP",0.0265093127544556
+"341","cellular response to heat","GO:BP",0.028424715554126
+"342","positive regulation of nucleobase-containing compound metabolic process","GO:BP",0.0290903819875428
+"343","ribonucleoprotein complex export from nucleus","GO:BP",0.030233783499253
+"344","DNA alkylation","GO:BP",0.0317473348100816
+"345","DNA methylation","GO:BP",0.0317473348100816
+"346","ribonucleoprotein complex localization","GO:BP",0.0321400470585993
+"347","2'-deoxyribonucleotide metabolic process","GO:BP",0.0355902390358895
+"348","positive regulation of cell cycle G2/M phase transition","GO:BP",0.0355902390358895
+"349","cellular response to gamma radiation","GO:BP",0.0355902390358895
+"350","deoxyribonucleotide biosynthetic process","GO:BP",0.035837002887088
+"351","nucleus organization","GO:BP",0.0384850229716345
+"352","regulation of microtubule-based process","GO:BP",0.0403865740342763
+"353","pyrimidine nucleotide biosynthetic process","GO:BP",0.0420557175892515
+"354","aging","GO:BP",0.0433132512137183
+"355","regulation of metabolic process","GO:BP",0.0433396931684178
+"356","response to heat","GO:BP",0.0437739388028451
+"357","cellular process","GO:BP",0.0450777409882576
+"358","animal organ regeneration","GO:BP",0.0451454705984668
+"359","intrinsic apoptotic signaling pathway in response to DNA damage","GO:BP",0.0460187354427652
+"360","cellular senescence","GO:BP",0.0491373557258231
+"361","deoxyribose phosphate metabolic process","GO:BP",0.0493989755698701
+"362","response to X-ray","GO:BP",0.0493989755698701
+"363","chromosome","GO:CC",1.16850656889907e-55
+"364","nucleoplasm","GO:CC",3.2622957268661e-51
+"365","nuclear lumen","GO:CC",1.01138340219747e-49
+"366","chromosomal region","GO:CC",2.58314243705597e-47
+"367","nucleus","GO:CC",1.37952350326675e-46
+"368","intracellular organelle lumen","GO:CC",9.99913681825439e-42
+"369","organelle lumen","GO:CC",9.99913681825439e-42
+"370","membrane-enclosed lumen","GO:CC",9.99913681825439e-42
+"371","intracellular non-membrane-bounded organelle","GO:CC",2.06229072500652e-41
+"372","non-membrane-bounded organelle","GO:CC",2.3472683532714e-41
+"373","nuclear chromosome","GO:CC",6.0326837229116e-32
+"374","condensed chromosome","GO:CC",6.42765553954231e-30
+"375","replication fork","GO:CC",1.32699280508857e-29
+"376","chromosome, centromeric region","GO:CC",2.80092716773673e-27
+"377","protein-containing complex","GO:CC",6.4476212616857e-27
+"378","intracellular membrane-bounded organelle","GO:CC",2.29417809214207e-23
+"379","chromosome, telomeric region","GO:CC",7.04270205360335e-21
+"380","intracellular","GO:CC",4.6586260818285e-20
+"381","intracellular organelle","GO:CC",4.32885651811615e-18
+"382","nuclear chromosome, telomeric region","GO:CC",3.89683523860606e-17
+"383","condensed nuclear chromosome","GO:CC",6.05565610666366e-16
+"384","nuclear replication fork","GO:CC",6.06454771607817e-16
+"385","membrane-bounded organelle","GO:CC",1.06669213701958e-15
+"386","organelle","GO:CC",6.82243006620886e-14
+"387","microtubule cytoskeleton","GO:CC",8.29094675862696e-14
+"388","replisome","GO:CC",1.14710130128264e-13
+"389","spindle","GO:CC",1.51468218188128e-13
+"390","kinetochore","GO:CC",2.79110598573908e-12
+"391","condensed chromosome, centromeric region","GO:CC",4.61868399233554e-12
+"392","chromatin","GO:CC",5.3546445008879e-12
+"393","nuclear replisome","GO:CC",2.26332433303042e-10
+"394","mitotic spindle","GO:CC",4.20994846365172e-10
+"395","spindle pole","GO:CC",8.8022530339818e-10
+"396","condensed chromosome kinetochore","GO:CC",2.97558619141712e-09
+"397","MCM complex","GO:CC",3.75878169201607e-09
+"398","microtubule organizing center","GO:CC",3.84416959351297e-09
+"399","DNA polymerase complex","GO:CC",9.14553132874770e-09
+"400","centrosome","GO:CC",1.08912560238803e-08
+"401","cytosol","GO:CC",1.1635176042018e-08
+"402","nucleolus","GO:CC",1.92543508484288e-08
+"403","site of DNA damage","GO:CC",2.24776342581361e-08
+"404","transferase complex","GO:CC",2.86466009447503e-08
+"405","protein-DNA complex","GO:CC",2.99141576274875e-08
+"406","catalytic complex","GO:CC",5.55080064983863e-08
+"407","transferase complex, transferring phosphorus-containing groups","GO:CC",2.0387740359973e-07
+"408","site of double-strand break","GO:CC",2.91981208459473e-07
+"409","nuclear periphery","GO:CC",4.14771739512194e-07
+"410","mitotic spindle pole","GO:CC",5.59875331792107e-07
+"411","spindle microtubule","GO:CC",6.52598729538486e-07
+"412","nuclear body","GO:CC",1.94156403124191e-06
+"413","cyclin-dependent protein kinase holoenzyme complex","GO:CC",5.34257976784941e-06
+"414","cytoskeleton","GO:CC",7.15336901385077e-06
+"415","spindle midzone","GO:CC",3.19692173118244e-05
+"416","heterochromatin","GO:CC",5.57599549766077e-05
+"417","chromosome passenger complex","GO:CC",6.72105424891735e-05
+"418","supramolecular complex","GO:CC",0.000161601786349138
+"419","nuclear envelope","GO:CC",0.000274674465568723
+"420","DNA repair complex","GO:CC",0.000725290264538127
+"421","cohesin complex","GO:CC",0.000910224472036979
+"422","ribonucleoprotein complex","GO:CC",0.00146309356943614
+"423","serine/threonine protein kinase complex","GO:CC",0.0015787571942647
+"424","midbody","GO:CC",0.00160217268205248
+"425","delta DNA polymerase complex","GO:CC",0.0017395387617825
+"426","DNA replication factor C complex","GO:CC",0.00431496136523033
+"427","alpha DNA polymerase:primase complex","GO:CC",0.00431496136523033
+"428","PML body","GO:CC",0.00474934627425958
+"429","protein kinase complex","GO:CC",0.00510324006319959
+"430","microtubule","GO:CC",0.00625883485390223
+"431","nuclear matrix","GO:CC",0.00674918921932214
+"432","nuclear pore","GO:CC",0.0122199958908106
+"433","meiotic cohesin complex","GO:CC",0.0148681004079344
+"434","germ cell nucleus","GO:CC",0.0155933795957518
+"435","nuclear chromatin","GO:CC",0.0211803671544757
+"436","replication fork protection complex","GO:CC",0.0236038698871176
+"437","Ctf18 RFC-like complex","GO:CC",0.0236038698871176
+"438","mismatch repair complex","GO:CC",0.0236038698871176
+"439","Mre11 complex","GO:CC",0.0236038698871176
+"440","synaptonemal structure","GO:CC",0.0259253700148698
+"441","synaptonemal complex","GO:CC",0.0259253700148698
+"442","origin recognition complex","GO:CC",0.0351304629139394
+"443","nuclear origin of replication recognition complex","GO:CC",0.0351304629139394
+"444","host cell","GO:CC",0.0392762347680209
+"445","host cellular component","GO:CC",0.0392762347680209
+"446","nuclear ubiquitin ligase complex","GO:CC",0.0408466765731957
+"447","PCNA-p21 complex","GO:CC",0.0419574085260561
+"448","MutLalpha complex","GO:CC",0.0419574085260561
+"449","heterocyclic compound binding","GO:MF",2.21795117585283e-22
+"450","organic cyclic compound binding","GO:MF",1.0040852097428e-21
+"451","catalytic activity, acting on DNA","GO:MF",1.60075264630806e-20
+"452","DNA binding","GO:MF",7.36288139000123e-20
+"453","nucleic acid binding","GO:MF",9.95754685856186e-19
+"454","DNA-dependent ATPase activity","GO:MF",7.36899224224986e-14
+"455","single-stranded DNA binding","GO:MF",1.20028536219264e-13
+"456","ATP binding","GO:MF",2.90835233834062e-13
+"457","protein binding","GO:MF",6.15185820884978e-13
+"458","adenyl ribonucleotide binding","GO:MF",1.48054156204214e-12
+"459","chromatin binding","GO:MF",1.84145562559279e-12
+"460","adenyl nucleotide binding","GO:MF",1.93483873576146e-12
+"461","damaged DNA binding","GO:MF",3.17948046756485e-12
+"462","purine ribonucleoside triphosphate binding","GO:MF",7.48444205710077e-12
+"463","nucleotide binding","GO:MF",1.20350483295948e-11
+"464","nucleoside phosphate binding","GO:MF",1.22960140878372e-11
+"465","purine ribonucleotide binding","GO:MF",3.43392173939564e-11
+"466","DNA helicase activity","GO:MF",3.76123773444492e-11
+"467","purine nucleotide binding","GO:MF",4.4938959880159e-11
+"468","ribonucleotide binding","GO:MF",5.02339865478809e-11
+"469","ATPase activity","GO:MF",2.76823995094278e-10
+"470","small molecule binding","GO:MF",3.1188122978223e-09
+"471","pyrophosphatase activity","GO:MF",3.3269643041258e-09
+"472","hydrolase activity, acting on acid anhydrides, in phosphorus-containing anhydrides","GO:MF",3.78706960412602e-09
+"473","hydrolase activity, acting on acid anhydrides","GO:MF",3.78706960412602e-09
+"474","carbohydrate derivative binding","GO:MF",4.45360746173079e-09
+"475","helicase activity","GO:MF",9.2087360408229e-09
+"476","nucleoside-triphosphatase activity","GO:MF",1.27734668311263e-08
+"477","RNA binding","GO:MF",7.38392046708109e-08
+"478","binding","GO:MF",7.25861049095964e-07
+"479","cyclin-dependent protein serine/threonine kinase regulator activity","GO:MF",7.57871189414279e-07
+"480","DNA replication origin binding","GO:MF",1.30708046542039e-06
+"481","histone binding","GO:MF",2.21808970736156e-06
+"482","anion binding","GO:MF",2.3337645846565e-06
+"483","enzyme binding","GO:MF",3.48193123415459e-06
+"484","catalytic activity","GO:MF",4.03604623307553e-06
+"485","transferase activity, transferring phosphorus-containing groups","GO:MF",4.19731250773033e-06
+"486","double-stranded DNA binding","GO:MF",1.38788292981403e-05
+"487","hydrolase activity","GO:MF",2.65468863329672e-05
+"488","kinase activity","GO:MF",6.04296795392572e-05
+"489","deoxyribonuclease activity","GO:MF",0.000100808196917004
+"490","nuclease activity","GO:MF",0.000192601219331758
+"491","3'-5' DNA helicase activity","GO:MF",0.000228234368081766
+"492","single-stranded DNA helicase activity","GO:MF",0.000320542060729111
+"493","protein-DNA loading ATPase activity","GO:MF",0.000665886187117254
+"494","DNA clamp loader activity","GO:MF",0.000665886187117254
+"495","DNA secondary structure binding","GO:MF",0.000748677291900133
+"496","exodeoxyribonuclease activity, producing 5'-phosphomonoesters","GO:MF",0.00165478430670986
+"497","exodeoxyribonuclease activity","GO:MF",0.00165478430670986
+"498","mismatch repair complex binding","GO:MF",0.00171505080793259
+"499","cyclin-dependent protein serine/threonine kinase inhibitor activity","GO:MF",0.0025511543982085
+"500","kinase binding","GO:MF",0.00259566783797131
+"501","mismatched DNA binding","GO:MF",0.00686082757250276
+"502","cyclin binding","GO:MF",0.00779737448659833
+"503","histone kinase activity","GO:MF",0.00907169197397645
+"504","DNA insertion or deletion binding","GO:MF",0.0102664357696717
+"505","centromeric DNA binding","GO:MF",0.0102664357696717
+"506","four-way junction DNA binding","GO:MF",0.0117643534857449
+"507","3'-5' exonuclease activity","GO:MF",0.0137803365775646
+"508","exonuclease activity","GO:MF",0.0139591234372433
+"509","protein kinase binding","GO:MF",0.0145711599779765
+"510","histone deacetylase binding","GO:MF",0.0160216610685191
+"511","telomeric DNA binding","GO:MF",0.0165694874016909
+"512","exonuclease activity, active with either ribo- or deoxyribonucleic acids and producing 5'-phosphomonoesters","GO:MF",0.0168111993459624
+"513","tubulin binding","GO:MF",0.0174875546506948
+"514","sequence-specific DNA binding","GO:MF",0.0199443997674523
+"515","anaphase-promoting complex binding","GO:MF",0.0282964831334698
+"516","identical protein binding","GO:MF",0.0298109872371073
+"517","Ran GTPase binding","GO:MF",0.0315471540779788
+"518","nucleobase-containing compound kinase activity","GO:MF",0.0445505570688155
+"519","Cell cycle","KEGG",8.11687371687438e-34
+"520","DNA replication","KEGG",6.64973689923814e-30
+"521","Mismatch repair","KEGG",1.45590540550462e-18
+"522","Homologous recombination","KEGG",1.7534460878784e-12
+"523","Nucleotide excision repair","KEGG",6.8951270602761e-12
+"524","Cellular senescence","KEGG",1.8864835686429e-08
+"525","Human T-cell leukemia virus 1 infection","KEGG",4.33790156450634e-07
+"526","Fanconi anemia pathway","KEGG",6.71746717198097e-07
+"527","p53 signaling pathway","KEGG",1.13053838776139e-06
+"528","Base excision repair","KEGG",2.3764980814789e-06
+"529","Oocyte meiosis","KEGG",0.000321876014080268
+"530","Platinum drug resistance","KEGG",0.00123338987820164
+"531","Pyrimidine metabolism","KEGG",0.00223469464828681
+"532","Non-homologous end-joining","KEGG",0.00309199049848524
+"533","Small cell lung cancer","KEGG",0.00739857972956333
+"534","Progesterone-mediated oocyte maturation","KEGG",0.0107661198313902
+"535","Bladder cancer","KEGG",0.0347686622488698
+"536","Cell Cycle","REAC",2.3180024535545e-71
+"537","Cell Cycle, Mitotic","REAC",1.93486019919198e-58
+"538","S Phase","REAC",2.42124800445971e-35
+"539","Cell Cycle Checkpoints","REAC",5.13780833661857e-33
+"540","DNA strand elongation","REAC",7.66390914829517e-31
+"541","Mitotic G1 phase and G1/S transition","REAC",2.69271372120282e-24
+"542","HDR through Homologous Recombination (HRR)","REAC",5.4577520939848e-23
+"543","DNA Double-Strand Break Repair","REAC",1.12034334592461e-22
+"544","Synthesis of DNA","REAC",7.01222152387428e-22
+"545","DNA Repair","REAC",1.49609131611771e-21
+"546","DNA Replication","REAC",4.56529786649268e-21
+"547","G1/S Transition","REAC",1.1059585982425e-20
+"548","HDR through Homologous Recombination (HRR) or Single Strand Annealing (SSA)","REAC",2.6322134949726e-19
+"549","Activation of ATR in response to replication stress","REAC",3.46197119572522e-19
+"550","G2/M Checkpoints","REAC",7.46111606658689e-19
+"551","Homology Directed Repair","REAC",8.75888834786643e-19
+"552","Lagging Strand Synthesis","REAC",5.0813200192743e-17
+"553","Mitotic Prometaphase","REAC",8.54525888328786e-17
+"554","Activation of the pre-replicative complex","REAC",1.18188020647829e-16
+"555","PCNA-Dependent Long Patch Base Excision Repair","REAC",1.31622365043723e-16
+"556","Homologous DNA Pairing and Strand Exchange","REAC",2.39818342571228e-16
+"557","M Phase","REAC",2.71821973842943e-16
+"558","Telomere C-strand (Lagging Strand) Synthesis","REAC",3.40926801012277e-16
+"559","Mismatch repair (MMR) directed by MSH2:MSH6 (MutSalpha)","REAC",1.21930662806105e-15
+"560","Mismatch repair (MMR) directed by MSH2:MSH3 (MutSbeta)","REAC",1.21930662806105e-15
+"561","Presynaptic phase of homologous DNA pairing and strand exchange","REAC",2.64578792115151e-15
+"562","Mitotic Anaphase","REAC",3.09273824591157e-15
+"563","Resolution of AP sites via the multiple-nucleotide patch replacement pathway","REAC",3.18940226744049e-15
+"564","Gap-filling DNA repair synthesis and ligation in GG-NER","REAC",3.18940226744049e-15
+"565","Mitotic Metaphase and Anaphase","REAC",3.48138307521408e-15
+"566","Resolution of Sister Chromatid Cohesion","REAC",4.19648855523491e-15
+"567","Mismatch Repair","REAC",4.51199427069661e-15
+"568","Recognition of DNA damage by PCNA-containing replication complex","REAC",6.8723880164892e-14
+"569","Processive synthesis on the lagging strand","REAC",6.75386410913399e-13
+"570","Extension of Telomeres","REAC",7.89841794057235e-13
+"571","Regulation of TP53 Activity through Phosphorylation","REAC",8.71282610609768e-13
+"572","Resolution of Abasic Sites (AP sites)","REAC",1.22431221244558e-12
+"573","Transcriptional Regulation by TP53","REAC",1.38920895972136e-12
+"574","G2/M DNA damage checkpoint","REAC",1.58476153168647e-12
+"575","Unwinding of DNA","REAC",3.48115712668997e-12
+"576","Polymerase switching on the C-strand of the telomere","REAC",4.25935486248856e-12
+"577","Meiosis","REAC",5.17654845526454e-12
+"578","Termination of translesion DNA synthesis","REAC",8.69355817665571e-12
+"579","Regulation of TP53 Activity","REAC",1.57697384814527e-11
+"580","Leading Strand Synthesis","REAC",3.08517504937065e-11
+"581","Polymerase switching","REAC",3.08517504937065e-11
+"582","Removal of the Flap Intermediate","REAC",3.08517504937065e-11
+"583","Separation of Sister Chromatids","REAC",3.74642420837263e-11
+"584","HDR through Single Strand Annealing (SSA)","REAC",6.67335410431782e-11
+"585","Chromosome Maintenance","REAC",7.08948912993169e-11
+"586","DNA Damage Bypass","REAC",8.71341059469263e-11
+"587","Translesion synthesis by Y family DNA polymerases bypasses lesions on DNA template","REAC",1.37181679417492e-10
+"588","Telomere Maintenance","REAC",1.63749966987574e-10
+"589","Reproduction","REAC",2.23476152961603e-10
+"590","Dual Incision in GG-NER","REAC",2.69789290568205e-10
+"591","SUMO E3 ligases SUMOylate target proteins","REAC",4.85145163290236e-10
+"592","Processing of DNA double-strand break ends","REAC",6.50254815376089e-10
+"593","SUMOylation","REAC",9.39322886389703e-10
+"594","DNA Replication Pre-Initiation","REAC",1.02786538757609e-09
+"595","Processive synthesis on the C-strand of the telomere","REAC",1.3506117175707e-09
+"596","Base Excision Repair","REAC",2.0682717248933e-09
+"597","Amplification  of signal from unattached  kinetochores via a MAD2  inhibitory signal","REAC",3.41198201325876e-09
+"598","Amplification of signal from the kinetochores","REAC",3.41198201325876e-09
+"599","Gap-filling DNA repair synthesis and ligation in TC-NER","REAC",3.87242115409512e-09
+"600","Gene expression (Transcription)","REAC",1.16387996862978e-08
+"601","Meiotic recombination","REAC",2.09793042101694e-08
+"602","Removal of the Flap Intermediate from the C-strand","REAC",2.37473485021154e-08
+"603","Mitotic Spindle Checkpoint","REAC",3.68704759669623e-08
+"604","Transcription-Coupled Nucleotide Excision Repair (TC-NER)","REAC",5.64147371468976e-08
+"605","Dual incision in TC-NER","REAC",8.25978310961961e-08
+"606","EML4 and NUDC in mitotic spindle formation","REAC",9.19511416200484e-08
+"607","RHO GTPases Activate Formins","REAC",1.08337139037713e-07
+"608","Global Genome Nucleotide Excision Repair (GG-NER)","REAC",1.75043403105383e-07
+"609","Cellular Senescence","REAC",4.04705925883826e-07
+"610","RNA Polymerase II Transcription","REAC",4.09439978437029e-07
+"611","Translesion synthesis by REV1","REAC",7.7139421470873e-07
+"612","DNA Damage/Telomere Stress Induced Senescence","REAC",1.224600582118e-06
+"613","Translesion synthesis by POLK","REAC",1.29442627562812e-06
+"614","Translesion synthesis by POLI","REAC",1.29442627562812e-06
+"615","Resolution of D-loop Structures through Synthesis-Dependent Strand Annealing (SDSA)","REAC",1.38218734238918e-06
+"616","Translesion Synthesis by POLH","REAC",3.26765164104411e-06
+"617","SUMOylation of DNA damage response and repair proteins","REAC",4.68236715787875e-06
+"618","Nucleotide Excision Repair","REAC",4.68845360594491e-06
+"619","SUMOylation of DNA replication proteins","REAC",5.9243045202262e-06
+"620","Mitotic Telophase/Cytokinesis","REAC",7.99372886774401e-06
+"621","Resolution of D-loop Structures through Holliday Junction Intermediates","REAC",1.12057523940745e-05
+"622","Resolution of D-Loop Structures","REAC",1.44627337362911e-05
+"623","Generic Transcription Pathway","REAC",1.61395971921112e-05
+"624","TP53 Regulates Transcription of Cell Cycle Genes","REAC",1.99398918837094e-05
+"625","G2/M Transition","REAC",2.25663596623057e-05
+"626","Mitotic G2-G2/M phases","REAC",2.60190207344246e-05
+"627","Cyclin A/B1/B2 associated events during G2/M transition","REAC",2.88349669065922e-05
+"628","RHO GTPase Effectors","REAC",3.88738756836963e-05
+"629","G0 and Early G1","REAC",5.19028580390794e-05
+"630","Cohesin Loading onto Chromatin","REAC",8.05732195293894e-05
+"631","Establishment of Sister Chromatid Cohesion","REAC",0.000145877526711717
+"632","Transcriptional Regulation by E2F6","REAC",0.00028711333178685
+"633","Sensing of DNA Double Strand Breaks","REAC",0.000330920402205177
+"634","TP53 Regulates Transcription of Genes Involved in G1 Cell Cycle Arrest","REAC",0.000608819610598324
+"635","DNA Double Strand Break Response","REAC",0.00108243336100036
+"636","Cellular responses to stress","REAC",0.00116430469381032
+"637","Polo-like kinase mediated events","REAC",0.00129548940603434
+"638","DNA replication initiation","REAC",0.00150734361803508
+"639","Cellular responses to external stimuli","REAC",0.00177820878347943
+"640","Signaling by Rho GTPases","REAC",0.0022164718827619
+"641","Cyclin A:Cdk2-associated events at S phase entry","REAC",0.00248641047115248
+"642","Nuclear Envelope Breakdown","REAC",0.00283603865964471
+"643","Rev-mediated nuclear export of HIV RNA","REAC",0.00331046573610918
+"644","Assembly of the pre-replicative complex","REAC",0.00377264841743576
+"645","G1/S DNA Damage Checkpoints","REAC",0.00377264841743576
+"646","Switching of origins to a post-replicative state","REAC",0.0039933737516757
+"647","Nonhomologous End-Joining (NHEJ)","REAC",0.00421200922191551
+"648","Interactions of Rev with host cellular proteins","REAC",0.00478929947301409
+"649","Orc1 removal from chromatin","REAC",0.00522110907077958
+"650","AURKA Activation by TPX2","REAC",0.00522110907077958
+"651","HIV Life Cycle","REAC",0.00676906102224401
+"652","Condensation of Prometaphase Chromosomes","REAC",0.00685280479658818
+"653","E2F mediated regulation of DNA replication","REAC",0.00724580429698363
+"654","Recruitment and ATM-mediated phosphorylation of repair and signaling proteins at DNA double strand breaks","REAC",0.00866837972259817
+"655","Meiotic synapsis","REAC",0.00954790973553705
+"656","Fanconi Anemia Pathway","REAC",0.0109005312118486
+"657","Chk1/Chk2(Cds1) mediated inactivation of Cyclin B:Cdk1 complex","REAC",0.0144932419166844
+"658","G2/M DNA replication checkpoint","REAC",0.0145779482325866
+"659","Diseases of Mismatch Repair (MMR)","REAC",0.0145779482325866
+"660","Cyclin E associated events during G1/S transition ","REAC",0.0165492462000076
+"661","Mitotic Prophase","REAC",0.0180767633075583
+"662","G1 Phase","REAC",0.0193561720873812
+"663","Cyclin D associated events in G1","REAC",0.0193561720873812
+"664","Regulation of PLK1 Activity at G2/M Transition","REAC",0.0196715842317046
+"665","Early Phase of HIV Life Cycle","REAC",0.0200470108391187
+"666","TP53 Regulates Transcription of DNA Repair Genes","REAC",0.0202853594707911
+"667","Interconversion of nucleotide di- and triphosphates","REAC",0.0208688407616734
+"668","APC/C-mediated degradation of cell cycle proteins","REAC",0.0214080835548233
+"669","Regulation of mitotic cell cycle","REAC",0.0214080835548233
+"670","G1/S-Specific Transcription","REAC",0.025090666821141
+"671","PTK6 Regulates Cell Cycle","REAC",0.0288249760629681
+"672","Phosphorylation of Emi1","REAC",0.0288249760629681
+"673","NEP/NS2 Interacts with the Cellular Export Machinery","REAC",0.0299422416304925
+"674","Export of Viral Ribonucleoproteins from Nucleus","REAC",0.0354856350768401
+"675","Initiation of Nuclear Envelope (NE) Reformation","REAC",0.0355800120276272
+"676","Formation of Senescence-Associated Heterochromatin Foci (SAHF)","REAC",0.0355800120276272
+"677","Metabolism of nucleotides","REAC",0.0375053475254682
+"678","Nuclear Envelope (NE) Reassembly","REAC",0.0401544124909698
+"679","Vpr-mediated nuclear import of PICs","REAC",0.0417858877745894
+"680","Oxidative Stress Induced Senescence","REAC",0.048227497877482
+"681","2-LTR circle formation","REAC",0.0498715692894709
+"682","Activation of NIMA Kinases NEK9, NEK6, NEK7","REAC",0.0498715692894709
+"683","Retinoblastoma Gene in Cancer","WP",1.14580910684648e-41
+"684","Cell Cycle","WP",6.40471565485297e-28
+"685","G1 to S cell cycle control","WP",6.45900283338257e-27
+"686","DNA Replication","WP",7.4135332737535e-24
+"687","DNA Repair Pathways Full Network","WP",2.02240534420669e-21
+"688","DNA Mismatch Repair","WP",3.42508431729319e-21
+"689","DNA IR-damage and cellular response via ATR","WP",7.51310332728865e-21
+"690","DNA Damage Response","WP",2.44275413950195e-18
+"691","miRNA Regulation of DNA Damage Response","WP",1.2411434004026e-16
+"692","Integrated Cancer Pathway","WP",6.36463282112327e-15
+"693","Regulation of sister chromatid separation at the metaphase-anaphase transition","WP",4.35469517195936e-12
+"694","ATM Signaling Pathway","WP",2.46823348005285e-11
+"695","Nucleotide Excision Repair","WP",7.14931875188347e-11
+"696","DNA IR-Double Strand Breaks (DSBs) and cellular response via ATM","WP",1.22510145829189e-10
+"697","Homologous recombination","WP",2.25922851075189e-09
+"698","ATM Signaling Network in Development and Disease ","WP",4.12200382061754e-09
+"699","Pyrimidine metabolism","WP",7.76234336051348e-08
+"700","Integrated Breast Cancer Pathway","WP",3.67809771874735e-06
+"701","Base Excision Repair","WP",1.03934052262848e-05
+"702","Gastric Cancer Network 2","WP",1.77188471127216e-05
+"703","ATR Signaling","WP",0.00205389845190905
+"704","Signaling Pathways in Glioblastoma","WP",0.00340446308817065
+"705","miRNAs involved in DNA damage response","WP",0.00536938899500951
+"706","Gastric Cancer Network 1","WP",0.0265201915036226
+"707","Pathways Affected in Adenoid Cystic Carcinoma","WP",0.032564524116875
+"708","Hepatitis C and Hepatocellular Carcinoma","WP",0.0470062953866598

@@ -1,0 +1,516 @@
+"","term_name","p_value"
+"1","fatty acid metabolic process",8.85546771291989e-72
+"2","monocarboxylic acid metabolic process",6.6082417363387e-68
+"3","carboxylic acid metabolic process",2.06401676091534e-57
+"4","lipid metabolic process",4.08436203177455e-57
+"5","oxoacid metabolic process",2.52654705826565e-56
+"6","organic acid metabolic process",1.26242413786272e-55
+"7","cellular lipid metabolic process",1.77134201912216e-55
+"8","small molecule metabolic process",4.97633501948273e-48
+"9","fatty acid catabolic process",1.32448730429955e-38
+"10","cellular lipid catabolic process",5.10491594609505e-37
+"11","lipid catabolic process",1.97079853644425e-36
+"12","monocarboxylic acid catabolic process",2.1103396805287e-36
+"13","fatty acid oxidation",9.56300250790053e-34
+"14","lipid oxidation",3.86773701325976e-33
+"15","lipid localization",1.29253136437896e-31
+"16","lipid modification",1.97792063526424e-30
+"17","small molecule catabolic process",2.21656674558112e-30
+"18","fatty acid beta-oxidation",5.19293745018294e-30
+"19","oxidation-reduction process",3.80385026169392e-29
+"20","organic acid catabolic process",1.34941649441236e-28
+"21","carboxylic acid catabolic process",1.34941649441236e-28
+"22","lipid transport",2.42033496552566e-27
+"23","long-chain fatty acid metabolic process",1.43706619117295e-25
+"24","fatty acid transport",1.21955344929764e-23
+"25","lipid biosynthetic process",2.07733887513236e-23
+"26","small molecule biosynthetic process",1.04005562224534e-22
+"27","long-chain fatty acid transport",1.34376509886296e-22
+"28","triglyceride metabolic process",2.77233723965497e-22
+"29","acylglycerol metabolic process",6.04389336734999e-22
+"30","neutral lipid metabolic process",8.04006964607013e-22
+"31","regulation of lipid metabolic process",1.41566821170781e-21
+"32","positive regulation of lipid metabolic process",1.56109227090139e-21
+"33","monocarboxylic acid transport",6.4428963058323e-20
+"34","carboxylic acid biosynthetic process",2.1606248873171e-19
+"35","organic acid biosynthetic process",2.48540187417505e-19
+"36","regulation of fatty acid metabolic process",3.35869019173592e-19
+"37","organic anion transport",6.66422589832499e-19
+"38","glycerolipid metabolic process",1.40976560610829e-17
+"39","regulation of lipid localization",2.00840254805002e-17
+"40","lipid import into cell",3.68287381155174e-17
+"41","long-chain fatty acid import into cell",3.68287381155174e-17
+"42","regulation of cellular ketone metabolic process",1.07622699602498e-16
+"43","anion transport",4.01943054617175e-16
+"44","monocarboxylic acid biosynthetic process",1.5375371637485e-15
+"45","organic substance catabolic process",2.35168978480504e-15
+"46","primary metabolic process",2.4380513916411e-15
+"47","cellular ketone metabolic process",2.96194326335219e-15
+"48","organic substance metabolic process",1.38981249677143e-14
+"49","catabolic process",1.72014375139246e-14
+"50","metabolic process",2.09955713268409e-14
+"51","carboxylic acid transport",2.73029174736958e-14
+"52","organic acid transport",3.37877299450139e-14
+"53","fatty acid derivative biosynthetic process",6.15997132962442e-14
+"54","regulation of small molecule metabolic process",8.5430384004857e-14
+"55","cellular catabolic process",5.63943660067246e-13
+"56","fatty acid biosynthetic process",5.93353657115559e-13
+"57","positive regulation of fatty acid metabolic process",1.18063999030011e-12
+"58","fatty acid derivative metabolic process",2.04998517871449e-12
+"59","very long-chain fatty acid metabolic process",3.36758469060034e-12
+"60","glycerolipid biosynthetic process",3.96308032535194e-12
+"61","response to fatty acid",4.70713159383192e-12
+"62","triglyceride biosynthetic process",1.92366871230392e-11
+"63","organic hydroxy compound metabolic process",3.26193084489819e-11
+"64","response to lipid",7.40828974853864e-11
+"65","unsaturated fatty acid metabolic process",1.30040091059207e-10
+"66","neutral lipid biosynthetic process",1.5669521835573e-10
+"67","acylglycerol biosynthetic process",1.5669521835573e-10
+"68","positive regulation of lipid localization",3.03115186535141e-10
+"69","regulation of lipid transport",4.28758177258699e-10
+"70","phosphatidylcholine metabolic process",5.99337866038593e-10
+"71","cellular metabolic process",6.52966037118022e-10
+"72","lipid homeostasis",1.1706583346302e-09
+"73","regulation of fatty acid oxidation",2.23037419726755e-09
+"74","positive regulation of small molecule metabolic process",2.23309756213003e-09
+"75","positive regulation of lipid biosynthetic process",2.33247920970512e-09
+"76","organic substance transport",4.98398075457077e-09
+"77","regulation of lipid biosynthetic process",7.80101805364327e-09
+"78","response to nutrient levels",7.90911147449235e-09
+"79","chemical homeostasis",9.9650847781368e-09
+"80","organophosphate metabolic process",1.32236177760262e-08
+"81","response to oxygen-containing compound",2.22742028114429e-08
+"82","response to extracellular stimulus",2.26754182187267e-08
+"83","ion transport",2.63501994313894e-08
+"84","positive regulation of lipid transport",3.40792503337544e-08
+"85","organic substance biosynthetic process",3.50261685276303e-08
+"86","regulation of cholesterol storage",4.34960299342832e-08
+"87","lauric acid metabolic process",5.96506361618557e-08
+"88","bile acid metabolic process",6.01054358152273e-08
+"89","medium-chain fatty acid metabolic process",6.50578904201315e-08
+"90","biosynthetic process",6.77800644560073e-08
+"91","macromolecule localization",6.87227917807398e-08
+"92","positive regulation of fatty acid oxidation",9.48133185911906e-08
+"93","cholesterol storage",9.48133185911906e-08
+"94","homeostatic process",1.14667623120596e-07
+"95","cholesterol homeostasis",1.87809721211548e-07
+"96","phosphatidylcholine biosynthetic process",1.88546145973358e-07
+"97","organophosphate biosynthetic process",1.8948099624722e-07
+"98","sterol homeostasis",2.05589920142715e-07
+"99","monounsaturated fatty acid biosynthetic process",3.13837328872354e-07
+"100","monounsaturated fatty acid metabolic process",3.13837328872354e-07
+"101","regulation of plasma lipoprotein particle levels",3.94547621168388e-07
+"102","cellular biosynthetic process",4.06761109929978e-07
+"103","response to hormone",9.78722939455538e-07
+"104","organic hydroxy compound biosynthetic process",1.23155566663569e-06
+"105","positive regulation of triglyceride metabolic process",1.28310574487127e-06
+"106","temperature homeostasis",1.4566325785124e-06
+"107","steroid metabolic process",1.5059936830504e-06
+"108","positive regulation of cold-induced thermogenesis",1.679927239806e-06
+"109","phospholipid biosynthetic process",1.91725968777668e-06
+"110","cold-induced thermogenesis",2.13484514044909e-06
+"111","regulation of cold-induced thermogenesis",2.13484514044909e-06
+"112","positive regulation of lipid catabolic process",2.4862366781145e-06
+"113","acyl-CoA metabolic process",2.89648713309148e-06
+"114","thioester metabolic process",2.89648713309148e-06
+"115","lipid storage",3.15997810769458e-06
+"116","phospholipid metabolic process",3.20899117678399e-06
+"117","response to nutrient",3.24299414878547e-06
+"118","regulation of lipid storage",4.00413057552326e-06
+"119","lipid transport across blood-brain barrier",4.68181465631968e-06
+"120","cholesterol transport",4.81297760179426e-06
+"121","adaptive thermogenesis",4.94508685212318e-06
+"122","regulation of lipid catabolic process",5.06962075527651e-06
+"123","long-chain fatty-acyl-CoA metabolic process",6.4264056743145e-06
+"124","cellular response to hormone stimulus",7.56376040021191e-06
+"125","positive regulation of steroid metabolic process",7.71682163503436e-06
+"126","plasma lipoprotein particle organization",7.71682163503436e-06
+"127","regulation of cholesterol transport",8.83668737533232e-06
+"128","regulation of sterol transport",8.83668737533232e-06
+"129","intestinal lipid absorption",8.87307789888923e-06
+"130","cellular response to lipid",9.02308775511907e-06
+"131","intestinal absorption",9.1375899045358e-06
+"132","response to organic substance",9.95958204263924e-06
+"133","ribonucleoside bisphosphate metabolic process",1.04606796572926e-05
+"134","nucleoside bisphosphate metabolic process",1.04606796572926e-05
+"135","purine nucleoside bisphosphate metabolic process",1.04606796572926e-05
+"136","sterol transport",1.21047065370693e-05
+"137","protein-lipid complex subunit organization",1.47556421071344e-05
+"138","organic hydroxy compound catabolic process",1.79215215022011e-05
+"139","linoleic acid metabolic process",2.69662271866564e-05
+"140","regulation of macrophage derived foam cell differentiation",2.69662271866564e-05
+"141","fatty-acyl-CoA metabolic process",2.69662271866564e-05
+"142","import into cell",2.82301368164637e-05
+"143","negative regulation of cholesterol storage",3.90051288133928e-05
+"144","positive regulation of cholesterol esterification",3.90051288133928e-05
+"145","very-low-density lipoprotein particle remodeling",3.90051288133928e-05
+"146","protein-lipid complex remodeling",4.32800471710008e-05
+"147","plasma lipoprotein particle remodeling",4.32800471710008e-05
+"148","positive regulation of transport",4.60112184260269e-05
+"149","regulation of triglyceride metabolic process",5.08247674671463e-05
+"150","long-chain fatty-acyl-CoA biosynthetic process",6.48306015055583e-05
+"151","long-chain fatty acid import across plasma membrane",6.48306015055583e-05
+"152","triglyceride-rich lipoprotein particle remodeling",6.48306015055583e-05
+"153","protein-containing complex remodeling",6.66049581624754e-05
+"154","foam cell differentiation",6.66049581624754e-05
+"155","macrophage derived foam cell differentiation",6.66049581624754e-05
+"156","alcohol metabolic process",6.86140751466497e-05
+"157","icosanoid biosynthetic process",7.28008394800364e-05
+"158","regulation of biological quality",8.62969145753965e-05
+"159","alcohol biosynthetic process",9.03710938773954e-05
+"160","positive regulation of long-chain fatty acid import into cell",9.04530074349941e-05
+"161","carnitine metabolic process",0.000101597815839055
+"162","organic hydroxy compound transport",0.000114343028507004
+"163","unsaturated fatty acid biosynthetic process",0.000126532780326918
+"164","fatty acid transmembrane transport",0.000151979634743733
+"165","fatty-acyl-CoA biosynthetic process",0.000151979634743733
+"166","regulation of cholesterol esterification",0.000151979634743733
+"167","long-chain fatty acid catabolic process",0.000151979634743733
+"168","sterol import",0.000151979634743733
+"169","cholesterol import",0.000151979634743733
+"170","cholesterol efflux",0.000155616963065582
+"171","digestive system process",0.000158491986123358
+"172","positive regulation of cholesterol transport",0.000235624045683679
+"173","positive regulation of sterol transport",0.000235624045683679
+"174","steroid biosynthetic process",0.000275938915142725
+"175","response to organic cyclic compound",0.000303771067740646
+"176","response to endogenous stimulus",0.00035446201618268
+"177","regulation of very-low-density lipoprotein particle remodeling",0.000360870517753359
+"178","cholesterol esterification",0.000415664265861394
+"179","sterol esterification",0.000415664265861394
+"180","steroid esterification",0.000415664265861394
+"181","intestinal cholesterol absorption",0.000415664265861394
+"182","negative regulation of lipid localization",0.00043141623845049
+"183","digestion",0.00043646311178502
+"184","transport",0.000446097470637785
+"185","amino-acid betaine metabolic process",0.000552702661379085
+"186","regulation of lipase activity",0.000599666873561575
+"187","transport across blood-brain barrier",0.000720787663134401
+"188","regulation of lipoprotein lipase activity",0.000720787663134401
+"189","cholesterol metabolic process",0.000724068390317853
+"190","acylglycerol homeostasis",0.000727432208441358
+"191","triglyceride homeostasis",0.000727432208441358
+"192","fatty acid beta-oxidation using acyl-CoA oxidase",0.00089982895980299
+"193","lipid digestion",0.000924191830344548
+"194","vascular transport",0.000924191830344548
+"195","maintenance of location",0.000951776767927583
+"196","establishment of localization",0.000970173172164254
+"197","sterol metabolic process",0.00110002811779409
+"198","icosanoid metabolic process",0.00115685596982244
+"199","secondary alcohol metabolic process",0.00121613057416615
+"200","regulation of fatty acid biosynthetic process",0.00131199208249523
+"201","glycerophospholipid metabolic process",0.00137578663928698
+"202","regulation of receptor biosynthetic process",0.00145530953821374
+"203","lipoprotein metabolic process",0.00162802803603465
+"204","bile acid biosynthetic process",0.00179281853737919
+"205","plasma lipoprotein particle assembly",0.00179281853737919
+"206","positive regulation of cholesterol efflux",0.00179281853737919
+"207","regulation of fatty acid beta-oxidation",0.00179281853737919
+"208","negative regulation of receptor biosynthetic process",0.00179497610494965
+"209","phospholipid transport",0.00189649548178923
+"210","response to insulin",0.00190191715682146
+"211","glycerol metabolic process",0.00218523016186642
+"212","glucose homeostasis",0.00219356905871319
+"213","cholesterol biosynthetic process",0.00221696486347224
+"214","secondary alcohol biosynthetic process",0.00221696486347224
+"215","carbohydrate homeostasis",0.00225632408580011
+"216","multicellular organismal homeostasis",0.0026432160021035
+"217","response to cold",0.00269312493366075
+"218","positive regulation of metabolic process",0.00286076821292619
+"219","leukotriene catabolic process",0.00313303744010876
+"220","leukotriene B4 catabolic process",0.00313303744010876
+"221","leukotriene B4 metabolic process",0.00313303744010876
+"222","alditol metabolic process",0.00374805505056247
+"223","protein-lipid complex assembly",0.00374805505056247
+"224","receptor biosynthetic process",0.00374805505056247
+"225","sterol biosynthetic process",0.00388554560712414
+"226","intracellular receptor signaling pathway",0.00395430651958786
+"227","regulation of long-chain fatty acid import into cell",0.00499982250487069
+"228","regulation of transport",0.00583969358002806
+"229","regulation of steroid metabolic process",0.00608496785650174
+"230","response to peptide",0.00691801111108578
+"231","negative regulation of macrophage derived foam cell differentiation",0.00748023119289932
+"232","negative regulation of lipid storage",0.00800942579451206
+"233","hormone-mediated signaling pathway",0.00822145817410832
+"234","cellular response to endogenous stimulus",0.00826303295052591
+"235","polyol metabolic process",0.00911531132313512
+"236","purine ribonucleotide metabolic process",0.00919060989566296
+"237","positive regulation of anion transport",0.00937887192383197
+"238","thioester biosynthetic process",0.0104523600522651
+"239","acyl-CoA biosynthetic process",0.0104523600522651
+"240","response to steroid hormone",0.0105492820376767
+"241","positive regulation of fatty acid beta-oxidation",0.0106582600177824
+"242","icosanoid catabolic process",0.0106582600177824
+"243","high-density lipoprotein particle assembly",0.0106582600177824
+"244","regulation of intestinal cholesterol absorption",0.0106582600177824
+"245","arachidonic acid metabolic process",0.0108283877740958
+"246","response to peptide hormone",0.0112362509572215
+"247","retinoic acid receptor signaling pathway",0.0118615650186902
+"248","nucleotide metabolic process",0.012129390028042
+"249","ribonucleotide metabolic process",0.0123492206679323
+"250","regulation of intestinal lipid absorption",0.0146170083435111
+"251","positive regulation of lipoprotein lipase activity",0.0146170083435111
+"252","nucleoside phosphate metabolic process",0.0146364314435648
+"253","ribose phosphate metabolic process",0.0150457773069008
+"254","regulation of fatty acid transport",0.0150948800319907
+"255","regulation of anion transport",0.0158645585354453
+"256","response to alcohol",0.0161479099663655
+"257","purine nucleotide metabolic process",0.0190137424210428
+"258","high-density lipoprotein particle remodeling",0.0194386845797669
+"259","positive regulation of triglyceride lipase activity",0.0194386845797669
+"260","glycerophospholipid biosynthetic process",0.0196663947431272
+"261","response to chemical",0.0198817446709007
+"262","organophosphate ester transport",0.0205086142215909
+"263","sulfur compound metabolic process",0.0218609449390394
+"264","glucose metabolic process",0.0224427206463802
+"265","cellular response to nutrient levels",0.0224427206463802
+"266","phospholipid efflux",0.0252046123421903
+"267","response to linoleic acid",0.0257236292744132
+"268","glycerol biosynthetic process from pyruvate",0.0257236292744132
+"269","positive regulation of long-chain fatty acid import across plasma membrane",0.0257236292744132
+"270","propionate catabolic process",0.0257236292744132
+"271","medium-chain fatty acid transport",0.0257236292744132
+"272","neutral lipid catabolic process",0.0259889948286879
+"273","acylglycerol catabolic process",0.0259889948286879
+"274","gluconeogenesis",0.0315171333677527
+"275","regulation of cholesterol efflux",0.0316564546154966
+"276","cellular response to nutrient",0.0316564546154966
+"277","regulation of sequestering of triglyceride",0.0319952365778086
+"278","nucleoside bisphosphate biosynthetic process",0.0348079739939138
+"279","purine nucleoside bisphosphate biosynthetic process",0.0348079739939138
+"280","ribonucleoside bisphosphate biosynthetic process",0.0348079739939138
+"281","response to abiotic stimulus",0.0352666721420461
+"282","cellular response to chemical stimulus",0.0369847419658679
+"283","hexose biosynthetic process",0.0371730247321679
+"284","intermembrane lipid transfer",0.0381842397250348
+"285","localization",0.0395571025432825
+"286","negative regulation of lipase activity",0.0398901296557952
+"287","regulation of intestinal absorption",0.0398901296557952
+"288","xenobiotic catabolic process",0.0398901296557952
+"289","purine-containing compound metabolic process",0.0426774394563869
+"290","phosphate-containing compound metabolic process",0.0434249111345288
+"291","fatty acid derivative catabolic process",0.0489679974237377
+"292","positive regulation of triglyceride biosynthetic process",0.0489679974237377
+"293","phosphorus metabolic process",0.049187009621077
+"294","peroxisome",2.08239862852397e-12
+"295","microbody",2.08239862852397e-12
+"296","mitochondrion",2.2715324975536e-11
+"297","endoplasmic reticulum",6.09333757605571e-10
+"298","intracellular membrane-bounded organelle",1.47485704820176e-09
+"299","cytoplasm",1.97176363290755e-09
+"300","mitochondrial membrane",9.61447796368784e-09
+"301","membrane-bounded organelle",1.20800579118439e-08
+"302","mitochondrial outer membrane",1.57045260812583e-08
+"303","mitochondrial envelope",3.70686239320697e-08
+"304","outer membrane",6.63173106116876e-08
+"305","organelle outer membrane",6.63173106116876e-08
+"306","intracellular",3.7475321428205e-07
+"307","endoplasmic reticulum membrane",4.07456294846201e-07
+"308","organelle membrane",5.02666806103055e-07
+"309","nuclear outer membrane-endoplasmic reticulum membrane network",6.18881808695047e-07
+"310","protein-lipid complex",9.45177105663972e-07
+"311","intracellular organelle",1.7264465869426e-06
+"312","organelle",8.33841799881662e-06
+"313","peroxisomal membrane",1.33120223600569e-05
+"314","microbody membrane",1.33120223600569e-05
+"315","chylomicron",2.14461615408241e-05
+"316","lipoprotein particle",3.37765848995392e-05
+"317","plasma lipoprotein particle",3.37765848995392e-05
+"318","organelle envelope",5.68601530905133e-05
+"319","envelope",5.68601530905133e-05
+"320","very-low-density lipoprotein particle",0.000164686770601622
+"321","triglyceride-rich plasma lipoprotein particle",0.000164686770601622
+"322","microbody lumen",0.000372071090328908
+"323","peroxisomal matrix",0.000372071090328908
+"324","high-density lipoprotein particle",0.000528578711583012
+"325","RNA polymerase II transcription regulator complex",0.000769002319673433
+"326","host cell nucleus",0.00204106234552865
+"327","host intracellular membrane-bounded organelle",0.00225395386548177
+"328","host intracellular organelle",0.00225395386548177
+"329","integral component of endoplasmic reticulum membrane",0.00365000078598321
+"330","host intracellular region",0.00383937324218695
+"331","host intracellular part",0.00383937324218695
+"332","host cellular component",0.00407508815118781
+"333","host cell",0.00407508815118781
+"334","host cell part",0.00407508815118781
+"335","intrinsic component of endoplasmic reticulum membrane",0.00498369741359658
+"336","whole membrane",0.0126141409872542
+"337","endomembrane system",0.026569762944973
+"338","long-chain fatty acid-CoA ligase activity",1.44161576735308e-25
+"339","arachidonate-CoA ligase activity",1.55888476081744e-22
+"340","fatty acid ligase activity",4.56315309967831e-22
+"341","long-chain fatty acid transporter activity",2.16136990655212e-21
+"342","CoA-ligase activity",7.98045474632512e-21
+"343","fatty acid binding",4.44411403950098e-20
+"344","acid-thiol ligase activity",7.8724545287886e-20
+"345","monocarboxylic acid binding",6.87237820198832e-19
+"346","ligase activity, forming carbon-sulfur bonds",8.20974527491187e-18
+"347","decanoate-CoA ligase activity",6.43691288160044e-16
+"348","medium-chain fatty acid-CoA ligase activity",2.35324620942169e-15
+"349","lipid transporter activity",4.20736687509992e-15
+"350","carboxylic acid binding",5.29251261817888e-15
+"351","small molecule binding",1.19252141483539e-14
+"352","organic acid binding",1.24868128733503e-14
+"353","acyl-CoA ligase activity",1.82472978432409e-14
+"354","ion binding",2.5693613663778e-14
+"355","very long-chain fatty acid-CoA ligase activity",1.53152845031527e-13
+"356","lipid binding",4.02888909102988e-12
+"357","anion binding",1.39769609408507e-11
+"358","transition metal ion binding",2.36756337169325e-10
+"359","long-chain fatty acid binding",3.19272172744798e-10
+"360","oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen",9.21483829908155e-10
+"361","oxidoreductase activity",1.00013497153402e-09
+"362","ligase activity",1.08723744073172e-09
+"363","acyl-CoA desaturase activity",7.58097531919502e-09
+"364","oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced iron-sulfur protein as one donor, and incorporation of one atom of oxygen",9.76103566467177e-09
+"365","iron ion binding",1.18177277002611e-08
+"366","oxidoreductase activity, acting on paired donors, with oxidation of a pair of donors resulting in the reduction of molecular oxygen to two molecules of water",2.0157704269529e-08
+"367","alkane 1-monooxygenase activity",4.52242001798229e-08
+"368","ligand-activated transcription factor activity",7.23913762787589e-08
+"369","nuclear receptor activity",7.23913762787589e-08
+"370","catalytic activity",8.85888395560693e-08
+"371","carnitine O-palmitoyltransferase activity",1.03622261846332e-07
+"372","palmitoyl-CoA 9-desaturase activity",1.03622261846332e-07
+"373","O-palmitoyltransferase activity",1.03622261846332e-07
+"374","stearoyl-CoA 9-desaturase activity",5.16658958764949e-07
+"375","oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen",6.59883301341631e-07
+"376","steroid hormone receptor activity",6.59883301341631e-07
+"377","carnitine O-acyltransferase activity",1.54563237598668e-06
+"378","acyl-CoA oxidase activity",1.54563237598668e-06
+"379","nucleotide binding",6.74203589099998e-06
+"380","nucleoside phosphate binding",6.74203589099998e-06
+"381","fatty acid transmembrane transporter activity",7.17257744948375e-06
+"382","organic cyclic compound binding",8.59750834378186e-06
+"383","oxidoreductase activity, acting on the CH-CH group of donors, oxygen as acceptor",1.28744600489269e-05
+"384","oleic acid binding",2.91800289359271e-05
+"385","palmitoyl-CoA oxidase activity",2.91800289359271e-05
+"386","oxidoreductase activity, acting on the CH-CH group of donors",4.36325296027579e-05
+"387","monooxygenase activity",8.19159455563739e-05
+"388","acetyl-CoA C-myristoyltransferase activity",0.000116409248958169
+"389","protein-lipid complex binding",0.000144321354095685
+"390","lipoprotein particle binding",0.000144321354095685
+"391","heme binding",0.000238992649849042
+"392","arachidonic acid monooxygenase activity",0.000277620625884871
+"393","phosphatidylcholine-sterol O-acyltransferase activator activity",0.000290248133957277
+"394","high-density lipoprotein particle binding",0.000304870679084386
+"395","tetrapyrrole binding",0.000343497859213089
+"396","cholesterol transfer activity",0.00048001252556299
+"397","sterol transfer activity",0.000591296579509655
+"398","heterocyclic compound binding",0.000651530902195967
+"399","transporter activity",0.000727448881229535
+"400","retinoic acid-responsive element binding",0.00101046633650984
+"401","leukotriene-B4 20-monooxygenase activity",0.00101046633650984
+"402","fatty-acyl-CoA binding",0.00145645131766516
+"403","quaternary ammonium group binding",0.00198355751346352
+"404","phosphatidylcholine binding",0.00198355751346352
+"405","retinoic acid receptor binding",0.00198355751346352
+"406","acyl-CoA binding",0.00229448903252719
+"407","acetyl-CoA C-acyltransferase activity",0.00241222665789461
+"408","sterol transporter activity",0.00264008062508875
+"409","carbohydrate derivative binding",0.00333069760636322
+"410","myristoyltransferase activity",0.00471311943660225
+"411","amide binding",0.00499987733511025
+"412","transferase activity, transferring acyl groups",0.00531935054556028
+"413","fatty acid derivative binding",0.00558009227529465
+"414","binding",0.00804651386435759
+"415","phosphatidylethanolamine transfer activity",0.00810936040994365
+"416","phosphatidylcholine transfer activity",0.00810936040994365
+"417","phosphoenolpyruvate carboxykinase activity",0.00810936040994365
+"418","cholate-CoA ligase activity",0.00810936040994365
+"419","cholesterol 7-alpha-monooxygenase activity",0.00810936040994365
+"420","phosphoenolpyruvate carboxykinase (GTP) activity",0.00810936040994365
+"421","phytanate-CoA ligase activity",0.00810936040994365
+"422","16-hydroxypalmitate dehydrogenase activity",0.00810936040994365
+"423","laurate hydroxylase activity",0.00810936040994365
+"424","high-density lipoprotein particle receptor binding",0.00810936040994365
+"425","palmitoyltransferase activity",0.0085609984943151
+"426","lipid transfer activity",0.012574967875429
+"427","flavin adenine dinucleotide binding",0.0131813956723226
+"428","purine ribonucleotide binding",0.0133009439605862
+"429","O-acyltransferase activity",0.0137632283351916
+"430","purine nucleotide binding",0.0145276089486124
+"431","cholesterol binding",0.0150318948542867
+"432","ribonucleotide binding",0.0151784236525839
+"433","transferase activity, transferring acyl groups other than amino-acyl groups",0.0199507179151567
+"434","sterol binding",0.0284870826287797
+"435","adenyl ribonucleotide binding",0.0343682161695737
+"436","adenyl nucleotide binding",0.0374485659020168
+"437","monocarboxylic acid transmembrane transporter activity",0.0377921921806151
+"438","C-acyltransferase activity",0.0427196976976697
+"439","glycerol kinase activity",0.0484230330949601
+"440","steroid binding",0.0497016920866516
+"441","PPAR signaling pathway",1.83615291464538e-176
+"442","Fatty acid degradation",5.4456974953596e-33
+"443","Fatty acid metabolism",1.64554989041807e-32
+"444","Adipocytokine signaling pathway",4.73602758595267e-20
+"445","Biosynthesis of unsaturated fatty acids",2.12414775637433e-11
+"446","Peroxisome",3.59579872895368e-11
+"447","Insulin resistance",6.08684222387858e-10
+"448","AMPK signaling pathway",4.80022083999104e-09
+"449","Fatty acid biosynthesis",1.57983287940781e-08
+"450","Cholesterol metabolism",3.6288204438175e-08
+"451","Primary bile acid biosynthesis",6.85454156082748e-07
+"452","Metabolic pathways",8.32552409421911e-07
+"453","Thermogenesis",5.61555370893644e-05
+"454","Fat digestion and absorption",0.000187553268555038
+"455","alpha-Linolenic acid metabolism",0.000215297337280623
+"456","Ferroptosis",0.0023940983370255
+"457","Valine, leucine and isoleucine degradation",0.0123919285109643
+"458","Thyroid cancer",0.0281112067815343
+"459","Glucagon signaling pathway",0.0284201195505779
+"460","Metabolism of lipids",1.97295675721679e-32
+"461","Fatty acid metabolism",1.21390363324281e-30
+"462","Metabolism",5.12981729373696e-23
+"463","Triglyceride metabolism",6.50433129321472e-12
+"464","Triglyceride catabolism",1.00122305161175e-10
+"465","Fatty acyl-CoA biosynthesis",3.4563310165305e-10
+"466","Synthesis of very long-chain fatty acyl-CoAs",3.32356594505723e-08
+"467","Synthesis of bile acids and bile salts via 7alpha-hydroxycholesterol",1.82487768718489e-07
+"468","Bile acid and bile salt metabolism",2.03616121786645e-07
+"469","Peroxisomal lipid metabolism",4.25310194972467e-07
+"470","Synthesis of bile acids and bile salts",2.18165453522826e-06
+"471","Signaling by Retinoic Acid",5.70287355419693e-06
+"472","Peroxisomal protein import",5.89431818712598e-06
+"473","Plasma lipoprotein remodeling",7.10942091138569e-06
+"474","Cytochrome P450 - arranged by substrate type",1.09194030550688e-05
+"475","Carnitine metabolism",1.21423233146971e-05
+"476","alpha-linolenic (omega3) and linoleic (omega6) acid metabolism",1.21423233146971e-05
+"477","alpha-linolenic acid (ALA) metabolism",1.21423233146971e-05
+"478","Eicosanoids",1.81068756060666e-05
+"479","Plasma lipoprotein assembly, remodeling, and clearance",6.89112283257183e-05
+"480","Fatty acids",9.07793475601973e-05
+"481","Intracellular metabolism of fatty acids regulates insulin secretion",0.000123352782895254
+"482","Chylomicron remodeling",0.000181640058341398
+"483","Protein localization",0.000227073499475872
+"484","Phase I - Functionalization of compounds",0.000355045377165108
+"485","Synthesis of Leukotrienes (LT) and Eoxins (EX)",0.000371834351012726
+"486","Nuclear Receptor transcription pathway",0.000378246210794575
+"487","Miscellaneous substrates",0.000453673400835616
+"488","Metabolism of steroids",0.00103024245315808
+"489","NR1H2 & NR1H3 regulate gene expression to control bile acid homeostasis",0.00242700143306516
+"490","Transport of fatty acids",0.00422415401054119
+"491","Beta-oxidation of pristanoyl-CoA",0.0100280449116379
+"492","Free fatty acids regulate insulin secretion",0.0194844806936382
+"493","NR1H2 and NR1H3-mediated signaling",0.0194844806936382
+"494","NR1H3 & NR1H2 regulate gene expression linked to cholesterol transport and efflux",0.0194844806936382
+"495","Beta-oxidation of very long chain fatty acids",0.0194844806936382
+"496","Signaling by Nuclear Receptors",0.0195906353468362
+"497","Arachidonic acid metabolism",0.019737716517514
+"498","Recycling of bile acids and salts",0.0334073067348985
+"499","Biological oxidations",0.0424218682183885
+"500","PPAR signaling pathway",1.3903911382777e-163
+"501","Fatty Acid Beta Oxidation",1.47129836595141e-13
+"502","Mitochondrial LC-Fatty Acid Beta-Oxidation",4.19998708723693e-11
+"503","Eicosanoid metabolism via Lipo Oxygenases (LOX)",2.06930897230815e-09
+"504","Eicosanoid metabolism via Cyclo Oxygenases (COX)",5.99875980932e-08
+"505","Adipogenesis genes",1.38931977035564e-06
+"506","Omega-3/Omega-6 FA synthesis",4.46386276094351e-06
+"507","Cholesterol metabolism (includes both Bloch and Kandutsch-Russell pathways)",4.74972059606645e-06
+"508","Fatty Acid Biosynthesis",6.03835032498114e-05
+"509","Omega-9 FA synthesis",0.000109588639344154
+"510","Nuclear Receptors",0.000133129645146988
+"511","Nuclear receptors in lipid metabolism and toxicity",0.000430065435587234
+"512","Statin Pathway",0.000594475617644204
+"513","Eicosanoid metabolism via Cytochrome P450 Mono-Oxygenases (CYP) pathway",0.00441331175635543
+"514","Retinol metabolism",0.0224141015294827
+"515","Fatty acid oxidation",0.0245239083870078
