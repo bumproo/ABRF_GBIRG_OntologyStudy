@@ -1,3 +1,0 @@
-"0","pvals <- EvC.GSEA  %>% filter(Collection %in% c(""h"",""c2cgp"",""c2cp"",""c5bp"", ""c5mf"", ""c5cc""))"
-"0","pvals <- tibble::rownames_to_column(pvals,""Term"")"
-"0","ggplot() + geom_jitter(data=pvals, aes(x=Collection,y=FDR, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.1)) + scale_size_manual(values=c(3,0.5)) + scale_color_manual(values=c(""red"",""black""))+ coord_flip()"

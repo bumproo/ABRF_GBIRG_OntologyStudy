@@ -1,4 +1,0 @@
-"0","EvC.DAVID <- read.xlsx(""../DAVID/evcDEGS.DAVID_withOverlaps.xlsx"", colNames=TRUE, rowNames=TRUE)"
-"0","G1vRev.DAVID <- read.xlsx(""../DAVID/g1vRevDEGS.DAVID_withOverlaps.xlsx"", colNames=TRUE, rowNames=TRUE)"
-"0","hpm3AvC.DAVID <- read.xlsx(""../DAVID/hpm3avc.DEGS.DAVID_withOverlaps.xlsx"", colNames=TRUE, rowNames=TRUE)"
-"0","MuscleSvC.DAVID <- read.xlsx(""../DAVID/muscsvc.DEGS.DAVID_withOverlaps.xlsx"", colNames=TRUE, rowNames=TRUE)"

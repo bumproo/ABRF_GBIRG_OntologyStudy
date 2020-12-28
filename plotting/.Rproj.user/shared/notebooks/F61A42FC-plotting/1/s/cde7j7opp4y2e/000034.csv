@@ -1,3 +1,0 @@
-"0","evc <- EvC.gprofiler %>% filter(p_value <= 0.05)"
-"0","evc <- tibble::rownames_to_column(evc,""Name"")"
-"0","ggplot() + geom_jitter(data=evc, aes(x=""Group"",y=p_value, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.05)) + scale_size_manual(values=c(3, 1)) + scale_color_manual(values=c(""red"",""black""))+ coord_flip() + theme_void() + ggtitle(""EvC"") "
