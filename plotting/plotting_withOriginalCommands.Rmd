@@ -370,7 +370,7 @@ ggarrange(ec.ipa.plot,g1rev.ipa.plot,ac.ipa.plot,sc.ipa.plot, legend = FALSE, nc
 #ggplot() + geom_point(data=pvals, aes(x="Group",y=FDR, , color=factor(relevant), alpha=relevant, size=relevant)) + scale_alpha_manual(values=c(1, 0.05)) + #scale_size_manual(values=c(3, 1)) + scale_color_manual(values=c("red","black"))+ coord_flip()
 #```
 
-*Plotting the full EvC DAVID results*
+*Plotting the full EvC GSEA results*
 
 ```{r, fig.width=12, fig.height=6}
 pvals <- EvC.GSEA  %>% filter(Collection %in% c("h","c2cgp","c2cp","c5bp", "c5mf", "c5cc"))
@@ -379,20 +379,6 @@ pvals.nohit <- pvals %>% filter(Hit == "Other")
 pvals.hit <- pvals %>% filter(Hit == "Hit")
 
 ggplot() + geom_jitter(data=pvals.nohit, aes(x=Collection,y=FDR), color="black", alpha=0.3, size=0.6, width=0.1) + geom_jitter(data=pvals.hit, aes(x=Collection,y=FDR), color="red", alpha=1, size=2, width=0.1) + theme_bw() + coord_flip()
-```
-
-```{r, fig.width=3}
-pvals <- eVcgprofiler.degs %>% filter(eVcgprofiler.degs$p_value <= 0.05)
-pvals <- tibble::rownames_to_column(pvals,"Term")
-ggplot() + geom_jitter(data=pvals, aes(x="Group",y=p_value, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.4,0.1)) + scale_size_manual(values=c(3,2,2)) + scale_color_manual(values=c("red","Blue","black"))+ coord_flip() + theme_void()
-```
-## Plotting all the EvC gProfiler results
-
-```{r, fig.width=12}
-pvals <- eVcgprofiler.degs
-pvals <- tibble::rownames_to_column(pvals,"Term")
-pvals %>% select(Term,Category,p_value,Hit)
-ggplot() + geom_jitter(data=pvals, aes(x=Category,y=p_value, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.6, 0.2)) + scale_size_manual(values=c(4,2,2)) + scale_color_manual(values=c("red","blue","black"))+ coord_flip()
 ```
 
 ## write session info*

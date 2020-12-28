@@ -29,28 +29,6 @@ hpm3AvC.GSEA <- read.xlsx("../shared_data/hpm3_AvC_GSEAv4_withOverlaps.xlsx", co
 MuscleSvC.GSEA <- read.xlsx("../shared_data/Muscle_SkeletalvsCardiac_GSEAv4_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
 ```
 
-*GSEA Summary Plots*
-
-# ```{r, fig.width=10, fig.height=3}
-# evc <- EvC.GSEA %>% filter(FDR <= 0.05) %>% filter(Collection %in% c("h","c2cgp","c2cp","c5bp", "c5mf", "c5cc"))
-# evc <- tibble::rownames_to_column(evc,"Name")
-# ec.gsea.plot <- ggplot() + geom_jitter(data=evc, aes(x="Group",y=FDR, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.05)) + scale_size_manual(values=c(3, 1)) + scale_color_manual(values=c("red","black"))+ coord_flip() + theme_void() + ggtitle("EvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1))
-# 
-# g1vrev <- G1vRev.GSEA %>% filter(FDR <= 0.05) %>% filter(Collection %in% c("h","c2cgp","c2cp","c5bp", "c5mf", "c5cc"))
-# g1vrev <- tibble::rownames_to_column(g1vrev,"Name")
-# g1rev.gsea.plot <- ggplot() + geom_jitter(data=g1vrev, aes(x="Group",y=FDR, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.05)) + scale_size_manual(values=c(3, 1)) + scale_color_manual(values=c("red","black"))+ coord_flip() + theme_void() + ggtitle("G1vRev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1))
-# 
-# hpm3AvC <- hpm3AvC.GSEA %>% filter(FDR <= 0.05) %>% filter(Collection %in% c("h","c2cgp","c2cp","c5bp", "c5mf", "c5cc"))
-# hpm3AvC <- tibble::rownames_to_column(hpm3AvC,"Name")
-# ac.gsea.plot <- ggplot() + geom_jitter(data=hpm3AvC, aes(x="Group",y=FDR, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.05)) + scale_size_manual(values=c(3, 1)) + scale_color_manual(values=c("red","black"))+ coord_flip() + theme_void() + ggtitle("hpm3AvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1))
-# 
-# MuscleSvC <- MuscleSvC.GSEA %>% filter(FDR <= 0.05) %>% filter(Collection %in% c("h","c2cgp","c2cp","c5bp", "c5mf", "c5cc"))
-# MuscleSvC <- tibble::rownames_to_column(MuscleSvC,"Name")
-# sc.gsea.plot <- ggplot() + geom_jitter(data=MuscleSvC, aes(x="Group",y=FDR, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.05)) + scale_size_manual(values=c(3, 1)) + scale_color_manual(values=c("red","black"))+ coord_flip() + theme_void() + ggtitle("MuscleSvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1))
-# 
-# ggarrange(ec.gsea.plot,g1rev.gsea.plot,ac.gsea.plot,sc.gsea.plot, legend = FALSE, ncol=4, nrow=1)
-# ```
-
 *GSEA Summary Plots_v2*
 
 ```{r, fig.width=10, fig.height=3}
@@ -90,28 +68,6 @@ G1vRev.DAVID <- read.xlsx("../DAVID/g1vRevDEGS.DAVID_withOverlaps.xlsx", colName
 hpm3AvC.DAVID <- read.xlsx("../DAVID/hpm3avc.DEGS.DAVID_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
 MuscleSvC.DAVID <- read.xlsx("../DAVID/muscsvc.DEGS.DAVID_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
 ```
-
-*DAVID Summary Plots*
-
-# ```{r, fig.width=10, fig.height=3}
-# evc <- EvC.DAVID %>% filter(Bonferroni <= 0.05)
-# evc <- tibble::rownames_to_column(evc,"Name")
-# ec.david.plot <- ggplot() + geom_jitter(data=evc, aes(x="Group",y=FDR, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.2)) + scale_size_manual(values=c(3, 2)) + scale_color_manual(values=c("red","black"))+ coord_flip() + theme_void() + ggtitle("EvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1))
-# 
-# g1vrev <- G1vRev.DAVID %>% filter(Bonferroni <= 0.05)
-# g1vrev <- tibble::rownames_to_column(g1vrev,"Name")
-# g1rev.david.plot <- ggplot() + geom_jitter(data=g1vrev, aes(x="Group",y=FDR, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.2)) + scale_size_manual(values=c(3, 2)) + scale_color_manual(values=c("red","black"))+ coord_flip() + theme_void() + ggtitle("G1vRev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1))
-# 
-# hpm3AvC <- hpm3AvC.DAVID %>% filter(Bonferroni <= 0.05)
-# hpm3AvC <- tibble::rownames_to_column(hpm3AvC,"Name")
-# ac.david.plot <- ggplot() + geom_jitter(data=hpm3AvC, aes(x="Group",y=FDR, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.2)) + scale_size_manual(values=c(3, 2)) + scale_color_manual(values=c("red","black"))+ coord_flip() + theme_void() + ggtitle("hpm3AvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1))
-# 
-# MuscleSvC <- MuscleSvC.DAVID %>% filter(Bonferroni <= 0.05)
-# MuscleSvC <- tibble::rownames_to_column(MuscleSvC,"Name")
-# sc.david.plot <- ggplot() + geom_jitter(data=MuscleSvC, aes(x="Group",y=FDR, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.2)) + scale_size_manual(values=c(3, 2)) + scale_color_manual(values=c("red","black"))+ coord_flip() + theme_void() + ggtitle("MuscleSvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1))
-# 
-# ggarrange(ec.david.plot,g1rev.david.plot,ac.david.plot,sc.david.plot, legend = FALSE, ncol=4, nrow=1)
-# ```
 
 *DAVID Summary Plots_v2*
 
@@ -155,27 +111,6 @@ hpm3AvC.gprofiler <- read.xlsx("../g_profiler/hpm3avc.gprofiler_withOverlaps.xls
 MuscleSvC.gprofiler <- read.xlsx("../g_profiler/muscsvc.gprofiler_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
 ```
 
-*gProfiler Summary Plots*
-
-# ```{r, fig.width=10, fig.height=3}
-# evc <- EvC.gprofiler %>% filter(p_value <= 0.05)
-# evc <- tibble::rownames_to_column(evc,"Name")
-# ec.gpro.plot <- ggplot() + geom_jitter(data=evc, aes(x="Group",y=p_value, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.05)) + scale_size_manual(values=c(3, 1)) + scale_color_manual(values=c("red","black"))+ coord_flip() + theme_void() + ggtitle("EvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1))
-# 
-# g1vrev <- G1vRev.gprofiler %>% filter(p_value <= 0.05)
-# g1vrev <- tibble::rownames_to_column(g1vrev,"Name")
-# g1rev.gpro.plot <- ggplot() + geom_jitter(data=g1vrev, aes(x="Group",y=p_value, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.2)) + scale_size_manual(values=c(3, 1)) + scale_color_manual(values=c("red","black"))+ coord_flip() + theme_void() + ggtitle("G1vRev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1))
-# 
-# hpm3AvC <- hpm3AvC.gprofiler %>% filter(p_value <= 0.05)
-# hpm3AvC <- tibble::rownames_to_column(hpm3AvC,"Name")
-# ac.gpro.plot <- ggplot() + geom_jitter(data=hpm3AvC, aes(x="Group",y=p_value, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.05)) + scale_size_manual(values=c(3, 1)) + scale_color_manual(values=c("red","black"))+ coord_flip() + theme_void() + ggtitle("hpm3AvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1))
-# 
-# MuscleSvC <- MuscleSvC.gprofiler %>% filter(p_value <= 0.05)
-# MuscleSvC <- tibble::rownames_to_column(MuscleSvC,"Name")
-# sc.gpro.plot <- ggplot() + geom_jitter(data=MuscleSvC, aes(x="Group",y=p_value, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.05)) + scale_size_manual(values=c(3, 1)) + scale_color_manual(values=c("red","black"))+ coord_flip() + theme_void() + ggtitle("MuscleSvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1))
-# 
-# ggarrange(ec.gpro.plot,g1rev.gpro.plot,ac.gpro.plot,sc.gpro.plot, legend = FALSE, ncol=4, nrow=1)
-# ```
 *Gprofiler Summary Plots_v2*
 
 ```{r, fig.width=10, fig.height=3}
@@ -216,29 +151,6 @@ hpm3AvC.metacore <- read.xlsx("../shared_data/hpm3_AvC_metacore_withOverlaps.xls
 MuscleSvC.metacore <- read.xlsx("../shared_data/Muscle_SkeletalvsCardiac_metacore_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
 ```
 
-*Metacore Summary Plots*
-
-# ```{r, fig.width=10, fig.height=3}
-# evc <- EvC.metacore %>% filter(FDR <= 0.05)
-# evc <- tibble::rownames_to_column(evc,"Name")
-# ec.meta.plot <- ggplot() + geom_jitter(data=evc, aes(x="Group",y=FDR, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.2)) + scale_size_manual(values=c(3, 1)) + scale_color_manual(values=c("red","black"))+ coord_flip() + theme_void() + ggtitle("EvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1))
-# 
-# #plotting parameters altered on account of no significant pathways in group
-# g1vrev <- G1vRev.metacore %>% filter(FDR <= 0.05)
-# g1vrev <- tibble::rownames_to_column(g1vrev,"Name")
-# g1rev.meta.plot <- ggplot() + geom_jitter(data=g1vrev, aes(x="Group",y=FDR, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(0.2, 1)) + scale_size_manual(values=c(1, 3)) + scale_color_manual(values=c("black","red"))+ coord_flip() + theme_void() + ggtitle("G1vRev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1))
-# 
-# hpm3AvC <- hpm3AvC.metacore %>% filter(FDR <= 0.05)
-# hpm3AvC <- tibble::rownames_to_column(hpm3AvC,"Name")
-# ac.meta.plot <- ggplot() + geom_jitter(data=hpm3AvC, aes(x="Group",y=FDR, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.2)) + scale_size_manual(values=c(3, 1)) + scale_color_manual(values=c("red","black"))+ coord_flip() + theme_void() + ggtitle("hpm3AvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1))
-# 
-# MuscleSvC <- MuscleSvC.metacore %>% filter(FDR <= 0.05)
-# MuscleSvC <- tibble::rownames_to_column(MuscleSvC,"Name")
-# sc.meta.plot <- ggplot() + geom_jitter(data=MuscleSvC, aes(x="Group",y=FDR, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.2)) + scale_size_manual(values=c(3, 1)) + scale_color_manual(values=c("red","black"))+ coord_flip() + theme_void() + ggtitle("MuscleSvC")+ theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1))
-# 
-# ggarrange(ec.meta.plot,g1rev.meta.plot,ac.meta.plot,sc.meta.plot, legend = FALSE, ncol=4, nrow=1)
-# ```
-
 *Metacore Summary Plots_v2*
 
 ```{r, fig.width=10, fig.height=3}
@@ -272,7 +184,6 @@ sc.mcore.plot <- ggplot() + geom_jitter(data=sc.mcore.nohit, aes(x="Collection",
 ggarrange(ec.mcore.plot,g1rev.mcore.plot,ac.mcore.plot,sc.mcore.plot, legend = FALSE, ncol=4, nrow=1)
 ```
 
-
 *Import IPA Data*
 ```{r}
 EvC.ipa <- read.xlsx("../shared_data/EvC_ipa_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
@@ -281,27 +192,7 @@ hpm3AvC.ipa <- read.xlsx("../shared_data/hpm3_AvC_ipa_withOverlaps.xlsx", colNam
 MuscleSvC.ipa <- read.xlsx("../shared_data/Muscle_SkeletalvsCardiac_ipa_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
 ```
 
-*IPA Summary Plots*
-
-# ```{r, fig.width=10, fig.height=3}
-# evc <- EvC.ipa %>% filter(p_value <= 0.05)
-# evc <- tibble::rownames_to_column(evc,"Name")
-# ec.ipa.plot <- ggplot() + geom_jitter(data=evc, aes(x="Group",y=p_value, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.2)) + scale_size_manual(values=c(3, 1)) + scale_color_manual(values=c("red","black"))+ coord_flip() + theme_void() + ggtitle("EvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1))
-# 
-# g1vrev <- G1vRev.ipa %>% filter(p_value <= 0.05)
-# g1vrev <- tibble::rownames_to_column(g1vrev,"Name")
-# g1rev.ipa.plot <- ggplot() + geom_jitter(data=g1vrev, aes(x="Group",y=p_value, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.2)) + scale_size_manual(values=c(3, 1)) + scale_color_manual(values=c("red","black"))+ coord_flip() + theme_void() + ggtitle("G1vRev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1))
-# 
-# hpm3AvC <- hpm3AvC.ipa %>% filter(p_value <= 0.05)
-# hpm3AvC <- tibble::rownames_to_column(hpm3AvC,"Name")
-# ac.ipa.plot <- ggplot() + geom_jitter(data=hpm3AvC, aes(x="Group",y=p_value, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.2)) + scale_size_manual(values=c(3, 1)) + scale_color_manual(values=c("red","black"))+ coord_flip() + theme_void() + ggtitle("hpm3AvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1))
-# 
-# MuscleSvC <- MuscleSvC.ipa %>% filter(p_value <= 0.05)
-# MuscleSvC <- tibble::rownames_to_column(MuscleSvC,"Name")
-# sc.ipa.plot <- ggplot() + geom_jitter(data=MuscleSvC, aes(x="Group",y=p_value, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.2)) + scale_size_manual(values=c(3, 1)) + scale_color_manual(values=c("red","black"))+ coord_flip() + theme_void() + ggtitle("MuscleSvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1))
-# 
-# ggarrange(ec.ipa.plot,g1rev.ipa.plot,ac.ipa.plot,sc.ipa.plot, legend = FALSE, ncol=4, nrow=1)
-# ```
+*IPA Summary Plots_v2*
 
 ```{r, fig.width=10, fig.height=3}
 evc <- EvC.ipa %>% filter(p_value <= 0.05)          
@@ -335,42 +226,7 @@ ggarrange(ec.ipa.plot,g1rev.ipa.plot,ac.ipa.plot,sc.ipa.plot, legend = FALSE, nc
 *Import iPathway Data*
 *iPathway Summary Plots*
 
-*Old Processing*
-```{r}
-#eVcMetacore <- read.xlsx("PPAR_EvC_MetacorePlusOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
-#eVcGSEA <- read.xlsx("EvC_GSEAv4_PlusOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
-#eVcDAVID.degs <- read.xlsx("../DAVID/EvC_degs_DAVIDPlusOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
-#eVcDAVID.upE <- read.xlsx("EvC_upE_DAVIDPlusOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
-#eVcDAVID.upC <- read.xlsx("EvC_upC_DAVIDPlusOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
-#eVcgprofiler.degs <- read.xlsx("EvC_degs_gProfiler_PlusOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
-#g1vRev.GSEA <- read.xlsx("../shared_data/G1vRev_GSEAv4_plusOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
-#g1vRev.gprofiler <- read.xlsx("../g_profiler/g1vrev.std.bg.gprofilerPlusOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
-#g1vRev.DAVID <- read.xlsx("../DAVID/g1vRev.upRev.0.58FC.DAVID.PlusOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
-```
-
-*Plot EvC data GSEA for gene sets containing PPAR*
-
-```{r}
-#pvals <- gsea %>% filter(`PPAR.E.C.FDR.q-val` <= 0.05 & FractionMatches < 0.1)
-#pvals <- eVc %>% filter(`EvC.norm.stat.FDR.q-val` <= 0.05)
-#pvals <- tibble::rownames_to_column(pvals,"SetName")
-#ppar <- pvals %>% select(SetName,Collection,FractionMatches,`EvC.norm.stat.FDR.q-val`)
-#ppar <- ppar %>% mutate(relevant=ifelse(grepl("_PPAR", SetName), "Hit", "Other"))
-#ggplot() + geom_jitter(data=ppar, aes(x="Group",y=`EvC.norm.stat.FDR.q-val`, color=factor(relevant), alpha=relevant, size=relevant), width=0.1) + scale_alpha_manual(values=c(1, 0.1)) + scale_size_manual(values=c(3, 1)) + scale_color_manual(values=c("red","black"))+ coord_flip() + theme_void()
-#ggplot() + geom_point(data=ppar, aes(x="Group",y=`EvC.norm.stat.FDR.q-val`, color=factor(relevant), alpha=relevant, size=relevant)) + scale_alpha_manual(values=c(1, 0.1)) + scale_size_manual(values=c(3, 1)) + scale_color_manual(values=c("red","black"))+ coord_flip()
-```
-
-
-*Plotting multicolor G1vRev gprofiler results*
-
-#```{r, fig.width=3}
-#pvals <- g1vRev.gprofiler %>% filter(p_value <= 0.05)
-#pvals <- tibble::rownames_to_column(pvals,"Term")
-#ggplot() + geom_jitter(data=pvals, aes(x="Group",y=p_value, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.2, 0.05)) + #scale_size_manual(values=c(3, 1, 1)) + scale_color_manual(values=c("red","blue","black"))+ coord_flip() + theme_void()
-#ggplot() + geom_point(data=pvals, aes(x="Group",y=FDR, , color=factor(relevant), alpha=relevant, size=relevant)) + scale_alpha_manual(values=c(1, 0.05)) + #scale_size_manual(values=c(3, 1)) + scale_color_manual(values=c("red","black"))+ coord_flip()
-#```
-
-*Plotting the full EvC DAVID results*
+*Plotting the full EvC GSEA results*
 
 ```{r, fig.width=12, fig.height=6}
 pvals <- EvC.GSEA  %>% filter(Collection %in% c("h","c2cgp","c2cp","c5bp", "c5mf", "c5cc"))
@@ -379,20 +235,6 @@ pvals.nohit <- pvals %>% filter(Hit == "Other")
 pvals.hit <- pvals %>% filter(Hit == "Hit")
 
 ggplot() + geom_jitter(data=pvals.nohit, aes(x=Collection,y=FDR), color="black", alpha=0.3, size=0.6, width=0.1) + geom_jitter(data=pvals.hit, aes(x=Collection,y=FDR), color="red", alpha=1, size=2, width=0.1) + theme_bw() + coord_flip()
-```
-
-```{r, fig.width=3}
-pvals <- eVcgprofiler.degs %>% filter(eVcgprofiler.degs$p_value <= 0.05)
-pvals <- tibble::rownames_to_column(pvals,"Term")
-ggplot() + geom_jitter(data=pvals, aes(x="Group",y=p_value, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.4,0.1)) + scale_size_manual(values=c(3,2,2)) + scale_color_manual(values=c("red","Blue","black"))+ coord_flip() + theme_void()
-```
-## Plotting all the EvC gProfiler results
-
-```{r, fig.width=12}
-pvals <- eVcgprofiler.degs
-pvals <- tibble::rownames_to_column(pvals,"Term")
-pvals %>% select(Term,Category,p_value,Hit)
-ggplot() + geom_jitter(data=pvals, aes(x=Category,y=p_value, color=factor(Hit), alpha=Hit, size=Hit), width=0.1) + scale_alpha_manual(values=c(1, 0.6, 0.2)) + scale_size_manual(values=c(4,2,2)) + scale_color_manual(values=c("red","blue","black"))+ coord_flip()
 ```
 
 ## write session info*
