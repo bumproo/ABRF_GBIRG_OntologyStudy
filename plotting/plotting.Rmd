@@ -72,32 +72,30 @@ MuscleSvC.DAVID <- read.xlsx("../DAVID/muscsvc.DEGS.DAVID_withOverlaps.xlsx", co
 *DAVID Summary Plots_v2*
 
 ```{r, fig.width=10, fig.height=3}
-evc.david.filt <- EvC.DAVID %>% filter(Bonferroni <= 0.05)
+evc.david.filt <- EvC.DAVID %>% filter(PValue <= 0.05)
 evc.david.filt  <- tibble::rownames_to_column(evc.david.filt ,"Name")
 evc.david.nohit <- evc.david.filt  %>% filter(Hit == "Other")
 evc.david.hit <- evc.david.filt  %>% filter(Hit == "Hit")
-ec.david.plot <- ggplot() + geom_jitter(data=evc.david.nohit, aes(x="Collection",y=Bonferroni), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=evc.david.hit, aes(x="Collection",y=Bonferroni), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("EvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+ec.david.plot <- ggplot() + geom_jitter(data=evc.david.nohit, aes(x="Collection",y=PValue), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=evc.david.hit, aes(x="Collection",y=PValue), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("EvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
 
-g1vrev.david.filt  <- G1vRev.DAVID %>% filter(Bonferroni <= 0.05)
+g1vrev.david.filt  <- G1vRev.DAVID %>% filter(PValue <= 0.05)
 g1vrev.david.filt  <- tibble::rownames_to_column(g1vrev.david.filt ,"Name")
 g1rev.david.nohit <- g1vrev.david.filt  %>% filter(Hit == "Other")
 g1rev.david.hit <- g1vrev.david.filt  %>% filter(Hit == "Hit")
-g1rev.david.plot <- ggplot() + geom_jitter(data=g1rev.david.nohit, aes(x="Collection",y=Bonferroni), color="black", alpha=0.4, size=0.6, width=0.1) + theme_void() + ggtitle("g1rev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
-#there are no significant hits in g1rev david so the following was extracted
-#geom_jitter(data=g1rev.david.hit, aes(x="Collection",y=Bonferroni), color="red", alpha=1, size=2, width=0.1)
+g1rev.david.plot <- ggplot() + geom_jitter(data=g1rev.david.nohit, aes(x="Collection",y=PValue), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=g1rev.david.hit, aes(x="Collection",y=PValue), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("g1rev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
 
-hpm3AvC.david.filt  <- hpm3AvC.DAVID %>% filter(Bonferroni <= 0.05)
+hpm3AvC.david.filt  <- hpm3AvC.DAVID %>% filter(PValue <= 0.05)
 hpm3AvC.david.filt  <- tibble::rownames_to_column(hpm3AvC.david.filt ,"Name")
 ac.david.nohit <- hpm3AvC.david.filt  %>% filter(Hit == "Other")
 ac.david.hit <- hpm3AvC.david.filt  %>% filter(Hit == "Hit")
-ac.david.plot <- ggplot() + geom_jitter(data=ac.david.nohit, aes(x="Collection",y=Bonferroni), color="black", alpha=0.5, size=0.6, width=0.1) + geom_jitter(data=ac.david.hit, aes(x="Collection",y=Bonferroni), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("hpm3.AvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+ac.david.plot <- ggplot() + geom_jitter(data=ac.david.nohit, aes(x="Collection",y=PValue), color="black", alpha=0.5, size=0.6, width=0.1) + geom_jitter(data=ac.david.hit, aes(x="Collection",y=PValue), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("hpm3.AvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
 
 
-MuscleSvC.david.filt  <- MuscleSvC.DAVID %>% filter(Bonferroni <= 0.05)
+MuscleSvC.david.filt  <- MuscleSvC.DAVID %>% filter(PValue <= 0.05)
 MuscleSvC.david.filt  <- tibble::rownames_to_column(MuscleSvC.david.filt ,"Name")
 sc.david.nohit <- MuscleSvC.david.filt  %>% filter(Hit == "Other")
 sc.david.hit <- MuscleSvC.david.filt  %>% filter(Hit == "Hit")
-sc.david.plot <- ggplot() + geom_jitter(data=sc.david.nohit, aes(x="Collection",y=Bonferroni), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=sc.david.hit, aes(x="Collection",y=Bonferroni), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("MuscleSvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+sc.david.plot <- ggplot() + geom_jitter(data=sc.david.nohit, aes(x="Collection",y=PValue), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=sc.david.hit, aes(x="Collection",y=PValue), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("MuscleSvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
 
 ggarrange(ec.david.plot,g1rev.david.plot,ac.david.plot,sc.david.plot, legend = FALSE, ncol=4, nrow=1)
 ```

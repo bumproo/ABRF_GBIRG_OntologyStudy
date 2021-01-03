@@ -1,0 +1,32 @@
+R version 4.0.3 (2020-10-10)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows 10 x64 (build 18363)
+
+Matrix products: default
+
+locale:
+[1] LC_COLLATE=English_United States.1252  LC_CTYPE=English_United States.1252    LC_MONETARY=English_United States.1252
+[4] LC_NUMERIC=C                           LC_TIME=English_United States.1252    
+
+attached base packages:
+[1] stats4    parallel  stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] org.Mm.eg.db_3.12.0     org.Hs.eg.db_3.12.0     RDAVIDWebService_1.28.0 GOstats_2.56.0          Category_2.56.0         Matrix_1.2-18          
+ [7] AnnotationDbi_1.52.0    IRanges_2.24.0          S4Vectors_0.28.0        Biobase_2.50.0          graph_1.68.0            BiocGenerics_0.36.0    
+[13] forcats_0.5.0           stringr_1.4.0           dplyr_1.0.2             purrr_0.3.4             readr_1.4.0             tidyr_1.1.2            
+[19] tibble_3.0.4            tidyverse_1.3.0         ggplot2_3.3.2           openxlsx_4.2.3         
+
+loaded via a namespace (and not attached):
+ [1] bitops_1.0-6           fs_1.5.0               lubridate_1.7.9.2      bit64_4.0.5            httr_1.4.2             Rgraphviz_2.34.0      
+ [7] tools_4.0.3            backports_1.2.0        R6_2.5.0               DBI_1.1.0              colorspace_2.0-0       withr_2.3.0           
+[13] tidyselect_1.1.0       bit_4.0.4              compiler_4.0.3         cli_2.2.0              rvest_0.3.6            xml2_1.3.2            
+[19] scales_1.1.1           genefilter_1.72.0      RBGL_1.66.0            digest_0.6.27          rmarkdown_2.6          AnnotationForge_1.32.0
+[25] pkgconfig_2.0.3        htmltools_0.5.0        dbplyr_2.0.0           rlang_0.4.8            readxl_1.3.1           rstudioapi_0.13       
+[31] RSQLite_2.2.1          generics_0.1.0         jsonlite_1.7.1         zip_2.1.1              RCurl_1.98-1.2         magrittr_2.0.1        
+[37] GO.db_3.12.1           Rcpp_1.0.5             munsell_0.5.0          fansi_0.4.1            lifecycle_0.2.0        stringi_1.5.3         
+[43] yaml_2.2.1             grid_4.0.3             blob_1.2.1             crayon_1.3.4           lattice_0.20-41        haven_2.3.1           
+[49] splines_4.0.3          annotate_1.68.0        hms_0.5.3              knitr_1.30             pillar_1.4.7           reprex_0.3.0          
+[55] XML_3.99-0.5           glue_1.4.2             evaluate_0.14          modelr_0.1.8           vctrs_0.3.5            cellranger_1.1.0      
+[61] gtable_0.3.0           assertthat_0.2.1       xfun_0.19              xtable_1.8-4           broom_0.7.3            survival_3.2-7        
+[67] rJava_0.9-13           tinytex_0.28           memoise_1.1.0          ellipsis_0.3.1         GSEABase_1.52.1       

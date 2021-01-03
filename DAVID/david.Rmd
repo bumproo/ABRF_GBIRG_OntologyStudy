@@ -31,7 +31,7 @@ TNF  <- read.xlsx("../shared_data/HALLMARK_TNFA_SIGNALING_VIA_NFKB.xlsx", colNam
 MUSC <- read.xlsx("../shared_data/GO_SKELETAL_MUSCLE_CONTRACTION.xlsx", colNames=TRUE, rowNames=FALSE)
 ```
 
-*Run DAVID on Biological Concept Data
+*Run DAVID on Biological Concept Data*
 
 ```{r}
 hsPPAR <- na.omit(PPAR$HGNCSym)
