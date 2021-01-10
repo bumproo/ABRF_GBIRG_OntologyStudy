@@ -34,7 +34,7 @@ make.df15 <- function(denomItem){
 }
 ```
 ```{r}
-denom <- seq(from = 10000, to = 40000, by = 100)
+denom <- seq(from = 100, to = 40000, by = 100)
 degSize <- 1200
 ###########
 pathSize <- 50
