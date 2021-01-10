@@ -227,18 +227,20 @@ ggarrange(ec.ipa.plot,g1rev.ipa.plot,ac.ipa.plot,sc.ipa.plot, legend = FALSE, nc
 *Plotting the full EvC GSEA results*
 
 ```{r, fig.width=12, fig.height=6}
-pvals <- EvC.GSEA  %>% filter(Collection %in% c("h","c2cgp","c2cp","c5bp", "c5mf", "c5cc"))
-pvals <- tibble::rownames_to_column(pvals,"Term")
-pvals.nohit <- pvals %>% filter(Hit == "Other")
-pvals.hit <- pvals %>% filter(Hit == "Hit")
+EvC.gsea.select <- EvC.GSEA  %>% filter(Collection %in% c("h","c2cgp","c2cp","c5bp", "c5mf", "c5cc"))
+EvC.gsea.select <- tibble::rownames_to_column(EvC.gsea.select,"Term")
+EvC.gsea.select.nohit <- EvC.gsea.select %>% filter(Hit == "Other")
+EvC.gsea.select.hit <- EvC.gsea.select %>% filter(Hit == "Hit")
 
-ggplot() + geom_jitter(data=pvals.nohit, aes(x=Collection,y=FDR), color="black", alpha=0.3, size=0.6, width=0.1) + geom_jitter(data=pvals.hit, aes(x=Collection,y=FDR), color="red", alpha=1, size=2, width=0.1) + theme_bw() + coord_flip()
+ggplot() + geom_jitter(data=EvC.gsea.select.nohit, aes(x=Collection,y=FDR), color="black", alpha=0.3, size=0.6, width=0.1) + geom_jitter(data=EvC.gsea.select.hit, aes(x=Collection,y=FDR), color="red", alpha=1, size=2, width=0.1) + theme_bw() + coord_flip()
 ```
 *Summary Tables*
 
 ```{r}
-table(EvC.GSEA$Collection,EvC.GSEA$Hit)
+table(EvC.gsea.select$Collection,EvC.gsea.select$Hit)
 table(evc.gsea.filt$Collection,evc.gsea.filt$Hit)
+#table(EvC.gsea.select.hit$Collection,EvC.gsea.select.hit$Hit)
+#table(EvC.gsea.select.nohit$Collection,EvC.gsea.select.nohit$Hit)
 ```
 ## write session info*
 
