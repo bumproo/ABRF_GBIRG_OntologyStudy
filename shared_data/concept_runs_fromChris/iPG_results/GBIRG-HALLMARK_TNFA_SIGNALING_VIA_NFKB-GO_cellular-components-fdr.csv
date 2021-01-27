@@ -1,0 +1,409 @@
+goId,goName,countDE,countAll,pv_fdr
+"GO:0000790","nuclear chromatin",40,1324,3.264e-7
+"GO:0000785","chromatin",41,1507,0.000001496
+"GO:0033256","I-kappaB/NF-kappaB complex",4,4,0.000001496
+"GO:0000228","nuclear chromosome",40,1553,0.00000714
+"GO:0005737","cytoplasm",154,11523,0.000017
+"GO:0009986","cell surface",28,907,0.000017
+"GO:0005654","nucleoplasm",72,3959,0.0000180685714285714
+"GO:0098552","side of membrane",22,616,0.0000255
+"GO:0009897","external side of plasma membrane",17,410,0.000068
+"GO:0005694","chromosome",43,2020,0.00015504
+"GO:0035976","transcription factor AP-1 complex",3,4,0.0001632
+"GO:0033257","Bcl3/NF-kappaB2 complex",2,2,0.00320571428571429
+"GO:0070743","interleukin-23 complex",2,2,0.00320571428571429
+"GO:0005667","transcription regulator complex",14,412,0.00320571428571429
+"GO:0005615","extracellular space",58,3549,0.004284
+"GO:0045121","membrane raft",12,331,0.004284
+"GO:0098857","membrane microdomain",12,332,0.004284
+"GO:0031974","membrane-enclosed lumen",92,6493,0.004284
+"GO:0043233","organelle lumen",92,6493,0.004284
+"GO:0070013","intracellular organelle lumen",92,6493,0.004284
+"GO:0098589","membrane region",12,345,0.00519272727272727
+"GO:0005622","intracellular",175,14938,0.00519272727272727
+"GO:0005896","interleukin-6 receptor complex",2,3,0.00567652173913044
+"GO:0098805","whole membrane",33,1718,0.00714
+"GO:0031981","nuclear lumen",77,5378,0.0127296
+"GO:0043231","intracellular membrane-bounded organelle",140,11361,0.0139661538461538
+"GO:0005576","extracellular region",67,4579,0.0178311111111111
+"GO:0005829","cytosol",74,5194,0.0179228571428571
+"GO:0042581","specific granule",7,159,0.0196965517241379
+"GO:0005634","nucleus",104,7958,0.020672
+"GO:0043227","membrane-bounded organelle",155,13154,0.037378064516129
+"GO:0043229","intracellular organelle",154,13146,0.056865
+"GO:0005788","endoplasmic reticulum lumen",9,307,0.0615709090909091
+"GO:0005719","nuclear euchromatin",3,34,0.06288
+"GO:0070820","tertiary granule",6,163,0.0846308571428571
+"GO:0000791","euchromatin",3,42,0.103592195121951
+"GO:0032996","Bcl3-Bcl10 complex",1,1,0.103592195121951
+"GO:0035525","NF-kappaB p50/p65 complex",1,1,0.103592195121951
+"GO:0043509","activin A complex",1,1,0.103592195121951
+"GO:0048180","activin complex",1,1,0.103592195121951
+"GO:0098745","Dcp1-Dcp2 complex",1,1,0.103592195121951
+"GO:0031226","intrinsic component of plasma membrane",28,1727,0.120165714285714
+"GO:0070161","anchoring junction",16,834,0.129932307692308
+"GO:0035579","specific granule membrane",4,90,0.129932307692308
+"GO:0031410","cytoplasmic vesicle",36,2409,0.129932307692308
+"GO:0097708","intracellular vesicle",36,2413,0.129932307692308
+"GO:0043235","receptor complex",11,513,0.129932307692308
+"GO:1904724","tertiary granule lumen",3,55,0.129932307692308
+"GO:0005900","oncostatin-M receptor complex",1,2,0.129932307692308
+"GO:0035354","Toll-like receptor 1-Toll-like receptor 2 protein complex",1,2,0.129932307692308
+"GO:0035692","macrophage migration inhibitory factor receptor complex",1,2,0.129932307692308
+"GO:0036488","CHOP-C/EBP complex",1,2,0.129932307692308
+"GO:0042825","TAP complex",1,2,0.129932307692308
+"GO:0043511","inhibin complex",1,2,0.129932307692308
+"GO:0043512","inhibin A complex",1,2,0.129932307692308
+"GO:0043514","interleukin-12 complex",1,2,0.129932307692308
+"GO:0044753","amphisome",1,2,0.129932307692308
+"GO:0070557","PCNA-p21 complex",1,2,0.129932307692308
+"GO:0071159","NF-kappaB complex",1,2,0.129932307692308
+"GO:0097058","CRLF-CLCF1 complex",1,2,0.129932307692308
+"GO:0097059","CNTFR-CLCF1 complex",1,2,0.129932307692308
+"GO:0098560","cytoplasmic side of late endosome membrane",1,2,0.129932307692308
+"GO:1990622","CHOP-ATF3 complex",1,2,0.129932307692308
+"GO:1990666","PCSK9-LDLR complex",1,2,0.129932307692308
+"GO:1990682","CSF1-CSF1R complex",1,2,0.129932307692308
+"GO:0005887","integral component of plasma membrane",26,1647,0.132229090909091
+"GO:0090575","RNA polymerase II transcription regulator complex",5,160,0.159059104477612
+"GO:0035580","specific granule lumen",3,62,0.1608
+"GO:0009898","cytoplasmic side of plasma membrane",5,164,0.163304615384615
+"GO:0005610","laminin-5 complex",1,3,0.163304615384615
+"GO:0020016","ciliary pocket",1,3,0.163304615384615
+"GO:0020018","ciliary pocket membrane",1,3,0.163304615384615
+"GO:0042585","germinal vesicle",1,3,0.163304615384615
+"GO:0048237","rough endoplasmic reticulum lumen",1,3,0.163304615384615
+"GO:0070110","ciliary neurotrophic factor receptor complex",1,3,0.163304615384615
+"GO:0098559","cytoplasmic side of early endosome membrane",1,3,0.163304615384615
+"GO:1905286","serine-type peptidase complex",1,3,0.163304615384615
+"GO:0098588","bounding membrane of organelle",31,2115,0.163304615384615
+"GO:0001891","phagocytic cup",2,27,0.164697721518987
+"GO:0030665","clathrin-coated vesicle membrane",4,116,0.168759
+"GO:0030659","cytoplasmic vesicle membrane",14,780,0.169021463414634
+"GO:0030141","secretory granule",15,855,0.169021463414634
+"GO:0012505","endomembrane system",59,4564,0.173227951807229
+"GO:0005905","clathrin-coated pit",3,71,0.178608510638298
+"GO:0031965","nuclear membrane",7,301,0.178608510638298
+"GO:0070821","tertiary granule membrane",3,72,0.178608510638298
+"GO:0071944","cell periphery",72,5773,0.178608510638298
+"GO:0030667","secretory granule membrane",7,305,0.178608510638298
+"GO:0001674","female germ cell nucleus",1,4,0.178608510638298
+"GO:0010009","cytoplasmic side of endosome membrane",1,4,0.178608510638298
+"GO:0070724","BMP receptor complex",1,4,0.178608510638298
+"GO:0098966","perisynaptic extracellular matrix",1,4,0.178608510638298
+"GO:0099535","synapse-associated extracellular matrix",1,4,0.178608510638298
+"GO:0012506","vesicle membrane",14,802,0.178608510638298
+"GO:0033116","endoplasmic reticulum-Golgi intermediate compartment membrane",3,75,0.186520421052632
+"GO:0030139","endocytic vesicle",7,311,0.188773608247423
+"GO:0017053","transcription repressor complex",3,76,0.188773608247423
+"GO:0098562","cytoplasmic side of membrane",5,188,0.195715102040816
+"GO:0005769","early endosome",8,383,0.196087272727273
+"GO:0005886","plasma membrane",70,5658,0.19992
+"GO:0033093","Weibel-Palade body",1,5,0.19992
+"GO:0044194","cytolytic granule",1,5,0.19992
+"GO:0098574","cytoplasmic side of lysosomal membrane",1,5,0.19992
+"GO:0099544","perisynaptic space",1,5,0.19992
+"GO:0030136","clathrin-coated vesicle",5,194,0.203961142857143
+"GO:0030669","clathrin-coated endocytic vesicle membrane",2,38,0.223628108108108
+"GO:0031265","CD95 death-inducing signaling complex",1,6,0.223628108108108
+"GO:0071438","invadopodium membrane",1,6,0.223628108108108
+"GO:0097136","Bcl-2 family protein complex",1,6,0.223628108108108
+"GO:0097342","ripoptosome",1,6,0.223628108108108
+"GO:0097443","sorting endosome",1,6,0.223628108108108
+"GO:0001772","immunological synapse",2,39,0.226257857142857
+"GO:0000932","P-body",3,88,0.231404601769911
+"GO:0099503","secretory vesicle",16,1018,0.236389473684211
+"GO:0000323","lytic vacuole",12,712,0.242812307692308
+"GO:0005764","lysosome",12,712,0.242812307692308
+"GO:0031253","cell projection membrane",7,345,0.242812307692308
+"GO:0042406","extrinsic component of endoplasmic reticulum membrane",1,7,0.243032
+"GO:0032580","Golgi cisterna membrane",3,92,0.243032
+"GO:0005925","focal adhesion",8,418,0.243032
+"GO:0000307","cyclin-dependent protein kinase holoenzyme complex",2,43,0.248475371900826
+"GO:0030055","cell-substrate junction",8,426,0.258035905511811
+"GO:0031968","organelle outer membrane",5,218,0.258035905511811
+"GO:0042824","MHC class I peptide loading complex",1,8,0.258035905511811
+"GO:0071144","heteromeric SMAD protein complex",1,8,0.258035905511811
+"GO:0097413","Lewy body",1,8,0.258035905511811
+"GO:0019867","outer membrane",5,220,0.258035905511811
+"GO:0032991","protein-containing complex",66,5440,0.26054625
+"GO:0030666","endocytic vesicle membrane",4,162,0.26764204379562
+"GO:0031901","early endosome membrane",4,162,0.26764204379562
+"GO:0000138","Golgi trans cisterna",1,9,0.26764204379562
+"GO:0031095","platelet dense tubular network membrane",1,9,0.26764204379562
+"GO:0031264","death-inducing signaling complex",1,9,0.26764204379562
+"GO:0031906","late endosome lumen",1,9,0.26764204379562
+"GO:0032059","bleb",1,9,0.26764204379562
+"GO:0070578","RISC-loading complex",1,9,0.26764204379562
+"GO:0071141","SMAD protein complex",1,9,0.26764204379562
+"GO:0043226","organelle",157,14263,0.274424347826087
+"GO:0005912","adherens junction",4,166,0.278568510638298
+"GO:0031982","vesicle",50,4033,0.278568510638298
+"GO:0098802","plasma membrane signaling receptor complex",6,302,0.278568510638298
+"GO:0008287","protein serine/threonine phosphatase complex",2,51,0.281463333333333
+"GO:1903293","phosphatase complex",2,51,0.281463333333333
+"GO:0044754","autolysosome",1,10,0.281463333333333
+"GO:0031094","platelet dense tubular network",1,11,0.303820273972603
+"GO:0035631","CD40 receptor complex",1,11,0.303820273972603
+"GO:0031256","leading edge membrane",4,176,0.310607346938776
+"GO:0016323","basolateral plasma membrane",5,248,0.320833907284768
+"GO:0005845","mRNA cap binding complex",1,12,0.320833907284768
+"GO:0043256","laminin complex",1,12,0.320833907284768
+"GO:0045334","clathrin-coated endocytic vesicle",2,57,0.320833907284768
+"GO:0030662","coated vesicle membrane",4,181,0.321626666666667
+"GO:0031985","Golgi cisterna",3,116,0.321626666666667
+"GO:0001741","XY body",1,13,0.332624615384615
+"GO:0005614","interstitial matrix",1,13,0.332624615384615
+"GO:0044666","MLL3/4 complex",1,13,0.332624615384615
+"GO:0005637","nuclear inner membrane",2,60,0.335547515923567
+"GO:0110165","cellular anatomical entity",200,19028,0.343081518987342
+"GO:0034362","low-density lipoprotein particle",1,14,0.344885925925926
+"GO:0034518","RNA cap binding complex",1,14,0.344885925925926
+"GO:0036020","endolysosome membrane",1,14,0.344885925925926
+"GO:0005773","vacuole",12,807,0.344885925925926
+"GO:0031012","extracellular matrix",9,567,0.346299386503068
+"GO:0005741","mitochondrial outer membrane",4,192,0.34986
+"GO:0005911","cell-cell junction",8,493,0.352774285714286
+"GO:0000164","protein phosphatase type 1 complex",1,15,0.352774285714286
+"GO:0032591","dendritic spine membrane",1,15,0.352774285714286
+"GO:0099059","integral component of presynaptic active zone membrane",1,15,0.352774285714286
+"GO:0005793","endoplasmic reticulum-Golgi intermediate compartment",3,130,0.363591676300578
+"GO:0031093","platelet alpha granule lumen",2,67,0.363591676300578
+"GO:0005767","secondary lysosome",1,16,0.363591676300578
+"GO:0030014","CCR4-NOT complex",1,16,0.363591676300578
+"GO:0071437","invadopodium",1,16,0.363591676300578
+"GO:0062023","collagen-containing extracellular matrix",7,427,0.371655172413793
+"GO:0005794","Golgi apparatus",21,1600,0.373549213483146
+"GO:0005770","late endosome",5,276,0.373549213483146
+"GO:0005783","endoplasmic reticulum",19,1430,0.373549213483146
+"GO:0016282","eukaryotic 43S preinitiation complex",1,17,0.373549213483146
+"GO:0031143","pseudopodium",1,18,0.389164
+"GO:0070993","translation preinitiation complex",1,18,0.389164
+"GO:0045335","phagocytic vesicle",3,140,0.39554064516129
+"GO:0000145","exocyst",1,19,0.39554064516129
+"GO:0000159","protein phosphatase type 2A complex",1,19,0.39554064516129
+"GO:0043034","costamere",1,19,0.39554064516129
+"GO:0043073","germ cell nucleus",1,19,0.39554064516129
+"GO:0098945","intrinsic component of presynaptic active zone membrane",1,19,0.39554064516129
+"GO:0032432","actin filament bundle",2,76,0.408807272727273
+"GO:0036019","endolysosome",1,20,0.409866382978723
+"GO:0030670","phagocytic vesicle membrane",2,77,0.412598095238095
+"GO:0000930","gamma-tubulin complex",1,21,0.421478952879581
+"GO:0030904","retromer complex",1,21,0.421478952879581
+"GO:0030135","coated vesicle",5,298,0.42480875
+"GO:0005795","Golgi stack",3,150,0.430324923076923
+"GO:0031258","lamellipodium membrane",1,22,0.430324923076923
+"GO:0042629","mast cell granule",1,22,0.430324923076923
+"GO:0030016","myofibril",4,226,0.436580816326531
+"GO:0005768","endosome",13,976,0.450912487309645
+"GO:0005791","rough endoplasmic reticulum",2,85,0.455422311557789
+"GO:0031233","intrinsic component of external side of plasma membrane",1,24,0.455422311557789
+"GO:0005635","nuclear envelope",7,473,0.455889504950495
+"GO:0036464","cytoplasmic ribonucleoprotein granule",4,233,0.455889504950495
+"GO:0048471","perinuclear region of cytoplasm",10,726,0.455889504950495
+"GO:0000178","exosome (RNase complex)",1,25,0.46048
+"GO:0030057","desmosome",1,25,0.46048
+"GO:1902554","serine/threonine protein kinase complex",2,88,0.463258252427184
+"GO:0043292","contractile fiber",4,237,0.463258252427184
+"GO:1905354","exoribonuclease complex",1,26,0.469613913043478
+"GO:0043232","intracellular non-membrane-bounded organelle",64,5674,0.474692307692308
+"GO:0031091","platelet alpha granule",2,91,0.476051320754717
+"GO:0034774","secretory granule lumen",5,322,0.476051320754717
+"GO:0043228","non-membrane-bounded organelle",64,5683,0.476051320754717
+"GO:0035770","ribonucleoprotein granule",4,243,0.476051320754717
+"GO:0005811","lipid droplet",2,93,0.479872222222222
+"GO:0060205","cytoplasmic vesicle lumen",5,326,0.479872222222222
+"GO:0005640","nuclear outer membrane",1,28,0.479872222222222
+"GO:0032809","neuronal cell body membrane",1,28,0.479872222222222
+"GO:0031983","vesicle lumen",5,328,0.482662119815668
+"GO:0005942","phosphatidylinositol 3-kinase complex",1,29,0.485557090909091
+"GO:0030867","rough endoplasmic reticulum membrane",1,29,0.485557090909091
+"GO:0097225","sperm midpiece",1,29,0.485557090909091
+"GO:0032587","ruffle membrane",2,96,0.487089230769231
+"GO:0000139","Golgi membrane",10,762,0.498421621621622
+"GO:0000803","sex chromosome",1,31,0.500305486725664
+"GO:0044298","cell body membrane",1,31,0.500305486725664
+"GO:0048787","presynaptic active zone membrane",1,31,0.500305486725664
+"GO:1902555","endoribonuclease complex",1,31,0.500305486725664
+"GO:0000407","phagophore assembly site",1,32,0.509391578947368
+"GO:0005921","gap junction",1,32,0.509391578947368
+"GO:0005604","basement membrane",2,103,0.515907130434783
+"GO:1902911","protein kinase complex",2,103,0.515907130434783
+"GO:0031941","filamentous actin",1,33,0.515952207792208
+"GO:0070971","endoplasmic reticulum exit site",1,34,0.526706896551724
+"GO:0098590","plasma membrane region",15,1235,0.534357424892704
+"GO:0034358","plasma lipoprotein particle",1,36,0.539022857142857
+"GO:0051233","spindle midzone",1,36,0.539022857142857
+"GO:0098636","protein complex involved in cell adhesion",1,36,0.539022857142857
+"GO:1990777","lipoprotein particle",1,36,0.539022857142857
+"GO:0031090","organelle membrane",40,3550,0.539022857142857
+"GO:0055037","recycling endosome",3,190,0.541240167364017
+"GO:0031904","endosome lumen",1,37,0.543740414937759
+"GO:1905348","endonuclease complex",1,37,0.543740414937759
+"GO:0016235","aggresome",1,39,0.560632131147541
+"GO:0032994","protein-lipid complex",1,39,0.560632131147541
+"GO:0098791","Golgi apparatus subcompartment",5,367,0.560632131147541
+"GO:0005765","lysosomal membrane",5,376,0.586790243902439
+"GO:0098852","lytic vacuole membrane",5,376,0.586790243902439
+"GO:0005789","endoplasmic reticulum membrane",13,1100,0.590267091633466
+"GO:0030017","sarcomere",3,206,0.590267091633466
+"GO:0005891","voltage-gated calcium channel complex",1,43,0.590267091633466
+"GO:0032590","dendrite membrane",1,43,0.590267091633466
+"GO:0005923","bicellular tight junction",2,122,0.590267091633466
+"GO:0031984","organelle subcompartment",5,391,0.619324724409449
+"GO:0030018","Z disc",2,128,0.619324724409449
+"GO:0042175","nuclear outer membrane-endoplasmic reticulum membrane network",13,1122,0.619324724409449
+"GO:0001650","fibrillar center",2,129,0.6201759375
+"GO:0070160","tight junction",2,129,0.6201759375
+"GO:0005938","cell cortex",4,305,0.622525447470817
+"GO:0031312","extrinsic component of organelle membrane",1,49,0.634803720930233
+"GO:0016607","nuclear speck",5,400,0.635330038610039
+"GO:0010008","endosome membrane",6,499,0.656489195402299
+"GO:0060076","excitatory synapse",1,52,0.656489195402299
+"GO:0031902","late endosome membrane",2,138,0.656911145038168
+"GO:0098797","plasma membrane protein complex",8,687,0.657529090909091
+"GO:0030054","cell junction",23,2095,0.657529090909091
+"GO:0031674","I band",2,140,0.660482716981132
+"GO:0032154","cleavage furrow",1,55,0.671712180451128
+"GO:0043296","apical junction complex",2,143,0.671778876404494
+"GO:0031526","brush border membrane",1,58,0.693219402985075
+"GO:0005774","vacuolar membrane",5,428,0.694880583941606
+"GO:0035577","azurophil granule membrane",1,59,0.694880583941606
+"GO:0016604","nuclear body",9,808,0.694880583941606
+"GO:0012507","ER to Golgi transport vesicle membrane",1,60,0.694880583941606
+"GO:0046658","anchored component of plasma membrane",1,60,0.694880583941606
+"GO:0101003","ficolin-1-rich granule membrane",1,60,0.694880583941606
+"GO:0005802","trans-Golgi network",3,245,0.697917381818182
+"GO:0032589","neuron projection membrane",1,61,0.698064347826087
+"GO:0042734","presynaptic membrane",2,156,0.713499205776173
+"GO:0019005","SCF ubiquitin ligase complex",1,64,0.715052903225807
+"GO:0061695","transferase complex, transferring phosphorus-containing groups",3,252,0.715052903225807
+"GO:0034704","calcium channel complex",1,67,0.735026571428571
+"GO:0001725","stress fiber",1,69,0.742084240282686
+"GO:0045178","basal part of cell",1,69,0.742084240282686
+"GO:0097517","contractile actin filament bundle",1,69,0.742084240282686
+"GO:0005657","replication fork",1,71,0.751306947368421
+"GO:0099023","vesicle tethering complex",1,71,0.751306947368421
+"GO:0031225","anchored component of membrane",2,171,0.756482474226804
+"GO:0032153","cell division site",1,73,0.756482474226804
+"GO:0010494","cytoplasmic stress granule",1,74,0.756482474226804
+"GO:0060170","ciliary membrane",1,74,0.756482474226804
+"GO:0098982","GABA-ergic synapse",1,74,0.756482474226804
+"GO:0099056","integral component of presynaptic membrane",1,74,0.756482474226804
+"GO:0048786","presynaptic active zone",1,76,0.767263561643836
+"GO:0035097","histone methyltransferase complex",1,77,0.771203549488055
+"GO:0016234","inclusion body",1,78,0.775047346938776
+"GO:0001726","ruffle",2,180,0.775933016949153
+"GO:0042641","actomyosin",1,79,0.776164864864865
+"GO:0030496","midbody",2,182,0.778280536912752
+"GO:0005813","centrosome",6,583,0.778280536912752
+"GO:0005901","caveola",1,83,0.7902688
+"GO:0098889","intrinsic component of presynaptic membrane",1,83,0.7902688
+"GO:0055038","recycling endosome membrane",1,85,0.799449568106312
+"GO:1905368","peptidase complex",1,87,0.808326357615894
+"GO:0032993","protein-DNA complex",2,194,0.810411881188119
+"GO:0019898","extrinsic component of membrane",3,306,0.830493333333333
+"GO:0005902","microvillus",1,93,0.830493333333333
+"GO:0030134","COPII-coated ER to Golgi transport vesicle",1,93,0.830493333333333
+"GO:0016020","membrane",97,9491,0.831894723127036
+"GO:0034451","centriolar satellite",1,95,0.835485974025974
+"GO:0043202","lysosomal lumen",1,96,0.837892038834952
+"GO:0098793","presynapse",5,525,0.840833076923077
+"GO:0005776","autophagosome",1,98,0.840833076923077
+"GO:0031252","cell leading edge",4,422,0.840833076923077
+"GO:0070062","extracellular exosome",21,2145,0.847923067092652
+"GO:0005796","Golgi lumen",1,102,0.853577579617834
+"GO:0016605","PML body",1,103,0.855517714285714
+"GO:0045177","apical part of cell",4,433,0.85558875
+"GO:0034708","methyltransferase complex",1,105,0.85558875
+"GO:0098858","actin-based cell projection",2,220,0.85558875
+"GO:0005903","brush border",1,106,0.85558875
+"GO:0030175","filopodium",1,106,0.85558875
+"GO:0016363","nuclear matrix",1,109,0.865913271028037
+"GO:0030660","Golgi-associated vesicle membrane",1,110,0.867456149068323
+"GO:0044853","plasma membrane raft",1,114,0.881178947368421
+"GO:0036126","sperm flagellum",1,115,0.882451111111111
+"GO:0005884","actin filament",1,117,0.887556923076923
+"GO:0042995","cell projection",22,2319,0.888063465045593
+"GO:0031967","organelle envelope",11,1205,0.888063465045593
+"GO:0031975","envelope",11,1205,0.888063465045593
+"GO:0097729","9+2 motile cilium",1,120,0.888063465045593
+"GO:0000779","condensed chromosome, centromeric region",1,122,0.892679272727273
+"GO:0101002","ficolin-1-rich granule",1,124,0.89438990990991
+"GO:1904813","ficolin-1-rich granule lumen",1,124,0.89438990990991
+"GO:0016324","apical plasma membrane",3,362,0.89438990990991
+"GO:1903561","extracellular vesicle",21,2252,0.898598686567164
+"GO:0043230","extracellular organelle",21,2254,0.898598686567164
+"GO:0034399","nuclear periphery",1,131,0.907265714285714
+"GO:0072686","mitotic spindle",1,133,0.910953827893175
+"GO:0016021","integral component of membrane",51,5301,0.928417278106509
+"GO:0005814","centriole",1,143,0.935367079646018
+"GO:0044306","neuron projection terminus",1,149,0.941617371428571
+"GO:0098796","membrane protein complex",11,1291,0.941617371428571
+"GO:0005739","mitochondrion",14,1609,0.941617371428571
+"GO:0030133","transport vesicle",3,408,0.941617371428571
+"GO:0031224","intrinsic component of membrane",52,5467,0.941617371428571
+"GO:0099699","integral component of synaptic membrane",1,154,0.941617371428571
+"GO:0000151","ubiquitin ligase complex",2,287,0.941617371428571
+"GO:0030176","integral component of endoplasmic reticulum membrane",1,156,0.941617371428571
+"GO:0043204","perikaryon",1,156,0.941617371428571
+"GO:0005766","primary lysosome",1,157,0.941617371428571
+"GO:0042582","azurophil granule",1,157,0.941617371428571
+"GO:0098862","cluster of actin-based cell projections",1,159,0.943595897435897
+"GO:1990234","transferase complex",6,769,0.945700449438202
+"GO:0031461","cullin-RING ubiquitin ligase complex",1,163,0.945700449438202
+"GO:0031227","intrinsic component of endoplasmic reticulum membrane",1,164,0.945700449438202
+"GO:0000922","spindle pole",1,165,0.945700449438202
+"GO:0099240","intrinsic component of synaptic membrane",1,166,0.945700449438202
+"GO:0005815","microtubule organizing center",6,782,0.946365714285714
+"GO:0005775","vacuolar lumen",1,173,0.954606033519553
+"GO:0043197","dendritic spine",1,175,0.955294806629834
+"GO:0044309","neuron spine",1,177,0.955294806629834
+"GO:1902494","catalytic complex",11,1362,0.955294806629834
+"GO:0005798","Golgi-associated vesicle",1,179,0.955294806629834
+"GO:0044297","cell body",4,591,0.972272967032967
+"GO:0014069","postsynaptic density",2,336,0.972272967032967
+"GO:0000775","chromosome, centromeric region",1,196,0.974127868852459
+"GO:0032279","asymmetric synapse",2,342,0.974127868852459
+"GO:0031514","motile cilium",1,200,0.974479787234042
+"GO:0030027","lamellipodium",1,201,0.974479787234042
+"GO:0030658","transport vesicle membrane",1,206,0.974479787234042
+"GO:0008021","synaptic vesicle",1,207,0.974479787234042
+"GO:0036477","somatodendritic compartment",6,858,0.974479787234042
+"GO:0099572","postsynaptic specialization",2,360,0.974479787234042
+"GO:0098978","glutamatergic synapse",2,361,0.974479787234042
+"GO:0005819","spindle",2,367,0.974479787234042
+"GO:0098984","neuron to neuron synapse",2,367,0.974479787234042
+"GO:0015629","actin cytoskeleton",3,503,0.974479787234042
+"GO:0034703","cation channel complex",1,221,0.975625963060686
+"GO:0000793","condensed chromosome",1,224,0.975625963060686
+"GO:0070382","exocytic vesicle",1,225,0.975625963060686
+"GO:0043025","neuronal cell body",3,521,0.977922315789474
+"GO:0097060","synaptic membrane",2,387,0.97843968503937
+"GO:0120025","plasma membrane bounded cell projection",17,2219,0.997357068062827
+"GO:0031966","mitochondrial membrane",4,713,0.998072512315271
+"GO:0015630","microtubule cytoskeleton",8,1255,0.998072512315271
+"GO:0030425","dendrite",3,612,0.998072512315271
+"GO:0097447","dendritic tree",3,614,0.998072512315271
+"GO:0034702","ion channel complex",1,299,0.998072512315271
+"GO:0005740","mitochondrial envelope",4,756,0.998072512315271
+"GO:0099080","supramolecular complex",8,1308,0.998072512315271
+"GO:1902495","transmembrane transporter complex",1,322,0.998072512315271
+"GO:1990351","transporter complex",1,330,0.998072512315271
+"GO:0043005","neuron projection",8,1363,0.998072512315271
+"GO:0098687","chromosomal region",1,356,0.998072512315271
+"GO:0019866","organelle inner membrane",2,535,0.998072512315271
+"GO:0099512","supramolecular fiber",5,985,0.998072512315271
+"GO:0031301","integral component of organelle membrane",1,363,0.998072512315271
+"GO:0099081","supramolecular polymer",5,993,0.998072512315271
+"GO:0005730","nucleolus",8,1393,0.998072512315271
+"GO:1990904","ribonucleoprotein complex",3,727,0.998072512315271
+"GO:0031300","intrinsic component of organelle membrane",1,394,0.998072512315271
+"GO:0045202","synapse",7,1357,0.998072512315271
+"GO:0005874","microtubule",1,430,0.998072512315271
+"GO:0005856","cytoskeleton",14,2262,0.998072512315271
+"GO:0098794","postsynapse",2,639,0.998072512315271
+"GO:0005929","cilium",2,662,0.998072512315271
+"GO:0005759","mitochondrial matrix",1,471,0.998072512315271
+"GO:0099513","polymeric cytoskeletal fiber",2,754,0.99948972972973
+"GO:0005575","cellular_component",200,19220,1

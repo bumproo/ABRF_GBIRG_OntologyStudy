@@ -127,15 +127,38 @@ write.xlsx(muscsvc.gostres.bg$result %>% select(c("term_id", "term_name","source
 
 *alternative filtering
 
-#```{r}
-#g1vRev <- read.xlsx("../shared_data/GSE83647_G1vRev.xlsx", colNames=TRUE, rowNames=TRUE)
-#g1vRev.path <- read.xlsx("../shared_data/HALLMARK_E2F_TARGETS.xlsx")
-#
-#g1vRev <- tibble::rownames_to_column(g1vRev,"Gene")
-#g1vRev.degs <- g1vRev %>% filter(g1vRev$ape.G1.Rev.adp <= 0.05 
-#                                 & MPG == "Yes" 
-#                                 & abs(ape.G1.Rev.logFC) >= 0.58)
-#```
+```{r}
+E2F.gostres.all <- gost(query = E2F$HALLMARK_E2F_TARGETS,organism = "hsapiens", 
+                    sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"),
+                    significant = FALSE,  correction_method ="g_SCS",
+                    domain_scope="annotated")
+
+#g1vrev <- tibble::rownames_to_column(g1vrev,"Gene")
+g1vrev.Revdegs <- g1vrev %>% filter(adp <= 0.05 & logFC <= -0.58)
+g1vrev.bkground <- g1vrev %>% dplyr::select(c("Gene"))
+
+g1vrev.Revdegs.gostres.bg <- gost(query = g1vrev.Revdegs$Gene,organism = "hsapiens", 
+                sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"),
+                significant = FALSE, correction_method ="g_SCS",
+                custom_bg = g1vrev.bkground$Gene, domain_scope="custom")
+
+write.xlsx(g1vrev.Revdegs.gostres.bg$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="g1vrev.RevDegs.gprofiler.xlsx")
+```
+
+*return all of KEGG for evc*
+```{r}
+evc <- read.xlsx("../shared_data/EvC_data.xlsx", colNames=TRUE, rowNames=TRUE)
+evc <- tibble::rownames_to_column(evc,"Gene")
+evc.degs <- evc %>% filter(adp <= 0.05 & abs(logFC) >= 1)
+evc.bkground <- evc %>% dplyr::select(c("Gene"))
+
+evc.gostres.allKegg.bg <- gost(query = evc.degs$Gene,organism = "mmusculus", 
+                sources = c("KEGG"),
+                significant = FALSE, correction_method ="g_SCS",
+                custom_bg = evc.bkground$Gene, domain_scope="custom")
+
+write.xlsx(evc.gostres.allKegg.bg$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="evc.allKEGG.gprofiler.xlsx")
+```
 
 ## write session info*
 

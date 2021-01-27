@@ -1,0 +1,247 @@
+Category	Term	TermName	Bonferroni	RnkInList
+GOTERM_BP_ALL	GO:0022402	GO:0022402~cell cycle process	3.08E-70	1
+GOTERM_BP_ALL	GO:0000278	GO:0000278~mitotic cell cycle	4.66E-65	2
+GOTERM_BP_ALL	GO:1903047	GO:1903047~mitotic cell cycle process	1.20E-64	3
+GOTERM_BP_ALL	GO:0007049	GO:0007049~cell cycle	7.16E-64	4
+GOTERM_BP_ALL	GO:0006259	GO:0006259~DNA metabolic process	3.50E-60	5
+GOTERM_BP_ALL	GO:0051276	GO:0051276~chromosome organization	1.73E-54	6
+GOTERM_BP_ALL	GO:0006260	GO:0006260~DNA replication	3.08E-49	7
+GOTERM_BP_ALL	GO:0044770	GO:0044770~cell cycle phase transition	4.69E-42	8
+GOTERM_BP_ALL	GO:0044772	GO:0044772~mitotic cell cycle phase transition	2.97E-41	9
+GOTERM_BP_ALL	GO:0006261	GO:0006261~DNA-dependent DNA replication	1.82E-38	10
+GOTERM_BP_ALL	GO:0000280	GO:0000280~nuclear division	1.81E-33	11
+GOTERM_BP_ALL	GO:0006974	GO:0006974~cellular response to DNA damage stimulus	5.56E-33	12
+GOTERM_BP_ALL	GO:0048285	GO:0048285~organelle fission	5.89E-32	13
+GOTERM_BP_ALL	GO:0006996	GO:0006996~organelle organization	2.72E-30	14
+GOTERM_BP_ALL	GO:0006281	GO:0006281~DNA repair	4.56E-30	15
+GOTERM_BP_ALL	GO:0006310	GO:0006310~DNA recombination	4.48E-28	16
+GOTERM_BP_ALL	GO:0090304	GO:0090304~nucleic acid metabolic process	6.29E-28	17
+GOTERM_BP_ALL	GO:0007067	GO:0007067~mitotic nuclear division	1.48E-27	18
+GOTERM_BP_ALL	GO:0051301	GO:0051301~cell division	2.75E-27	19
+GOTERM_BP_ALL	GO:0006139	GO:0006139~nucleobase-containing compound metabolic process	1.13E-26	20
+GOTERM_BP_ALL	GO:0046483	GO:0046483~heterocycle metabolic process	2.45E-26	21
+GOTERM_BP_ALL	GO:0006725	GO:0006725~cellular aromatic compound metabolic process	6.12E-26	22
+GOTERM_BP_ALL	GO:0051726	GO:0051726~regulation of cell cycle	2.13E-25	23
+GOTERM_BP_ALL	GO:1901360	GO:1901360~organic cyclic compound metabolic process	3.98E-25	24
+GOTERM_BP_ALL	GO:0000819	GO:0000819~sister chromatid segregation	3.51E-24	25
+GOTERM_BP_ALL	GO:0098813	GO:0098813~nuclear chromosome segregation	3.85E-24	26
+GOTERM_BP_ALL	GO:0007059	GO:0007059~chromosome segregation	4.44E-24	27
+GOTERM_BP_ALL	GO:0034641	GO:0034641~cellular nitrogen compound metabolic process	5.72E-23	28
+GOTERM_BP_ALL	GO:0006312	GO:0006312~mitotic recombination	2.95E-22	29
+GOTERM_BP_ALL	GO:0000722	GO:0000722~telomere maintenance via recombination	8.96E-22	30
+GOTERM_BP_ALL	GO:0010564	GO:0010564~regulation of cell cycle process	1.36E-21	31
+GOTERM_BP_ALL	GO:0033554	GO:0033554~cellular response to stress	3.32E-21	32
+GOTERM_BP_ALL	GO:0006807	GO:0006807~nitrogen compound metabolic process	5.16E-21	33
+GOTERM_BP_ALL	GO:0022616	GO:0022616~DNA strand elongation	4.50E-20	34
+GOTERM_BP_ALL	GO:0007062	GO:0007062~sister chromatid cohesion	1.98E-19	35
+GOTERM_BP_ALL	GO:0071840	GO:0071840~cellular component organization or biogenesis	2.43E-19	36
+GOTERM_BP_ALL	GO:0016043	GO:0016043~cellular component organization	3.32E-19	37
+GOTERM_BP_ALL	GO:0007346	GO:0007346~regulation of mitotic cell cycle	5.30E-19	38
+GOTERM_BP_ALL	GO:0044260	GO:0044260~cellular macromolecule metabolic process	1.07E-18	39
+GOTERM_BP_ALL	GO:0071897	GO:0071897~DNA biosynthetic process	3.52E-18	40
+GOTERM_BP_ALL	GO:0051052	GO:0051052~regulation of DNA metabolic process	3.57E-18	41
+GOTERM_BP_ALL	GO:0000723	GO:0000723~telomere maintenance	1.35E-17	42
+GOTERM_BP_ALL	GO:0071103	GO:0071103~DNA conformation change	1.98E-17	43
+GOTERM_BP_ALL	GO:0045786	GO:0045786~negative regulation of cell cycle	9.03E-17	44
+GOTERM_BP_ALL	GO:0006302	GO:0006302~double-strand break repair	1.04E-16	45
+GOTERM_BP_ALL	GO:0000075	GO:0000075~cell cycle checkpoint	1.14E-16	46
+GOTERM_BP_ALL	GO:0032200	GO:0032200~telomere organization	1.20E-16	47
+GOTERM_BP_ALL	GO:0000731	GO:0000731~DNA synthesis involved in DNA repair	3.78E-16	48
+GOTERM_BP_ALL	GO:0010948	GO:0010948~negative regulation of cell cycle process	3.93E-16	49
+GOTERM_BP_ALL	GO:0043170	GO:0043170~macromolecule metabolic process	4.57E-16	50
+GOTERM_BP_ALL	GO:0009059	GO:0009059~macromolecule biosynthetic process	9.21E-16	51
+GOTERM_BP_ALL	GO:0051321	GO:0051321~meiotic cell cycle	1.72E-15	52
+GOTERM_BP_ALL	GO:0034645	GO:0034645~cellular macromolecule biosynthetic process	3.08E-15	53
+GOTERM_BP_ALL	GO:0000070	GO:0000070~mitotic sister chromatid segregation	1.82E-14	54
+GOTERM_BP_ALL	GO:0006271	GO:0006271~DNA strand elongation involved in DNA replication	6.28E-14	55
+GOTERM_BP_ALL	GO:0007093	GO:0007093~mitotic cell cycle checkpoint	3.08E-13	56
+GOTERM_BP_ALL	GO:0044249	GO:0044249~cellular biosynthetic process	3.08E-13	57
+GOTERM_BP_ALL	GO:1903046	GO:1903046~meiotic cell cycle process	6.15E-13	58
+GOTERM_BP_ALL	GO:1901576	GO:1901576~organic substance biosynthetic process	6.15E-13	59
+GOTERM_BP_ALL	GO:0044238	GO:0044238~primary metabolic process	9.23E-13	60
+GOTERM_BP_ALL	GO:0006297	"GO:0006297~nucleotide-excision repair, DNA gap filling"	1.54E-12	61
+GOTERM_BP_ALL	GO:0044237	GO:0044237~cellular metabolic process	1.85E-12	62
+GOTERM_BP_ALL	GO:0009058	GO:0009058~biosynthetic process	2.15E-12	63
+GOTERM_BP_ALL	GO:0071704	GO:0071704~organic substance metabolic process	2.77E-12	64
+GOTERM_BP_ALL	GO:0031570	GO:0031570~DNA integrity checkpoint	2.77E-12	65
+GOTERM_BP_ALL	GO:0006270	GO:0006270~DNA replication initiation	4.92E-12	66
+GOTERM_BP_ALL	GO:0000077	GO:0000077~DNA damage checkpoint	1.14E-11	67
+GOTERM_BP_ALL	GO:0045930	GO:0045930~negative regulation of mitotic cell cycle	1.32E-11	68
+GOTERM_BP_ALL	GO:1901990	GO:1901990~regulation of mitotic cell cycle phase transition	3.20E-11	69
+GOTERM_BP_ALL	GO:0032392	GO:0032392~DNA geometric change	3.66E-11	70
+GOTERM_BP_ALL	GO:1901796	GO:1901796~regulation of signal transduction by p53 class mediator	6.92E-11	71
+GOTERM_BP_ALL	GO:0018130	GO:0018130~heterocycle biosynthetic process	8.49E-11	72
+GOTERM_BP_ALL	GO:0019438	GO:0019438~aromatic compound biosynthetic process	1.04E-10	73
+GOTERM_BP_ALL	GO:0034654	GO:0034654~nucleobase-containing compound biosynthetic process	1.16E-10	74
+GOTERM_BP_ALL	GO:1901987	GO:1901987~regulation of cell cycle phase transition	1.76E-10	75
+GOTERM_BP_ALL	GO:1901362	GO:1901362~organic cyclic compound biosynthetic process	1.78E-10	76
+GOTERM_BP_ALL	GO:1902589	GO:1902589~single-organism organelle organization	2.07E-10	77
+GOTERM_BP_ALL	GO:0045787	GO:0045787~positive regulation of cell cycle	2.15E-10	78
+GOTERM_BP_ALL	GO:0008152	GO:0008152~metabolic process	2.28E-10	79
+GOTERM_BP_ALL	GO:0007126	GO:0007126~meiotic nuclear division	4.30E-10	80
+GOTERM_BP_ALL	GO:0060249	GO:0060249~anatomical structure homeostasis	5.07E-10	81
+GOTERM_BP_ALL	GO:0006298	GO:0006298~mismatch repair	6.62E-10	82
+GOTERM_BP_ALL	GO:0000724	GO:0000724~double-strand break repair via homologous recombination	1.11E-09	83
+GOTERM_BP_ALL	GO:0000725	GO:0000725~recombinational repair	1.32E-09	84
+GOTERM_BP_ALL	GO:0051983	GO:0051983~regulation of chromosome segregation	1.32E-09	85
+GOTERM_BP_ALL	GO:0090068	GO:0090068~positive regulation of cell cycle process	2.13E-09	86
+GOTERM_BP_ALL	GO:0044271	GO:0044271~cellular nitrogen compound biosynthetic process	2.40E-09	87
+GOTERM_BP_ALL	GO:0044774	GO:0044774~mitotic DNA integrity checkpoint	2.64E-09	88
+GOTERM_BP_ALL	GO:1901991	GO:1901991~negative regulation of mitotic cell cycle phase transition	4.15E-09	89
+GOTERM_BP_ALL	GO:0000226	GO:0000226~microtubule cytoskeleton organization	5.87E-09	90
+GOTERM_BP_ALL	GO:0032508	GO:0032508~DNA duplex unwinding	6.54E-09	91
+GOTERM_BP_ALL	GO:0051172	GO:0051172~negative regulation of nitrogen compound metabolic process	1.23E-08	92
+GOTERM_BP_ALL	GO:0042769	"GO:0042769~DNA damage response, detection of DNA damage"	1.33E-08	93
+GOTERM_BP_ALL	GO:1901988	GO:1901988~negative regulation of cell cycle phase transition	1.42E-08	94
+GOTERM_BP_ALL	GO:0090305	GO:0090305~nucleic acid phosphodiester bond hydrolysis	1.53E-08	95
+GOTERM_BP_ALL	GO:0044773	GO:0044773~mitotic DNA damage checkpoint	1.58E-08	96
+GOTERM_BP_ALL	GO:0033044	GO:0033044~regulation of chromosome organization	3.00E-08	97
+GOTERM_BP_ALL	GO:0010605	GO:0010605~negative regulation of macromolecule metabolic process	4.37E-08	98
+GOTERM_BP_ALL	GO:0006323	GO:0006323~DNA packaging	4.46E-08	99
+GOTERM_BP_ALL	GO:0006301	GO:0006301~postreplication repair	5.58E-08	100
+GOTERM_BP_ALL	GO:0016925	GO:0016925~protein sumoylation	6.59E-08	101
+GOTERM_BP_ALL	GO:0044786	GO:0044786~cell cycle DNA replication	1.03E-07	102
+GOTERM_BP_ALL	GO:0006289	GO:0006289~nucleotide-excision repair	1.39E-07	103
+GOTERM_BP_ALL	GO:0006950	GO:0006950~response to stress	1.52E-07	104
+GOTERM_BP_ALL	GO:0090329	GO:0090329~regulation of DNA-dependent DNA replication	1.53E-07	105
+GOTERM_BP_ALL	GO:0007017	GO:0007017~microtubule-based process	1.59E-07	106
+GOTERM_BP_ALL	GO:0045934	GO:0045934~negative regulation of nucleobase-containing compound metabolic process	3.20E-07	107
+GOTERM_BP_ALL	GO:0051054	GO:0051054~positive regulation of DNA metabolic process	3.29E-07	108
+GOTERM_BP_ALL	GO:0007050	GO:0007050~cell cycle arrest	4.32E-07	109
+GOTERM_BP_ALL	GO:0018205	GO:0018205~peptidyl-lysine modification	5.12E-07	110
+GOTERM_BP_ALL	GO:0006296	"GO:0006296~nucleotide-excision repair, DNA incision, 5'-to lesion"	6.00E-07	111
+GOTERM_BP_ALL	GO:0007127	GO:0007127~meiosis I	6.46E-07	112
+GOTERM_BP_ALL	GO:0008283	GO:0008283~cell proliferation	6.67E-07	113
+GOTERM_BP_ALL	GO:0009314	GO:0009314~response to radiation	8.65E-07	114
+GOTERM_BP_ALL	GO:0009892	GO:0009892~negative regulation of metabolic process	1.31E-06	115
+GOTERM_BP_ALL	GO:0051783	GO:0051783~regulation of nuclear division	1.32E-06	116
+GOTERM_BP_ALL	GO:2000113	GO:2000113~negative regulation of cellular macromolecule biosynthetic process	1.35E-06	117
+GOTERM_BP_ALL	GO:0033683	"GO:0033683~nucleotide-excision repair, DNA incision"	1.63E-06	118
+GOTERM_BP_ALL	GO:0019985	GO:0019985~translesion synthesis	1.63E-06	119
+GOTERM_BP_ALL	GO:0006275	GO:0006275~regulation of DNA replication	1.78E-06	120
+GOTERM_BP_ALL	GO:0042770	GO:0042770~signal transduction in response to DNA damage	2.20E-06	121
+GOTERM_BP_ALL	GO:0019219	GO:0019219~regulation of nucleobase-containing compound metabolic process	2.49E-06	122
+GOTERM_BP_ALL	GO:0010558	GO:0010558~negative regulation of macromolecule biosynthetic process	3.20E-06	123
+GOTERM_BP_ALL	GO:0071478	GO:0071478~cellular response to radiation	3.60E-06	124
+GOTERM_BP_ALL	GO:0031324	GO:0031324~negative regulation of cellular metabolic process	4.92E-06	125
+GOTERM_BP_ALL	GO:0009411	GO:0009411~response to UV	5.47E-06	126
+GOTERM_BP_ALL	GO:0006325	GO:0006325~chromatin organization	5.79E-06	127
+GOTERM_BP_ALL	GO:0051171	GO:0051171~regulation of nitrogen compound metabolic process	6.19E-06	128
+GOTERM_BP_ALL	GO:0044702	GO:0044702~single organism reproductive process	6.70E-06	129
+GOTERM_BP_ALL	GO:0031327	GO:0031327~negative regulation of cellular biosynthetic process	1.17E-05	130
+GOTERM_BP_ALL	GO:0031497	GO:0031497~chromatin assembly	1.60E-05	131
+GOTERM_BP_ALL	GO:0071824	GO:0071824~protein-DNA complex subunit organization	1.79E-05	132
+GOTERM_BP_ALL	GO:0009890	GO:0009890~negative regulation of biosynthetic process	1.90E-05	133
+GOTERM_BP_ALL	GO:0051304	GO:0051304~chromosome separation	2.28E-05	134
+GOTERM_BP_ALL	GO:0010212	GO:0010212~response to ionizing radiation	2.32E-05	135
+GOTERM_BP_ALL	GO:0006283	GO:0006283~transcription-coupled nucleotide-excision repair	2.61E-05	136
+GOTERM_BP_ALL	GO:0000732	GO:0000732~strand displacement	3.00E-05	137
+GOTERM_BP_ALL	GO:0010629	GO:0010629~negative regulation of gene expression	4.08E-05	138
+GOTERM_BP_ALL	GO:0022414	GO:0022414~reproductive process	4.32E-05	139
+GOTERM_BP_ALL	GO:0000003	GO:0000003~reproduction	4.50E-05	140
+GOTERM_BP_ALL	GO:0051169	GO:0051169~nuclear transport	4.73E-05	141
+GOTERM_BP_ALL	GO:0006284	GO:0006284~base-excision repair	5.02E-05	142
+GOTERM_BP_ALL	GO:0060255	GO:0060255~regulation of macromolecule metabolic process	6.63E-05	143
+GOTERM_BP_ALL	GO:0030330	"GO:0030330~DNA damage response, signal transduction by p53 class mediator"	7.90E-05	144
+GOTERM_BP_ALL	GO:0000018	GO:0000018~regulation of DNA recombination	8.89E-05	145
+GOTERM_BP_ALL	GO:0006333	GO:0006333~chromatin assembly or disassembly	8.94E-05	146
+GOTERM_BP_ALL	GO:2001251	GO:2001251~negative regulation of chromosome organization	1.06E-04	147
+GOTERM_BP_ALL	GO:0006268	GO:0006268~DNA unwinding involved in DNA replication	1.11E-04	148
+GOTERM_BP_ALL	GO:0007051	GO:0007051~spindle organization	1.17E-04	149
+GOTERM_BP_ALL	GO:0042276	GO:0042276~error-prone translesion synthesis	1.21E-04	150
+GOTERM_BP_ALL	GO:0070987	GO:0070987~error-free translesion synthesis	1.21E-04	151
+GOTERM_BP_ALL	GO:0007088	GO:0007088~regulation of mitotic nuclear division	1.58E-04	152
+GOTERM_BP_ALL	GO:0065004	GO:0065004~protein-DNA complex assembly	1.79E-04	153
+GOTERM_BP_ALL	GO:0007569	GO:0007569~cell aging	1.98E-04	154
+GOTERM_BP_ALL	GO:0006303	GO:0006303~double-strand break repair via nonhomologous end joining	2.01E-04	155
+GOTERM_BP_ALL	GO:0051053	GO:0051053~negative regulation of DNA metabolic process	2.03E-04	156
+GOTERM_BP_ALL	GO:0043933	GO:0043933~macromolecular complex subunit organization	2.07E-04	157
+GOTERM_BP_ALL	GO:0031571	GO:0031571~mitotic G1 DNA damage checkpoint	2.93E-04	158
+GOTERM_BP_ALL	GO:0045935	GO:0045935~positive regulation of nucleobase-containing compound metabolic process	3.21E-04	159
+GOTERM_BP_ALL	GO:0044783	GO:0044783~G1 DNA damage checkpoint	3.31E-04	160
+GOTERM_BP_ALL	GO:0000726	GO:0000726~non-recombinational repair	4.20E-04	161
+GOTERM_BP_ALL	GO:0031100	GO:0031100~organ regeneration	4.72E-04	162
+GOTERM_BP_ALL	GO:0051173	GO:0051173~positive regulation of nitrogen compound metabolic process	7.00E-04	163
+GOTERM_BP_ALL	GO:0007052	GO:0007052~mitotic spindle organization	7.45E-04	164
+GOTERM_BP_ALL	GO:0006913	GO:0006913~nucleocytoplasmic transport	7.78E-04	165
+GOTERM_BP_ALL	GO:0019222	GO:0019222~regulation of metabolic process	8.85E-04	166
+GOTERM_BP_ALL	GO:0071156	GO:0071156~regulation of cell cycle arrest	0.001010633	167
+GOTERM_BP_ALL	GO:0072331	GO:0072331~signal transduction by p53 class mediator	0.001025513	168
+GOTERM_BP_ALL	GO:0009628	GO:0009628~response to abiotic stimulus	0.001157722	169
+GOTERM_BP_ALL	GO:0071158	GO:0071158~positive regulation of cell cycle arrest	0.001250781	170
+GOTERM_BP_ALL	GO:1902403	GO:1902403~signal transduction involved in mitotic DNA integrity checkpoint	0.001347811	171
+GOTERM_BP_ALL	GO:0072431	GO:0072431~signal transduction involved in mitotic G1 DNA damage checkpoint	0.001347811	172
+GOTERM_BP_ALL	GO:1902402	GO:1902402~signal transduction involved in mitotic DNA damage checkpoint	0.001347811	173
+GOTERM_BP_ALL	GO:0072413	GO:0072413~signal transduction involved in mitotic cell cycle checkpoint	0.001347811	174
+GOTERM_BP_ALL	GO:1902400	GO:1902400~intracellular signal transduction involved in G1 DNA damage checkpoint	0.001347811	175
+GOTERM_BP_ALL	GO:0033043	GO:0033043~regulation of organelle organization	0.001453311	176
+GOTERM_BP_ALL	GO:0043412	GO:0043412~macromolecule modification	0.001581771	177
+GOTERM_BP_ALL	GO:0002200	GO:0002200~somatic diversification of immune receptors	0.001723026	178
+GOTERM_BP_ALL	GO:0072401	GO:0072401~signal transduction involved in DNA integrity checkpoint	0.001723026	179
+GOTERM_BP_ALL	GO:0072422	GO:0072422~signal transduction involved in DNA damage checkpoint	0.001723026	180
+GOTERM_BP_ALL	GO:2000104	GO:2000104~negative regulation of DNA-dependent DNA replication	0.001824824	181
+GOTERM_BP_ALL	GO:0072395	GO:0072395~signal transduction involved in cell cycle checkpoint	0.001941858	182
+GOTERM_BP_ALL	GO:0031323	GO:0031323~regulation of cellular metabolic process	0.002016008	183
+GOTERM_BP_ALL	GO:0051225	GO:0051225~spindle assembly	0.002044054	184
+GOTERM_BP_ALL	GO:0033045	GO:0033045~regulation of sister chromatid segregation	0.002183964	185
+GOTERM_BP_ALL	GO:0016070	GO:0016070~RNA metabolic process	0.002383505	186
+GOTERM_BP_ALL	GO:0034644	GO:0034644~cellular response to UV	0.002451337	187
+GOTERM_BP_ALL	GO:0080090	GO:0080090~regulation of primary metabolic process	0.002799141	188
+GOTERM_BP_ALL	GO:0010965	GO:0010965~regulation of mitotic sister chromatid separation	0.003149477	189
+GOTERM_BP_ALL	GO:0051168	GO:0051168~nuclear export	0.00326294	190
+GOTERM_BP_ALL	GO:0045931	GO:0045931~positive regulation of mitotic cell cycle	0.003644419	191
+GOTERM_BP_ALL	GO:0051306	GO:0051306~mitotic sister chromatid separation	0.004163312	192
+GOTERM_BP_ALL	GO:0010332	GO:0010332~response to gamma radiation	0.004163312	193
+GOTERM_BP_ALL	GO:0040029	"GO:0040029~regulation of gene expression, epigenetic"	0.00445308	194
+GOTERM_BP_ALL	GO:2001020	GO:2001020~regulation of response to DNA damage stimulus	0.00459662	195
+GOTERM_BP_ALL	GO:0010556	GO:0010556~regulation of macromolecule biosynthetic process	0.005174578	196
+GOTERM_BP_ALL	GO:0008156	GO:0008156~negative regulation of DNA replication	0.00520725	197
+GOTERM_BP_ALL	GO:0071214	GO:0071214~cellular response to abiotic stimulus	0.005552934	198
+GOTERM_BP_ALL	GO:0032446	GO:0032446~protein modification by small protein conjugation	0.005840418	199
+GOTERM_BP_ALL	GO:0002562	GO:0002562~somatic diversification of immune receptors via germline recombination within a single locus	0.006184574	200
+GOTERM_BP_ALL	GO:0016444	GO:0016444~somatic cell DNA recombination	0.006184574	201
+GOTERM_BP_ALL	GO:0010639	GO:0010639~negative regulation of organelle organization	0.006913913	202
+GOTERM_BP_ALL	GO:0007098	GO:0007098~centrosome cycle	0.007052167	203
+GOTERM_BP_ALL	GO:0051253	GO:0051253~negative regulation of RNA metabolic process	0.007350067	204
+GOTERM_BP_ALL	GO:0048523	GO:0048523~negative regulation of cellular process	0.007490216	205
+GOTERM_BP_ALL	GO:0031145	GO:0031145~anaphase-promoting complex-dependent catabolic process	0.007769561	206
+GOTERM_BP_ALL	GO:0033047	GO:0033047~regulation of mitotic sister chromatid segregation	0.007940477	207
+GOTERM_BP_ALL	GO:0071479	GO:0071479~cellular response to ionizing radiation	0.01009131	208
+GOTERM_BP_ALL	GO:0044085	GO:0044085~cellular component biogenesis	0.01039391	209
+GOTERM_BP_ALL	GO:0006282	GO:0006282~regulation of DNA repair	0.01128746	210
+GOTERM_BP_ALL	GO:0010604	GO:0010604~positive regulation of macromolecule metabolic process	0.012045157	211
+GOTERM_BP_ALL	GO:0006464	GO:0006464~cellular protein modification process	0.012634958	212
+GOTERM_BP_ALL	GO:0036211	GO:0036211~protein modification process	0.012634958	213
+GOTERM_BP_ALL	GO:0034502	GO:0034502~protein localization to chromosome	0.012703102	214
+GOTERM_BP_ALL	GO:0051297	GO:0051297~centrosome organization	0.0128055	215
+GOTERM_BP_ALL	GO:0033260	GO:0033260~nuclear DNA replication	0.013115496	216
+GOTERM_BP_ALL	GO:0045132	GO:0045132~meiotic chromosome segregation	0.013496869	217
+GOTERM_BP_ALL	GO:0034728	GO:0034728~nucleosome organization	0.014588645	218
+GOTERM_BP_ALL	GO:0031860	GO:0031860~telomeric 3' overhang formation	0.015068965	219
+GOTERM_BP_ALL	GO:2000112	GO:2000112~regulation of cellular macromolecule biosynthetic process	0.015342249	220
+GOTERM_BP_ALL	GO:0006977	"GO:0006977~DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest"	0.015848795	221
+GOTERM_BP_ALL	GO:0048519	GO:0048519~negative regulation of biological process	0.016607661	222
+GOTERM_BP_ALL	GO:1903507	GO:1903507~negative regulation of nucleic acid-templated transcription	0.019001089	223
+GOTERM_BP_ALL	GO:0090399	GO:0090399~replicative senescence	0.019270402	224
+GOTERM_BP_ALL	GO:0051338	GO:0051338~regulation of transferase activity	0.022717522	225
+GOTERM_BP_ALL	GO:0045892	"GO:0045892~negative regulation of transcription, DNA-templated"	0.023344297	226
+GOTERM_BP_ALL	GO:0009987	GO:0009987~cellular process	0.023755953	227
+GOTERM_BP_ALL	GO:1904029	GO:1904029~regulation of cyclin-dependent protein kinase activity	0.024288716	228
+GOTERM_BP_ALL	GO:1902679	GO:1902679~negative regulation of RNA biosynthetic process	0.025237633	229
+GOTERM_BP_ALL	GO:0031326	GO:0031326~regulation of cellular biosynthetic process	0.026628329	230
+GOTERM_BP_ALL	GO:0031023	GO:0031023~microtubule organizing center organization	0.027394877	231
+GOTERM_BP_ALL	GO:0090398	GO:0090398~cellular senescence	0.028143561	232
+GOTERM_BP_ALL	GO:1902850	GO:1902850~microtubule cytoskeleton organization involved in mitosis	0.028143561	233
+GOTERM_BP_ALL	GO:0032774	GO:0032774~RNA biosynthetic process	0.028474333	234
+GOTERM_BP_ALL	GO:0051303	GO:0051303~establishment of chromosome localization	0.032278271	235
+GOTERM_BP_ALL	GO:0070647	GO:0070647~protein modification by small protein conjugation or removal	0.032442018	236
+GOTERM_BP_ALL	GO:0071482	GO:0071482~cellular response to light stimulus	0.033157947	237
+GOTERM_BP_ALL	GO:0050000	GO:0050000~chromosome localization	0.035470309	238
+GOTERM_BP_ALL	GO:0016569	GO:0016569~covalent chromatin modification	0.037415969	239
+GOTERM_BP_ALL	GO:0007131	GO:0007131~reciprocal meiotic recombination	0.040966199	240
+GOTERM_BP_ALL	GO:0035825	GO:0035825~reciprocal DNA recombination	0.040966199	241
+GOTERM_BP_ALL	GO:0009889	GO:0009889~regulation of biosynthetic process	0.042743331	242
+GOTERM_BP_ALL	GO:0022607	GO:0022607~cellular component assembly	0.042822116	243
+GOTERM_BP_ALL	GO:0007143	GO:0007143~female meiotic division	0.043162909	244
+GOTERM_BP_ALL	GO:0007568	GO:0007568~aging	0.045109478	245
+GOTERM_BP_ALL	GO:0031325	GO:0031325~positive regulation of cellular metabolic process	0.045785921	246
