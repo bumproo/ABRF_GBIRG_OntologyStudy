@@ -348,11 +348,11 @@ bkground <- 17000
 ###########
 pathSize <- 25
 
-degsInPath <- 3
+degsInPath <- 2
 
-degs.3 <- lapply(degSize, testDGEs.df)
-degs.3.Plot <- as.data.frame(cbind(degSize,unlist(degs.3)))
-colnames(degs.3.Plot) <- c("degSize","pval")
+degs.2 <- lapply(degSize, testDGEs.df)
+degs.2.Plot <- as.data.frame(cbind(degSize,unlist(degs.2)))
+colnames(degs.2.Plot) <- c("degSize","pval")
 
 degsInPath <- 5
 
@@ -372,16 +372,16 @@ degs.15 <- lapply(degSize, testDGEs.df)
 degs.15.Plot <- as.data.frame(cbind(degSize,unlist(degs.15)))
 colnames(degs.15.Plot) <- c("degSize","pval")
 
-pl.25path <- ggplot() + geom_point(data=degs.3.Plot, aes(x=degSize, y=pval), color="red") + geom_point(data=degs.5.Plot, aes(x=degSize, y=pval), color="green") + geom_point(data=degs.10.Plot, aes(x=degSize, y=pval), color="blue") + geom_point(data=degs.15.Plot, aes(x=degSize, y=pval), color="black") + geom_hline(aes(yintercept=1.3, color = "red"), size=2) + ylim(0, 25) + ggtitle("25 Gene Pathway")
+pl.25path <- ggplot() + geom_point(data=degs.2.Plot, aes(x=degSize, y=pval), color="green") + geom_point(data=degs.5.Plot, aes(x=degSize, y=pval), color="black") + geom_point(data=degs.10.Plot, aes(x=degSize, y=pval), color="blue") + geom_point(data=degs.15.Plot, aes(x=degSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, color = "red"), size=2) + ylim(0, 25) + ggtitle("25 Gene Pathway")
 
 ###########
 pathSize <- 50
 
-degsInPath <- 3
+degsInPath <- 2
 
-degs.3 <- lapply(degSize, testDGEs.df)
-degs.3.Plot <- as.data.frame(cbind(degSize,unlist(degs.3)))
-colnames(degs.3.Plot) <- c("degSize","pval")
+degs.2 <- lapply(degSize, testDGEs.df)
+degs.2.Plot <- as.data.frame(cbind(degSize,unlist(degs.2)))
+colnames(degs.2.Plot) <- c("degSize","pval")
 
 degsInPath <- 5
 
@@ -401,15 +401,15 @@ degs.15 <- lapply(degSize, testDGEs.df)
 degs.15.Plot <- as.data.frame(cbind(degSize,unlist(degs.15)))
 colnames(degs.15.Plot) <- c("degSize","pval")
 
-pl.50path <- ggplot() + geom_point(data=degs.3.Plot, aes(x=degSize, y=pval), color="red") + geom_point(data=degs.5.Plot, aes(x=degSize, y=pval), color="green") + geom_point(data=degs.10.Plot, aes(x=degSize, y=pval), color="blue") + geom_point(data=degs.15.Plot, aes(x=degSize, y=pval), color="black") + geom_hline(aes(yintercept=1.3, color = "red"), size=2) + ylim(0, 25) + ggtitle("50 Gene Pathway")
+pl.50path <- ggplot() + geom_point(data=degs.2.Plot, aes(x=degSize, y=pval), color="green") + geom_point(data=degs.5.Plot, aes(x=degSize, y=pval), color="black") + geom_point(data=degs.10.Plot, aes(x=degSize, y=pval), color="blue") + geom_point(data=degs.15.Plot, aes(x=degSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, color = "red"), size=2) + ylim(0, 25) + ggtitle("50 Gene Pathway")
 ###########
 pathSize <- 100
 
-degsInPath <- 3
+degsInPath <- 2
 
-degs.3 <- lapply(degSize, testDGEs.df)
-degs.3.Plot <- as.data.frame(cbind(degSize,unlist(degs.3)))
-colnames(degs.3.Plot) <- c("degSize","pval")
+degs.2 <- lapply(degSize, testDGEs.df)
+degs.2.Plot <- as.data.frame(cbind(degSize,unlist(degs.2)))
+colnames(degs.2.Plot) <- c("degSize","pval")
 
 degsInPath <- 5
 
@@ -429,15 +429,15 @@ degs.15 <- lapply(degSize, testDGEs.df)
 degs.15.Plot <- as.data.frame(cbind(degSize,unlist(degs.15)))
 colnames(degs.15.Plot) <- c("degSize","pval")
 
-pl.100path <- ggplot() + geom_point(data=degs.3.Plot, aes(x=degSize, y=pval), color="red") + geom_point(data=degs.5.Plot, aes(x=degSize, y=pval), color="green") + geom_point(data=degs.10.Plot, aes(x=degSize, y=pval), color="blue") + geom_point(data=degs.15.Plot, aes(x=degSize, y=pval), color="black") + geom_hline(aes(yintercept=1.3, color = "red"), size=2) + ylim(0, 25) + ggtitle("100 Gene Pathway")
+pl.100path <- ggplot() + geom_point(data=degs.2.Plot, aes(x=degSize, y=pval), color="green") + geom_point(data=degs.5.Plot, aes(x=degSize, y=pval), color="black") + geom_point(data=degs.10.Plot, aes(x=degSize, y=pval), color="blue") + geom_point(data=degs.15.Plot, aes(x=degSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, color = "red"), size=2) + ylim(0, 25) + ggtitle("100 Gene Pathway")
 ###########
 pathSize <- 200
 
-degsInPath <- 3
+degsInPath <- 2
 
-degs.3 <- lapply(degSize, testDGEs.df)
-degs.3.Plot <- as.data.frame(cbind(degSize,unlist(degs.3)))
-colnames(degs.3.Plot) <- c("degSize","pval")
+degs.2 <- lapply(degSize, testDGEs.df)
+degs2.Plot <- as.data.frame(cbind(degSize,unlist(degs.2)))
+colnames(degs.2.Plot) <- c("degSize","pval")
 
 degsInPath <- 5
 
@@ -457,7 +457,7 @@ degs.15 <- lapply(degSize, testDGEs.df)
 degs.15.Plot <- as.data.frame(cbind(degSize,unlist(degs.15)))
 colnames(degs.15.Plot) <- c("degSize","pval")
 
-pl.200path <- ggplot() + geom_point(data=degs.3.Plot, aes(x=degSize, y=pval), color="red") + geom_point(data=degs.5.Plot, aes(x=degSize, y=pval), color="green") + geom_point(data=degs.10.Plot, aes(x=degSize, y=pval), color="blue") + geom_point(data=degs.15.Plot, aes(x=degSize, y=pval), color="black") + geom_hline(aes(yintercept=1.3, color = "red"), size=2) + ylim(0, 25) + ggtitle("200 Gene Pathway")
+pl.200path <- ggplot() + geom_point(data=degs.2.Plot, aes(x=degSize, y=pval), color="green") + geom_point(data=degs.5.Plot, aes(x=degSize, y=pval), color="black") + geom_point(data=degs.10.Plot, aes(x=degSize, y=pval), color="blue") + geom_point(data=degs.15.Plot, aes(x=degSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, color = "red"), size=2) + ylim(0, 25) + ggtitle("200 Gene Pathway")
 ```
 
 ```{r,fig.width=20, fig.height=5}
