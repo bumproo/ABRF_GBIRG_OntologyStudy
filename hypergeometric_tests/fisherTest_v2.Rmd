@@ -67,7 +67,7 @@ make.df200 <- function(denomItem){
 *run the plots with -log10 pvalues*
 ```{r}
 denom <- seq(from = 12000, to = 20000, by = 100)
-degSize <- 100
+degSize <- 1200
 ###########
 pathSize <- 25
 
@@ -87,7 +87,7 @@ x15 <- lapply(denom, make.df15)
 x15.Plot <- as.data.frame(cbind(denom,unlist(x15)))
 colnames(x15.Plot) <- c("BkgrSize","pval")
 
-pl.25 <- ggplot() + geom_point(data=x2.Plot, aes(x=BkgrSize, y=pval), color="green") + geom_point(data=x5.Plot, aes(x=BkgrSize, y=pval), color="black") + geom_point(data=x10.Plot, aes(x=BkgrSize, y=pval), color="blue") + geom_point(data=x15.Plot, aes(x=BkgrSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, linetype="dashed", color = "red")) + ylim(0, 25) + ggtitle("25 Gene Pathway")
+pl.25 <- ggplot() + geom_point(data=x2.Plot, aes(x=BkgrSize, y=pval), color="green") + geom_point(data=x5.Plot, aes(x=BkgrSize, y=pval), color="black") + geom_point(data=x10.Plot, aes(x=BkgrSize, y=pval), color="blue") + geom_point(data=x15.Plot, aes(x=BkgrSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, color = "red"), size=2)  + ylim(0, 25) + ggtitle("25 Gene Pathway")
 ###########
 pathSize <- 50
 
@@ -107,7 +107,7 @@ x15 <- lapply(denom, make.df15)
 x15.Plot <- as.data.frame(cbind(denom,unlist(x15)))
 colnames(x15.Plot) <- c("BkgrSize","pval")
 
-pl.50 <- ggplot() + geom_point(data=x2.Plot, aes(x=BkgrSize, y=pval), color="green") + geom_point(data=x5.Plot, aes(x=BkgrSize, y=pval), color="black") + geom_point(data=x10.Plot, aes(x=BkgrSize, y=pval), color="blue") + geom_point(data=x15.Plot, aes(x=BkgrSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, linetype="dashed", color = "red")) + ylim(0, 25) + ggtitle("50 Gene Pathway")
+pl.50 <- ggplot() + geom_point(data=x2.Plot, aes(x=BkgrSize, y=pval), color="green") + geom_point(data=x5.Plot, aes(x=BkgrSize, y=pval), color="black") + geom_point(data=x10.Plot, aes(x=BkgrSize, y=pval), color="blue") + geom_point(data=x15.Plot, aes(x=BkgrSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, color = "red"), size=2)  + ylim(0, 25) + ggtitle("50 Gene Pathway")
 ###########
 pathSize <- 75
 
@@ -127,7 +127,7 @@ x15 <- lapply(denom, make.df15)
 x15.Plot <- as.data.frame(cbind(denom,unlist(x15)))
 colnames(x15.Plot) <- c("BkgrSize","pval")
 
-pl.75 <- ggplot() + geom_point(data=x2.Plot, aes(x=BkgrSize, y=pval), color="green") + geom_point(data=x5.Plot, aes(x=BkgrSize, y=pval), color="black") + geom_point(data=x10.Plot, aes(x=BkgrSize, y=pval), color="blue") + geom_point(data=x15.Plot, aes(x=BkgrSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, linetype="dashed", color = "red")) + ylim(0, 25) + ggtitle("75 Gene Pathway")
+pl.75 <- ggplot() + geom_point(data=x2.Plot, aes(x=BkgrSize, y=pval), color="green") + geom_point(data=x5.Plot, aes(x=BkgrSize, y=pval), color="black") + geom_point(data=x10.Plot, aes(x=BkgrSize, y=pval), color="blue") + geom_point(data=x15.Plot, aes(x=BkgrSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, color = "red"), size=2)  + ylim(0, 25) + ggtitle("75 Gene Pathway")
 ###########
 pathSize <- 100
 
@@ -147,7 +147,7 @@ x15 <- lapply(denom, make.df15)
 x15.Plot <- as.data.frame(cbind(denom,unlist(x15)))
 colnames(x15.Plot) <- c("BkgrSize","pval")
 
-pl.100 <- ggplot() + geom_point(data=x2.Plot, aes(x=BkgrSize, y=pval), color="green") + geom_point(data=x5.Plot, aes(x=BkgrSize, y=pval), color="black") + geom_point(data=x10.Plot, aes(x=BkgrSize, y=pval), color="blue") + geom_point(data=x15.Plot, aes(x=BkgrSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, linetype="dashed", color = "red")) + ylim(0, 25) + ggtitle("100 Gene Pathway")
+pl.100 <- ggplot() + geom_point(data=x2.Plot, aes(x=BkgrSize, y=pval), color="green") + geom_point(data=x5.Plot, aes(x=BkgrSize, y=pval), color="black") + geom_point(data=x10.Plot, aes(x=BkgrSize, y=pval), color="blue") + geom_point(data=x15.Plot, aes(x=BkgrSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, color = "red"), size=2)  + ylim(0, 25) + ggtitle("100 Gene Pathway")
 ###########
 pathSize <- 200
 
@@ -167,7 +167,7 @@ x15 <- lapply(denom, make.df15)
 x15.Plot <- as.data.frame(cbind(denom,unlist(x15)))
 colnames(x15.Plot) <- c("BkgrSize","pval")
 
-pl.200 <- ggplot() + geom_point(data=x2.Plot, aes(x=BkgrSize, y=pval), color="green") + geom_point(data=x5.Plot, aes(x=BkgrSize, y=pval), color="black") + geom_point(data=x10.Plot, aes(x=BkgrSize, y=pval), color="blue") + geom_point(data=x15.Plot, aes(x=BkgrSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, linetype="dashed", color = "red")) + ylim(0, 25) + ggtitle("200 Gene Pathway")
+pl.200 <- ggplot() + geom_point(data=x2.Plot, aes(x=BkgrSize, y=pval), color="green") + geom_point(data=x5.Plot, aes(x=BkgrSize, y=pval), color="black") + geom_point(data=x10.Plot, aes(x=BkgrSize, y=pval), color="blue") + geom_point(data=x15.Plot, aes(x=BkgrSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, color = "red"), size=2)  + ylim(0, 25) + ggtitle("200 Gene Pathway")
 ###########
 pathSize <- 500
 
@@ -187,11 +187,11 @@ x15 <- lapply(denom, make.df15)
 x15.Plot <- as.data.frame(cbind(denom,unlist(x15)))
 colnames(x15.Plot) <- c("BkgrSize","pval")
 
-pl.500 <- ggplot() + geom_point(data=x2.Plot, aes(x=BkgrSize, y=pval), color="green") + geom_point(data=x5.Plot, aes(x=BkgrSize, y=pval), color="black") + geom_point(data=x10.Plot, aes(x=BkgrSize, y=pval), color="blue") + geom_point(data=x15.Plot, aes(x=BkgrSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, linetype="dashed", color = "red")) + ylim(0, 25) + ggtitle("500 Gene Pathway")
+pl.500 <- ggplot() + geom_point(data=x2.Plot, aes(x=BkgrSize, y=pval), color="green") + geom_point(data=x5.Plot, aes(x=BkgrSize, y=pval), color="black") + geom_point(data=x10.Plot, aes(x=BkgrSize, y=pval), color="blue") + geom_point(data=x15.Plot, aes(x=BkgrSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, color = "red"), size=2)  + ylim(0, 25) + ggtitle("500 Gene Pathway")
 ```
 
 ```{r,fig.width=20, fig.height=5}
-ggarrange(pl.25,pl.50,pl.75,pl.100,pl.200,pl.500, legend = FALSE, ncol=6, nrow=1) 
+ggarrange(pl.25,pl.50,pl.100,pl.200, legend = FALSE, ncol=4, nrow=1) 
 ```
 
 *fisher tests of up in Rev vs HALLMARK_E2F*
