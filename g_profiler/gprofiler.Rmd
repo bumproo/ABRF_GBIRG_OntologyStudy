@@ -81,7 +81,7 @@ evc.bkground <- evc %>% dplyr::select(c("Gene"))
 
 evc.gostres.bg <- gost(query = evc.degs$Gene,organism = "mmusculus", 
                 sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"),
-                significant = TRUE, correction_method ="g_SCS",
+                significant = FALSE, correction_method ="g_SCS",
                 custom_bg = evc.bkground$Gene, domain_scope="custom")
 
 write.xlsx(evc.gostres.bg$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="evc.gprofiler.xlsx")
@@ -92,7 +92,7 @@ g1vrev.bkground <- g1vrev %>% dplyr::select(c("Gene"))
 
 g1vrev.gostres.bg <- gost(query = g1vrev.degs$Gene,organism = "hsapiens", 
                 sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"),
-                significant = TRUE, correction_method ="g_SCS",
+                significant = FALSE, correction_method ="g_SCS",
                 custom_bg = g1vrev.bkground$Gene, domain_scope="custom")
 
 write.xlsx(g1vrev.gostres.bg$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="g1vrev.gprofiler.xlsx")
@@ -104,7 +104,7 @@ hmp3avc.bkground <- hmp3avc %>% dplyr::select(c("Gene"))
 
 hmp3avc.gostres.bg <- gost(query = hmp3avc.degs$Gene,organism = "hsapiens", 
                 sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"),
-                significant = TRUE, correction_method ="g_SCS",
+                significant = FALSE, correction_method ="g_SCS",
                 custom_bg = hmp3avc.bkground$Gene, domain_scope="custom")
 
 write.xlsx(hmp3avc.gostres.bg$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="hmp3avc.gprofiler.xlsx")
@@ -116,7 +116,7 @@ muscsvc.bkground <- muscsvc %>% dplyr::select(c("Gene"))
 
 muscsvc.gostres.bg <- gost(query = muscsvc.degs$Gene,organism = "hsapiens", 
                 sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"),
-                significant = TRUE, correction_method ="g_SCS",
+                significant = FALSE, correction_method ="g_SCS",
                 custom_bg = muscsvc.bkground$Gene, domain_scope="custom")
 
 write.xlsx(muscsvc.gostres.bg$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="muscsvc.gprofiler.xlsx")

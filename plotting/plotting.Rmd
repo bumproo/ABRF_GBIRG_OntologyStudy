@@ -32,26 +32,28 @@ MuscleSvC.GSEA <- read.xlsx("../shared_data/Muscle_SkeletalvsCardiac_GSEAv4_with
 *GSEA Summary Plots_v2*
 
 ```{r, fig.width=10, fig.height=3}
-evc.gsea.filt <- EvC.GSEA %>% filter(FDR <= 0.05) %>% filter(Collection %in% c("h","c2cgp","c2cp","c5bp", "c5mf", "c5cc"))
+p.Cutoff <- 0.05
+
+evc.gsea.filt <- EvC.GSEA %>% filter(FDR <= p.Cutoff) %>% filter(Collection %in% c("h","c2cgp","c2cp","c5bp", "c5mf", "c5cc"))
 evc.gsea.filt <- tibble::rownames_to_column(evc.gsea.filt,"Name")
 evc.gsea.nohit <- evc.gsea.filt %>% filter(Hit == "Other")
 evc.gsea.hit <- evc.gsea.filt %>% filter(Hit == "Hit")
 ec.gsea.plot <- ggplot() + geom_jitter(data=evc.gsea.nohit, aes(x="Collection",y=FDR), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=evc.gsea.hit, aes(x="Collection",y=FDR), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("EvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
 
-g1vrev.gsea.filt <- G1vRev.GSEA %>% filter(FDR <= 0.05) %>% filter(Collection %in% c("h","c2cgp","c2cp","c5bp", "c5mf", "c5cc"))
+g1vrev.gsea.filt <- G1vRev.GSEA %>% filter(FDR <= p.Cutoff) %>% filter(Collection %in% c("h","c2cgp","c2cp","c5bp", "c5mf", "c5cc"))
 g1vrev.gsea.filt <- tibble::rownames_to_column(g1vrev.gsea.filt,"Name")
 g1rev.gsea.nohit <- g1vrev.gsea.filt %>% filter(Hit == "Other")
 g1rev.gsea.hit <- g1vrev.gsea.filt %>% filter(Hit == "Hit")
 g1rev.gsea.plot <- ggplot() + geom_jitter(data=g1rev.gsea.nohit, aes(x="Collection",y=FDR), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=g1rev.gsea.hit, aes(x="Collection",y=FDR), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("g1rev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
 
-hpm3AvC.gsea.filt <- hpm3AvC.GSEA %>% filter(FDR <= 0.05) %>% filter(Collection %in% c("h","c2cgp","c2cp","c5bp", "c5mf", "c5cc"))
+hpm3AvC.gsea.filt <- hpm3AvC.GSEA %>% filter(FDR <= p.Cutoff) %>% filter(Collection %in% c("h","c2cgp","c2cp","c5bp", "c5mf", "c5cc"))
 hpm3AvC.gsea.filt <- tibble::rownames_to_column(hpm3AvC.gsea.filt,"Name")
 ac.gsea.nohit <- hpm3AvC.gsea.filt %>% filter(Hit == "Other")
 ac.gsea.hit <- hpm3AvC.gsea.filt %>% filter(Hit == "Hit")
 ac.gsea.plot <- ggplot() + geom_jitter(data=ac.gsea.nohit, aes(x="Collection",y=FDR), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=ac.gsea.hit, aes(x="Collection",y=FDR), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("hpm3.AvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
 
 
-MuscleSvC.gsea.filt <- MuscleSvC.GSEA %>% filter(FDR <= 0.05) %>% filter(Collection %in% c("h","c2cgp","c2cp","c5bp", "c5mf", "c5cc"))
+MuscleSvC.gsea.filt <- MuscleSvC.GSEA %>% filter(FDR <= p.Cutoff) %>% filter(Collection %in% c("h","c2cgp","c2cp","c5bp", "c5mf", "c5cc"))
 MuscleSvC.gsea.filt <- tibble::rownames_to_column(MuscleSvC.gsea.filt,"Name")
 sc.gsea.nohit <- MuscleSvC.gsea.filt %>% filter(Hit == "Other")
 sc.gsea.hit <- MuscleSvC.gsea.filt %>% filter(Hit == "Hit")
@@ -72,26 +74,28 @@ MuscleSvC.DAVID <- read.xlsx("../DAVID/muscsvc.DEGS.DAVID_withOverlaps.xlsx", co
 *DAVID Summary Plots_v2*
 
 ```{r, fig.width=10, fig.height=3}
-evc.david.filt <- EvC.DAVID %>% filter(PValue <= 0.05)
+p.Cutoff <- 0.05
+
+evc.david.filt <- EvC.DAVID %>% filter(PValue <= p.Cutoff)
 evc.david.filt  <- tibble::rownames_to_column(evc.david.filt ,"Name")
 evc.david.nohit <- evc.david.filt  %>% filter(Hit == "Other")
 evc.david.hit <- evc.david.filt  %>% filter(Hit == "Hit")
 ec.david.plot <- ggplot() + geom_jitter(data=evc.david.nohit, aes(x="Collection",y=PValue), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=evc.david.hit, aes(x="Collection",y=PValue), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("EvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
 
-g1vrev.david.filt  <- G1vRev.DAVID %>% filter(PValue <= 0.05)
+g1vrev.david.filt  <- G1vRev.DAVID %>% filter(PValue <= p.Cutoff)
 g1vrev.david.filt  <- tibble::rownames_to_column(g1vrev.david.filt ,"Name")
 g1rev.david.nohit <- g1vrev.david.filt  %>% filter(Hit == "Other")
 g1rev.david.hit <- g1vrev.david.filt  %>% filter(Hit == "Hit")
 g1rev.david.plot <- ggplot() + geom_jitter(data=g1rev.david.nohit, aes(x="Collection",y=PValue), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=g1rev.david.hit, aes(x="Collection",y=PValue), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("g1rev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
 
-hpm3AvC.david.filt  <- hpm3AvC.DAVID %>% filter(PValue <= 0.05)
+hpm3AvC.david.filt  <- hpm3AvC.DAVID %>% filter(PValue <= p.Cutoff)
 hpm3AvC.david.filt  <- tibble::rownames_to_column(hpm3AvC.david.filt ,"Name")
 ac.david.nohit <- hpm3AvC.david.filt  %>% filter(Hit == "Other")
 ac.david.hit <- hpm3AvC.david.filt  %>% filter(Hit == "Hit")
 ac.david.plot <- ggplot() + geom_jitter(data=ac.david.nohit, aes(x="Collection",y=PValue), color="black", alpha=0.5, size=0.6, width=0.1) + geom_jitter(data=ac.david.hit, aes(x="Collection",y=PValue), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("hpm3.AvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
 
 
-MuscleSvC.david.filt  <- MuscleSvC.DAVID %>% filter(PValue <= 0.05)
+MuscleSvC.david.filt  <- MuscleSvC.DAVID %>% filter(PValue <= p.Cutoff)
 MuscleSvC.david.filt  <- tibble::rownames_to_column(MuscleSvC.david.filt ,"Name")
 sc.david.nohit <- MuscleSvC.david.filt  %>% filter(Hit == "Other")
 sc.david.hit <- MuscleSvC.david.filt  %>% filter(Hit == "Hit")
@@ -112,26 +116,28 @@ MuscleSvC.gprofiler <- read.xlsx("../g_profiler/muscsvc.gprofiler_withOverlaps.x
 *Gprofiler Summary Plots_v2*
 
 ```{r, fig.width=10, fig.height=3}
-evc.gpro.filt  <- EvC.gprofiler %>% filter(p_value <= 0.05)
+p.Cutoff <- 0.05
+
+evc.gpro.filt  <- EvC.gprofiler %>% filter(p_value <= p.Cutoff)
 evc.gpro.filt <- tibble::rownames_to_column(evc.gpro.filt,"Name")
 evc.gpro.nohit <- evc.gpro.filt %>% filter(Hit == "Other")
 evc.gpro.hit <- evc.gpro.filt %>% filter(Hit == "Hit")
 ec.gpro.plot <- ggplot() + geom_jitter(data=evc.gpro.nohit, aes(x="Collection",y=p_value), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=evc.gpro.hit, aes(x="Collection",y=p_value), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("EvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
 
-g1vrev.gpro.filt <- G1vRev.gprofiler %>% filter(p_value <= 0.05)
+g1vrev.gpro.filt <- G1vRev.gprofiler %>% filter(p_value <= p.Cutoff)
 g1vrev.gpro.filt <- tibble::rownames_to_column(g1vrev.gpro.filt,"Name")
 g1rev.gpro.nohit <- g1vrev.gpro.filt %>% filter(Hit == "Other")
 g1rev.gpro.hit <- g1vrev.gpro.filt %>% filter(Hit == "Hit")
 g1rev.gpro.plot <- ggplot() + geom_jitter(data=g1rev.gpro.nohit, aes(x="Collection",y=p_value), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=g1rev.gpro.hit, aes(x="Collection",y=p_value), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("g1rev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
 
-hpm3AvC.gpro.filt <- hpm3AvC.gprofiler %>% filter(p_value <= 0.05)
+hpm3AvC.gpro.filt <- hpm3AvC.gprofiler %>% filter(p_value <= p.Cutoff)
 hpm3AvC.gpro.filt <- tibble::rownames_to_column(hpm3AvC.gpro.filt,"Name")
 ac.gpro.nohit <- hpm3AvC.gpro.filt %>% filter(Hit == "Other")
 ac.gpro.hit <- hpm3AvC.gpro.filt %>% filter(Hit == "Hit")
 ac.gpro.plot <- ggplot() + geom_jitter(data=ac.gpro.nohit, aes(x="Collection",y=p_value), color="black", alpha=0.5, size=0.6, width=0.1) + geom_jitter(data=ac.gpro.hit, aes(x="Collection",y=p_value), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("hpm3.AvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
 
 
-MuscleSvC.gpro.filt <- MuscleSvC.gprofiler %>% filter(p_value <= 0.05)
+MuscleSvC.gpro.filt <- MuscleSvC.gprofiler %>% filter(p_value <= p.Cutoff)
 MuscleSvC.gpro.filt <- tibble::rownames_to_column(MuscleSvC.gpro.filt,"Name")
 sc.gpro.nohit <- MuscleSvC.gpro.filt %>% filter(Hit == "Other")
 sc.gpro.hit <- MuscleSvC.gpro.filt %>% filter(Hit == "Hit")
@@ -152,13 +158,15 @@ MuscleSvC.metacore <- read.xlsx("../shared_data/Muscle_SkeletalvsCardiac_metacor
 *Metacore Summary Plots_v2*
 
 ```{r, fig.width=10, fig.height=3}
-evc.mcore.filt <- EvC.metacore %>% filter(FDR <= 0.05)     
+p.Cutoff <- 0.05
+
+evc.mcore.filt <- EvC.metacore %>% filter(FDR <= p.Cutoff)     
 evc.mcore.filt <- tibble::rownames_to_column(evc.mcore.filt,"Name")
 evc.mcore.nohit <- evc.mcore.filt %>% filter(Hit == "Other")
 evc.mcore.hit <- evc.mcore.filt %>% filter(Hit == "Hit")
 ec.mcore.plot <- ggplot() + geom_jitter(data=evc.mcore.nohit, aes(x="Collection",y=FDR), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=evc.mcore.hit, aes(x="Collection",y=FDR), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("EvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()        
 
-g1vrev.mcore.filt <- G1vRev.metacore %>% filter(FDR <= 0.05)     
+g1vrev.mcore.filt <- G1vRev.metacore %>% filter(FDR <= p.Cutoff)     
 g1vrev.mcore.filt <- tibble::rownames_to_column(g1vrev.mcore.filt,"Name")
 g1rev.mcore.nohit <- g1vrev.mcore.filt %>% filter(Hit == "Other")
 g1rev.mcore.hit <- g1vrev.mcore.filt %>% filter(Hit == "Hit")
@@ -167,13 +175,13 @@ g1rev.mcore.plot <- ggplot() + geom_jitter(data=g1rev.mcore.nohit, aes(x="Collec
 #no significant g1rev hits for metacore so this line was extracted
 #geom_jitter(data=g1rev.mcore.hit, aes(x="Collection",y=FDR), color="red", alpha=1, size=2, width=0.1)
 
-hpm3AvC.mcore.filt <- hpm3AvC.metacore %>% filter(FDR <= 0.05)     
+hpm3AvC.mcore.filt <- hpm3AvC.metacore %>% filter(FDR <= p.Cutoff)     
 hpm3AvC.mcore.filt <- tibble::rownames_to_column(hpm3AvC.mcore.filt,"Name")
 ac.mcore.nohit <- hpm3AvC.mcore.filt %>% filter(Hit == "Other")
 ac.mcore.hit <- hpm3AvC.mcore.filt %>% filter(Hit == "Hit")
 ac.mcore.plot <- ggplot() + geom_jitter(data=ac.mcore.nohit, aes(x="Collection",y=FDR), color="black", alpha=0.5, size=0.6, width=0.1) + geom_jitter(data=ac.mcore.hit, aes(x="Collection",y=FDR), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("hpm3.AvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip() 
 
-MuscleSvC.mcore.filt <- MuscleSvC.metacore %>% filter(FDR <= 0.05)     
+MuscleSvC.mcore.filt <- MuscleSvC.metacore %>% filter(FDR <= p.Cutoff)     
 MuscleSvC.mcore.filt <- tibble::rownames_to_column(MuscleSvC.mcore.filt,"Name")
 sc.mcore.nohit <- MuscleSvC.mcore.filt %>% filter(Hit == "Other")
 sc.mcore.hit <- MuscleSvC.mcore.filt %>% filter(Hit == "Hit")
@@ -193,26 +201,28 @@ MuscleSvC.ipa <- read.xlsx("../shared_data/Muscle_SkeletalvsCardiac_ipa_withOver
 *IPA Summary Plots_v2*
 
 ```{r, fig.width=10, fig.height=3}
-evc.ipa.filt <- EvC.ipa %>% filter(p_value <= 0.05)          
+p.Cutoff <- 0.05
+
+evc.ipa.filt <- EvC.ipa %>% filter(p_value <= p.Cutoff)          
 evc.ipa.filt <- tibble::rownames_to_column(evc.ipa.filt,"Name")
 evc.ipa.nohit <- evc.ipa.filt %>% filter(Hit == "Other")  
 evc.ipa.hit <- evc.ipa.filt %>% filter(Hit == "Hit")  
 ec.ipa.plot <- ggplot() + geom_jitter(data=evc.ipa.nohit, aes(x="Collection",y=p_value), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=evc.ipa.hit, aes(x="Collection",y=p_value), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("EvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()              
 
-g1vrev.ipa.filt <- G1vRev.ipa %>% filter(p_value <= 0.05)          
+g1vrev.ipa.filt <- G1vRev.ipa %>% filter(p_value <= p.Cutoff)          
 g1vrev.ipa.filt <- tibble::rownames_to_column(g1vrev.ipa.filt,"Name")
 g1rev.ipa.nohit <- g1vrev.ipa.filt %>% filter(Hit == "Other")  
 g1rev.ipa.hit <- g1vrev.ipa.filt %>% filter(Hit == "Hit")  
 g1rev.ipa.plot <- ggplot() + geom_jitter(data=g1rev.ipa.nohit, aes(x="Collection",y=p_value), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=g1rev.ipa.hit, aes(x="Collection",y=p_value), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("g1rev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()              
 
-hpm3AvC.ipa.filt <- hpm3AvC.ipa %>% filter(p_value <= 0.05)          
+hpm3AvC.ipa.filt <- hpm3AvC.ipa %>% filter(p_value <= p.Cutoff)          
 hpm3AvC.ipa.filt <- tibble::rownames_to_column(hpm3AvC.ipa.filt,"Name")
 ac.ipa.nohit <- hpm3AvC.ipa.filt %>% filter(Hit == "Other")  
 ac.ipa.hit <- hpm3AvC.ipa.filt %>% filter(Hit == "Hit")  
 ac.ipa.plot <- ggplot() + geom_jitter(data=ac.ipa.nohit, aes(x="Collection",y=p_value), color="black", alpha=0.5, size=0.6, width=0.1) + geom_jitter(data=ac.ipa.hit, aes(x="Collection",y=p_value), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("hpm3.AvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()              
 
 
-MuscleSvC.ipa.filt <- MuscleSvC.ipa %>% filter(p_value <= 0.05)          
+MuscleSvC.ipa.filt <- MuscleSvC.ipa %>% filter(p_value <= p.Cutoff)          
 MuscleSvC.ipa.filt <- tibble::rownames_to_column(MuscleSvC.ipa.filt,"Name")
 sc.ipa.nohit <- MuscleSvC.ipa.filt %>% filter(Hit == "Other")  
 sc.ipa.hit <- MuscleSvC.ipa.filt %>% filter(Hit == "Hit")  
@@ -233,13 +243,15 @@ MuscleSvC.ipath <- read.xlsx("../shared_data/Muscle_SkeletalvsCardiac_ipathway_w
 *iPathway Summary Plots*
 
 ```{r, fig.width=10, fig.height=3}
-evc.ipath.filt <- EvC.ipath %>% filter(pv_fdr <= 0.05)          
+p.Cutoff <- 0.05
+
+evc.ipath.filt <- EvC.ipath %>% filter(pv_fdr <= p.Cutoff)          
 evc.ipath.filt <- tibble::rownames_to_column(evc.ipath.filt,"UniqName")
 evc.ipath.nohit <- evc.ipath.filt %>% filter(Hit == "Other")  
 evc.ipath.hit <- evc.ipath.filt %>% filter(Hit == "Hit")  
 ec.ipath.plot <- ggplot() + geom_jitter(data=evc.ipath.nohit, aes(x="Collection",y=pv_fdr), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=evc.ipath.hit, aes(x="Collection",y=pv_fdr), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("EvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()              
 
-g1vrev.ipath.filt <- G1vRev.ipath %>% filter(pv_fdr <= 0.05)          
+g1vrev.ipath.filt <- G1vRev.ipath %>% filter(pv_fdr <= p.Cutoff)          
 g1vrev.ipath.filt <- tibble::rownames_to_column(g1vrev.ipath.filt,"UniqName")
 g1rev.ipath.nohit <- g1vrev.ipath.filt %>% filter(Hit == "Other")  
 g1rev.ipath.hit <- g1vrev.ipath.filt %>% filter(Hit == "Hit")  
@@ -248,14 +260,14 @@ g1rev.ipath.plot <- ggplot() + geom_jitter(data=g1rev.ipath.nohit, aes(x="Collec
 #no hits here so this line was extracted
 #geom_jitter(data=g1rev.ipath.hit, aes(x="Collection",y=pv_fdr), color="red", alpha=1, size=2, width=0.1)
 
-hpm3AvC.ipath.filt <- hpm3AvC.ipath %>% filter(pv_fdr <= 0.05)          
+hpm3AvC.ipath.filt <- hpm3AvC.ipath %>% filter(pv_fdr <= p.Cutoff)          
 hpm3AvC.ipath.filt <- tibble::rownames_to_column(hpm3AvC.ipath.filt,"UniqName")
 ac.ipath.nohit <- hpm3AvC.ipath.filt %>% filter(Hit == "Other")  
 ac.ipath.hit <- hpm3AvC.ipath.filt %>% filter(Hit == "Hit")  
 ac.ipath.plot <- ggplot() + geom_jitter(data=ac.ipath.nohit, aes(x="Collection",y=pv_fdr), color="black", alpha=0.5, size=0.6, width=0.1) + geom_jitter(data=ac.ipath.hit, aes(x="Collection",y=pv_fdr), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("hpm3.AvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()              
 
 
-MuscleSvC.ipath.filt <- MuscleSvC.ipath %>% filter(pv_fdr <= 0.05)          
+MuscleSvC.ipath.filt <- MuscleSvC.ipath %>% filter(pv_fdr <= p.Cutoff)          
 MuscleSvC.ipath.filt <- tibble::rownames_to_column(MuscleSvC.ipath.filt,"UniqName")
 sc.ipath.nohit <- MuscleSvC.ipath.filt %>% filter(Hit == "Other")  
 sc.ipath.hit <- MuscleSvC.ipath.filt %>% filter(Hit == "Hit")  
