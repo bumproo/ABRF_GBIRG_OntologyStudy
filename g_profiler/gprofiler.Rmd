@@ -125,24 +125,93 @@ write.xlsx(muscsvc.gostres.bg$result %>% select(c("term_id", "term_name","source
 #p
 ```
 
-*alternative filtering
+*G1vRev - Runs to test different fold change filterings and sets*
 
 ```{r}
-E2F.gostres.all <- gost(query = E2F$HALLMARK_E2F_TARGETS,organism = "hsapiens", 
-                    sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"),
-                    significant = FALSE,  correction_method ="g_SCS",
-                    domain_scope="annotated")
+g1vrev <- read.xlsx("../shared_data/G1vRev_data.xlsx", colNames=TRUE, rowNames=TRUE)
+g1vrev <- tibble::rownames_to_column(g1vrev,"Gene")
 
-#g1vrev <- tibble::rownames_to_column(g1vrev,"Gene")
+#logFC of 1, both directions
+g1vrev.DEGS.1 <- g1vrev %>% filter(adp <= 0.05 & abs(logFC) >= 1)
+#g1vrev.DEGS.1.bkground <- g1vrev %>% filter(!Gene %in% g1vrev.DEGS.1$Gene)
+
+gp.g1vrev.DEGS.1 <- gost(query = g1vrev.DEGS.1$Gene, organism = "hsapiens", 
+                sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"),
+                significant = FALSE, correction_method ="g_SCS",
+                custom_bg = g1vrev$Gene, domain_scope="custom")
+
+write.xlsx(gp.g1vrev.DEGS.1$result %>% 
+             select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="g1vrev.Degs.1.gprofiler.xlsx")
+
+#logFC of 0.58, both directions
+g1vrev.DEGS.58 <- g1vrev %>% filter(adp <= 0.05 & abs(logFC) >= 0.58) %>% dplyr::select(c("Gene"))
+#g1vrev.DEGS.58.bkground <- g1vrev %>% filter(!Gene %in% g1vrev.DEGS.58$Gene) %>% dplyr::select(c("Gene"))
+
+gp.g1vrev.DEGS.58 <- gost(query = g1vrev.DEGS.58$Gene,organism = "hsapiens", 
+                sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"),
+                significant = FALSE, correction_method ="g_SCS",
+                custom_bg = g1vrev$Gene, domain_scope="custom")
+
+write.xlsx(gp.g1vrev.DEGS.58$result %>% 
+             select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="g1vrev.Degs.58.gprofiler.xlsx")
+
+#logFC of 1, upREV
+g1vrev.REVDEGS.1 <- g1vrev %>% filter(adp <= 0.05 & logFC <= -1) %>% dplyr::select(c("Gene"))
+#g1vrev.REVDEGS.1.bkground <- g1vrev %>% filter(!Gene %in% g1vrev.REVDEGS.1$Gene) %>% dplyr::select(c("Gene"))
+
+gp.g1vrev.REVDEGS.1 <- gost(query = g1vrev.REVDEGS.1$Gene,organism = "hsapiens", 
+                sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"),
+                significant = FALSE, correction_method ="g_SCS",
+                custom_bg = g1vrev$Gene, domain_scope="custom")
+
+write.xlsx(gp.g1vrev.REVDEGS.1$result %>% 
+             select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="g1vrev.revDegs.1.gprofiler.xlsx")
+
+#logFC of 0.58, upREV
+g1vrev.REVDEGS.58 <- g1vrev %>% filter(adp <= 0.05 & logFC <= -0.58) %>% dplyr::select(c("Gene"))
+#g1vrev.REVDEGS.58.bkground <- g1vrev %>% filter(!Gene %in% g1vrev.REVDEGS.58$Gene) %>% dplyr::select(c("Gene"))
+
+gp.g1vrev.REVDEGS.58 <- gost(query = g1vrev.REVDEGS.58$Gene,organism = "hsapiens", 
+                sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"),
+                significant = FALSE, correction_method ="g_SCS",
+                custom_bg = g1vrev$Gene, domain_scope="custom")
+
+write.xlsx(gp.g1vrev.REVDEGS.58$result %>% 
+             select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="g1vrev.revDegs.58.gprofiler.xlsx")
+```
+
+*alternative filtering - up in Rev only with relaxed fold change*
+
+```{r}
+g1vrev <- read.xlsx("../shared_data/G1vRev_data.xlsx", colNames=TRUE, rowNames=TRUE)
+
+g1vrev <- tibble::rownames_to_column(g1vrev,"Gene")
 g1vrev.Revdegs <- g1vrev %>% filter(adp <= 0.05 & logFC <= -0.58)
 g1vrev.bkground <- g1vrev %>% dplyr::select(c("Gene"))
 
-g1vrev.Revdegs.gostres.bg <- gost(query = g1vrev.Revdegs$Gene,organism = "hsapiens", 
+g1vrev.Revdegs.58 <- gost(query = g1vrev.Revdegs$Gene,organism = "hsapiens", 
                 sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"),
                 significant = FALSE, correction_method ="g_SCS",
                 custom_bg = g1vrev.bkground$Gene, domain_scope="custom")
 
-write.xlsx(g1vrev.Revdegs.gostres.bg$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="g1vrev.RevDegs.gprofiler.xlsx")
+write.xlsx(g1vrev.Revdegs.58$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="g1vrev.RevDegs.58.gprofiler.xlsx")
+```
+
+*alternative filtering - up in Rev only with relaxed fold change*
+
+```{r}
+g1vrev <- read.xlsx("../shared_data/G1vRev_data.xlsx", colNames=TRUE, rowNames=TRUE)
+
+g1vrev <- tibble::rownames_to_column(g1vrev,"Gene")
+g1vrev.Revdegs <- g1vrev %>% filter(adp <= 0.05 & logFC <= -1)
+g1vrev.bkground <- g1vrev %>% dplyr::select(c("Gene"))
+
+g1vrev.Revdegs <- gost(query = g1vrev.Revdegs$Gene,organism = "hsapiens", 
+                sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"),
+                significant = FALSE, correction_method ="g_SCS",
+                custom_bg = g1vrev.bkground$Gene, domain_scope="custom")
+
+write.xlsx(g1vrev.Revdegs$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="g1vrev.RevDegs.gprofiler.xlsx")
 ```
 
 *return all of KEGG for evc*

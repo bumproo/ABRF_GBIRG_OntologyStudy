@@ -311,6 +311,81 @@ evc.KEGG.other <- evc.KEGG %>% filter(Group == "Other")
 
 ggplot() + geom_jitter(data=evc.KEGG.other, aes(x=Method,y=pval), color="black", alpha=0.5, size=2, width=0.1) + geom_jitter(data=evc.KEGG.ppar, aes(x=Method,y=pval), color="red", alpha=1, size=4, width=0.1) + theme_bw() + coord_flip()
 ```
+
+*G1vRev - DAVID Fold Change and Direction Analyses*
+
+```{r, fig.width=15, fig.height=6}
+p.Cutoff <- 1
+
+G1vRev.DAVID <- read.xlsx("../DAVID/g1vRev.DEGS.1.DAVID_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+G1vRev.DAVID.FC.58 <- read.xlsx("../DAVID/g1vRev.DEGS.58.DAVID_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+G1vRev.DAVID.RevDEGS <- read.xlsx("../DAVID/g1vRev.revDEGS.1.DAVID_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+G1vRev.DAVID.RevDEGS.58 <- read.xlsx("../DAVID/g1vRev.revDEGS.58.DAVID_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+
+g1vrev.david.filt  <- G1vRev.DAVID %>% filter(Bonferroni <= p.Cutoff)
+g1vrev.david.filt  <- tibble::rownames_to_column(g1vrev.david.filt ,"Name")
+g1rev.david.nohit <- g1vrev.david.filt  %>% filter(Hit == "Other")
+g1rev.david.hit <- g1vrev.david.filt  %>% filter(Hit == "Hit")
+g1rev.david.plot <- ggplot() + geom_jitter(data=g1rev.david.nohit, aes(x=Category,y=Bonferroni), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=g1rev.david.hit, aes(x=Category,y=Bonferroni), color="red", alpha=1, size=2, width=0.1) + ggtitle("g1rev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+g1vrev.david.fc.58.filt  <- G1vRev.DAVID.FC.58 %>% filter(Bonferroni <= p.Cutoff)
+g1vrev.david.fc.58.filt  <- tibble::rownames_to_column(g1vrev.david.fc.58.filt ,"Name")
+g1rev.david.fc.58.nohit <- g1vrev.david.fc.58.filt  %>% filter(Hit == "Other")
+g1rev.david.fc.58.hit <- g1vrev.david.fc.58.filt  %>% filter(Hit == "Hit")
+g1rev.david.fc.58.plot <- ggplot() + geom_jitter(data=g1rev.david.fc.58.nohit, aes(x=Category,y=Bonferroni), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=g1rev.david.fc.58.hit, aes(x=Category,y=Bonferroni), color="red", alpha=1, size=2, width=0.1)  + ggtitle("g1rev.fc.58") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+g1vrev.david.revdegs.filt  <- G1vRev.DAVID.RevDEGS %>% filter(Bonferroni <= p.Cutoff)
+g1vrev.david.revdegs.filt  <- tibble::rownames_to_column(g1vrev.david.revdegs.filt ,"Name")
+g1rev.david.revdegs.nohit <- g1vrev.david.revdegs.filt  %>% filter(Hit == "Other")
+g1rev.david.revdegs.hit <- g1vrev.david.revdegs.filt  %>% filter(Hit == "Hit")
+g1rev.david.revdegs.plot <- ggplot() + geom_jitter(data=g1rev.david.revdegs.nohit, aes(x=Category,y=Bonferroni), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=g1rev.david.revdegs.hit, aes(x=Category,y=Bonferroni), color="red", alpha=1, size=2, width=0.1) + ggtitle("g1rev.revdegs") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+g1vrev.david.revdegs.58.filt  <- G1vRev.DAVID.RevDEGS.58 %>% filter(Bonferroni <= p.Cutoff)
+g1vrev.david.revdegs.58.filt  <- tibble::rownames_to_column(g1vrev.david.revdegs.58.filt ,"Name")
+g1rev.david.revdegs.58.nohit <- g1vrev.david.revdegs.58.filt  %>% filter(Hit == "Other")
+g1rev.david.revdegs.58.hit <- g1vrev.david.revdegs.58.filt  %>% filter(Hit == "Hit")
+g1rev.david.revdegs.58.plot <- ggplot() + geom_jitter(data=g1rev.david.revdegs.58.nohit, aes(x=Category,y=Bonferroni), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=g1rev.david.revdegs.58.hit, aes(x=Category,y=Bonferroni), color="red", alpha=1, size=2, width=0.1) + ggtitle("g1rev.revdegs.58") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+ggarrange(g1rev.david.plot,g1rev.david.fc.58.plot,g1rev.david.revdegs.plot,g1rev.david.revdegs.58.plot, legend = FALSE, ncol=2, nrow=2)
+```
+
+*G1vRev - gprofiler Fold Change and Direction Analyses*
+
+```{r, fig.width=15, fig.height=6}
+p.Cutoff <- 0.1
+
+G1vRev.gpro <- read.xlsx("../g_profiler/g1vrev.Degs.1.gprofiler_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+G1vRev.gpro.FC.58 <- read.xlsx("../g_profiler/g1vrev.Degs.58.gprofiler_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+G1vRev.gpro.RevDEGS <- read.xlsx("../g_profiler/g1vrev.revDegs.1.gprofiler_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+G1vRev.gpro.RevDEGS.58 <- read.xlsx("../g_profiler/g1vrev.revDegs.58.gprofiler_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+
+g1vrev.gpro.filt  <- G1vRev.gpro %>% filter(p_value <= p.Cutoff) 
+g1vrev.gpro.filt  <- tibble::rownames_to_column(g1vrev.gpro.filt ,"Name")  
+g1rev.gpro.nohit <- g1vrev.gpro.filt  %>% filter(Hit == "Other")  
+g1rev.gpro.hit <- g1vrev.gpro.filt  %>% filter(Hit == "Hit")  
+g1rev.gpro.plot <- ggplot() + geom_jitter(data=g1rev.gpro.nohit, aes(x=source,y=p_value), color="black", alpha=0.4, size=1, width=0.2) + geom_jitter(data=g1rev.gpro.hit, aes(x=source,y=p_value), color="red", alpha=1, size=2, width=0.2) + ggtitle("g1rev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()   
+
+g1vrev.gpro.fc.58.filt  <- G1vRev.gpro.FC.58 %>% filter(p_value <= p.Cutoff) 
+g1vrev.gpro.fc.58.filt  <- tibble::rownames_to_column(g1vrev.gpro.fc.58.filt ,"Name")  
+g1rev.gpro.fc.58.nohit <- g1vrev.gpro.fc.58.filt  %>% filter(Hit == "Other")  
+g1rev.gpro.fc.58.hit <- g1vrev.gpro.fc.58.filt  %>% filter(Hit == "Hit")  
+g1rev.gpro.fc.58.plot <- ggplot() + geom_jitter(data=g1rev.gpro.fc.58.nohit, aes(x=source,y=p_value), color="black", alpha=0.4, size=1, width=0.2) + geom_jitter(data=g1rev.gpro.fc.58.hit, aes(x=source,y=p_value), color="red", alpha=1, size=2, width=0.2) + ggtitle("g1rev.fc.58") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()   
+
+g1vrev.gpro.revdegs.filt  <- G1vRev.gpro.RevDEGS %>% filter(p_value <= p.Cutoff) 
+g1vrev.gpro.revdegs.filt  <- tibble::rownames_to_column(g1vrev.gpro.revdegs.filt ,"Name")  
+g1rev.gpro.revdegs.nohit <- g1vrev.gpro.revdegs.filt  %>% filter(Hit == "Other")  
+g1rev.gpro.revdegs.hit <- g1vrev.gpro.revdegs.filt  %>% filter(Hit == "Hit")  
+g1rev.gpro.revdegs.plot <- ggplot() + geom_jitter(data=g1rev.gpro.revdegs.nohit, aes(x=source,y=p_value), color="black", alpha=0.4, size=1, width=0.2) + geom_jitter(data=g1rev.gpro.revdegs.hit, aes(x=source,y=p_value), color="red", alpha=1, size=2, width=0.2) + ggtitle("g1rev.revdegs") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+g1vrev.gpro.revdegs.58.filt  <- G1vRev.gpro.RevDEGS.58 %>% filter(p_value <= p.Cutoff) 
+g1vrev.gpro.revdegs.58.filt  <- tibble::rownames_to_column(g1vrev.gpro.revdegs.58.filt ,"Name")  
+g1rev.gpro.revdegs.58.nohit <- g1vrev.gpro.revdegs.58.filt  %>% filter(Hit == "Other")  
+g1rev.gpro.revdegs.58.hit <- g1vrev.gpro.revdegs.58.filt  %>% filter(Hit == "Hit")  
+g1rev.gpro.revdegs.58.plot <- ggplot() + geom_jitter(data=g1rev.gpro.revdegs.58.nohit, aes(x=source,y=p_value), color="black", alpha=0.4, size=1, width=0.2) + geom_jitter(data=g1rev.gpro.revdegs.58.hit, aes(x=source,y=p_value), color="red", alpha=1, size=2, width=0.2) + ggtitle("g1rev.revdegs.58") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+ggarrange(g1rev.gpro.plot,g1rev.gpro.fc.58.plot,g1rev.gpro.revdegs.plot,g1rev.gpro.revdegs.58.plot, legend = FALSE, ncol=2, nrow=2)    
+```
+
 *Summary Tables*
 
 ```{r}
