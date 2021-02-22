@@ -125,7 +125,7 @@ write.xlsx(muscsvc.gostres.bg$result %>% select(c("term_id", "term_name","source
 #p
 ```
 
-*G1vRev - Runs to test different fold change filterings and sets*
+*G1vRev - Runs to test different fold change filtering and sets*
 
 ```{r}
 g1vrev <- read.xlsx("../shared_data/G1vRev_data.xlsx", colNames=TRUE, rowNames=TRUE)

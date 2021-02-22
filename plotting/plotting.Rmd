@@ -18,6 +18,93 @@ library(openxlsx)
 library(ggplot2)
 library(tidyverse)
 library(ggpubr)
+library(pastecs)
+```
+
+*Dataset PCA plots*
+```{r}
+evcPCA <- read.xlsx("evc_pca.xlsx", colNames=TRUE, rowNames=TRUE)
+g1revPCA <- read.xlsx("G1vRev_pca.xlsx", colNames=TRUE, rowNames=TRUE)
+avcPCA <- read.xlsx("avc_pca.xlsx", colNames=TRUE, rowNames=TRUE)
+svcPCA <- read.xlsx("muscle_pca.xlsx", colNames=TRUE, rowNames=TRUE)
+
+ggplot(evcPCA,aes(x=PC1,y=PC2, col=as.factor(group)))+
+  geom_point(size=3)+
+  theme_classic()+ggtitle('evc PCA')
+
+ggplot(g1revPCA,aes(x=PC1,y=PC2, col=as.factor(group)))+
+  geom_point(size=3)+
+  theme_classic()+ggtitle('g1vRev PCA')
+
+ggplot(avcPCA,aes(x=PC1,y=PC2, col=as.factor(group)))+
+  geom_point(size=3)+
+  theme_classic()+ggtitle('avc PCA')
+
+ggplot(svcPCA,aes(x=PC1,y=PC2, col=as.factor(group)))+
+  geom_point(size=3)+
+  theme_classic()+ggtitle('svc PCA')
+```
+
+*Dataset Volcano plots*
+
+```{r}
+evcDE <- read.xlsx("../shared_data/EvC_data_vol.xlsx", colNames=TRUE, rowNames=TRUE)
+evcDE <- evcDE %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 1,"de","other"))
+g1revDE <- read.xlsx("../shared_data/G1vRev_data_vol.xlsx", colNames=TRUE, rowNames=TRUE)
+g1revDE <- g1revDE %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 1,"de","other"))
+avcDE <- read.xlsx("../shared_data/hpm3_AvC_data_vol.xlsx", colNames=TRUE, rowNames=TRUE)
+avcDE <- avcDE %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 1,"de","other"))
+svcDE <- read.xlsx("../shared_data/musc_SkeVHeart_data_vol.xlsx", colNames=TRUE, rowNames=TRUE)
+svcDE <- svcDE %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 1,"de","other"))
+
+ggplot(evcDE) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        ggtitle("EvC differential expression") +
+        xlab("log2 fold change") + 
+        ylab("-log10 adjusted p-value") +
+        scale_y_continuous(limits = c(0,50)) +
+        scale_x_continuous(limits = c(-15,15)) +
+        theme(legend.position = "none",
+              plot.title = element_text(size = rel(1.5), hjust = 0.5),
+              axis.title = element_text(size = rel(1.25)))
+
+ggplot(g1revDE) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        ggtitle("G1vRev differential expression") +
+        xlab("log2 fold change") + 
+        ylab("-log10 adjusted p-value") +
+        scale_y_continuous(limits = c(0,50)) +
+        scale_x_continuous(limits = c(-15,15)) +
+        theme(legend.position = "none",
+              plot.title = element_text(size = rel(1.5), hjust = 0.5),
+              axis.title = element_text(size = rel(1.25)))
+
+ggplot(avcDE) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        ggtitle("AvC differential expression") +
+        xlab("log2 fold change") + 
+        ylab("-log10 adjusted p-value") +
+        scale_y_continuous(limits = c(0,50)) +
+        scale_x_continuous(limits = c(-15,15)) +
+        theme(legend.position = "none",
+              plot.title = element_text(size = rel(1.5), hjust = 0.5),
+              axis.title = element_text(size = rel(1.25)))
+
+ggplot(svcDE) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        ggtitle("SvC differential expression") +
+        xlab("log2 fold change") + 
+        ylab("-log10 adjusted p-value") +
+        scale_y_continuous(limits = c(0,50)) +
+        scale_x_continuous(limits = c(-15,15)) +
+        theme(legend.position = "none",
+              plot.title = element_text(size = rel(1.5), hjust = 0.5),
+              axis.title = element_text(size = rel(1.25)))
+
+table(evcDE$threshold)
+table(g1revDE$threshold)
+table(avcDE$threshold)
+table(svcDE$threshold)
 ```
 
 *Import GSEA Data*
@@ -384,6 +471,47 @@ g1rev.gpro.revdegs.58.hit <- g1vrev.gpro.revdegs.58.filt  %>% filter(Hit == "Hit
 g1rev.gpro.revdegs.58.plot <- ggplot() + geom_jitter(data=g1rev.gpro.revdegs.58.nohit, aes(x=source,y=p_value), color="black", alpha=0.4, size=1, width=0.2) + geom_jitter(data=g1rev.gpro.revdegs.58.hit, aes(x=source,y=p_value), color="red", alpha=1, size=2, width=0.2) + ggtitle("g1rev.revdegs.58") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
 
 ggarrange(g1rev.gpro.plot,g1rev.gpro.fc.58.plot,g1rev.gpro.revdegs.plot,g1rev.gpro.revdegs.58.plot, legend = FALSE, ncol=2, nrow=2)    
+```
+
+*Plotting the hpm3 AvC Pathway data to highlight IL1 results*
+
+```{r, fig.width=12, fig.height=6}
+evc.KEGG <- read.xlsx("../shared_data/EvC_KEGG_Summary.xlsx", colNames=TRUE, rowNames=TRUE)
+
+evc.KEGG.ppar <- evc.KEGG %>% filter(Group == "PPAR")
+evc.KEGG.other <- evc.KEGG %>% filter(Group == "Other")
+
+ggplot() + geom_jitter(data=evc.KEGG.other, aes(x=Method,y=pval), color="black", alpha=0.5, size=2, width=0.1) + geom_jitter(data=evc.KEGG.ppar, aes(x=Method,y=pval), color="red", alpha=1, size=4, width=0.1) + theme_bw() + coord_flip()
+```
+
+*msigdb plots*
+```{r}
+msig7.2 <- read.xlsx("../shared_data/msigdb_genesetsInfo_v7.2_paperSubset.xlsx", colNames=TRUE, rowNames=TRUE)
+sub300 <- msig7.2 %>% filter(Size <= 300)
+plus300 <- msig7.2 %>% filter(Size > 300)
+ggplot(msig7.2, aes(Group, Size)) + geom_boxplot() + coord_cartesian(ylim = c(0, 300)) + 
+  scale_x_discrete(limits = c("HALLMARK", "c2cgp", "c2cp", "KEGG", "BIOCARTA", "PID", "REACTOME", "WP", "c5bp", "c5cc", "c5mf"))
+table(plus300$Group)
+table(sub300$Group)
+table(msig7.2$Group)
+as.data.frame(msig7.2 %>% group_by(Group) %>% summarize(n(),median(Size), mean(Size)))
+```
+
+*GSEA plots - these are not looking like I want them to for the paper - just use default plots*
+```{r}
+source("replotGSEA.R")
+
+replotGSEA("C:/Users/Charlie/ABRF_GBIRG_OntologyStudy/dataset_gsea/dataset_runs/avc_TNF.GseaPreranked.1613569188946", 
+           gene.set ="HALLMARK_TNFA_SIGNALING_VIA_NFKB", "A", metric.range = c(-50,50), enrichment.score.range = c(-1,1))
+
+replotGSEA("C:/Users/Charlie/ABRF_GBIRG_OntologyStudy/dataset_gsea/dataset_runs/evc_KEGG_PPAR.GseaPreranked.1613569183925", 
+           gene.set ="KEGG_PPAR_SIGNALING_PATHWAY", "A", metric.range = c(-50,50), enrichment.score.range = c(-1,1))
+
+replotGSEA("C:/Users/Charlie/ABRF_GBIRG_OntologyStudy/dataset_gsea/dataset_runs/g1vrev_E2F.GseaPreranked.1613569193955", 
+           gene.set ="HALLMARK_E2F_TARGETS", "A", metric.range = c(-50,50), enrichment.score.range = c(-1,1))
+
+replotGSEA("C:/Users/Charlie/ABRF_GBIRG_OntologyStudy/dataset_gsea/dataset_runs/svc_SKEMUSC.GseaPreranked.1613569198989", 
+           gene.set ="GO_SKELETAL_MUSCLE_CONTRACTION", "A", metric.range = c(-50,50), enrichment.score.range = c(-1,1))
 ```
 
 *Summary Tables*

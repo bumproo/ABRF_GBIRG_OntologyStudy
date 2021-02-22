@@ -1,0 +1,23 @@
+producer_class	xtools.gsea.GseaPreranked
+producer_timestamp	1613569188946
+param	rpt_label	avc_TNF
+param	rnd_seed	timestamp
+param	set_min	5
+param	zip_report	false
+param	create_svgs	false
+param	scoring_scheme	weighted
+param	rnk	/net/ostrom/data/bcc/charliew/ABRF_GBIRG_OntologyStudy/dataset_gsea/hpm3.norm.res.A.C.stat.rnk
+param	norm	meandiv
+param	out	/net/ostrom/data/bcc/charliew/ABRF_GBIRG_OntologyStudy/dataset_gsea/feb17
+param	mode	Max_probe
+param	include_only_symbols	true
+param	help	false
+param	set_max	1500
+param	gmx	HALLMARK_TNFA_SIGNALING_VIA_NFKB.gmt
+param	make_sets	true
+param	plot_top_x	40
+param	gui	false
+param	nperm	1000
+param	collapse	No_Collapse
+
+file	/net/ostrom/data/bcc/charliew/ABRF_GBIRG_OntologyStudy/dataset_gsea/feb17/avc_TNF.GseaPreranked.1613569188946/index.html

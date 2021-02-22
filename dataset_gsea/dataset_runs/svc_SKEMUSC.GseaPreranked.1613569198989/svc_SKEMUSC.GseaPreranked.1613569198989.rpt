@@ -1,0 +1,23 @@
+producer_class	xtools.gsea.GseaPreranked
+producer_timestamp	1613569198989
+param	rpt_label	svc_SKEMUSC
+param	rnd_seed	timestamp
+param	set_min	5
+param	zip_report	false
+param	create_svgs	false
+param	scoring_scheme	weighted
+param	rnk	/net/ostrom/data/bcc/charliew/ABRF_GBIRG_OntologyStudy/dataset_gsea/muscle.stat.rnk
+param	norm	meandiv
+param	out	/net/ostrom/data/bcc/charliew/ABRF_GBIRG_OntologyStudy/dataset_gsea/feb17
+param	mode	Max_probe
+param	include_only_symbols	true
+param	help	false
+param	set_max	1500
+param	gmx	GO_SKELETAL_MUSCLE_CONTRACTION.gmt
+param	make_sets	true
+param	plot_top_x	40
+param	gui	false
+param	nperm	1000
+param	collapse	No_Collapse
+
+file	/net/ostrom/data/bcc/charliew/ABRF_GBIRG_OntologyStudy/dataset_gsea/feb17/svc_SKEMUSC.GseaPreranked.1613569198989/index.html

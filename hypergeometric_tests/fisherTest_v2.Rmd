@@ -64,6 +64,7 @@ make.df200 <- function(denomItem){
 }
 
 ```
+
 *run the plots with -log10 pvalues*
 ```{r}
 denom <- seq(from = 12000, to = 20000, by = 100)
@@ -214,7 +215,7 @@ d.ex2
 fisher.test(d.ex2, alternative="greater")
 ```
 
-*Perform analysis of the impact of the numbers of differentially expressed genes on fisher.test pvals*
+*Perform analysis of the impact of the numbers of deferentially expressed genes on fisher.test pvals*
 
 ```{r}
 testDGEs.df <- function(degCount){
@@ -344,4 +345,48 @@ pl.200path <- ggplot() + geom_point(data=degs.2.Plot, aes(x=degSize, y=pval), co
 ggarrange(pl.25path, pl.50path, pl.100path,pl.200path, legend = FALSE, ncol=4, nrow=1) 
 ```
 
+*Consider an experiment with large numbers differentially expressed genes and the impact of this on fisher.test pvals*
 
+```{r}
+testDGEs.df <- function(degCount){
+  a <- data.frame(c(degsInPath,degCount),c(pathSize,20000-degCount))
+  x <- fisher.test(a, alternative="greater")
+  return(-log(x$p.value,10))
+}
+
+degSize <- seq(from = 1000, to = 6000, by = 10)
+bkground <- 17000
+###########
+pathSize <- 100
+
+degsInPath <- 20
+
+degs.20 <- lapply(degSize, testDGEs.df)
+degs.20.Plot <- as.data.frame(cbind(degSize,unlist(degs.20)))
+colnames(degs.20.Plot) <- c("degSize","pval")
+
+degsInPath <- 40
+
+degs.40 <- lapply(degSize, testDGEs.df)
+degs.40.Plot <- as.data.frame(cbind(degSize,unlist(degs.40)))
+colnames(degs.40.Plot) <- c("degSize","pval")
+
+degsInPath <- 60
+
+degs.60 <- lapply(degSize, testDGEs.df)
+degs.60.Plot <- as.data.frame(cbind(degSize,unlist(degs.60)))
+colnames(degs.60.Plot) <- c("degSize","pval")
+
+degsInPath <- 80
+
+degs.80 <- lapply(degSize, testDGEs.df)
+degs.80.Plot <- as.data.frame(cbind(degSize,unlist(degs.80)))
+colnames(degs.80.Plot) <- c("degSize","pval")
+
+pl.100 <- ggplot() + geom_point(data=degs.20.Plot, aes(x=degSize, y=pval), color="green") + geom_point(data=degs.40.Plot, aes(x=degSize, y=pval), color="black") + geom_point(data=degs.60.Plot, aes(x=degSize, y=pval), color="blue") + geom_point(data=degs.80.Plot, aes(x=degSize, y=pval), color="red") + ylim(0, 15) + ylab(label = '-log10 pvalue') + xlab(label = 'DEG Count') + ggtitle("100 Gene Pathway")
+
+#geom_hline(aes(yintercept=1.3, color = "red"), size=2) 
+
+h <- 1.3
+pl.100 + geom_hline(aes(yintercept=h, color = "red"), size=2, show.legend=FALSE) + geom_text(aes(0,h,label = h, vjust = -0.5))
+```
