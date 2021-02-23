@@ -342,7 +342,7 @@ g1vrev.ipath.filt <- G1vRev.ipath %>% filter(pv_fdr <= p.Cutoff)
 g1vrev.ipath.filt <- tibble::rownames_to_column(g1vrev.ipath.filt,"UniqName")
 g1rev.ipath.nohit <- g1vrev.ipath.filt %>% filter(Hit == "Other")  
 g1rev.ipath.hit <- g1vrev.ipath.filt %>% filter(Hit == "Hit")  
-g1rev.ipath.plot <- ggplot() + geom_jitter(data=g1rev.ipath.nohit, aes(x="Collection",y=pv_fdr), color="black", alpha=0.4, size=0.6, width=0.1) + theme_void() + ggtitle("g1rev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()              
+g1rev.ipath.plot <- ggplot() + geom_jitter(data=g1rev.ipath.nohit, aes(x="Collection",y=pv_fdr), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=g1rev.ipath.hit, aes(x="Collection",y=pv_fdr), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("g1rev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()              
 
 #no hits here so this line was extracted
 #geom_jitter(data=g1rev.ipath.hit, aes(x="Collection",y=pv_fdr), color="red", alpha=1, size=2, width=0.1)
