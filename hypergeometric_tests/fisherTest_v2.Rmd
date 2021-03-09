@@ -347,7 +347,7 @@ ggarrange(pl.25path, pl.50path, pl.100path,pl.200path, legend = FALSE, ncol=4, n
 
 *Consider an experiment with large numbers differentially expressed genes and the impact of this on fisher.test pvals*
 
-```{r}
+```{r, fig.width=6, fig.height=6}
 testDGEs.df <- function(degCount){
   a <- data.frame(c(degsInPath,degCount),c(pathSize,20000-degCount))
   x <- fisher.test(a, alternative="greater")
@@ -355,7 +355,7 @@ testDGEs.df <- function(degCount){
 }
 
 degSize <- seq(from = 1000, to = 6000, by = 10)
-bkground <- 17000
+
 ###########
 pathSize <- 100
 
@@ -383,10 +383,54 @@ degs.80 <- lapply(degSize, testDGEs.df)
 degs.80.Plot <- as.data.frame(cbind(degSize,unlist(degs.80)))
 colnames(degs.80.Plot) <- c("degSize","pval")
 
-pl.100 <- ggplot() + geom_point(data=degs.20.Plot, aes(x=degSize, y=pval), color="green") + geom_point(data=degs.40.Plot, aes(x=degSize, y=pval), color="black") + geom_point(data=degs.60.Plot, aes(x=degSize, y=pval), color="blue") + geom_point(data=degs.80.Plot, aes(x=degSize, y=pval), color="red") + ylim(0, 15) + ylab(label = '-log10 pvalue') + xlab(label = 'DEG Count') + ggtitle("100 Gene Pathway")
+pl.100 <- ggplot() + geom_point(data=degs.20.Plot, aes(x=degSize, y=pval), color="green") + geom_point(data=degs.40.Plot, aes(x=degSize, y=pval), color="black") + geom_point(data=degs.60.Plot, aes(x=degSize, y=pval), color="blue") + geom_point(data=degs.80.Plot, aes(x=degSize, y=pval), color="red") + ylab(label = '-log10 pvalue') + xlab(label = 'DEG Count') + ggtitle("100 Gene Pathway")
 
 #geom_hline(aes(yintercept=1.3, color = "red"), size=2) 
 
 h <- 1.3
-pl.100 + geom_hline(aes(yintercept=h, color = "red"), size=2, show.legend=FALSE) + geom_text(aes(0,h,label = h, vjust = -0.5))
+pl.100 + scale_x_continuous(limits = c(1000, 6000),breaks = c(1000, 2000, 3000, 4000, 5000, 6000)) + scale_y_continuous(limits = c(0, 15),breaks = c(0, 5, 10, 15)) + geom_hline(aes(yintercept=h, color = "red"), size=2, show.legend=FALSE) + geom_text(aes(0,h,label = h, vjust = -0.5))
+```
+*Consider an experiment with large numbers differentially expressed genes and the impact of this on fisher.test pvals in a larger pathway*
+
+```{r, fig.width=6, fig.height=6}
+testDGEs.df <- function(degCount){
+  a <- data.frame(c(degsInPath,degCount),c(pathSize,20000-degCount))
+  x <- fisher.test(a, alternative="greater")
+  return(-log(x$p.value,10))
+}
+
+degSize <- seq(from = 1000, to = 6000, by = 10)
+###########
+pathSize <- 1000
+
+degsInPath <- 200
+
+degs.200 <- lapply(degSize, testDGEs.df)
+degs.200.Plot <- as.data.frame(cbind(degSize,unlist(degs.200)))
+colnames(degs.200.Plot) <- c("degSize","pval")
+
+degsInPath <- 400
+
+degs.400 <- lapply(degSize, testDGEs.df)
+degs.400.Plot <- as.data.frame(cbind(degSize,unlist(degs.400)))
+colnames(degs.400.Plot) <- c("degSize","pval")
+
+degsInPath <- 600
+
+degs.600 <- lapply(degSize, testDGEs.df)
+degs.600.Plot <- as.data.frame(cbind(degSize,unlist(degs.600)))
+colnames(degs.600.Plot) <- c("degSize","pval")
+
+degsInPath <- 800
+
+degs.800 <- lapply(degSize, testDGEs.df)
+degs.800.Plot <- as.data.frame(cbind(degSize,unlist(degs.800)))
+colnames(degs.800.Plot) <- c("degSize","pval")
+
+pl.1000 <- ggplot() + geom_point(data=degs.200.Plot, aes(x=degSize, y=pval), color="green") + geom_point(data=degs.400.Plot, aes(x=degSize, y=pval), color="black") + geom_point(data=degs.600.Plot, aes(x=degSize, y=pval), color="blue") + geom_point(data=degs.800.Plot, aes(x=degSize, y=pval), color="red") + ylab(label = '-log10 pvalue') + xlab(label = 'DEG Count') + ggtitle("1000 Gene Pathway")
+
+#geom_hline(aes(yintercept=1.3, color = "red"), size=2) 
+
+h <- 1.3
+pl.1000 + scale_x_continuous(limits = c(1000, 6000),breaks = c(1000, 2000, 3000, 4000, 5000, 6000)) + scale_y_continuous(limits = c(0, 15),breaks = c(0, 5, 10, 15)) + geom_hline(aes(yintercept=h, color = "red"), size=2, show.legend=FALSE) + geom_text(aes(0,h,label = h, vjust = -0.5))
 ```

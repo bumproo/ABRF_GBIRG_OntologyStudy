@@ -18,95 +18,285 @@ library(openxlsx)
 library(ggplot2)
 library(tidyverse)
 library(ggpubr)
+library(stringr)
 library(pastecs)
 ```
 
 *Dataset PCA plots*
-```{r}
+```{r, fig.width=5, fig.height=4}
 evcPCA <- read.xlsx("evc_pca.xlsx", colNames=TRUE, rowNames=TRUE)
 g1revPCA <- read.xlsx("G1vRev_pca.xlsx", colNames=TRUE, rowNames=TRUE)
 avcPCA <- read.xlsx("avc_pca.xlsx", colNames=TRUE, rowNames=TRUE)
 svcPCA <- read.xlsx("muscle_pca.xlsx", colNames=TRUE, rowNames=TRUE)
 
-ggplot(evcPCA,aes(x=PC1,y=PC2, col=as.factor(group)))+
-  geom_point(size=3)+
-  theme_classic()+ggtitle('evc PCA')
+evc.PCAplot <- ggplot(evcPCA,aes(x=PC1,y=PC2, col=as.factor(group)))+
+  geom_point(size=5)+
+  theme_bw()+ggtitle('EvC PCA') + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.25), hjust = 0.5),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3)))
 
-ggplot(g1revPCA,aes(x=PC1,y=PC2, col=as.factor(group)))+
-  geom_point(size=3)+
-  theme_classic()+ggtitle('g1vRev PCA')
+g1rev.PCAplot <- ggplot(g1revPCA,aes(x=PC1,y=PC2, col=as.factor(group)))+
+  geom_point(size=5)+
+  theme_bw()+ggtitle('G1vRev PCA')+ theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.25), hjust = 0.5),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3)))
 
-ggplot(avcPCA,aes(x=PC1,y=PC2, col=as.factor(group)))+
-  geom_point(size=3)+
-  theme_classic()+ggtitle('avc PCA')
+avc.PCAplot <- ggplot(avcPCA,aes(x=PC1,y=PC2, col=as.factor(group)))+
+  geom_point(size=5)+
+  theme_bw()+ggtitle('hpm3AvC PCA')+ theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.25), hjust = 0.5),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3)))
 
-ggplot(svcPCA,aes(x=PC1,y=PC2, col=as.factor(group)))+
-  geom_point(size=3)+
-  theme_classic()+ggtitle('svc PCA')
+svc.PCAplot <- ggplot(svcPCA,aes(x=PC1,y=PC2, col=as.factor(group)))+
+  geom_point(size=5)+
+  theme_bw()+ggtitle('SvC PCA') + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.25), hjust = 0.5),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3)))
 ```
 
 *Dataset Volcano plots*
 
-```{r}
+```{r, fig.width=5, fig.height=4}
 evcDE <- read.xlsx("../shared_data/EvC_data_vol.xlsx", colNames=TRUE, rowNames=TRUE)
-evcDE <- evcDE %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 1,"de","other"))
+evcDE <- evcDE %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 1,"DEGS (1068)","Other (17815)"))
 g1revDE <- read.xlsx("../shared_data/G1vRev_data_vol.xlsx", colNames=TRUE, rowNames=TRUE)
-g1revDE <- g1revDE %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 1,"de","other"))
+g1revDE <- g1revDE %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 1,"DEGS (102)","Other (20135)"))
 avcDE <- read.xlsx("../shared_data/hpm3_AvC_data_vol.xlsx", colNames=TRUE, rowNames=TRUE)
-avcDE <- avcDE %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 1,"de","other"))
+avcDE <- avcDE %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 1,"DEGS (1289)","Other (15218)"))
 svcDE <- read.xlsx("../shared_data/musc_SkeVHeart_data_vol.xlsx", colNames=TRUE, rowNames=TRUE)
-svcDE <- svcDE %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 1,"de","other"))
+svcDE <- svcDE %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 1,"DEGS (6369)","Other (12368)"))
 
-ggplot(evcDE) +
-        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
-        ggtitle("EvC differential expression") +
-        xlab("log2 fold change") + 
-        ylab("-log10 adjusted p-value") +
+evc.Volcanoplot <- ggplot(evcDE) +
+        geom_point(size=3,aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        ggtitle("EvC Volcano") +
+        xlab("log2FC") + 
+        ylab("negLogP") +
         scale_y_continuous(limits = c(0,50)) +
         scale_x_continuous(limits = c(-15,15)) +
-        theme(legend.position = "none",
-              plot.title = element_text(size = rel(1.5), hjust = 0.5),
-              axis.title = element_text(size = rel(1.25)))
+        theme_bw() + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.5), hjust = 0.5),
+              axis.title = element_text(size = rel(1.25)),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3)))
 
-ggplot(g1revDE) +
-        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
-        ggtitle("G1vRev differential expression") +
-        xlab("log2 fold change") + 
-        ylab("-log10 adjusted p-value") +
+g1rev.Volcanoplot <- ggplot(g1revDE) +
+        geom_point(size=3,aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        ggtitle("G1vRev Volcano") +
+        xlab("log2FC") + 
+        ylab("negLogP") +
         scale_y_continuous(limits = c(0,50)) +
         scale_x_continuous(limits = c(-15,15)) +
-        theme(legend.position = "none",
-              plot.title = element_text(size = rel(1.5), hjust = 0.5),
-              axis.title = element_text(size = rel(1.25)))
+        theme_bw() + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.5), hjust = 0.5),
+              axis.title = element_text(size = rel(1.25)),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3)))
 
-ggplot(avcDE) +
-        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
-        ggtitle("AvC differential expression") +
-        xlab("log2 fold change") + 
-        ylab("-log10 adjusted p-value") +
+avc.Volcanoplot <- ggplot(avcDE) +
+        geom_point(size=3,aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        ggtitle("hpm3AvC Volcano") +
+        xlab("log2FC") + 
+        ylab("negLogP") +
         scale_y_continuous(limits = c(0,50)) +
         scale_x_continuous(limits = c(-15,15)) +
-        theme(legend.position = "none",
-              plot.title = element_text(size = rel(1.5), hjust = 0.5),
-              axis.title = element_text(size = rel(1.25)))
+        theme_bw() + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.5), hjust = 0.5),
+              axis.title = element_text(size = rel(1.25)),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3)))
 
-ggplot(svcDE) +
-        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
-        ggtitle("SvC differential expression") +
-        xlab("log2 fold change") + 
-        ylab("-log10 adjusted p-value") +
+svc.Volcanoplot <- ggplot(svcDE) +
+        geom_point(size=3,aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        ggtitle("SvC Volcano") +
+        xlab("log2FC") + 
+        ylab("negLogP") +
         scale_y_continuous(limits = c(0,50)) +
         scale_x_continuous(limits = c(-15,15)) +
-        theme(legend.position = "none",
-              plot.title = element_text(size = rel(1.5), hjust = 0.5),
-              axis.title = element_text(size = rel(1.25)))
+        theme_bw() + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.5), hjust = 0.5),
+              axis.title = element_text(size = rel(1.25)),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3)))
 
 table(evcDE$threshold)
 table(g1revDE$threshold)
 table(avcDE$threshold)
 table(svcDE$threshold)
 ```
+*Assemble Plots*
+```{r, fig.width=5, fig.height=8}
+ggarrange(evc.PCAplot,evc.Volcanoplot, ncol=1, nrow=2)
+ggarrange(g1rev.PCAplot,g1rev.Volcanoplot, ncol=1, nrow=2)
+ggarrange(avc.PCAplot,avc.Volcanoplot, ncol=1, nrow=2)
+ggarrange(svc.PCAplot,svc.Volcanoplot, ncol=1, nrow=2)
+```
 
+*G1vrev plots for heatmaps*
+
+```{r, fig.width=20, fig.height=4}
+g1revDEst <- read.xlsx("../shared_data/G1vRev_data_vol_mod.xlsx", colNames=TRUE, rowNames=TRUE)
+g1revDE <- g1revDEst %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 1,"de","other"))
+g1revDE.58 <- g1revDEst %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 0.58,"de","other"))
+g1revDEdw <- g1revDEst %>% mutate(threshold = ifelse(adp <= 0.05 & logFC <= -1,"de","other"))
+g1revDEdw.58 <- g1revDEst %>% mutate(threshold = ifelse(adp <= 0.05 & logFC <=  -0.58,"de","other"))
+
+a <- ggplot(g1revDE) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        ggtitle("abs(logFC) >= 1, 102 DEGs") +
+        xlab("log2FC") + 
+        ylab("negLogP") +
+        scale_y_continuous(limits = c(0,13)) +
+        scale_x_continuous(limits = c(-2.2,2.2)) +
+        theme(legend.position = "none",
+              plot.title = element_text(size = rel(1.7), hjust = 0.5),
+              axis.title = element_text(size = rel(1.25)),
+              panel.background = element_rect(fill = "white"))
+
+b <- ggplot(g1revDE.58) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        ggtitle("abs(logFC) >= 0.58, 466 DEGs") +
+        xlab("log2FC") + 
+        ylab("negLogP") +
+        scale_y_continuous(limits = c(0,13)) +
+        scale_x_continuous(limits = c(-2.2,2.2)) +
+        theme(legend.position = "none",
+              plot.title = element_text(size = rel(1.7), hjust = 0.5),
+              axis.title = element_text(size = rel(1.25)),
+              panel.background = element_rect(fill = "white"))
+
+c <- ggplot(g1revDEdw) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        ggtitle("logFC <= -1, 62 DEGs") +
+        xlab("log2FC") + 
+        ylab("negLogP") +
+        scale_y_continuous(limits = c(0,13)) +
+        scale_x_continuous(limits = c(-2.2,2.2)) +
+        theme(legend.position = "none",
+              plot.title = element_text(size = rel(1.7), hjust = 0.5),
+              axis.title = element_text(size = rel(1.25)),
+              panel.background = element_rect(fill = "white"))
+
+d <- ggplot(g1revDEdw.58) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        ggtitle("logFC <= -0.58, 268 DEGs") +
+        xlab("log2FC") + 
+        ylab("negLogP") +
+        scale_y_continuous(limits = c(0,13)) +
+        scale_x_continuous(limits = c(-2.2,2.2)) +
+        theme(legend.position = "none",
+              plot.title = element_text(size = rel(1.7), hjust = 0.5),
+              axis.title = element_text(size = rel(1.25)),
+              panel.background = element_rect(fill = "white"))
+
+ggarrange(a,b,c,d, legend = FALSE, ncol=4, nrow=1)
+
+table(g1revDE$threshold)
+table(g1revDE.58$threshold)
+table(g1revDEdw$threshold)
+table(g1revDEdw.58$threshold)
+```
+```{r,fig.width=4, fig.height=3}
+g1revterm <- read.xlsx("../shared_data/G1vRev_data_withTerm.xlsx", colNames=TRUE, rowNames=TRUE)
+
+g1revterm.Hit <- g1revterm %>% filter(GroupWithabsFC0.4 == "Yes")
+g1revterm.Other <- g1revterm %>% filter(GroupWithabsFC0.4 == "No")
+
+ggplot() + geom_point(data=g1revterm.Other, aes(x=logFC, y=neglogP), color="grey", alpha=0.4, size=0.6) + geom_point(data=g1revterm.Hit, aes(x=logFC, y=neglogP), color="blue", alpha=1, size=2) +
+        xlab("log2FC") + 
+        ylab("negLogP") +
+        scale_y_continuous(limits = c(0,15)) +
+        scale_x_continuous(limits = c(-2,2)) +
+        theme_classic() + theme(legend.position = "none",
+              plot.title = element_text(size = rel(1.7), hjust = 0.5),
+              axis.title = element_text(size = rel(1.25)),
+              panel.background = element_rect(fill = "white"))
+```
+
+```{r,fig.width=1, fig.height=6}
+svcDE.st <- read.xlsx("../shared_data/musc_SkeVHeart_data_vol.xlsx", colNames=TRUE, rowNames=TRUE)
+
+svcDE <- svcDE.st %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 1,"de","other"))
+svcDE.2 <- svcDE.st %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 2,"de","other"))
+svcDE.4 <- svcDE.st %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 4,"de","other"))
+svcDEup <- svcDE.st %>% mutate(threshold = ifelse(adp <= 0.05 & logFC >= 1,"de","other"))
+svcDEup.2 <- svcDE.st %>% mutate(threshold = ifelse(adp <= 0.05 & logFC >=  2,"de","other"))
+svcDEup.4 <- svcDE.st %>% mutate(threshold = ifelse(adp <= 0.05 & logFC >= 4,"de","other"))
+
+a <- ggplot(svcDE) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        scale_y_continuous(limits = c(0,55),labels = NULL, breaks = NULL) +
+        scale_x_continuous(limits = c(-12,12),labels = NULL, breaks = NULL) +
+        theme(legend.position = "none",
+              axis.title = element_blank(),
+              panel.background = element_rect(fill = "white"))
+
+b <- ggplot(svcDE.2) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        scale_y_continuous(limits = c(0,55),labels = NULL, breaks = NULL) +
+        scale_x_continuous(limits = c(-12,12),labels = NULL, breaks = NULL) +
+        theme(legend.position = "none",
+              axis.title = element_blank(),
+              panel.background = element_rect(fill = "white"))
+
+c <- ggplot(svcDE.4) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        scale_y_continuous(limits = c(0,55),labels = NULL, breaks = NULL) +
+        scale_x_continuous(limits = c(-12,12),labels = NULL, breaks = NULL) +
+        theme(legend.position = "none",
+              axis.title = element_blank(),
+              panel.background = element_rect(fill = "white"))
+
+d <- ggplot(svcDEup) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        scale_y_continuous(limits = c(0,55),labels = NULL, breaks = NULL) +
+        scale_x_continuous(limits = c(-12,12),labels = NULL, breaks = NULL) +
+        theme(legend.position = "none",
+              axis.title = element_blank(),
+              panel.background = element_rect(fill = "white"))
+
+e <- ggplot(svcDEup.2) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        scale_y_continuous(limits = c(0,55),labels = NULL, breaks = NULL) +
+        scale_x_continuous(limits = c(-12,12),labels = NULL, breaks = NULL) +
+        theme(legend.position = "none",
+              axis.title = element_blank(),
+              panel.background = element_rect(fill = "white"))
+
+f <- ggplot(svcDEup.4) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        scale_y_continuous(limits = c(0,55),labels = NULL, breaks = NULL) +
+        scale_x_continuous(limits = c(-12,12),labels = NULL, breaks = NULL) +
+        theme(legend.position = "none",
+              axis.title = element_blank(),
+              panel.background = element_rect(fill = "white"))
+
+ggarrange(a,b,c,d,e,f, legend = FALSE, ncol=1, nrow=6)
+```
+*Concept Mapping Demo Plots*
+```{r, fig.width=12, fig.height=3}
+#manually added annotations to the gprofiler mapping, top 10 with Hit, non-top10, sub 0.05 with Low, remainder with Other
+PPAR.conceptPlot <- read.xlsx("../g_profiler/mmPPar.conceptDemo.xlsx", colNames=TRUE, rowNames=FALSE)
+
+PPAR.concept.Hit <- PPAR.conceptPlot %>% filter(Group == "Hit")
+PPAR.concept.Low <- PPAR.conceptPlot %>% filter(Group == "Low")
+PPAR.concept.Other <- PPAR.conceptPlot %>% filter(Group == "Other")
+
+gproMap <- ggplot() + geom_jitter(data=PPAR.concept.Other, aes(x=factor(source, level = c('GO:BP','GO:MF','GO:CC','KEGG','REAC','WP')),y=neglogP), color="black", alpha=0.2, size=1, width=0.3) + geom_jitter(data=PPAR.concept.Low, aes(x=factor(source, level = c('GO:BP','GO:MF','GO:CC','KEGG','REAC','WP')),y=neglogP), color="blue", alpha=0.6, size=1, width=0.3) + geom_jitter(data=PPAR.concept.Hit, aes(x=factor(source, level = c('GO:BP','GO:MF','GO:CC','KEGG','REAC','WP')),y=neglogP), color="red", alpha=1, size=2, width=0.3) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + xlab("Ontology") + ylab("neglogP (cap at 50)") + ggtitle("KEGG PPAR gprofiler Mapping") + theme_bw() + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.3), hjust = 0.5),axis.title = element_text(size = rel(1)),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3))) + coord_flip()
+
+#manually added annotations to the gsea overlap mapping, top 10 with Hit, non-top10, sub 0.05 with Low, remainder with Other
+PPAR.gsea.concept <- read.xlsx("../shared_data/KEGG_PPAR_SIGNALING_PATHWAY_msigdbOverlaps_FULL.xlsx", colNames=TRUE, rowNames=FALSE)
+
+PPAR.gsea.concept.Hit <- PPAR.gsea.concept %>% filter(Result == "Hit")
+PPAR.gsea.concept.Low <- PPAR.gsea.concept %>% filter(Result == "Low")
+PPAR.gsea.concept.Other <- PPAR.gsea.concept %>% filter(Result == "Other")
+
+gseaMap <- ggplot() + geom_jitter(data=PPAR.gsea.concept.Other, aes(x=factor(Group, level=c('C5BP','C5MF','C5CC','HALLMARK','C2CGP','C2CP')),y=neglogP), color="black", alpha=0.2, size=1, width=0.3) + geom_jitter(data=PPAR.gsea.concept.Low, aes(x=factor(Group, level=c('C5BP','C5MF','C5CC','HALLMARK','C2CGP','C2CP')),y=neglogP), color="blue", alpha=0.6, size=1, width=0.3) + geom_jitter(data=PPAR.gsea.concept.Hit, aes(x=factor(Group, level=c('C5BP','C5MF','C5CC','HALLMARK','C2CGP','C2CP')),y=neglogP), color="red", alpha=1, size=2, width=0.3) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + xlab("Ontology") + ylab("neglogP (cap at 50)") + ggtitle("KEGG PPAR GSEA Mapping") + theme_bw() + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.3), hjust = 0.5),axis.title = element_text(size = rel(1)),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3))) + coord_flip()
+
+#manually added annotations to the metacore overlap mapping, top 10 with Hit, non-top10, sub 0.05 with Low, remainder with Other
+PPAR.meta.concept <- read.xlsx("../shared_data/KEGG_PPAR_SIGNALING_PATHWAY_metacoreOverlaps_ConceptDemo.xlsx", colNames=TRUE, rowNames=FALSE)
+
+PPAR.meta.concept.Hit <- PPAR.meta.concept %>% filter(Hit == "Hit")
+PPAR.meta.concept.Low <- PPAR.meta.concept %>% filter(Hit == "Low")
+PPAR.meta.concept.Other <- PPAR.meta.concept %>% filter(Hit == "Other")
+
+metaMap <- ggplot() + geom_jitter(data=PPAR.meta.concept.Other, aes(x=factor(Group, level=c('GOProcess','GOFunction','GOLocalization','Networks','PathwayMaps')),y=neglogP), color="black", alpha=0.2, size=1, width=0.3) + geom_jitter(data=PPAR.meta.concept.Low, aes(x=factor(Group, level=c('GOProcess','GOFunction','GOLocalization','Networks','PathwayMaps')),y=neglogP), color="blue", alpha=0.6, size=1, width=0.3) + geom_jitter(data=PPAR.meta.concept.Hit, aes(x=factor(Group, level=c('GOProcess','GOFunction','GOLocalization','Networks','PathwayMaps')),y=neglogP), color="red", alpha=1, size=2, width=0.3) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + xlab("Ontology") + ylab("neglogP (cap at 50)") + ggtitle("KEGG PPAR Metacore Mapping") + theme_bw() + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.3), hjust = 0.5),axis.title = element_text(size = rel(1)),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3))) + coord_flip()
+
+ggarrange(metaMap,gproMap,gseaMap, ncol=3, nrow=1)
+```
 *Import GSEA Data*
 
 ```{r}
@@ -146,7 +336,7 @@ sc.gsea.nohit <- MuscleSvC.gsea.filt %>% filter(Hit == "Other")
 sc.gsea.hit <- MuscleSvC.gsea.filt %>% filter(Hit == "Hit")
 sc.gsea.plot <- ggplot() + geom_jitter(data=sc.gsea.nohit, aes(x="Collection",y=FDR), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=sc.gsea.hit, aes(x="Collection",y=FDR), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("MuscleSvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
 
-ggarrange(ec.gsea.plot,g1rev.gsea.plot,ac.gsea.plot,sc.gsea.plot, legend = FALSE, ncol=4, nrow=1)
+ggarrange(g1rev.gsea.plot,ec.gsea.plot,ac.gsea.plot,sc.gsea.plot, legend = FALSE, ncol=4, nrow=1)
 ```
 
 *Import DAVID Data*
@@ -188,7 +378,7 @@ sc.david.nohit <- MuscleSvC.david.filt  %>% filter(Hit == "Other")
 sc.david.hit <- MuscleSvC.david.filt  %>% filter(Hit == "Hit")
 sc.david.plot <- ggplot() + geom_jitter(data=sc.david.nohit, aes(x="Collection",y=PValue), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=sc.david.hit, aes(x="Collection",y=PValue), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("MuscleSvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
 
-ggarrange(ec.david.plot,g1rev.david.plot,ac.david.plot,sc.david.plot, legend = FALSE, ncol=4, nrow=1)
+ggarrange(g1rev.david.plot,ec.david.plot,ac.david.plot,sc.david.plot, legend = FALSE, ncol=4, nrow=1)
 ```
 
 *Import gProfiler Data*
@@ -230,7 +420,7 @@ sc.gpro.nohit <- MuscleSvC.gpro.filt %>% filter(Hit == "Other")
 sc.gpro.hit <- MuscleSvC.gpro.filt %>% filter(Hit == "Hit")
 sc.gpro.plot <- ggplot() + geom_jitter(data=sc.gpro.nohit, aes(x="Collection",y=p_value), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=sc.gpro.hit, aes(x="Collection",y=p_value), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("MuscleSvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
 
-ggarrange(ec.gpro.plot,g1rev.gpro.plot,ac.gpro.plot,sc.gpro.plot, legend = FALSE, ncol=4, nrow=1)
+ggarrange(g1rev.gpro.plot,ec.gpro.plot,ac.gpro.plot,sc.gpro.plot, legend = FALSE, ncol=4, nrow=1)
 ```
 
 *Import Metacore Data*
@@ -274,7 +464,7 @@ sc.mcore.nohit <- MuscleSvC.mcore.filt %>% filter(Hit == "Other")
 sc.mcore.hit <- MuscleSvC.mcore.filt %>% filter(Hit == "Hit")
 sc.mcore.plot <- ggplot() + geom_jitter(data=sc.mcore.nohit, aes(x="Collection",y=FDR), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=sc.mcore.hit, aes(x="Collection",y=FDR), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("MuscleSvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
 
-ggarrange(ec.mcore.plot,g1rev.mcore.plot,ac.mcore.plot,sc.mcore.plot, legend = FALSE, ncol=4, nrow=1)
+ggarrange(g1rev.mcore.plot,ec.mcore.plot,ac.mcore.plot,sc.mcore.plot, legend = FALSE, ncol=4, nrow=1)
 ```
 
 *Import IPA Data*
@@ -315,7 +505,7 @@ sc.ipa.nohit <- MuscleSvC.ipa.filt %>% filter(Hit == "Other")
 sc.ipa.hit <- MuscleSvC.ipa.filt %>% filter(Hit == "Hit")  
 sc.ipa.plot <- ggplot() + geom_jitter(data=sc.ipa.nohit, aes(x="Collection",y=p_value), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=sc.ipa.hit, aes(x="Collection",y=p_value), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("MuscleSvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()              
 
-ggarrange(ec.ipa.plot,g1rev.ipa.plot,ac.ipa.plot,sc.ipa.plot, legend = FALSE, ncol=4, nrow=1)        
+ggarrange(g1rev.ipa.plot,ec.ipa.plot,ac.ipa.plot,sc.ipa.plot, legend = FALSE, ncol=4, nrow=1)        
 ```
 
 *Import iPathway Data*
@@ -344,9 +534,6 @@ g1rev.ipath.nohit <- g1vrev.ipath.filt %>% filter(Hit == "Other")
 g1rev.ipath.hit <- g1vrev.ipath.filt %>% filter(Hit == "Hit")  
 g1rev.ipath.plot <- ggplot() + geom_jitter(data=g1rev.ipath.nohit, aes(x="Collection",y=pv_fdr), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=g1rev.ipath.hit, aes(x="Collection",y=pv_fdr), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("g1rev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()              
 
-#no hits here so this line was extracted
-#geom_jitter(data=g1rev.ipath.hit, aes(x="Collection",y=pv_fdr), color="red", alpha=1, size=2, width=0.1)
-
 hpm3AvC.ipath.filt <- hpm3AvC.ipath %>% filter(pv_fdr <= p.Cutoff)          
 hpm3AvC.ipath.filt <- tibble::rownames_to_column(hpm3AvC.ipath.filt,"UniqName")
 ac.ipath.nohit <- hpm3AvC.ipath.filt %>% filter(Hit == "Other")  
@@ -360,7 +547,16 @@ sc.ipath.nohit <- MuscleSvC.ipath.filt %>% filter(Hit == "Other")
 sc.ipath.hit <- MuscleSvC.ipath.filt %>% filter(Hit == "Hit")  
 sc.ipath.plot <- ggplot() + geom_jitter(data=sc.ipath.nohit, aes(x="Collection",y=pv_fdr), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=sc.ipath.hit, aes(x="Collection",y=pv_fdr), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("MuscleSvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()              
 
-ggarrange(ec.ipath.plot,g1rev.ipath.plot,ac.ipath.plot,sc.ipath.plot, legend = FALSE, ncol=4, nrow=1)        
+ggarrange(g1rev.ipath.plot,ec.ipath.plot,ac.ipath.plot,sc.ipath.plot, legend = FALSE, ncol=4, nrow=1)
+
+ggplot() + 
+  geom_jitter(data=sc.ipath.nohit, aes(x="Collection",y=pv_fdr), color="black", alpha=0.4, size=0.6, width=0.1) + 
+  geom_jitter(data=sc.ipath.hit, aes(x="Collection",y=pv_fdr), color="red", alpha=1, size=2, width=0.1) + theme_void() +
+  ggtitle("MuscleSvC") + 
+  theme(panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        plot.margin = unit(c(-1,0,-1,0),"cm"),complete=FALSE ##top, right, bottom, left
+        ) + coord_flip()
 ```
 
 *Plotting the full EvC GSEA results*
@@ -388,7 +584,7 @@ G1vRev.RevDEGS.gprofiler.hit <- G1vRev.RevDEGS.gprofiler %>% filter(E2F.Hit == "
 ggplot() + geom_jitter(data=G1vRev.RevDEGS.gprofiler.nohit, aes(x=source,y=p_value), color="black", alpha=alp.val, size=pt.size, width=0.1) + geom_jitter(data=G1vRev.RevDEGS.gprofiler.low, aes(x=source,y=p_value), color="blue", alpha=alp.val, size=pt.size, width=0.1) + geom_jitter(data=G1vRev.RevDEGS.gprofiler.hit, aes(x=source,y=p_value), color="red", alpha=alp.val, size=pt.size+1, width=0.1) + theme_bw() + coord_flip()
 ```
 
-*Plotting the EvC KEGG summary to highlight PPAR results*
+*Original Plotting the EvC KEGG summary to highlight PPAR results*
 
 ```{r, fig.width=12, fig.height=6}
 evc.KEGG <- read.xlsx("../shared_data/EvC_KEGG_Summary.xlsx", colNames=TRUE, rowNames=TRUE)
@@ -397,6 +593,18 @@ evc.KEGG.ppar <- evc.KEGG %>% filter(Group == "PPAR")
 evc.KEGG.other <- evc.KEGG %>% filter(Group == "Other")
 
 ggplot() + geom_jitter(data=evc.KEGG.other, aes(x=Method,y=pval), color="black", alpha=0.5, size=2, width=0.1) + geom_jitter(data=evc.KEGG.ppar, aes(x=Method,y=pval), color="red", alpha=1, size=4, width=0.1) + theme_bw() + coord_flip()
+```
+
+*Revised (neglog10) Plotting the EvC KEGG summary to highlight PPAR results*
+
+```{r, fig.width=8, fig.height=4}
+evc.KEGG <- read.xlsx("../shared_data/EvC_KEGG_Summary.xlsx", colNames=TRUE, rowNames=TRUE)
+evc.KEGG <- evc.KEGG %>% mutate(neglogP = -log10(pval))
+
+evc.KEGG.ppar <- evc.KEGG %>% filter(Group == "PPAR")
+evc.KEGG.other <- evc.KEGG %>% filter(Group == "Other")
+
+ggplot() + geom_jitter(data=evc.KEGG.other, aes(x=Method,y=neglogP), color="black", alpha=0.5, size=2, width=0.2) + geom_jitter(data=evc.KEGG.ppar, aes(x=Method,y=neglogP), color="red", alpha=1, size=4, width=0.2) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + theme_bw() + coord_flip()
 ```
 
 *G1vRev - DAVID Fold Change and Direction Analyses*
@@ -473,17 +681,6 @@ g1rev.gpro.revdegs.58.plot <- ggplot() + geom_jitter(data=g1rev.gpro.revdegs.58.
 ggarrange(g1rev.gpro.plot,g1rev.gpro.fc.58.plot,g1rev.gpro.revdegs.plot,g1rev.gpro.revdegs.58.plot, legend = FALSE, ncol=2, nrow=2)    
 ```
 
-*Plotting the hpm3 AvC Pathway data to highlight IL1 results*
-
-```{r, fig.width=12, fig.height=6}
-evc.KEGG <- read.xlsx("../shared_data/EvC_KEGG_Summary.xlsx", colNames=TRUE, rowNames=TRUE)
-
-evc.KEGG.ppar <- evc.KEGG %>% filter(Group == "PPAR")
-evc.KEGG.other <- evc.KEGG %>% filter(Group == "Other")
-
-ggplot() + geom_jitter(data=evc.KEGG.other, aes(x=Method,y=pval), color="black", alpha=0.5, size=2, width=0.1) + geom_jitter(data=evc.KEGG.ppar, aes(x=Method,y=pval), color="red", alpha=1, size=4, width=0.1) + theme_bw() + coord_flip()
-```
-
 *msigdb plots*
 ```{r}
 msig7.2 <- read.xlsx("../shared_data/msigdb_genesetsInfo_v7.2_paperSubset.xlsx", colNames=TRUE, rowNames=TRUE)
@@ -514,6 +711,31 @@ replotGSEA("C:/Users/Charlie/ABRF_GBIRG_OntologyStudy/dataset_gsea/dataset_runs/
            gene.set ="GO_SKELETAL_MUSCLE_CONTRACTION", "A", metric.range = c(-50,50), enrichment.score.range = c(-1,1))
 ```
 
+*Plotting the hpm3 a vs c pathway results to examine the IL17*
+
+```{r, fig.width=8, fig.height=4}
+avc.path <- read.xlsx("../shared_data/IL17_pathways_summaryFigure.xlsx", colNames=TRUE, rowNames=TRUE)
+avc.path <- avc.path %>% mutate(neglogP = -log10(pval))
+
+avc.path.il17best <- avc.path %>% filter(Group == "IL17best")
+avc.path.il17 <- avc.path %>% filter(Group == "IL17")
+avc.path.other <- avc.path %>% filter(Group == "Other")
+
+ggplot() + geom_jitter(data=avc.path.other, aes(x=factor(Tool, level = c('Metacore','ipathway','IPA','gprofiler','GSEA','DAVID')),y=neglogP), color="black", alpha=0.2, size=1, width=0.2) + geom_jitter(data=avc.path.il17, aes(x=factor(Tool, level = c('Metacore','ipathway','IPA','gprofiler','GSEA', 'DAVID')),y=neglogP), color="blue", alpha=0.6, size=2, width=0.2) + geom_jitter(data=avc.path.il17best, aes(x=factor(Tool, level = c('Metacore','ipathway','IPA','gprofiler','GSEA','DAVID')),y=neglogP), color="red", alpha=1, size=3, width=0.2) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + theme_bw() + coord_flip()
+```
+
+*Plotting the Muscle Ske vs Cardiac GO:BP results to examine different degs thresholds*
+
+```{r, fig.width=8, fig.height=4}
+svc.gpBP <- read.xlsx("../shared_data/musc_GOBP_tests.gprofiler_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+svc.gpBP <- svc.gpBP %>% mutate(neglogP = -log10(p_value))
+
+svc.gpBP.best <- svc.gpBP %>% filter(Hit == "Best")
+svc.gpBP.hit <- svc.gpBP %>% filter(Hit == "Hit")
+svc.gpBP.other <- svc.gpBP %>% filter(Hit == "Other")
+
+ggplot() + geom_jitter(data=svc.gpBP.other, aes(x=factor(Run, level = c('updegs4FC','updegs2FC','updegs1FC','degs4FC','degs2FC','degs1FC')),y=neglogP), color="black", alpha=0.1, size=1, width=0.2) + geom_jitter(data=svc.gpBP.hit, aes(x=factor(Run, level = c('updegs4FC','updegs2FC','updegs1FC','degs4FC','degs2FC','degs1FC')),y=neglogP), color="blue", alpha=0.6, size=2, width=0.2) + geom_jitter(data=svc.gpBP.best, aes(x=factor(Run, level = c('updegs4FC','updegs2FC','updegs1FC','degs4FC','degs2FC','degs1FC')),y=neglogP), color="red", alpha=1, size=3, width=0.2) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + theme_bw() + coord_flip()
+```
 *Summary Tables*
 
 ```{r}
