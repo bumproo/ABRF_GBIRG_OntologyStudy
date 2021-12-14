@@ -109,7 +109,11 @@ table(svcDE$threshold)
 ```
 *Assemble Plots*
 ```{r, fig.width=5, fig.height=8}
-ggarrange(evc.PCAplot,evc.Volcanoplot, ncol=1, nrow=2)
+evcPub <- ggarrange(evc.PCAplot,evc.Volcanoplot, ncol=1, nrow=2)
+pdf('evcPub.pdf',width=10, height=10)
+evcPub
+dev.off()
+evcPub
 ggarrange(g1rev.PCAplot,g1rev.Volcanoplot, ncol=1, nrow=2)
 ggarrange(avc.PCAplot,avc.Volcanoplot, ncol=1, nrow=2)
 ggarrange(svc.PCAplot,svc.Volcanoplot, ncol=1, nrow=2)
@@ -176,7 +180,12 @@ d <- ggplot(g1revDEdw.58) +
               axis.title = element_text(size = rel(1.25)),
               panel.background = element_rect(fill = "white"))
 
-ggarrange(a,b,c,d, legend = FALSE, ncol=4, nrow=1)
+g1rev.filt.pub <- ggarrange(a,b,c,d, legend = FALSE, ncol=4, nrow=1)
+g1rev.filt.pub 
+
+pdf('g1rev.filt.pdf',width=20, height=4)
+g1rev.filt.pub 
+dev.off()
 
 table(g1revDE$threshold)
 table(g1revDE.58$threshold)
@@ -189,15 +198,25 @@ g1revterm <- read.xlsx("../shared_data/G1vRev_data_withTerm.xlsx", colNames=TRUE
 g1revterm.Hit <- g1revterm %>% filter(GroupWithabsFC0.4 == "Yes")
 g1revterm.Other <- g1revterm %>% filter(GroupWithabsFC0.4 == "No")
 
-ggplot() + geom_point(data=g1revterm.Other, aes(x=logFC, y=neglogP), color="grey", alpha=0.4, size=0.6) + geom_point(data=g1revterm.Hit, aes(x=logFC, y=neglogP), color="blue", alpha=1, size=2) +
+g1rev.termHit.pub <- ggplot() + geom_point(data=g1revterm.Other, aes(x=logFC, y=neglogP), color="darkgrey", alpha=0.4, size=2) + 
+  geom_point(data=g1revterm.Hit, aes(x=logFC, y=neglogP), color="blue", alpha=1, size=3) +
         xlab("log2FC") + 
         ylab("negLogP") +
         scale_y_continuous(limits = c(0,15)) +
-        scale_x_continuous(limits = c(-2,2)) +
+        scale_x_continuous(limits = c(-1.75,1.75)) +
         theme_classic() + theme(legend.position = "none",
               plot.title = element_text(size = rel(1.7), hjust = 0.5),
               axis.title = element_text(size = rel(1.25)),
               panel.background = element_rect(fill = "white"))
+
+
+g1rev.termHit.pub
+
+pdf('g1rev.termHit.pdf')
+g1rev.termHit.pub
+dev.off()
+
+
 ```
 
 ```{r,fig.width=1, fig.height=6}
@@ -264,7 +283,13 @@ f <- ggplot(svcDEup.4) +
               axis.title = element_blank(),
               panel.background = element_rect(fill = "white"))
 
-ggarrange(a,b,c,d,e,f, legend = FALSE, ncol=1, nrow=6)
+svcVol.pub <- ggarrange(a,b,c,d,e,f, legend = FALSE, ncol=1, nrow=6)
+svcVol.pub
+
+pdf('svcVol.pdf', width=1,height=1)
+svcVol.pub
+dev.off()
+
 ```
 *Concept Mapping Demo Plots*
 ```{r, fig.width=12, fig.height=3}
@@ -275,7 +300,7 @@ PPAR.concept.Hit <- PPAR.conceptPlot %>% filter(Group == "Hit")
 PPAR.concept.Low <- PPAR.conceptPlot %>% filter(Group == "Low")
 PPAR.concept.Other <- PPAR.conceptPlot %>% filter(Group == "Other")
 
-gproMap <- ggplot() + geom_jitter(data=PPAR.concept.Other, aes(x=factor(source, level = c('GO:BP','GO:MF','GO:CC','KEGG','REAC','WP')),y=neglogP), color="black", alpha=0.2, size=1, width=0.3) + geom_jitter(data=PPAR.concept.Low, aes(x=factor(source, level = c('GO:BP','GO:MF','GO:CC','KEGG','REAC','WP')),y=neglogP), color="blue", alpha=0.6, size=1, width=0.3) + geom_jitter(data=PPAR.concept.Hit, aes(x=factor(source, level = c('GO:BP','GO:MF','GO:CC','KEGG','REAC','WP')),y=neglogP), color="red", alpha=1, size=2, width=0.3) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + xlab("Ontology") + ylab("neglogP (cap at 50)") + ggtitle("KEGG PPAR gprofiler Mapping") + theme_bw() + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.3), hjust = 0.5),axis.title = element_text(size = rel(1)),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3))) + coord_flip()
+gproMap <- ggplot() + geom_jitter(data=PPAR.concept.Other, aes(x=factor(source, level = c('GO:BP','GO:MF','GO:CC','KEGG','REAC','WP')),y=neglogP), color="black", alpha=0.2, size=1, width=0.3) + geom_jitter(data=PPAR.concept.Low, aes(x=factor(source, level = c('GO:BP','GO:MF','GO:CC','KEGG','REAC','WP')),y=neglogP), color="blue", alpha=0.6, size=1, width=0.3) + geom_jitter(data=PPAR.concept.Hit, aes(x=factor(source, level = c('GO:BP','GO:MF','GO:CC','KEGG','REAC','WP')),y=neglogP), color="red", alpha=1, size=2, width=0.3) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + xlab("Ontology") + ylab("neglogP (capped at 50)") + ggtitle("KEGG PPAR g:Profiler Mapping") + theme_bw() + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.3), hjust = 0.5),axis.title = element_text(size = rel(1)),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3))) + coord_flip()
 
 #manually added annotations to the gsea overlap mapping, top 10 with Hit, non-top10, sub 0.05 with Low, remainder with Other
 PPAR.gsea.concept <- read.xlsx("../shared_data/KEGG_PPAR_SIGNALING_PATHWAY_msigdbOverlaps_FULL.xlsx", colNames=TRUE, rowNames=FALSE)
@@ -284,7 +309,7 @@ PPAR.gsea.concept.Hit <- PPAR.gsea.concept %>% filter(Result == "Hit")
 PPAR.gsea.concept.Low <- PPAR.gsea.concept %>% filter(Result == "Low")
 PPAR.gsea.concept.Other <- PPAR.gsea.concept %>% filter(Result == "Other")
 
-gseaMap <- ggplot() + geom_jitter(data=PPAR.gsea.concept.Other, aes(x=factor(Group, level=c('C5BP','C5MF','C5CC','HALLMARK','C2CGP','C2CP')),y=neglogP), color="black", alpha=0.2, size=1, width=0.3) + geom_jitter(data=PPAR.gsea.concept.Low, aes(x=factor(Group, level=c('C5BP','C5MF','C5CC','HALLMARK','C2CGP','C2CP')),y=neglogP), color="blue", alpha=0.6, size=1, width=0.3) + geom_jitter(data=PPAR.gsea.concept.Hit, aes(x=factor(Group, level=c('C5BP','C5MF','C5CC','HALLMARK','C2CGP','C2CP')),y=neglogP), color="red", alpha=1, size=2, width=0.3) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + xlab("Ontology") + ylab("neglogP (cap at 50)") + ggtitle("KEGG PPAR GSEA Mapping") + theme_bw() + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.3), hjust = 0.5),axis.title = element_text(size = rel(1)),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3))) + coord_flip()
+gseaMap <- ggplot() + geom_jitter(data=PPAR.gsea.concept.Other, aes(x=factor(Group, level=c('C5BP','C5MF','C5CC','HALLMARK','C2CGP','C2CP')),y=neglogP), color="black", alpha=0.2, size=1, width=0.3) + geom_jitter(data=PPAR.gsea.concept.Low, aes(x=factor(Group, level=c('C5BP','C5MF','C5CC','HALLMARK','C2CGP','C2CP')),y=neglogP), color="blue", alpha=0.6, size=1, width=0.3) + geom_jitter(data=PPAR.gsea.concept.Hit, aes(x=factor(Group, level=c('C5BP','C5MF','C5CC','HALLMARK','C2CGP','C2CP')),y=neglogP), color="red", alpha=1, size=2, width=0.3) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + xlab("Ontology") + ylab("neglogP (capped at 50)") + ggtitle("KEGG PPAR GSEA Mapping") + theme_bw() + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.3), hjust = 0.5),axis.title = element_text(size = rel(1)),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3))) + coord_flip()
 
 #manually added annotations to the metacore overlap mapping, top 10 with Hit, non-top10, sub 0.05 with Low, remainder with Other
 PPAR.meta.concept <- read.xlsx("../shared_data/KEGG_PPAR_SIGNALING_PATHWAY_metacoreOverlaps_ConceptDemo.xlsx", colNames=TRUE, rowNames=FALSE)
@@ -293,9 +318,13 @@ PPAR.meta.concept.Hit <- PPAR.meta.concept %>% filter(Hit == "Hit")
 PPAR.meta.concept.Low <- PPAR.meta.concept %>% filter(Hit == "Low")
 PPAR.meta.concept.Other <- PPAR.meta.concept %>% filter(Hit == "Other")
 
-metaMap <- ggplot() + geom_jitter(data=PPAR.meta.concept.Other, aes(x=factor(Group, level=c('GOProcess','GOFunction','GOLocalization','Networks','PathwayMaps')),y=neglogP), color="black", alpha=0.2, size=1, width=0.3) + geom_jitter(data=PPAR.meta.concept.Low, aes(x=factor(Group, level=c('GOProcess','GOFunction','GOLocalization','Networks','PathwayMaps')),y=neglogP), color="blue", alpha=0.6, size=1, width=0.3) + geom_jitter(data=PPAR.meta.concept.Hit, aes(x=factor(Group, level=c('GOProcess','GOFunction','GOLocalization','Networks','PathwayMaps')),y=neglogP), color="red", alpha=1, size=2, width=0.3) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + xlab("Ontology") + ylab("neglogP (cap at 50)") + ggtitle("KEGG PPAR Metacore Mapping") + theme_bw() + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.3), hjust = 0.5),axis.title = element_text(size = rel(1)),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3))) + coord_flip()
+metaMap <- ggplot() + geom_jitter(data=PPAR.meta.concept.Other, aes(x=factor(Group, level=c('GOProcess','GOFunction','GOLocalization','Networks','PathwayMaps')),y=neglogP), color="black", alpha=0.2, size=1, width=0.3) + geom_jitter(data=PPAR.meta.concept.Low, aes(x=factor(Group, level=c('GOProcess','GOFunction','GOLocalization','Networks','PathwayMaps')),y=neglogP), color="blue", alpha=0.6, size=1, width=0.3) + geom_jitter(data=PPAR.meta.concept.Hit, aes(x=factor(Group, level=c('GOProcess','GOFunction','GOLocalization','Networks','PathwayMaps')),y=neglogP), color="red", alpha=1, size=2, width=0.3) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + xlab("Ontology") + ylab("neglogP (capped at 50)") + ggtitle("KEGG PPAR Metacore Mapping") + theme_bw() + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.3), hjust = 0.5),axis.title = element_text(size = rel(1)),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3))) + coord_flip()
 
-ggarrange(metaMap,gproMap,gseaMap, ncol=3, nrow=1)
+concMapping.pub <- ggarrange(metaMap,gproMap,gseaMap, ncol=3, nrow=1)
+
+concMapping.pub
+
+
 ```
 *Import GSEA Data*
 
@@ -586,7 +615,7 @@ ggplot() + geom_jitter(data=G1vRev.RevDEGS.gprofiler.nohit, aes(x=source,y=p_val
 
 *Original Plotting the EvC KEGG summary to highlight PPAR results*
 
-```{r, fig.width=12, fig.height=6}
+```{r, fig.width=6, fig.height=6}
 evc.KEGG <- read.xlsx("../shared_data/EvC_KEGG_Summary.xlsx", colNames=TRUE, rowNames=TRUE)
 
 evc.KEGG.ppar <- evc.KEGG %>% filter(Group == "PPAR")
@@ -597,17 +626,23 @@ ggplot() + geom_jitter(data=evc.KEGG.other, aes(x=Method,y=pval), color="black",
 
 *Revised (neglog10) Plotting the EvC KEGG summary to highlight PPAR results*
 
-```{r, fig.width=8, fig.height=4}
+```{r, fig.width=6, fig.height=6}
 evc.KEGG <- read.xlsx("../shared_data/EvC_KEGG_Summary.xlsx", colNames=TRUE, rowNames=TRUE)
 evc.KEGG <- evc.KEGG %>% mutate(neglogP = -log10(pval))
 
 evc.KEGG.ppar <- evc.KEGG %>% filter(Group == "PPAR")
 evc.KEGG.other <- evc.KEGG %>% filter(Group == "Other")
 
-ggplot() + geom_jitter(data=evc.KEGG.other, aes(x=Method,y=neglogP), color="black", alpha=0.5, size=2, width=0.2) + geom_jitter(data=evc.KEGG.ppar, aes(x=Method,y=neglogP), color="red", alpha=1, size=4, width=0.2) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + theme_bw() + coord_flip()
+ppar.pub <- ggplot() + geom_jitter(data=evc.KEGG.other, aes(x=Method,y=neglogP), color="black", alpha=0.5, size=2, width=0.2) + geom_jitter(data=evc.KEGG.ppar, aes(x=Method,y=neglogP), color="red", alpha=1, size=4, width=0.2) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + theme_bw() + coord_flip()
+
+ppar.pub
+
+pdf('ppar.pub.pdf')
+ppar.pub
+dev.off()
 ```
 
-*G1vRev - DAVID Fold Change and Direction Analyses*
+## G1vRev - DAVID Fold Change and Direction Analyses
 
 ```{r, fig.width=15, fig.height=6}
 p.Cutoff <- 1
@@ -644,7 +679,7 @@ g1rev.david.revdegs.58.plot <- ggplot() + geom_jitter(data=g1rev.david.revdegs.5
 ggarrange(g1rev.david.plot,g1rev.david.fc.58.plot,g1rev.david.revdegs.plot,g1rev.david.revdegs.58.plot, legend = FALSE, ncol=2, nrow=2)
 ```
 
-*G1vRev - gprofiler Fold Change and Direction Analyses*
+## G1vRev - gprofiler Fold Change and Direction Analyses
 
 ```{r, fig.width=15, fig.height=6}
 p.Cutoff <- 0.1
@@ -681,17 +716,26 @@ g1rev.gpro.revdegs.58.plot <- ggplot() + geom_jitter(data=g1rev.gpro.revdegs.58.
 ggarrange(g1rev.gpro.plot,g1rev.gpro.fc.58.plot,g1rev.gpro.revdegs.plot,g1rev.gpro.revdegs.58.plot, legend = FALSE, ncol=2, nrow=2)    
 ```
 
-*msigdb plots*
+## msigdb plots
+
 ```{r}
 msig7.2 <- read.xlsx("../shared_data/msigdb_genesetsInfo_v7.2_paperSubset.xlsx", colNames=TRUE, rowNames=TRUE)
 sub300 <- msig7.2 %>% filter(Size <= 300)
 plus300 <- msig7.2 %>% filter(Size > 300)
-ggplot(msig7.2, aes(Group, Size)) + geom_boxplot() + coord_cartesian(ylim = c(0, 300)) + 
+boxplot7.2 <- ggplot(msig7.2, aes(Group, Size)) + geom_boxplot() + coord_cartesian(ylim = c(0, 300)) + 
   scale_x_discrete(limits = c("HALLMARK", "c2cgp", "c2cp", "KEGG", "BIOCARTA", "PID", "REACTOME", "WP", "c5bp", "c5cc", "c5mf"))
+
+boxplot7.2
+pdf('boxplot7.2.pdf',width=10, height=10)
+boxplot7.2
+dev.off()
+
 table(plus300$Group)
 table(sub300$Group)
 table(msig7.2$Group)
 as.data.frame(msig7.2 %>% group_by(Group) %>% summarize(n(),median(Size), mean(Size)))
+length(msig7.2$Size)
+mean(msig7.2$Size)
 ```
 
 *GSEA plots - these are not looking like I want them to for the paper - just use default plots*
@@ -713,7 +757,7 @@ replotGSEA("C:/Users/Charlie/ABRF_GBIRG_OntologyStudy/dataset_gsea/dataset_runs/
 
 *Plotting the hpm3 a vs c pathway results to examine the IL17*
 
-```{r, fig.width=8, fig.height=4}
+```{r, fig.width=6, fig.height=6}
 avc.path <- read.xlsx("../shared_data/IL17_pathways_summaryFigure.xlsx", colNames=TRUE, rowNames=TRUE)
 avc.path <- avc.path %>% mutate(neglogP = -log10(pval))
 
@@ -721,12 +765,18 @@ avc.path.il17best <- avc.path %>% filter(Group == "IL17best")
 avc.path.il17 <- avc.path %>% filter(Group == "IL17")
 avc.path.other <- avc.path %>% filter(Group == "Other")
 
-ggplot() + geom_jitter(data=avc.path.other, aes(x=factor(Tool, level = c('Metacore','ipathway','IPA','gprofiler','GSEA','DAVID')),y=neglogP), color="black", alpha=0.2, size=1, width=0.2) + geom_jitter(data=avc.path.il17, aes(x=factor(Tool, level = c('Metacore','ipathway','IPA','gprofiler','GSEA', 'DAVID')),y=neglogP), color="blue", alpha=0.6, size=2, width=0.2) + geom_jitter(data=avc.path.il17best, aes(x=factor(Tool, level = c('Metacore','ipathway','IPA','gprofiler','GSEA','DAVID')),y=neglogP), color="red", alpha=1, size=3, width=0.2) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + theme_bw() + coord_flip()
+avc.IL17.pub <- ggplot() + geom_jitter(data=avc.path.other, aes(x=factor(Tool, level = c('Metacore','ipathway','IPA','gprofiler','GSEA','DAVID')),y=neglogP), color="darkgrey", alpha=0.2, size=1, width=0.2) + geom_jitter(data=avc.path.il17, aes(x=factor(Tool, level = c('Metacore','ipathway','IPA','gprofiler','GSEA', 'DAVID')),y=neglogP), color="blue", alpha=0.6, size=3, width=0.2) + geom_jitter(data=avc.path.il17best, aes(x=factor(Tool, level = c('Metacore','ipathway','IPA','gprofiler','GSEA','DAVID')),y=neglogP), color="red", alpha=1, size=4, width=0.2) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + theme_bw() + coord_flip()
+
+avc.IL17.pub
+pdf('avc.IL17.pdf')
+avc.IL17.pub
+dev.off()
+
 ```
 
 *Plotting the Muscle Ske vs Cardiac GO:BP results to examine different degs thresholds*
 
-```{r, fig.width=8, fig.height=4}
+```{r, fig.width=6, fig.height=6}
 svc.gpBP <- read.xlsx("../shared_data/musc_GOBP_tests.gprofiler_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
 svc.gpBP <- svc.gpBP %>% mutate(neglogP = -log10(p_value))
 
@@ -734,7 +784,14 @@ svc.gpBP.best <- svc.gpBP %>% filter(Hit == "Best")
 svc.gpBP.hit <- svc.gpBP %>% filter(Hit == "Hit")
 svc.gpBP.other <- svc.gpBP %>% filter(Hit == "Other")
 
-ggplot() + geom_jitter(data=svc.gpBP.other, aes(x=factor(Run, level = c('updegs4FC','updegs2FC','updegs1FC','degs4FC','degs2FC','degs1FC')),y=neglogP), color="black", alpha=0.1, size=1, width=0.2) + geom_jitter(data=svc.gpBP.hit, aes(x=factor(Run, level = c('updegs4FC','updegs2FC','updegs1FC','degs4FC','degs2FC','degs1FC')),y=neglogP), color="blue", alpha=0.6, size=2, width=0.2) + geom_jitter(data=svc.gpBP.best, aes(x=factor(Run, level = c('updegs4FC','updegs2FC','updegs1FC','degs4FC','degs2FC','degs1FC')),y=neglogP), color="red", alpha=1, size=3, width=0.2) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + theme_bw() + coord_flip()
+svc.pub <- ggplot() + geom_jitter(data=svc.gpBP.other, aes(x=factor(Run, level = c('updegs4FC','updegs2FC','updegs1FC','degs4FC','degs2FC','degs1FC')),y=neglogP), color="darkgrey", alpha=0.1, size=1, width=0.2) + geom_jitter(data=svc.gpBP.hit, aes(x=factor(Run, level = c('updegs4FC','updegs2FC','updegs1FC','degs4FC','degs2FC','degs1FC')),y=neglogP), color="blue", alpha=0.6, size=2, width=0.2) + geom_jitter(data=svc.gpBP.best, aes(x=factor(Run, level = c('updegs4FC','updegs2FC','updegs1FC','degs4FC','degs2FC','degs1FC')),y=neglogP), color="red", alpha=1, size=3, width=0.2) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + theme_bw() + coord_flip()
+
+svc.pub
+
+pdf('svc.pdf')
+svc.pub
+dev.off()
+
 ```
 *Summary Tables*
 
