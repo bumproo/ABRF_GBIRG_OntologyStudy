@@ -1,0 +1,8 @@
+© 2000-2021 QIAGEN. All rights reserved.
+
+Categories	Diseases or Functions Annotation	p-value	Predicted Activation State	Activation z-score	Molecules	# Molecules
+Cell Cycle,Gene Expression	Binding of DNA	6.05E-07	Increased	2.326	ATF3,BMP2,CXCL8,DAB2,EGR1,FGF2,FN1,FOS,FOSB,HBEGF,IL1B,IL33,ITGA2,JAG1,KITLG,MTF1,NFATC2,OAS1,SPP1,STAT1,TXNRD1	21
+Cell Cycle	Entry into interphase	2.86E-06	Increased	2.781	CDK6,EGR1,FGF2,FN1,FOS,HBEGF,IL1B,ITGA2,KITLG,MYBL1	10
+Cell Cycle	Entry into S phase	8.80E-06	Increased	2.411	CDK6,FGF2,FN1,FOS,HBEGF,IL1B,ITGA2,KITLG,MYBL1	9
+Cell Cycle,Cell-To-Cell Signaling and Interaction,Cellular Growth and Proliferation	Contact growth inhibition of tumor cell lines	1.93E-05	 	0.216	ADAM12,BMP2,CDK6,EGR1,MXD1,STAT1,SULF1	7
+Cell Cycle	Mitogenesis	1.93E-05	Increased	2.393	BMP2,FGF2,FOS,HBEGF,IGFBP2,IL1B,KITLG,SPP1,STAT1	9

@@ -1,0 +1,23 @@
+producer_class	xtools.gsea.GseaPreranked
+producer_timestamp	1607634902096
+param	rpt_label	PPAR_EvC_adp.rnk.lipidTransport
+param	rnd_seed	timestamp
+param	set_min	5
+param	zip_report	false
+param	create_svgs	false
+param	scoring_scheme	classic
+param	rnk	/net/ostrom/data/bcc/charliew/ABRG_gbirg/PPARalpha/gsea/PPAR_EvC_adp.rnk
+param	norm	meandiv
+param	out	/net/ostrom/data/bcc/charliew/ABRG_gbirg/PPARalpha/gsea/dec10
+param	mode	Max_probe
+param	include_only_symbols	true
+param	help	false
+param	set_max	1500
+param	gmx	GO_LIPID_TRANSPORTER_ACTIVITY.gmt
+param	make_sets	true
+param	plot_top_x	40
+param	gui	false
+param	nperm	1000
+param	collapse	No_Collapse
+
+file	/net/ostrom/data/bcc/charliew/ABRG_gbirg/PPARalpha/gsea/dec10/PPAR_EvC_adp.rnk.lipidTransport.GseaPreranked.1607634902096/index.html

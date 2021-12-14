@@ -58,13 +58,26 @@ MUSC.gostres <- gost(query = MUSC$GO_SKELETAL_MUSCLE_CONTRACTION,organism = "hsa
 write.xlsx(MUSC.gostres$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="MUSC.gprofiler.xlsx")
 ```
 
+*Run to prepare data for plot to demonstrate gprofiler concept mapping results*
+
+```{r, fig.width=8, fig.height=4}
+PPAR.b <- read.xlsx("../shared_data/KEGG_PPAR_SIGNALING_PATHWAY_withMouse.xlsx", colNames=TRUE, rowNames=FALSE)
+mmPPAR.b <- na.omit(PPAR.b$MGISym)
+mmPPar.b.gostres <- gost(query = mmPPAR,organism = "mmusculus", 
+                         sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"), 
+                         correction_method ="g_SCS", significant = FALSE, domain_scope="annotated")
+mmPPar.b.result <- mmPPar.b.gostres$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size"))
+mmPPar.b.result <- mmPPar.b.result %>% mutate(neglogP = -log10(p_value))
+write.xlsx(mmPPar.b.result, file="mmPPar.b.result.xlsx")
+```
+
 *Import experimental data*
 
 ```{r}
 evc <- read.xlsx("../shared_data/EvC_data.xlsx", colNames=TRUE, rowNames=TRUE)
 g1vrev <- read.xlsx("../shared_data/G1vRev_data.xlsx", colNames=TRUE, rowNames=TRUE)
 hmp3avc <- read.xlsx("../shared_data/hpm3_AvC_data.xlsx", colNames=TRUE, rowNames=TRUE)
-muscsvc <- read.xlsx("../shared_data/musc_SkeVHeart.xlsx", colNames=TRUE, rowNames=TRUE)
+muscsvc <- read.xlsx("../shared_data/musc_SkeVHeart_data.xlsx", colNames=TRUE, rowNames=TRUE)
 ```
 
 *Run gprofiler on experimental data*
@@ -81,7 +94,7 @@ evc.bkground <- evc %>% dplyr::select(c("Gene"))
 
 evc.gostres.bg <- gost(query = evc.degs$Gene,organism = "mmusculus", 
                 sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"),
-                significant = TRUE, correction_method ="g_SCS",
+                significant = FALSE, correction_method ="g_SCS",
                 custom_bg = evc.bkground$Gene, domain_scope="custom")
 
 write.xlsx(evc.gostres.bg$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="evc.gprofiler.xlsx")
@@ -92,7 +105,7 @@ g1vrev.bkground <- g1vrev %>% dplyr::select(c("Gene"))
 
 g1vrev.gostres.bg <- gost(query = g1vrev.degs$Gene,organism = "hsapiens", 
                 sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"),
-                significant = TRUE, correction_method ="g_SCS",
+                significant = FALSE, correction_method ="g_SCS",
                 custom_bg = g1vrev.bkground$Gene, domain_scope="custom")
 
 write.xlsx(g1vrev.gostres.bg$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="g1vrev.gprofiler.xlsx")
@@ -104,7 +117,7 @@ hmp3avc.bkground <- hmp3avc %>% dplyr::select(c("Gene"))
 
 hmp3avc.gostres.bg <- gost(query = hmp3avc.degs$Gene,organism = "hsapiens", 
                 sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"),
-                significant = TRUE, correction_method ="g_SCS",
+                significant = FALSE, correction_method ="g_SCS",
                 custom_bg = hmp3avc.bkground$Gene, domain_scope="custom")
 
 write.xlsx(hmp3avc.gostres.bg$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="hmp3avc.gprofiler.xlsx")
@@ -116,7 +129,7 @@ muscsvc.bkground <- muscsvc %>% dplyr::select(c("Gene"))
 
 muscsvc.gostres.bg <- gost(query = muscsvc.degs$Gene,organism = "hsapiens", 
                 sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"),
-                significant = TRUE, correction_method ="g_SCS",
+                significant = FALSE, correction_method ="g_SCS",
                 custom_bg = muscsvc.bkground$Gene, domain_scope="custom")
 
 write.xlsx(muscsvc.gostres.bg$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="muscsvc.gprofiler.xlsx")
@@ -125,17 +138,182 @@ write.xlsx(muscsvc.gostres.bg$result %>% select(c("term_id", "term_name","source
 #p
 ```
 
-*alternative filtering
+*G1vRev - Runs to test different fold change filtering and sets*
 
-#```{r}
-#g1vRev <- read.xlsx("../shared_data/GSE83647_G1vRev.xlsx", colNames=TRUE, rowNames=TRUE)
-#g1vRev.path <- read.xlsx("../shared_data/HALLMARK_E2F_TARGETS.xlsx")
-#
-#g1vRev <- tibble::rownames_to_column(g1vRev,"Gene")
-#g1vRev.degs <- g1vRev %>% filter(g1vRev$ape.G1.Rev.adp <= 0.05 
-#                                 & MPG == "Yes" 
-#                                 & abs(ape.G1.Rev.logFC) >= 0.58)
-#```
+```{r}
+g1vrev <- read.xlsx("../shared_data/G1vRev_data.xlsx", colNames=TRUE, rowNames=TRUE)
+g1vrev <- tibble::rownames_to_column(g1vrev,"Gene")
+
+#logFC of 1, both directions
+g1vrev.DEGS.1 <- g1vrev %>% filter(adp <= 0.05 & abs(logFC) >= 1)
+#g1vrev.DEGS.1.bkground <- g1vrev %>% filter(!Gene %in% g1vrev.DEGS.1$Gene)
+
+gp.g1vrev.DEGS.1 <- gost(query = g1vrev.DEGS.1$Gene, organism = "hsapiens", 
+                sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"),
+                significant = FALSE, correction_method ="g_SCS",
+                custom_bg = g1vrev$Gene, domain_scope="custom")
+
+write.xlsx(gp.g1vrev.DEGS.1$result %>% 
+             select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="g1vrev.Degs.1.gprofiler.xlsx")
+
+#logFC of 0.58, both directions
+g1vrev.DEGS.58 <- g1vrev %>% filter(adp <= 0.05 & abs(logFC) >= 0.58) %>% dplyr::select(c("Gene"))
+#g1vrev.DEGS.58.bkground <- g1vrev %>% filter(!Gene %in% g1vrev.DEGS.58$Gene) %>% dplyr::select(c("Gene"))
+
+gp.g1vrev.DEGS.58 <- gost(query = g1vrev.DEGS.58$Gene,organism = "hsapiens", 
+                sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"),
+                significant = FALSE, correction_method ="g_SCS",
+                custom_bg = g1vrev$Gene, domain_scope="custom")
+
+write.xlsx(gp.g1vrev.DEGS.58$result %>% 
+             select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="g1vrev.Degs.58.gprofiler.xlsx")
+
+#logFC of 1, upREV
+g1vrev.REVDEGS.1 <- g1vrev %>% filter(adp <= 0.05 & logFC <= -1) %>% dplyr::select(c("Gene"))
+#g1vrev.REVDEGS.1.bkground <- g1vrev %>% filter(!Gene %in% g1vrev.REVDEGS.1$Gene) %>% dplyr::select(c("Gene"))
+
+gp.g1vrev.REVDEGS.1 <- gost(query = g1vrev.REVDEGS.1$Gene,organism = "hsapiens", 
+                sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"),
+                significant = FALSE, correction_method ="g_SCS",
+                custom_bg = g1vrev$Gene, domain_scope="custom")
+
+write.xlsx(gp.g1vrev.REVDEGS.1$result %>% 
+             select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="g1vrev.revDegs.1.gprofiler.xlsx")
+
+#logFC of 0.58, upREV
+g1vrev.REVDEGS.58 <- g1vrev %>% filter(adp <= 0.05 & logFC <= -0.58) %>% dplyr::select(c("Gene"))
+#g1vrev.REVDEGS.58.bkground <- g1vrev %>% filter(!Gene %in% g1vrev.REVDEGS.58$Gene) %>% dplyr::select(c("Gene"))
+
+gp.g1vrev.REVDEGS.58 <- gost(query = g1vrev.REVDEGS.58$Gene,organism = "hsapiens", 
+                sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"),
+                significant = FALSE, correction_method ="g_SCS",
+                custom_bg = g1vrev$Gene, domain_scope="custom")
+
+write.xlsx(gp.g1vrev.REVDEGS.58$result %>% 
+             select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="g1vrev.revDegs.58.gprofiler.xlsx")
+```
+
+*alternative filtering - up in Rev only with relaxed fold change*
+
+```{r}
+g1vrev <- read.xlsx("../shared_data/G1vRev_data.xlsx", colNames=TRUE, rowNames=TRUE)
+
+g1vrev <- tibble::rownames_to_column(g1vrev,"Gene")
+g1vrev.Revdegs <- g1vrev %>% filter(adp <= 0.05 & logFC <= -0.58)
+g1vrev.bkground <- g1vrev %>% dplyr::select(c("Gene"))
+
+g1vrev.Revdegs.58 <- gost(query = g1vrev.Revdegs$Gene,organism = "hsapiens", 
+                sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"),
+                significant = FALSE, correction_method ="g_SCS",
+                custom_bg = g1vrev.bkground$Gene, domain_scope="custom")
+
+write.xlsx(g1vrev.Revdegs.58$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="g1vrev.RevDegs.58.gprofiler.xlsx")
+```
+
+*alternative filtering - up in Rev only with relaxed fold change*
+
+```{r}
+g1vrev <- read.xlsx("../shared_data/G1vRev_data.xlsx", colNames=TRUE, rowNames=TRUE)
+
+g1vrev <- tibble::rownames_to_column(g1vrev,"Gene")
+g1vrev.Revdegs <- g1vrev %>% filter(adp <= 0.05 & logFC <= -1)
+g1vrev.bkground <- g1vrev %>% dplyr::select(c("Gene"))
+
+g1vrev.Revdegs <- gost(query = g1vrev.Revdegs$Gene,organism = "hsapiens", 
+                sources = c("GO:BP", "GO:MF", "GO:CC", "KEGG", "REAC", "WP"),
+                significant = FALSE, correction_method ="g_SCS",
+                custom_bg = g1vrev.bkground$Gene, domain_scope="custom")
+
+write.xlsx(g1vrev.Revdegs$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="g1vrev.RevDegs.gprofiler.xlsx")
+```
+
+*return all of KEGG for evc*
+```{r}
+evc <- read.xlsx("../shared_data/EvC_data.xlsx", colNames=TRUE, rowNames=TRUE)
+evc <- tibble::rownames_to_column(evc,"Gene")
+evc.degs <- evc %>% filter(adp <= 0.05 & abs(logFC) >= 1)
+evc.bkground <- evc %>% dplyr::select(c("Gene"))
+
+evc.gostres.allKegg.bg <- gost(query = evc.degs$Gene,organism = "mmusculus", 
+                sources = c("KEGG"),
+                significant = FALSE, correction_method ="g_SCS",
+                custom_bg = evc.bkground$Gene, domain_scope="custom")
+
+write.xlsx(evc.gostres.allKegg.bg$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="evc.allKEGG.gprofiler.xlsx")
+```
+
+*IL-17 focus on hpm3 avc*
+```{r}
+hmp3avc <- read.xlsx("../shared_data/hpm3_AvC_data.xlsx", colNames=TRUE, rowNames=TRUE)
+
+hmp3avc <- tibble::rownames_to_column(hmp3avc,"Gene")
+hmp3avc.degs <- hmp3avc %>% filter(adp <= 0.05 & abs(logFC) >= 1)
+hmp3avc.bkground <- hmp3avc %>% dplyr::select(c("Gene"))
+
+hmp3avc.gostres.kegg.bg <- gost(query = hmp3avc.degs$Gene,organism = "hsapiens", sources = c("KEGG"),
+                                significant = FALSE, correction_method ="g_SCS", 
+                                custom_bg = hmp3avc.bkground$Gene, domain_scope="custom")
+
+head(hmp3avc.gostres.kegg.bg$result)
+```
+
+*alternative filterings of muscle data
+
+```{r}
+muscsvc <- read.xlsx("../shared_data/musc_SkeVHeart_data.xlsx", colNames=TRUE, rowNames=TRUE)
+muscsvc <- tibble::rownames_to_column(muscsvc,"Gene")
+
+musc.bkground <- muscsvc %>% dplyr::select(c("Gene"))
+
+muscsvc.degs <- muscsvc %>% filter(adp <= 0.05 & abs(logFC) >= 1)
+muscsvc.2degs <- muscsvc %>% filter(adp <= 0.05 & abs(logFC) >= 2)
+muscsvc.4degs <- muscsvc %>% filter(adp <= 0.05 & abs(logFC) >= 4)
+muscsvc.updegs <- muscsvc %>% filter(adp <= 0.05 & logFC >= 1)
+muscsvc.up2degs <- muscsvc %>% filter(adp <= 0.05 & logFC >= 2)
+muscsvc.up4degs <- muscsvc %>% filter(adp <= 0.05 & logFC >= 4)
+
+muscsvc.degs.res <- gost(query = muscsvc.degs$Gene,organism = "hsapiens", 
+                sources = c("GO:BP"),
+                significant = FALSE, correction_method ="g_SCS",
+                custom_bg = musc.bkground$Gene, domain_scope="custom")
+
+write.xlsx(muscsvc.degs.res$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="muscsvc.degs.res.gprofiler.xlsx")
+
+muscsvc.2degs.res <- gost(query = muscsvc.2degs$Gene,organism = "hsapiens", 
+                sources = c("GO:BP"),
+                significant = FALSE, correction_method ="g_SCS",
+                custom_bg = musc.bkground$Gene, domain_scope="custom")
+
+write.xlsx(muscsvc.2degs.res$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="muscsvc.2degs.res.gprofiler.xlsx")
+
+muscsvc.4degs.res <- gost(query = muscsvc.4degs$Gene,organism = "hsapiens", 
+                sources = c("GO:BP"),
+                significant = FALSE, correction_method ="g_SCS",
+                custom_bg = musc.bkground$Gene, domain_scope="custom")
+
+write.xlsx(muscsvc.4degs.res$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="muscsvc.4degs.res.gprofiler.xlsx")
+
+muscsvc.updegs.res <- gost(query = muscsvc.updegs$Gene,organism = "hsapiens", 
+                sources = c("GO:BP"),
+                significant = FALSE, correction_method ="g_SCS",
+                custom_bg = musc.bkground$Gene, domain_scope="custom")
+
+write.xlsx(muscsvc.updegs.res$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="muscsvc.updegs.res.gprofiler.xlsx")
+
+muscsvc.up2degs.res <- gost(query = muscsvc.up2degs$Gene,organism = "hsapiens", 
+                sources = c("GO:BP"),
+                significant = FALSE, correction_method ="g_SCS",
+                custom_bg = musc.bkground$Gene, domain_scope="custom")
+
+write.xlsx(muscsvc.up2degs.res$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="muscsvc.up2degs.res.gprofiler.xlsx")
+
+muscsvc.up4degs.res <- gost(query = muscsvc.up4degs$Gene,organism = "hsapiens", 
+                sources = c("GO:BP"),
+                significant = FALSE, correction_method ="g_SCS",
+                custom_bg = musc.bkground$Gene, domain_scope="custom")
+
+write.xlsx(muscsvc.up4degs.res$result %>% select(c("term_id", "term_name","source","p_value", "query_size", "intersection_size")), file="muscsvc.4degs.res.gprofiler.xlsx")
+```
 
 ## write session info*
 

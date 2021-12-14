@@ -1,0 +1,119 @@
+© 2000-2021 QIAGEN. All rights reserved.
+
+Categories	Diseases or Functions Annotation	p-value	Predicted Activation State	Activation z-score	Molecules	# Molecules
+Cell Cycle	Mitosis of cervical cancer cell lines	9.68E-10	 	-0.000	BIRC5,CCNB1,CCNB2,CDC20,CDC25B,DLGAP5,MAD2L1,NEK2,NUF2,PLK1,PLK4,PTTG1,UBA7	13
+Cell Cycle	M phase of tumor cell lines	1.44E-09	 	-1.744	AURKB,BIRC5,CDC25B,FOXM1,KIF20A,KIFC1,MAD2L1,MCM7,NEK2,NUF2,PLK1,PTTG1,SIAH1	13
+Cell Cycle	Mitosis of tumor cell lines	1.69E-09	 	-0.219	BIRC5,CCNB1,CCNB2,CDC20,CDC25B,DLGAP5,FOXM1,MAD2L1,NEK2,NUF2,PLK1,PLK4,PTTG1,SIAH1,UBA7	15
+Cell Cycle	Delay in mitosis	7.75E-09	 	 	CCNB1,CDC20,CDC25B,DLGAP5,FOXM1,MAD2L1,PLK1,PTTG1	8
+Cell Cycle	Arrest in mitosis	1.29E-08	 	 	AURKB,BIRC5,CCNB1,CCNB2,CDC20,MAD2L1,MYBL2,NUF2,PLK1,PLK4,UBA7	11
+Cell Cycle	Cell cycle progression	1.82E-08	 	-1.582	ANGPTL2,AURKB,BIRC5,CCNB1,CCNB2,CDC20,CDC25B,CDKN2C,CDKN3,CENPH,DDIT4,DLGAP5,FOXM1,GBP2,HAUS1,HAUS4,HMGB1,ID3,ITGB4,KIF2C,KIFC1,LGALS3,MAD2L1,MCM7,MSLN,MYBL2,NEK2,NFKBIA,NUF2,NUPR1,PCLAF,PIM1,PLK1,PLK4,PPARG,PTN,PTTG1,RASSF3,RPS15A,SIAH1,SOCS3,STMN1,TYMS,UBA7	44
+Cell Cycle	Delay in mitosis of tumor cell lines	2.63E-08	 	 	CCNB1,CDC20,CDC25B,DLGAP5,MAD2L1,PLK1,PTTG1	7
+Cell Cycle	Interphase	3.64E-08	 	-0.856	APOBEC3A,BIRC5,CBX2,CCNB1,CCNB2,CDC20,CDC25B,CDKN2C,CDKN3,FOXM1,H2AX,HAUS1,HAUS4,ID3,LGALS3,LMNB1,MAD2L1,MCM2,MCM7,MSLN,MYBL2,NDRG1,NEK2,NFKBIA,NOX4,PCLAF,PIM1,PLK1,PLK4,POLE4,PPARG,PTTG1,RASSF3,TUBB4B,TYMS	35
+Cell Cycle	G2/M phase transition	8.12E-08	 	 	CCNB1,CCNB2,CDC25B,FOXM1,HAUS1,HAUS4,MAD2L1,MYBL2,NEK2,NFKBIA,PLK1,PLK4,PTTG1,TUBB4B	14
+Cell Cycle,Cellular Assembly and Organization,DNA Replication, Recombination, and Repair	Segregation of chromosomes	1.06E-07	 	-0.581	AURKB,CCNB1,CCNB2,CENPH,KIF2C,MAD2L1,NCAPH,NEK2,NUF2,PLK1,PRC1,PTTG1	12
+Cell Cycle	M phase	1.06E-07	 	-0.900	AURKB,BIRC5,CCNB1,CDC20,CDC25B,FOXM1,KIF20A,KIFC1,MAD2L1,MCM7,NEK2,NUF2,PIM1,PLK1,PRC1,PTTG1,SIAH1	17
+Cell Cycle	Mitosis	1.09E-07	 	-0.660	ANGPTL2,AURKB,BIRC5,CCNB1,CCNB2,CDC20,CDC25B,CDKN3,CENPH,DLGAP5,FOXM1,HAUS1,HAUS4,KIF2C,KIFC1,MAD2L1,MYBL2,NEK2,NUF2,PLK1,PLK4,PTN,PTTG1,SIAH1,STMN1,UBA7	26
+Cell Cycle,Cell Morphology	Formation of spindle apparatus	1.12E-07	 	0.471	BIRC5,HAUS1,HAUS4,KIF2C,KIFC1,MAD2L1,NEK2,NUF2,PLK1,STMN1	10
+Cell Cycle	Arrest in M phase	1.76E-07	 	 	CCNB1,CDC20,CDC25B,KIFC1,MAD2L1,NUF2,PLK1,PTTG1	8
+Cell Cycle	Delay in mitosis of cervical cancer cell lines	2.26E-07	 	 	CCNB1,CDC20,DLGAP5,MAD2L1,PLK1,PTTG1	6
+Cell Cycle	G2/M phase	2.29E-07	 	 	BIRC5,CCNB1,CCNB2,CDC25B,FOXM1,H2AX,HAUS1,HAUS4,MAD2L1,MYBL2,NDRG1,NEK2,NFKBIA,NOX4,PLK1,PLK4,PTTG1,TUBB4B	18
+Cell Cycle	Arrest in mitosis of cervical cancer cell lines	3.44E-07	 	 	BIRC5,CCNB1,CCNB2,MAD2L1,NUF2,PLK1,PLK4,UBA7	8
+Cell Cycle,Cell Morphology	Formation of mitotic spindle	4.34E-07	 	1.069	BIRC5,HAUS1,HAUS4,KIF2C,KIFC1,NEK2,NUF2,PLK1,STMN1	9
+Cell Cycle	Ploidy of colorectal cancer cell lines	4.57E-07	 	1.000	BIRC5,CENPH,MAD2L1,NDRG1	4
+Cell Cycle,Reproductive System Development and Function	Meiosis I of germ cells	5.98E-07	 	 	CDC20,CDC25B,HSPA2,MAD2L1,PTTG1,REC8,SIAH1	7
+Cell Cycle	Ploidy	9.39E-07	 	-0.018	AURKB,BIRC5,CDC20,CENPH,FOXM1,MAD2L1,NDRG1,NEK2,PIM1,PLK1,PLK4,PTTG1,STMN1	13
+Cell Cycle	Interphase of cervical cancer cell lines	1.55E-06	 	-1.000	APOBEC3A,CCNB1,CDC25B,CDKN3,FOXM1,MCM7,NFKBIA,PCLAF,PLK1	9
+Cell Cycle	Delay in initiation of M phase	1.89E-06	 	 	BIRC5,CCNB1,CDC20,MAD2L1,PIM1,PLK1	6
+Cell Cycle	Interphase of tumor cell lines	4.86E-06	 	-0.469	APOBEC3A,BIRC5,CCNB1,CDC25B,CDKN3,FOXM1,ID3,LGALS3,LMNB1,MAD2L1,MCM7,MSLN,MYBL2,NDRG1,NFKBIA,NOX4,PCLAF,PLK1,PPARG,RASSF3,TYMS	21
+Cell Cycle	Aneuploidy	7.76E-06	 	-0.332	CDC20,CENPH,FOXM1,MAD2L1,PIM1,PLK1,PLK4,PTTG1	8
+Cell Cycle,Cellular Movement	Cytokinesis	1.05E-05	 	-1.410	AURKB,BIRC5,CCNB1,CDC20,CDC25B,KIF20A,KIFC1,NEK2,PIM1,PLK1,PRC1,SIAH1	12
+Cell Cycle	Aneuploidization of cells	1.14E-05	 	-1.109	FOXM1,MAD2L1,PIM1,PLK1,PLK4	5
+Cell Cycle	Arrest in mitosis of colorectal cancer cell lines	1.23E-05	 	 	BIRC5,MAD2L1,PLK1	3
+Cell Cycle	Ploidy of cells	1.40E-05	 	0.536	AURKB,BIRC5,CDC20,CENPH,MAD2L1,NDRG1,NEK2,PIM1,PLK1,PTTG1	10
+Cell Cycle,Reproductive System Development and Function	Meiosis I of oocytes	1.67E-05	 	 	CDC20,CDC25B,MAD2L1,PTTG1	4
+Cell Cycle,Reproductive System Development and Function	Meiosis of female germ cells	1.70E-05	 	0.728	CDC20,CDC25B,DLGAP5,MAD2L1,NCAPH,PTTG1,REC8	7
+Cell Cycle	Arrest in interphase	1.74E-05	 	 	APOBEC3A,BIRC5,CCNB1,CDC25B,FOXM1,H2AX,ID3,LGALS3,LMNB1,MAD2L1,MCM2,MCM7,MYBL2,NDRG1,NFKBIA,NOX4,PIM1,PLK1,PPARG,RASSF3,TYMS	21
+Cell Cycle	Metaphase	1.93E-05	 	 	CCNB1,CDC20,CDC25B,PLK1,PTTG1	5
+Cell Cycle,Reproductive System Development and Function	Meiosis of oocytes	2.26E-05	 	0.728	CDC20,CDC25B,DLGAP5,MAD2L1,PTTG1	5
+Cell Cycle,DNA Replication, Recombination, and Repair	Checkpoint control	2.33E-05	 	-1.067	CCNB1,CCNB2,CDC20,MAD2L1,MCM7,PIM1,PLK1,PTTG1	8
+Cell Cycle,Reproductive System Development and Function	Meiosis of germ cells	2.39E-05	 	0.728	CDC20,CDC25B,DLGAP5,HSPA2,MAD2L1,NCAPH,PTTG1,REC8,SIAH1	9
+Cell Cycle	Mitosis of colorectal cancer cell lines	2.86E-05	 	 	BIRC5,CDC25B,MAD2L1,PLK1	4
+Cell Cycle	Entry into interphase	3.40E-05	 	-0.978	CBX2,CDC20,CDKN2C,FOXM1,ID3,MAD2L1,MCM7,MSLN,MYBL2,PPARG	10
+Cell Cycle	Arrest in metaphase	3.64E-05	 	 	CCNB1,CDC20,PLK1,PTTG1	4
+Cell Cycle	Interphase of gonadal cells	6.74E-05	 	 	CDC20,FOXM1,MAD2L1	3
+Cell Cycle	Polyploidy of cells	6.94E-05	 	0.068	BIRC5,NDRG1,PIM1,PLK1	4
+Cell Cycle	S phase of tumor cell lines	7.08E-05	 	-0.239	FOXM1,LMNB1,MCM7,MSLN,MYBL2,PCLAF,PLK1,PPARG,TYMS	9
+Cell Cycle	M phase of cervical cancer cell lines	7.87E-05	 	 	FOXM1,KIF20A,KIFC1,MAD2L1,MCM7,NUF2,PLK1	7
+Cell Cycle	Cycling of centrosome	7.88E-05	 	-1.184	HAUS1,HAUS4,KIFC1,LGALS3,NEK2,PCLAF,PLK1,PLK4	8
+Cell Cycle	Arrest in G2 phase	8.50E-05	 	 	BIRC5,CCNB1,CDC25B,FOXM1,H2AX,MAD2L1,MYBL2,NDRG1,NFKBIA,NOX4,PLK1	11
+Cell Cycle	Polyploidization of cells	9.82E-05	 	-0.270	AURKB,BIRC5,PIM1,PLK1,STMN1	5
+Cell Cycle	Arrest in G2/M phase	1.09E-04	 	 	BIRC5,CCNB1,FOXM1,H2AX,MYBL2,NDRG1,NOX4,PLK1	8
+Cell Cycle	Arrest in G1 phase of bone cancer cell lines	1.10E-04	 	 	CDC25B,FOXM1,LMNB1,MYBL2,RASSF3	5
+Cell Cycle,DNA Replication, Recombination, and Repair	Arrest in spindle checkpoint of cells	1.17E-04	 	 	DLGAP5,MAD2L1	2
+Cell Cycle,Hematopoiesis	Mitosis of megakaryocytes	1.17E-04	 	 	AURKB,PLK1	2
+Cell Cycle	Arrest in G1 phase of sarcoma cell lines	1.22E-04	 	 	CDC25B,FOXM1,LMNB1,MYBL2,RASSF3	5
+Cell Cycle	Arrest in interphase of tumor cell lines	1.26E-04	 	 	APOBEC3A,CCNB1,CDC25B,FOXM1,ID3,LGALS3,LMNB1,MAD2L1,MYBL2,NDRG1,NFKBIA,NOX4,PLK1,RASSF3,TYMS	15
+Cell Cycle	S phase	1.31E-04	 	-1.550	BIRC5,CBX2,CDKN2C,FOXM1,ID3,LMNB1,MCM7,MSLN,MYBL2,PCLAF,PLK1,PPARG,TYMS	13
+Cell Cycle,DNA Replication, Recombination, and Repair	Spindle checkpoint of cells	1.67E-04	 	 	BIRC5,CDC20,DLGAP5,MAD2L1,PLK1	5
+Cell Cycle	Interphase of bone cancer cell lines	1.76E-04	 	 	CDC25B,FOXM1,LMNB1,MYBL2,PLK1,RASSF3	6
+Cell Cycle,DNA Replication, Recombination, and Repair	Spindle checkpoint of tumor cell lines	1.93E-04	 	 	BIRC5,DLGAP5,MAD2L1,PLK1	4
+Cell Cycle	Arrest in G1 phase	2.01E-04	 	 	APOBEC3A,BIRC5,CDC25B,FOXM1,ID3,LGALS3,LMNB1,MCM2,MCM7,MYBL2,PIM1,PPARG,RASSF3,TYMS	14
+Cell Cycle,Cellular Movement	Cytokinesis of tumor cell lines	2.18E-04	 	 	AURKB,BIRC5,KIF20A,KIFC1,NEK2,SIAH1	6
+Cell Cycle	Prometaphase	2.24E-04	 	 	BIRC5,KIFC1,MAD2L1,NUF2	4
+Cell Cycle,Embryonic Development	Cell cycle progression of embryonic cell lines	2.45E-04	 	0.000	PIM1,PLK1,PTTG1,SOCS3,STMN1	5
+Cell Cycle	G1 phase of cervical cancer cell lines	2.57E-04	 	 	APOBEC3A,CDKN3,FOXM1,NFKBIA	4
+Cell Cycle,Hair and Skin Development and Function	Mitosis of epithelial cell lines	2.68E-04	 	-0.447	AURKB,CDC25B,FOXM1,PTTG1,STMN1	5
+Cell Cycle	Ploidy of epithelial cell lines	2.94E-04	 	-0.906	AURKB,NEK2,PIM1,PLK1	4
+Cell Cycle	Arrest in G2 phase of tumor cell lines	3.08E-04	 	 	CCNB1,CDC25B,FOXM1,MAD2L1,NDRG1,NFKBIA,NOX4,PLK1	8
+Cell Cycle	G1 phase	3.24E-04	 	-1.109	APOBEC3A,BIRC5,CDC25B,CDKN2C,CDKN3,FOXM1,ID3,LGALS3,LMNB1,MCM2,MCM7,MYBL2,NFKBIA,PIM1,POLE4,PPARG,RASSF3,TYMS	18
+Cell Cycle	Cell cycle progression of tumor cell lines	3.29E-04	 	0.554	AURKB,BIRC5,CDC25B,CDKN2C,DDIT4,FOXM1,ID3,LGALS3,MAD2L1,MSLN,PLK1,PPARG,RASSF3	13
+Cell Cycle	Mitotic exit	3.35E-04	 	 	CDC20,MAD2L1,NEK2,PLK1	4
+Cell Cycle	Arrest in germinal vesicle stage of oocytes	3.48E-04	 	 	CCNB1,CCNB2	2
+Cell Cycle	Entry into S phase of pancreatic cancer cell lines	3.48E-04	 	 	MSLN,PPARG	2
+Cell Cycle	Polyploidization of leukemia cell lines	3.48E-04	 	 	AURKB,STMN1	2
+Cell Cycle	Prophase	4.18E-04	 	 	CDC25B,PLK1,PTTG1	3
+Cell Cycle	M phase of bone cancer cell lines	4.18E-04	 	 	BIRC5,CDC25B,NEK2	3
+Cell Cycle,Cell Morphology,Cellular Assembly and Organization,DNA Replication, Recombination, and Repair	Misalignment of chromosomes	4.28E-04	 	 	AURKB,BIRC5,CDC20,PSRC1	4
+Cell Cycle	Entry into S phase	4.49E-04	 	-0.456	CBX2,CDKN2C,FOXM1,ID3,MCM7,MSLN,MYBL2,PPARG	8
+Cell Cycle	S phase of cervical cancer cell lines	4.81E-04	 	 	FOXM1,MCM7,PCLAF,PLK1	4
+Cell Cycle,Embryonic Development	Arrest in metaphase of embryonic cells	6.90E-04	 	 	CDC20,PTTG1	2
+Cell Cycle	Arrest in G2/M phase of leukemia cell lines	6.90E-04	 	 	FOXM1,PLK1	2
+Cancer,Cell Cycle,Organismal Injury and Abnormalities	Arrest in G2 phase of cancer cells	6.90E-04	 	 	CDC25B,NDRG1	2
+Cell Cycle,Reproductive System Development and Function	Entry into interphase of oocytes	6.90E-04	 	 	CDC20,MAD2L1	2
+Cell Cycle	Aneuploidization of epithelial cells	6.90E-04	 	 	PIM1,PLK4	2
+Cell Cycle	M phase of epithelial cells	6.90E-04	 	 	MAD2L1,PIM1	2
+Cell Cycle,Cellular Development,Connective Tissue Development and Function	Senescence of fibroblasts	6.95E-04	 	1.432	CBX2,FOXM1,ID3,LMNB1,MYBL2	5
+Cell Cycle	Mitosis of sarcoma cell lines	7.62E-04	 	 	CDC25B,FOXM1,MAD2L1	3
+Cell Cycle	G1/S phase transition	7.77E-04	Decreased	-2.000	BIRC5,CDKN2C,CDKN3,FOXM1,MCM2,MCM7,MYBL2,NFKBIA,POLE4,PPARG,RASSF3	11
+Cell Cycle	G1 phase of tumor cell lines	8.28E-04	 	-1.000	APOBEC3A,CDC25B,CDKN3,FOXM1,ID3,LGALS3,LMNB1,MYBL2,NFKBIA,PPARG,RASSF3,TYMS	12
+Cell Cycle,Respiratory System Development and Function	Ploidy of lung cell lines	9.07E-04	 	 	NEK2,PIM1,PLK1	3
+Cell Cycle	G1 phase of epithelial cells	1.07E-03	 	 	FOXM1,NFKBIA,PPARG	3
+Cell Cycle,Cellular Assembly and Organization,DNA Replication, Recombination, and Repair	Segregation of mitotic sister chromatids	1.07E-03	 	 	MAD2L1,NEK2,PLK1	3
+Cell Cycle,DNA Replication, Recombination, and Repair	Spindle checkpoint of mitotic cells	1.07E-03	 	 	CDC20,MAD2L1,PLK1	3
+Cell Cycle,Cellular Assembly and Organization,DNA Replication, Recombination, and Repair	Segregation of homologous chromosomes	1.14E-03	 	 	PLK1,PTTG1	2
+Cell Cycle	Tetraploidy	1.14E-03	 	 	AURKB,PLK1	2
+Cell Cycle,Cell Morphology,Cellular Assembly and Organization,DNA Replication, Recombination, and Repair	Abnormal morphology of chromosomes	1.18E-03	 	 	AURKB,BIRC5,CDC20,PSRC1,STMN1	5
+Cell Cycle	Cell cycle progression of bone cancer cell lines	1.19E-03	 	 	AURKB,CDC25B,PLK1,RASSF3	4
+Cell Cycle	G2 phase of cervical cancer cell lines	1.19E-03	 	 	CCNB1,CDC25B,FOXM1,PLK1	4
+Cell Cycle	Arrest in prometaphase	1.25E-03	 	 	KIFC1,MAD2L1,NUF2	3
+Cell Cycle	G2 phase of bone cancer cell lines	1.44E-03	 	 	CDC25B,FOXM1,PLK1	3
+Cell Cycle	Metaphase/anaphase transition	1.44E-03	 	 	CCNB1,MAD2L1,PLK1	3
+Cell Cycle	Cell cycle progression of cervical cancer cell lines	1.53E-03	 	 	BIRC5,CDC25B,MAD2L1,PLK1	4
+Cell Cycle,Embryonic Development	Mitosis of embryonic cell lines	1.66E-03	 	 	CDC25B,FOXM1,PTTG1	3
+Cell Cycle	Mitotic index of cervical cancer cell lines	1.70E-03	 	 	BIRC5,MAD2L1	2
+Cell Cycle,Cellular Movement	Cytokinesis of bone cancer cell lines	1.70E-03	 	 	BIRC5,NEK2	2
+Cell Cycle	Sub-G1 phase of tumor cell lines	1.70E-03	 	 	BIRC5,LGALS3	2
+Cell Cycle	Exit from M phase	1.70E-03	 	 	CDC20,MCM7	2
+Cell Cycle	Arrest in M phase of oocytes	1.70E-03	 	 	CDC25B,PTTG1	2
+Cell Cycle,Renal and Urological System Development and Function	Cell cycle progression of kidney cell lines	1.89E-03	 	 	PIM1,PLK1,SOCS3	3
+Cell Cycle	Arrest in G2 phase of cervical cancer cell lines	2.14E-03	 	 	CCNB1,CDC25B,PLK1	3
+Cell Cycle	Interphase of connective tissue cells	2.32E-03	 	 	BIRC5,CBX2,CCNB1,ID3,MYBL2	5
+Cell Cycle	Arrest in cell cycle progression	2.33E-03	 	 	AURKB,BIRC5,CDC25B,CDKN2C,CDKN3,DDIT4,FOXM1,LGALS3,MAD2L1,NFKBIA,PLK1,PPARG,TYMS	13
+Cell Cycle,Cellular Movement	Delay in cytokinesis	2.36E-03	 	 	CCNB1,PIM1	2
+Cell Cycle	Arrest in prophase	2.36E-03	 	 	CDC25B,PLK1	2
+Cell Cycle	Arrest in interphase of cervical cancer cell lines	2.41E-03	 	 	APOBEC3A,CCNB1,CDC25B,PLK1	4
+Cell Cycle,Cellular Development,Respiratory System Development and Function	Senescence of lung cell lines	2.56E-03	 	0.130	FOXM1,ID3,LMNB1,PTTG1,YPEL3	5
+Cell Cycle,Cellular Development,Connective Tissue Development and Function	Premature senescence of fibroblast cell lines	2.71E-03	 	 	FOXM1,LMNB1,MYBL2	3
+Cell Cycle	Entry into S phase of tumor cell lines	2.77E-03	 	0.152	FOXM1,MCM7,MSLN,PPARG	4
+Cell Cycle,Reproductive System Development and Function	Meiosis I of male germ cells	3.03E-03	 	 	HSPA2,REC8,SIAH1	3
+Cell Cycle	Arrest in G2 phase of carcinoma cell lines	3.03E-03	 	 	CCNB1,MAD2L1,PLK1	3
