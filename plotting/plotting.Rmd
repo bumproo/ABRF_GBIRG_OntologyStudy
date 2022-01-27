@@ -765,7 +765,8 @@ length(msig7.2$Size)
 mean(msig7.2$Size)
 ```
 
-*GSEA plots - these are not looking like I want them to for the paper - just use default plots*
+# GSEA plots - these are not looking like I want them to for the paper - just use default plots
+
 ```{r}
 source("replotGSEA.R")
 
@@ -782,7 +783,7 @@ replotGSEA("C:/Users/Charlie/ABRF_GBIRG_OntologyStudy/dataset_gsea/dataset_runs/
            gene.set ="GO_SKELETAL_MUSCLE_CONTRACTION", "A", metric.range = c(-50,50), enrichment.score.range = c(-1,1))
 ```
 
-*Plotting the hpm3 a vs c pathway results to examine the IL17*
+# Plotting the hpm3 a vs c pathway results to examine the IL17
 
 ```{r, fig.width=6, fig.height=6}
 avc.path <- read.xlsx("../shared_data/IL17_pathways_summaryFigure.xlsx", colNames=TRUE, rowNames=TRUE)
