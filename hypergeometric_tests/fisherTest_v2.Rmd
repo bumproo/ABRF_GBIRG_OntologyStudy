@@ -14,6 +14,17 @@ library(ggplot2)
 library(tidyverse)
 library(ggpubr)
 ```
+# Paper Example
+
+```{r}
+a <- data.frame(c(4,100),c(200,20000))
+x <- fisher.test(a, alternative="greater")
+a
+x
+
+```
+# Data frame functions
+
 ```{r}
 make.df2 <- function(denomItem){
   a <- data.frame(c(2,degSize),c(pathSize,denomItem))
@@ -65,7 +76,8 @@ make.df200 <- function(denomItem){
 
 ```
 
-*run the plots with -log10 pvalues*
+# run the plots with -log10 pvalues
+
 ```{r}
 denom <- seq(from = 12000, to = 20000, by = 100)
 degSize <- 100
@@ -207,7 +219,8 @@ dev.off()
 pl.100.fig
 ```
 
-*fisher tests of up in Rev vs HALLMARK_E2F*
+# fisher tests of up in Rev vs HALLMARK_E2F
+
 ```{r}
 # < -1 FC
 a <- data.frame(c(8,62-8),c(194,20237-194))
@@ -227,7 +240,7 @@ d.ex2
 fisher.test(d.ex2, alternative="greater")
 ```
 
-*Perform analysis of the impact of the numbers of deferentially expressed genes on fisher.test pvals*
+# Perform analysis of the impact of the numbers of deferentially expressed genes on fisher.test pvals
 
 ```{r}
 testDGEs.df <- function(degCount){
@@ -366,7 +379,7 @@ dev.off()
 pl.100path
 ```
 
-*Consider an experiment with large numbers differentially expressed genes and the impact of this on fisher.test pvals*
+# Consider an experiment with large numbers differentially expressed genes and the impact of this on fisher.test pvals
 
 ```{r, fig.width=6, fig.height=6}
 testDGEs.df <- function(degCount){
@@ -417,7 +430,7 @@ pdf(paste0('pl.100.pub.pdf'),width=6, height=6)
 pl.100.pub
 dev.off()
 ```
-*Consider an experiment with large numbers differentially expressed genes and the impact of this on fisher.test pvals in a larger pathway*
+# Consider an experiment with large numbers differentially expressed genes and the impact of this on fisher.test pvals in a larger pathway
 
 ```{r, fig.width=6, fig.height=6}
 testDGEs.df <- function(degCount){

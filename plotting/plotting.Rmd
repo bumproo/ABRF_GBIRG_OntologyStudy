@@ -15,11 +15,39 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r, warning=FALSE,error=FALSE,message=FALSE}
 library(openxlsx)
-library(ggplot2)
 library(tidyverse)
 library(ggpubr)
 library(stringr)
 library(pastecs)
+library(ComplexUpset)
+```
+
+# IL-17 upset plot
+
+```{r}
+il17.upset <- read.xlsx("../shared_data/IL17_pathway_Pivot_PlusData_upset.xlsx", colNames=TRUE, rowNames=TRUE)
+il17.upset <- tibble::rownames_to_column(il17.upset, "Gene")
+tool <- colnames(il17.upset)[3:7]
+il17.upset[tool] = il17.upset[tool] == 1
+t(head(il17.upset[tool], 3))
+```
+
+```{r}
+#set_size(8, 3)
+
+il17.upset$Direction <- factor(il17.upset$Direction, levels = c('No', 'Up', 'Down'))
+
+upset(
+  il17.upset,
+  tool,
+  name='tool',
+  base_annotations=list(
+        'Gene Counts'=intersection_size(
+            counts=FALSE,
+            mapping=aes(fill=Direction)
+        ) + scale_fill_manual(values=c('No'='#B3B2B2','Up'='#E41A1C', 'Down'='#377EB8'))
+    ),
+  width_ratio=0.1)
 ```
 
 # Dataset PCA plots
