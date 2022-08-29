@@ -22,34 +22,6 @@ library(pastecs)
 library(ComplexUpset)
 ```
 
-# IL-17 upset plot
-
-```{r}
-il17.upset <- read.xlsx("../shared_data/IL17_pathway_Pivot_PlusData_upset.xlsx", colNames=TRUE, rowNames=TRUE)
-il17.upset <- tibble::rownames_to_column(il17.upset, "Gene")
-tool <- colnames(il17.upset)[3:7]
-il17.upset[tool] = il17.upset[tool] == 1
-t(head(il17.upset[tool], 3))
-```
-
-```{r}
-#set_size(8, 3)
-
-il17.upset$Direction <- factor(il17.upset$Direction, levels = c('No', 'Up', 'Down'))
-
-upset(
-  il17.upset,
-  tool,
-  name='tool',
-  base_annotations=list(
-        'Gene Counts'=intersection_size(
-            counts=FALSE,
-            mapping=aes(fill=Direction)
-        ) + scale_fill_manual(values=c('No'='#B3B2B2','Up'='#E41A1C', 'Down'='#377EB8'))
-    ),
-  width_ratio=0.1)
-```
-
 # Dataset PCA plots
 
 ```{r, fig.width=5, fig.height=4}
@@ -830,7 +802,39 @@ dev.off()
 
 ```
 
-*Plotting the Muscle Ske vs Cardiac GO:BP results to examine different degs thresholds*
+# IL-17 upset plot
+
+```{r}
+il17.upset <- read.xlsx("../shared_data/IL17_pathway_Pivot_PlusData_upset.xlsx", colNames=TRUE, rowNames=TRUE)
+il17.upset <- tibble::rownames_to_column(il17.upset, "Gene")
+tool <- colnames(il17.upset)[3:7]
+il17.upset[tool] = il17.upset[tool] == 1
+t(head(il17.upset[tool], 3))
+```
+
+```{r}
+il17.upset$Direction <- factor(il17.upset$Direction, levels = c('No', 'Up', 'Down'))
+
+il17.upset.plot <- upset(
+  il17.upset,
+  tool,
+  name='Tool Group',
+  base_annotations=list(
+        'Gene Counts'=intersection_size(
+            counts=FALSE,
+            mapping=aes(fill=Direction)) + scale_fill_manual(values=c('No'='#B3B2B2','Up'='#E41A1C', 'Down'='#377EB8'))
+    ),
+  set_sizes=(upset_set_size(geom=geom_bar(width=0.4))) + theme(axis.ticks.x=element_line(),axis.text.x=element_text(angle=90)),
+  width_ratio=0.1)
+
+il17.upset.plot
+
+pdf('il17.upset.pdf',width=6, height=6)
+il17.upset.plot
+dev.off()
+```
+
+# Plotting the Muscle Ske vs Cardiac GO:BP results to examine different degs thresholds
 
 ```{r, fig.width=6, fig.height=6}
 svc.gpBP <- read.xlsx("../shared_data/musc_GOBP_tests.gprofiler_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
@@ -848,7 +852,8 @@ pdf('svc.pdf')
 svc.pub
 dev.off()
 ```
-*Summary Tables*
+
+# Summary Tables
 
 ```{r}
 table(EvC.gsea.select$Collection,EvC.gsea.select$Hit)
@@ -856,7 +861,7 @@ table(evc.gsea.filt$Collection,evc.gsea.filt$Hit)
 #table(EvC.gsea.select.hit$Collection,EvC.gsea.select.hit$Hit)
 #table(EvC.gsea.select.nohit$Collection,EvC.gsea.select.nohit$Hit)
 ```
-## write session info*
+## write session info
 
 ```{r}
 sessionInfo()
