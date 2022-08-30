@@ -804,6 +804,8 @@ dev.off()
 
 # IL-17 upset plot
 
+Import and reformat data
+
 ```{r}
 il17.upset <- read.xlsx("../shared_data/IL17_pathway_Pivot_PlusData_upset.xlsx", colNames=TRUE, rowNames=TRUE)
 il17.upset <- tibble::rownames_to_column(il17.upset, "Gene")
@@ -811,6 +813,8 @@ tool <- colnames(il17.upset)[3:7]
 il17.upset[tool] = il17.upset[tool] == 1
 t(head(il17.upset[tool], 3))
 ```
+
+Generate Plots
 
 ```{r}
 il17.upset$Direction <- factor(il17.upset$Direction, levels = c('No', 'Up', 'Down'))
