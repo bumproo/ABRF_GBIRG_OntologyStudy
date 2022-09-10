@@ -1,0 +1,1372 @@
+---
+title: "ABRF GBIRG Ontology Study - Analyses and Plots"
+author: "Charlie Whittaker"
+date: "9/11/2022"
+output: 
+  html_document: default
+  html_notebook: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Load libraries
+
+```{r, warning=FALSE,error=FALSE,message=FALSE}
+library(openxlsx)
+library(tidyverse)
+library(ggpubr)
+library(stringr)
+library(pastecs)
+library(ComplexUpset)
+```
+# Figure 1
+
+# PCA plots
+
+```{r, fig.width=5, fig.height=4}
+evcPCA <- read.xlsx("evc_pca.xlsx", colNames=TRUE, rowNames=TRUE)
+g1revPCA <- read.xlsx("G1vRev_pca.xlsx", colNames=TRUE, rowNames=TRUE)
+avcPCA <- read.xlsx("avc_pca.xlsx", colNames=TRUE, rowNames=TRUE)
+svcPCA <- read.xlsx("muscle_pca.xlsx", colNames=TRUE, rowNames=TRUE)
+
+evc.PCAplot <- ggplot(evcPCA,aes(x=PC1,y=PC2, col=as.factor(group)))+
+  geom_point(size=5)+
+  theme_bw()+ggtitle('EvC PCA') + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.25), hjust = 0.5),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3)))
+
+g1rev.PCAplot <- ggplot(g1revPCA,aes(x=PC1,y=PC2, col=as.factor(group)))+
+  geom_point(size=5)+
+  theme_bw()+ggtitle('G1vRev PCA')+ theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.25), hjust = 0.5),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3)))
+
+avc.PCAplot <- ggplot(avcPCA,aes(x=PC1,y=PC2, col=as.factor(group)))+
+  geom_point(size=5)+
+  theme_bw()+ggtitle('hpm3AvC PCA')+ theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.25), hjust = 0.5),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3)))
+
+svc.PCAplot <- ggplot(svcPCA,aes(x=PC1,y=PC2, col=as.factor(group)))+
+  geom_point(size=5)+
+  theme_bw()+ggtitle('SvC PCA') + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.25), hjust = 0.5),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3)))
+```
+
+# Volcano plots
+
+For these plots, the adjusted p-values were floored at 1E-50 for plotting purposes
+
+```{r, fig.width=5, fig.height=4}
+evcDE <- read.xlsx("../shared_data/EvC_data_vol.xlsx", colNames=TRUE, rowNames=TRUE)
+evcDE <- evcDE %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 1,"DEGS (1068)","Other (17815)"))
+g1revDE <- read.xlsx("../shared_data/G1vRev_data_vol.xlsx", colNames=TRUE, rowNames=TRUE)
+g1revDE <- g1revDE %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 1,"DEGS (102)","Other (20135)"))
+avcDE <- read.xlsx("../shared_data/hpm3_AvC_data_vol.xlsx", colNames=TRUE, rowNames=TRUE)
+avcDE <- avcDE %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 1,"DEGS (1289)","Other (15218)"))
+svcDE <- read.xlsx("../shared_data/musc_SkeVHeart_data_vol.xlsx", colNames=TRUE, rowNames=TRUE)
+svcDE <- svcDE %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 1,"DEGS (6369)","Other (12368)"))
+
+evc.Volcanoplot <- ggplot(evcDE) +
+        geom_point(size=3,aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        ggtitle("EvC Volcano") +
+        xlab("log2FC") + 
+        ylab("-log10(P-value)") +
+        scale_y_continuous(limits = c(0,50)) +
+        scale_x_continuous(limits = c(-15,15)) +
+        theme_bw() + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.5), hjust = 0.5),
+              axis.title = element_text(size = rel(1.25)),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3)))
+
+g1rev.Volcanoplot <- ggplot(g1revDE) +
+        geom_point(size=3,aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        ggtitle("G1vRev Volcano") +
+        xlab("log2FC") + 
+        ylab("-log10(P-value)") +
+        scale_y_continuous(limits = c(0,50)) +
+        scale_x_continuous(limits = c(-15,15)) +
+        theme_bw() + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.5), hjust = 0.5),
+              axis.title = element_text(size = rel(1.25)),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3)))
+
+avc.Volcanoplot <- ggplot(avcDE) +
+        geom_point(size=3,aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        ggtitle("hpm3AvC Volcano") +
+        xlab("log2FC") + 
+        ylab("-log10(P-value)") +
+        scale_y_continuous(limits = c(0,50)) +
+        scale_x_continuous(limits = c(-15,15)) +
+        theme_bw() + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.5), hjust = 0.5),
+              axis.title = element_text(size = rel(1.25)),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3)))
+
+svc.Volcanoplot <- ggplot(svcDE) +
+        geom_point(size=3,aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        ggtitle("SvC Volcano") +
+        xlab("log2FC") + 
+        ylab("-log10(P-value)") +
+        scale_y_continuous(limits = c(0,50)) +
+        scale_x_continuous(limits = c(-15,15)) +
+        theme_bw() + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.5), hjust = 0.5),
+              axis.title = element_text(size = rel(1.25)),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3)))
+
+table(evcDE$threshold)
+table(g1revDE$threshold)
+table(avcDE$threshold)
+table(svcDE$threshold)
+```
+
+# Assembly of Figure 1 Dataset Introductory Plots
+
+```{r, fig.width=4, fig.height=6}
+evcPub <- ggarrange(evc.PCAplot,evc.Volcanoplot, ncol=1, nrow=2)
+pdf('evcPub.pdf',width=4, height=6)
+evcPub
+dev.off()
+gvrPub <- ggarrange(g1rev.PCAplot,g1rev.Volcanoplot, ncol=1, nrow=2)
+pdf('gvrPub.pdf',width=4, height=6)
+gvrPub
+dev.off()
+avcPub <- ggarrange(avc.PCAplot,avc.Volcanoplot, ncol=1, nrow=2)
+pdf('avcPub.pdf',width=4, height=6)
+avcPub
+dev.off()
+svcPub <- ggarrange(svc.PCAplot,svc.Volcanoplot, ncol=1, nrow=2)
+pdf('svcPub.pdf',width=4, height=6)
+svcPub
+dev.off()
+
+evcPub
+gvrPub
+avcPub
+svcPub
+```
+# Figure 2
+
+## Concept Mapping Demonstration plots - Figure 2a
+
+```{r, fig.width=12, fig.height=3}
+#manually added annotations to the gprofiler mapping, top 10 with Hit, non-top10, sub 0.05 with Low, remainder with Other
+PPAR.conceptPlot <- read.xlsx("../g_profiler/mmPPar.conceptDemo.xlsx", colNames=TRUE, rowNames=FALSE)
+
+PPAR.concept.Hit <- PPAR.conceptPlot %>% filter(Group == "Hit")
+PPAR.concept.Low <- PPAR.conceptPlot %>% filter(Group == "Low")
+PPAR.concept.Other <- PPAR.conceptPlot %>% filter(Group == "Other")
+
+gproMap <- ggplot() + geom_jitter(data=PPAR.concept.Other, aes(x=factor(source, level = c('GO:BP','GO:MF','GO:CC','KEGG','REAC','WP')),y=neglogP), color="black", alpha=0.2, size=1, width=0.3) + geom_jitter(data=PPAR.concept.Low, aes(x=factor(source, level = c('GO:BP','GO:MF','GO:CC','KEGG','REAC','WP')),y=neglogP), color="blue", alpha=0.6, size=1, width=0.3) + geom_jitter(data=PPAR.concept.Hit, aes(x=factor(source, level = c('GO:BP','GO:MF','GO:CC','KEGG','REAC','WP')),y=neglogP), color="red", alpha=1, size=2, width=0.3) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + xlab("Ontology") + ylab("-log10(P-value)") + ggtitle("KEGG PPAR g:Profiler Mapping") + theme_bw() + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.3), hjust = 0.5),axis.title = element_text(size = rel(1)),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3))) + coord_flip()
+
+#manually added annotations to the gsea overlap mapping, top 10 with Hit, non-top10, sub 0.05 with Low, remainder with Other
+PPAR.gsea.concept <- read.xlsx("../shared_data/KEGG_PPAR_SIGNALING_PATHWAY_msigdbOverlaps_FULL.xlsx", colNames=TRUE, rowNames=FALSE)
+
+PPAR.gsea.concept.Hit <- PPAR.gsea.concept %>% filter(Result == "Hit")
+PPAR.gsea.concept.Low <- PPAR.gsea.concept %>% filter(Result == "Low")
+PPAR.gsea.concept.Other <- PPAR.gsea.concept %>% filter(Result == "Other")
+
+gseaMap <- ggplot() + geom_jitter(data=PPAR.gsea.concept.Other, aes(x=factor(Group, level=c('C5BP','C5MF','C5CC','HALLMARK','C2CGP','C2CP')),y=neglogP), color="black", alpha=0.2, size=1, width=0.3) + geom_jitter(data=PPAR.gsea.concept.Low, aes(x=factor(Group, level=c('C5BP','C5MF','C5CC','HALLMARK','C2CGP','C2CP')),y=neglogP), color="blue", alpha=0.6, size=1, width=0.3) + geom_jitter(data=PPAR.gsea.concept.Hit, aes(x=factor(Group, level=c('C5BP','C5MF','C5CC','HALLMARK','C2CGP','C2CP')),y=neglogP), color="red", alpha=1, size=2, width=0.3) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + xlab("Ontology") + ylab("-log10(P-value)") + ggtitle("KEGG PPAR GSEA Mapping") + theme_bw() + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.3), hjust = 0.5),axis.title = element_text(size = rel(1)),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3))) + coord_flip()
+
+#manually added annotations to the metacore overlap mapping, top 10 with Hit, non-top10, sub 0.05 with Low, remainder with Other
+PPAR.meta.concept <- read.xlsx("../shared_data/KEGG_PPAR_SIGNALING_PATHWAY_metacoreOverlaps_ConceptDemo.xlsx", colNames=TRUE, rowNames=FALSE)
+
+PPAR.meta.concept.Hit <- PPAR.meta.concept %>% filter(Hit == "Hit")
+PPAR.meta.concept.Low <- PPAR.meta.concept %>% filter(Hit == "Low")
+PPAR.meta.concept.Other <- PPAR.meta.concept %>% filter(Hit == "Other")
+
+metaMap <- ggplot() + geom_jitter(data=PPAR.meta.concept.Other, aes(x=factor(Group, level=c('GOProcess','GOFunction','GOLocalization','Networks','PathwayMaps')),y=neglogP), color="black", alpha=0.2, size=1, width=0.3) + geom_jitter(data=PPAR.meta.concept.Low, aes(x=factor(Group, level=c('GOProcess','GOFunction','GOLocalization','Networks','PathwayMaps')),y=neglogP), color="blue", alpha=0.6, size=1, width=0.3) + geom_jitter(data=PPAR.meta.concept.Hit, aes(x=factor(Group, level=c('GOProcess','GOFunction','GOLocalization','Networks','PathwayMaps')),y=neglogP), color="red", alpha=1, size=2, width=0.3) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + xlab("Ontology") + ylab("-log10(P-value)") + ggtitle("KEGG PPAR Metacore Mapping") + theme_bw() + theme(legend.title = element_blank(),plot.title = element_text(size = rel(1.3), hjust = 0.5),axis.title = element_text(size = rel(1)),legend.position="bottom",legend.text = element_text(color="black", size=rel(1.3))) + coord_flip()
+
+concMapping.pub <- ggarrange(metaMap,gproMap,gseaMap, ncol=3, nrow=1)
+
+concMapping.pub
+
+pdf('concMapping.pub.pdf',width=12, height=3)
+concMapping.pub
+dev.off()
+```
+
+# Figure 3
+
+## Import GSEA Data
+
+```{r}
+EvC.GSEA <- read.xlsx("../shared_data/EvC_GSEAv4_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+G1vRev.GSEA <- read.xlsx("../shared_data/G1vRev_GSEAv4_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+hpm3AvC.GSEA <- read.xlsx("../shared_data/hpm3_AvC_GSEAv4_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+MuscleSvC.GSEA <- read.xlsx("../shared_data/Muscle_SkeletalvsCardiac_GSEAv4_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+```
+
+## GSEA Summary Plots
+
+```{r, fig.width=10, fig.height=3}
+p.Cutoff <- 0.05
+
+evc.gsea.filt <- EvC.GSEA %>% filter(FDR <= p.Cutoff) %>% filter(Collection %in% c("h","c2cgp","c2cp","c5bp", "c5mf", "c5cc"))
+evc.gsea.filt <- tibble::rownames_to_column(evc.gsea.filt,"Name")
+evc.gsea.nohit <- evc.gsea.filt %>% filter(Hit == "Other")
+evc.gsea.hit <- evc.gsea.filt %>% filter(Hit == "Hit")
+ec.gsea.plot <- ggplot() + geom_jitter(data=evc.gsea.nohit, aes(x="Collection",y=FDR), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=evc.gsea.hit, aes(x="Collection",y=FDR), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("EvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+g1vrev.gsea.filt <- G1vRev.GSEA %>% filter(FDR <= p.Cutoff) %>% filter(Collection %in% c("h","c2cgp","c2cp","c5bp", "c5mf", "c5cc"))
+g1vrev.gsea.filt <- tibble::rownames_to_column(g1vrev.gsea.filt,"Name")
+g1rev.gsea.nohit <- g1vrev.gsea.filt %>% filter(Hit == "Other")
+g1rev.gsea.hit <- g1vrev.gsea.filt %>% filter(Hit == "Hit")
+g1rev.gsea.plot <- ggplot() + geom_jitter(data=g1rev.gsea.nohit, aes(x="Collection",y=FDR), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=g1rev.gsea.hit, aes(x="Collection",y=FDR), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("g1rev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+hpm3AvC.gsea.filt <- hpm3AvC.GSEA %>% filter(FDR <= p.Cutoff) %>% filter(Collection %in% c("h","c2cgp","c2cp","c5bp", "c5mf", "c5cc"))
+hpm3AvC.gsea.filt <- tibble::rownames_to_column(hpm3AvC.gsea.filt,"Name")
+ac.gsea.nohit <- hpm3AvC.gsea.filt %>% filter(Hit == "Other")
+ac.gsea.hit <- hpm3AvC.gsea.filt %>% filter(Hit == "Hit")
+ac.gsea.plot <- ggplot() + geom_jitter(data=ac.gsea.nohit, aes(x="Collection",y=FDR), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=ac.gsea.hit, aes(x="Collection",y=FDR), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("hpm3.AvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+
+MuscleSvC.gsea.filt <- MuscleSvC.GSEA %>% filter(FDR <= p.Cutoff) %>% filter(Collection %in% c("h","c2cgp","c2cp","c5bp", "c5mf", "c5cc"))
+MuscleSvC.gsea.filt <- tibble::rownames_to_column(MuscleSvC.gsea.filt,"Name")
+sc.gsea.nohit <- MuscleSvC.gsea.filt %>% filter(Hit == "Other")
+sc.gsea.hit <- MuscleSvC.gsea.filt %>% filter(Hit == "Hit")
+sc.gsea.plot <- ggplot() + geom_jitter(data=sc.gsea.nohit, aes(x="Collection",y=FDR), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=sc.gsea.hit, aes(x="Collection",y=FDR), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("MuscleSvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+ggarrange(g1rev.gsea.plot,ec.gsea.plot,ac.gsea.plot,sc.gsea.plot, legend = FALSE, ncol=4, nrow=1)
+```
+
+## Import DAVID Data
+
+```{r}
+EvC.DAVID <- read.xlsx("../DAVID/evcDEGS.DAVID_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+G1vRev.DAVID <- read.xlsx("../DAVID/g1vRevDEGS.DAVID_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+hpm3AvC.DAVID <- read.xlsx("../DAVID/hpm3avc.DEGS.DAVID_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+MuscleSvC.DAVID <- read.xlsx("../DAVID/muscsvc.DEGS.DAVID_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+```
+
+## DAVID Summary Plots
+
+```{r, fig.width=10, fig.height=3}
+p.Cutoff <- 0.05
+
+evc.david.filt <- EvC.DAVID %>% filter(PValue <= p.Cutoff)
+evc.david.filt  <- tibble::rownames_to_column(evc.david.filt ,"Name")
+evc.david.nohit <- evc.david.filt  %>% filter(Hit == "Other")
+evc.david.hit <- evc.david.filt  %>% filter(Hit == "Hit")
+ec.david.plot <- ggplot() + geom_jitter(data=evc.david.nohit, aes(x="Collection",y=PValue), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=evc.david.hit, aes(x="Collection",y=PValue), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("EvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+g1vrev.david.filt  <- G1vRev.DAVID %>% filter(PValue <= p.Cutoff)
+g1vrev.david.filt  <- tibble::rownames_to_column(g1vrev.david.filt ,"Name")
+g1rev.david.nohit <- g1vrev.david.filt  %>% filter(Hit == "Other")
+g1rev.david.hit <- g1vrev.david.filt  %>% filter(Hit == "Hit")
+g1rev.david.plot <- ggplot() + geom_jitter(data=g1rev.david.nohit, aes(x="Collection",y=PValue), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=g1rev.david.hit, aes(x="Collection",y=PValue), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("g1rev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+hpm3AvC.david.filt  <- hpm3AvC.DAVID %>% filter(PValue <= p.Cutoff)
+hpm3AvC.david.filt  <- tibble::rownames_to_column(hpm3AvC.david.filt ,"Name")
+ac.david.nohit <- hpm3AvC.david.filt  %>% filter(Hit == "Other")
+ac.david.hit <- hpm3AvC.david.filt  %>% filter(Hit == "Hit")
+ac.david.plot <- ggplot() + geom_jitter(data=ac.david.nohit, aes(x="Collection",y=PValue), color="black", alpha=0.5, size=0.6, width=0.1) + geom_jitter(data=ac.david.hit, aes(x="Collection",y=PValue), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("hpm3.AvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+
+MuscleSvC.david.filt  <- MuscleSvC.DAVID %>% filter(PValue <= p.Cutoff)
+MuscleSvC.david.filt  <- tibble::rownames_to_column(MuscleSvC.david.filt ,"Name")
+sc.david.nohit <- MuscleSvC.david.filt  %>% filter(Hit == "Other")
+sc.david.hit <- MuscleSvC.david.filt  %>% filter(Hit == "Hit")
+sc.david.plot <- ggplot() + geom_jitter(data=sc.david.nohit, aes(x="Collection",y=PValue), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=sc.david.hit, aes(x="Collection",y=PValue), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("MuscleSvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+ggarrange(g1rev.david.plot,ec.david.plot,ac.david.plot,sc.david.plot, legend = FALSE, ncol=4, nrow=1)
+```
+
+## Import gProfiler Data
+
+```{r}
+EvC.gprofiler <- read.xlsx("../g_profiler/evc.gprofiler_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+G1vRev.gprofiler <- read.xlsx("../g_profiler/g1vrev.gprofiler_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+hpm3AvC.gprofiler <- read.xlsx("../g_profiler/hpm3avc.gprofiler_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+MuscleSvC.gprofiler <- read.xlsx("../g_profiler/muscsvc.gprofiler_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+```
+
+## Gprofiler Summary Plots
+
+```{r, fig.width=10, fig.height=3}
+p.Cutoff <- 0.05
+
+evc.gpro.filt  <- EvC.gprofiler %>% filter(p_value <= p.Cutoff)
+evc.gpro.filt <- tibble::rownames_to_column(evc.gpro.filt,"Name")
+evc.gpro.nohit <- evc.gpro.filt %>% filter(Hit == "Other")
+evc.gpro.hit <- evc.gpro.filt %>% filter(Hit == "Hit")
+ec.gpro.plot <- ggplot() + geom_jitter(data=evc.gpro.nohit, aes(x="Collection",y=p_value), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=evc.gpro.hit, aes(x="Collection",y=p_value), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("EvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+g1vrev.gpro.filt <- G1vRev.gprofiler %>% filter(p_value <= p.Cutoff)
+g1vrev.gpro.filt <- tibble::rownames_to_column(g1vrev.gpro.filt,"Name")
+g1rev.gpro.nohit <- g1vrev.gpro.filt %>% filter(Hit == "Other")
+g1rev.gpro.hit <- g1vrev.gpro.filt %>% filter(Hit == "Hit")
+g1rev.gpro.plot <- ggplot() + geom_jitter(data=g1rev.gpro.nohit, aes(x="Collection",y=p_value), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=g1rev.gpro.hit, aes(x="Collection",y=p_value), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("g1rev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+hpm3AvC.gpro.filt <- hpm3AvC.gprofiler %>% filter(p_value <= p.Cutoff)
+hpm3AvC.gpro.filt <- tibble::rownames_to_column(hpm3AvC.gpro.filt,"Name")
+ac.gpro.nohit <- hpm3AvC.gpro.filt %>% filter(Hit == "Other")
+ac.gpro.hit <- hpm3AvC.gpro.filt %>% filter(Hit == "Hit")
+ac.gpro.plot <- ggplot() + geom_jitter(data=ac.gpro.nohit, aes(x="Collection",y=p_value), color="black", alpha=0.5, size=0.6, width=0.1) + geom_jitter(data=ac.gpro.hit, aes(x="Collection",y=p_value), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("hpm3.AvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+
+MuscleSvC.gpro.filt <- MuscleSvC.gprofiler %>% filter(p_value <= p.Cutoff)
+MuscleSvC.gpro.filt <- tibble::rownames_to_column(MuscleSvC.gpro.filt,"Name")
+sc.gpro.nohit <- MuscleSvC.gpro.filt %>% filter(Hit == "Other")
+sc.gpro.hit <- MuscleSvC.gpro.filt %>% filter(Hit == "Hit")
+sc.gpro.plot <- ggplot() + geom_jitter(data=sc.gpro.nohit, aes(x="Collection",y=p_value), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=sc.gpro.hit, aes(x="Collection",y=p_value), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("MuscleSvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+ggarrange(g1rev.gpro.plot,ec.gpro.plot,ac.gpro.plot,sc.gpro.plot, legend = FALSE, ncol=4, nrow=1)
+```
+
+## Import Metacore Data
+
+```{r}
+EvC.metacore <- read.xlsx("../shared_data/EvC_metacore_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+G1vRev.metacore <- read.xlsx("../shared_data/G1vRev_metacore_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+hpm3AvC.metacore <- read.xlsx("../shared_data/hpm3_AvC_metacore_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+MuscleSvC.metacore <- read.xlsx("../shared_data/Muscle_SkeletalvsCardiac_metacore_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+```
+
+## Metacore Summary Plots
+
+```{r, fig.width=10, fig.height=3}
+p.Cutoff <- 0.05
+
+evc.mcore.filt <- EvC.metacore %>% filter(FDR <= p.Cutoff)     
+evc.mcore.filt <- tibble::rownames_to_column(evc.mcore.filt,"Name")
+evc.mcore.nohit <- evc.mcore.filt %>% filter(Hit == "Other")
+evc.mcore.hit <- evc.mcore.filt %>% filter(Hit == "Hit")
+ec.mcore.plot <- ggplot() + geom_jitter(data=evc.mcore.nohit, aes(x="Collection",y=FDR), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=evc.mcore.hit, aes(x="Collection",y=FDR), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("EvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()        
+
+g1vrev.mcore.filt <- G1vRev.metacore %>% filter(FDR <= p.Cutoff)     
+g1vrev.mcore.filt <- tibble::rownames_to_column(g1vrev.mcore.filt,"Name")
+g1rev.mcore.nohit <- g1vrev.mcore.filt %>% filter(Hit == "Other")
+g1rev.mcore.hit <- g1vrev.mcore.filt %>% filter(Hit == "Hit")
+g1rev.mcore.plot <- ggplot() + geom_jitter(data=g1rev.mcore.nohit, aes(x="Collection",y=FDR), color="black", alpha=0.4, size=0.6, width=0.1) + theme_void() + ggtitle("g1rev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+#no significant g1rev hits for metacore so this line was extracted
+#geom_jitter(data=g1rev.mcore.hit, aes(x="Collection",y=FDR), color="red", alpha=1, size=2, width=0.1)
+
+hpm3AvC.mcore.filt <- hpm3AvC.metacore %>% filter(FDR <= p.Cutoff)     
+hpm3AvC.mcore.filt <- tibble::rownames_to_column(hpm3AvC.mcore.filt,"Name")
+ac.mcore.nohit <- hpm3AvC.mcore.filt %>% filter(Hit == "Other")
+ac.mcore.hit <- hpm3AvC.mcore.filt %>% filter(Hit == "Hit")
+ac.mcore.plot <- ggplot() + geom_jitter(data=ac.mcore.nohit, aes(x="Collection",y=FDR), color="black", alpha=0.5, size=0.6, width=0.1) + geom_jitter(data=ac.mcore.hit, aes(x="Collection",y=FDR), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("hpm3.AvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip() 
+
+MuscleSvC.mcore.filt <- MuscleSvC.metacore %>% filter(FDR <= p.Cutoff)     
+MuscleSvC.mcore.filt <- tibble::rownames_to_column(MuscleSvC.mcore.filt,"Name")
+sc.mcore.nohit <- MuscleSvC.mcore.filt %>% filter(Hit == "Other")
+sc.mcore.hit <- MuscleSvC.mcore.filt %>% filter(Hit == "Hit")
+sc.mcore.plot <- ggplot() + geom_jitter(data=sc.mcore.nohit, aes(x="Collection",y=FDR), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=sc.mcore.hit, aes(x="Collection",y=FDR), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("MuscleSvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+ggarrange(g1rev.mcore.plot,ec.mcore.plot,ac.mcore.plot,sc.mcore.plot, legend = FALSE, ncol=4, nrow=1)
+```
+
+## Import IPA Data
+
+```{r}
+EvC.ipa <- read.xlsx("../shared_data/EvC_ipa_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+G1vRev.ipa <- read.xlsx("../shared_data/G1vRev_ipa_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+hpm3AvC.ipa <- read.xlsx("../shared_data/hpm3_AvC_ipa_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+MuscleSvC.ipa <- read.xlsx("../shared_data/Muscle_SkeletalvsCardiac_ipa_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+```
+
+## IPA Summary Plots
+
+```{r, fig.width=10, fig.height=3}
+p.Cutoff <- 0.05
+
+evc.ipa.filt <- EvC.ipa %>% filter(p_value <= p.Cutoff)          
+evc.ipa.filt <- tibble::rownames_to_column(evc.ipa.filt,"Name")
+evc.ipa.nohit <- evc.ipa.filt %>% filter(Hit == "Other")  
+evc.ipa.hit <- evc.ipa.filt %>% filter(Hit == "Hit")  
+ec.ipa.plot <- ggplot() + geom_jitter(data=evc.ipa.nohit, aes(x="Collection",y=p_value), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=evc.ipa.hit, aes(x="Collection",y=p_value), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("EvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()              
+
+g1vrev.ipa.filt <- G1vRev.ipa %>% filter(p_value <= p.Cutoff)          
+g1vrev.ipa.filt <- tibble::rownames_to_column(g1vrev.ipa.filt,"Name")
+g1rev.ipa.nohit <- g1vrev.ipa.filt %>% filter(Hit == "Other")  
+g1rev.ipa.hit <- g1vrev.ipa.filt %>% filter(Hit == "Hit")  
+g1rev.ipa.plot <- ggplot() + geom_jitter(data=g1rev.ipa.nohit, aes(x="Collection",y=p_value), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=g1rev.ipa.hit, aes(x="Collection",y=p_value), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("g1rev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()              
+
+hpm3AvC.ipa.filt <- hpm3AvC.ipa %>% filter(p_value <= p.Cutoff)          
+hpm3AvC.ipa.filt <- tibble::rownames_to_column(hpm3AvC.ipa.filt,"Name")
+ac.ipa.nohit <- hpm3AvC.ipa.filt %>% filter(Hit == "Other")  
+ac.ipa.hit <- hpm3AvC.ipa.filt %>% filter(Hit == "Hit")  
+ac.ipa.plot <- ggplot() + geom_jitter(data=ac.ipa.nohit, aes(x="Collection",y=p_value), color="black", alpha=0.5, size=0.6, width=0.1) + geom_jitter(data=ac.ipa.hit, aes(x="Collection",y=p_value), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("hpm3.AvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()              
+
+
+MuscleSvC.ipa.filt <- MuscleSvC.ipa %>% filter(p_value <= p.Cutoff)          
+MuscleSvC.ipa.filt <- tibble::rownames_to_column(MuscleSvC.ipa.filt,"Name")
+sc.ipa.nohit <- MuscleSvC.ipa.filt %>% filter(Hit == "Other")  
+sc.ipa.hit <- MuscleSvC.ipa.filt %>% filter(Hit == "Hit")  
+sc.ipa.plot <- ggplot() + geom_jitter(data=sc.ipa.nohit, aes(x="Collection",y=p_value), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=sc.ipa.hit, aes(x="Collection",y=p_value), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("MuscleSvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()              
+
+ggarrange(g1rev.ipa.plot,ec.ipa.plot,ac.ipa.plot,sc.ipa.plot, legend = FALSE, ncol=4, nrow=1)        
+```
+
+## Import iPathwayGuide Data
+
+```{r}
+EvC.ipath <- read.xlsx("../shared_data/EvC_ipathway_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+G1vRev.ipath <- read.xlsx("../shared_data/G1vRev_ipathway_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+hpm3AvC.ipath <- read.xlsx("../shared_data/hpm3_AvC_ipathway_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+MuscleSvC.ipath <- read.xlsx("../shared_data/Muscle_SkeletalvsCardiac_ipathway_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+```
+
+## iPathwayGuide Summary Plots
+
+```{r, fig.width=10, fig.height=3}
+p.Cutoff <- 0.05
+
+evc.ipath.filt <- EvC.ipath %>% filter(pv_fdr <= p.Cutoff)          
+evc.ipath.filt <- tibble::rownames_to_column(evc.ipath.filt,"UniqName")
+evc.ipath.nohit <- evc.ipath.filt %>% filter(Hit == "Other")  
+evc.ipath.hit <- evc.ipath.filt %>% filter(Hit == "Hit")  
+ec.ipath.plot <- ggplot() + geom_jitter(data=evc.ipath.nohit, aes(x="Collection",y=pv_fdr), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=evc.ipath.hit, aes(x="Collection",y=pv_fdr), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("EvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()              
+
+g1vrev.ipath.filt <- G1vRev.ipath %>% filter(pv_fdr <= p.Cutoff)          
+g1vrev.ipath.filt <- tibble::rownames_to_column(g1vrev.ipath.filt,"UniqName")
+g1rev.ipath.nohit <- g1vrev.ipath.filt %>% filter(Hit == "Other")  
+g1rev.ipath.hit <- g1vrev.ipath.filt %>% filter(Hit == "Hit")  
+g1rev.ipath.plot <- ggplot() + geom_jitter(data=g1rev.ipath.nohit, aes(x="Collection",y=pv_fdr), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=g1rev.ipath.hit, aes(x="Collection",y=pv_fdr), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("g1rev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()              
+
+hpm3AvC.ipath.filt <- hpm3AvC.ipath %>% filter(pv_fdr <= p.Cutoff)          
+hpm3AvC.ipath.filt <- tibble::rownames_to_column(hpm3AvC.ipath.filt,"UniqName")
+ac.ipath.nohit <- hpm3AvC.ipath.filt %>% filter(Hit == "Other")  
+ac.ipath.hit <- hpm3AvC.ipath.filt %>% filter(Hit == "Hit")  
+ac.ipath.plot <- ggplot() + geom_jitter(data=ac.ipath.nohit, aes(x="Collection",y=pv_fdr), color="black", alpha=0.5, size=0.6, width=0.1) + geom_jitter(data=ac.ipath.hit, aes(x="Collection",y=pv_fdr), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("hpm3.AvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()              
+
+
+MuscleSvC.ipath.filt <- MuscleSvC.ipath %>% filter(pv_fdr <= p.Cutoff)          
+MuscleSvC.ipath.filt <- tibble::rownames_to_column(MuscleSvC.ipath.filt,"UniqName")
+sc.ipath.nohit <- MuscleSvC.ipath.filt %>% filter(Hit == "Other")  
+sc.ipath.hit <- MuscleSvC.ipath.filt %>% filter(Hit == "Hit")  
+sc.ipath.plot <- ggplot() + geom_jitter(data=sc.ipath.nohit, aes(x="Collection",y=pv_fdr), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=sc.ipath.hit, aes(x="Collection",y=pv_fdr), color="red", alpha=1, size=2, width=0.1) + theme_void() + ggtitle("MuscleSvC") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()              
+
+ggarrange(g1rev.ipath.plot,ec.ipath.plot,ac.ipath.plot,sc.ipath.plot, legend = FALSE, ncol=4, nrow=1)
+
+ggplot() + 
+  geom_jitter(data=sc.ipath.nohit, aes(x="Collection",y=pv_fdr), color="black", alpha=0.4, size=0.6, width=0.1) + 
+  geom_jitter(data=sc.ipath.hit, aes(x="Collection",y=pv_fdr), color="red", alpha=1, size=2, width=0.1) + theme_void() +
+  ggtitle("MuscleSvC") + 
+  theme(panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        plot.margin = unit(c(-1,0,-1,0),"cm"),complete=FALSE ##top, right, bottom, left
+        ) + coord_flip()
+```
+
+# Figure 4 and Figure 8 - Modeling Fisher test results
+
+## Example described in paper text
+
+```{r}
+a <- data.frame(c(4,100),c(200,20000))
+x <- fisher.test(a, alternative="greater")
+a
+x
+```
+## Data frame functions
+
+```{r}
+make.df2 <- function(denomItem){
+  a <- data.frame(c(2,degSize),c(pathSize,denomItem))
+  x <- fisher.test(a, alternative="greater")
+  return(-log(x$p.value,10))
+}
+
+make.df5 <- function(denomItem){
+  a <- data.frame(c(5,degSize),c(pathSize,denomItem))
+  x <- fisher.test(a, alternative="greater")
+  return(-log(x$p.value,10))
+}
+
+make.df10 <- function(denomItem){
+  a <- data.frame(c(10,degSize),c(pathSize,denomItem))
+  x <- fisher.test(a, alternative="greater")
+  return(-log(x$p.value,10))
+}
+
+make.df15 <- function(denomItem){
+  a <- data.frame(c(15,degSize),c(pathSize,denomItem))
+  x <- fisher.test(a, alternative="greater")
+  return(-log(x$p.value,10))
+}
+
+make.df25 <- function(denomItem){
+  a <- data.frame(c(25,degSize),c(pathSize,denomItem))
+  x <- fisher.test(a, alternative="greater")
+  return(-log(x$p.value,10))
+}
+
+make.df50 <- function(denomItem){
+  a <- data.frame(c(50,degSize),c(pathSize,denomItem))
+  x <- fisher.test(a, alternative="greater")
+  return(-log(x$p.value,10))
+}
+
+make.df100 <- function(denomItem){
+  a <- data.frame(c(100,degSize),c(pathSize,denomItem))
+  x <- fisher.test(a, alternative="greater")
+  return(-log(x$p.value,10))
+}
+
+make.df200 <- function(denomItem){
+  a <- data.frame(c(200,degSize),c(pathSize,denomItem))
+  x <- fisher.test(a, alternative="greater")
+  return(-log(x$p.value,10))
+}
+
+```
+
+## Prepare plots with -log10 pvalues
+
+```{r}
+denom <- seq(from = 12000, to = 20000, by = 100)
+degSize <- 100
+###########
+pathSize <- 25
+
+x2 <- lapply(denom, make.df2)
+x2.Plot <- as.data.frame(cbind(denom,unlist(x2)))
+colnames(x2.Plot) <- c("BkgrSize","pval")
+
+x5 <- lapply(denom, make.df5)
+x5.Plot <- as.data.frame(cbind(denom,unlist(x5)))
+colnames(x5.Plot) <- c("BkgrSize","pval")
+
+x10 <- lapply(denom, make.df10)
+x10.Plot <- as.data.frame(cbind(denom,unlist(x10)))
+colnames(x10.Plot) <- c("BkgrSize","pval")
+
+x15 <- lapply(denom, make.df15)
+x15.Plot <- as.data.frame(cbind(denom,unlist(x15)))
+colnames(x15.Plot) <- c("BkgrSize","pval")
+
+pl.25 <- ggplot() + geom_point(data=x2.Plot, aes(x=BkgrSize, y=pval), color="green") + geom_point(data=x5.Plot, aes(x=BkgrSize, y=pval), color="black") + geom_point(data=x10.Plot, aes(x=BkgrSize, y=pval), color="blue") + geom_point(data=x15.Plot, aes(x=BkgrSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, color = "red"), size=2)  + ylim(0, 25) + ggtitle("25 Gene Pathway")
+###########
+pathSize <- 50
+
+x2 <- lapply(denom, make.df2)
+x2.Plot <- as.data.frame(cbind(denom,unlist(x2)))
+colnames(x2.Plot) <- c("BkgrSize","pval")
+
+x5 <- lapply(denom, make.df5)
+x5.Plot <- as.data.frame(cbind(denom,unlist(x5)))
+colnames(x5.Plot) <- c("BkgrSize","pval")
+
+x10 <- lapply(denom, make.df10)
+x10.Plot <- as.data.frame(cbind(denom,unlist(x10)))
+colnames(x10.Plot) <- c("BkgrSize","pval")
+
+x15 <- lapply(denom, make.df15)
+x15.Plot <- as.data.frame(cbind(denom,unlist(x15)))
+colnames(x15.Plot) <- c("BkgrSize","pval")
+
+pl.50 <- ggplot() + geom_point(data=x2.Plot, aes(x=BkgrSize, y=pval), color="green") + geom_point(data=x5.Plot, aes(x=BkgrSize, y=pval), color="black") + geom_point(data=x10.Plot, aes(x=BkgrSize, y=pval), color="blue") + geom_point(data=x15.Plot, aes(x=BkgrSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, color = "red"), size=2)  + ylim(0, 25) + ggtitle("50 Gene Pathway")
+###########
+pathSize <- 75
+
+x2 <- lapply(denom, make.df2)
+x2.Plot <- as.data.frame(cbind(denom,unlist(x2)))
+colnames(x2.Plot) <- c("BkgrSize","pval")
+
+x5 <- lapply(denom, make.df5)
+x5.Plot <- as.data.frame(cbind(denom,unlist(x5)))
+colnames(x5.Plot) <- c("BkgrSize","pval")
+
+x10 <- lapply(denom, make.df10)
+x10.Plot <- as.data.frame(cbind(denom,unlist(x10)))
+colnames(x10.Plot) <- c("BkgrSize","pval")
+
+x15 <- lapply(denom, make.df15)
+x15.Plot <- as.data.frame(cbind(denom,unlist(x15)))
+colnames(x15.Plot) <- c("BkgrSize","pval")
+
+pl.75 <- ggplot() + geom_point(data=x2.Plot, aes(x=BkgrSize, y=pval), color="green") + geom_point(data=x5.Plot, aes(x=BkgrSize, y=pval), color="black") + geom_point(data=x10.Plot, aes(x=BkgrSize, y=pval), color="blue") + geom_point(data=x15.Plot, aes(x=BkgrSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, color = "red"), size=2)  + ylim(0, 25) + ggtitle("75 Gene Pathway")
+###########
+pathSize <- 100
+
+x2 <- lapply(denom, make.df2)
+x2.Plot <- as.data.frame(cbind(denom,unlist(x2)))
+colnames(x2.Plot) <- c("BkgrSize","pval")
+
+x5 <- lapply(denom, make.df5)
+x5.Plot <- as.data.frame(cbind(denom,unlist(x5)))
+colnames(x5.Plot) <- c("BkgrSize","pval")
+
+x10 <- lapply(denom, make.df10)
+x10.Plot <- as.data.frame(cbind(denom,unlist(x10)))
+colnames(x10.Plot) <- c("BkgrSize","pval")
+
+x15 <- lapply(denom, make.df15)
+x15.Plot <- as.data.frame(cbind(denom,unlist(x15)))
+colnames(x15.Plot) <- c("BkgrSize","pval")
+
+pl.100 <- ggplot() + geom_point(data=x2.Plot, aes(x=BkgrSize, y=pval), color="green") + geom_point(data=x5.Plot, aes(x=BkgrSize, y=pval), color="black") + geom_point(data=x10.Plot, aes(x=BkgrSize, y=pval), color="blue") + geom_point(data=x15.Plot, aes(x=BkgrSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, color = "red"), size=2)  + ylim(0, 25) + ggtitle("100 Gene Pathway")
+
+pl.100.fig <- ggplot() + geom_point(data=x2.Plot, aes(x=BkgrSize, y=pval), color="green") + geom_point(data=x5.Plot, aes(x=BkgrSize, y=pval), color="black") + geom_point(data=x10.Plot, aes(x=BkgrSize, y=pval), color="blue") + geom_point(data=x15.Plot, aes(x=BkgrSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, color = "red"), size=2)  + ylim(0, 20) + ggtitle("100 Gene Pathway")
+
+###########
+pathSize <- 200
+
+x2 <- lapply(denom, make.df2)
+x2.Plot <- as.data.frame(cbind(denom,unlist(x2)))
+colnames(x2.Plot) <- c("BkgrSize","pval")
+
+x5 <- lapply(denom, make.df5)
+x5.Plot <- as.data.frame(cbind(denom,unlist(x5)))
+colnames(x5.Plot) <- c("BkgrSize","pval")
+
+x10 <- lapply(denom, make.df10)
+x10.Plot <- as.data.frame(cbind(denom,unlist(x10)))
+colnames(x10.Plot) <- c("BkgrSize","pval")
+
+x15 <- lapply(denom, make.df15)
+x15.Plot <- as.data.frame(cbind(denom,unlist(x15)))
+colnames(x15.Plot) <- c("BkgrSize","pval")
+
+pl.200 <- ggplot() + geom_point(data=x2.Plot, aes(x=BkgrSize, y=pval), color="green") + geom_point(data=x5.Plot, aes(x=BkgrSize, y=pval), color="black") + geom_point(data=x10.Plot, aes(x=BkgrSize, y=pval), color="blue") + geom_point(data=x15.Plot, aes(x=BkgrSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, color = "red"), size=2)  + ylim(0, 25) + ggtitle("200 Gene Pathway")
+###########
+pathSize <- 500
+
+x2 <- lapply(denom, make.df2)
+x2.Plot <- as.data.frame(cbind(denom,unlist(x2)))
+colnames(x2.Plot) <- c("BkgrSize","pval")
+
+x5 <- lapply(denom, make.df5)
+x5.Plot <- as.data.frame(cbind(denom,unlist(x5)))
+colnames(x5.Plot) <- c("BkgrSize","pval")
+
+x10 <- lapply(denom, make.df10)
+x10.Plot <- as.data.frame(cbind(denom,unlist(x10)))
+colnames(x10.Plot) <- c("BkgrSize","pval")
+
+x15 <- lapply(denom, make.df15)
+x15.Plot <- as.data.frame(cbind(denom,unlist(x15)))
+colnames(x15.Plot) <- c("BkgrSize","pval")
+
+pl.500 <- ggplot() + geom_point(data=x2.Plot, aes(x=BkgrSize, y=pval), color="green") + geom_point(data=x5.Plot, aes(x=BkgrSize, y=pval), color="black") + geom_point(data=x10.Plot, aes(x=BkgrSize, y=pval), color="blue") + geom_point(data=x15.Plot, aes(x=BkgrSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, color = "red"), size=2)  + ylim(0, 25) + ggtitle("500 Gene Pathway")
+```
+
+## Assemble plots
+
+```{r,fig.width=20, fig.height=5}
+ggarrange(pl.25,pl.50,pl.100,pl.200, legend = FALSE, ncol=4, nrow=1) 
+```
+
+## Figure 4c
+
+```{r}
+pdf(paste0('pl100.pdf'),width=8, height=8)
+pl.100.fig
+dev.off()
+
+pl.100.fig
+```
+
+## Fisher tests of up in Rev vs HALLMARK_E2F
+
+```{r}
+# < -1 FC
+a <- data.frame(c(8,62-8),c(194,20237-194))
+a
+fisher.test(a, alternative="greater")
+
+b <- data.frame(c(27,268-27),c(194,20237-194))
+b
+fisher.test(b, alternative="greater")
+
+d.ex1 <- data.frame(c(3,297),c(37,29663))
+d.ex1
+fisher.test(d.ex1, alternative="greater")
+
+d.ex2 <- data.frame(c(3-1,297),c(37+1,29663))
+d.ex2
+fisher.test(d.ex2, alternative="greater")
+```
+
+## Perform analysis of the impact of the numbers of deferentially expressed genes on fisher.test pvals
+
+```{r}
+testDGEs.df <- function(degCount){
+  a <- data.frame(c(degsInPath,degCount),c(pathSize,bkground))
+  x <- fisher.test(a, alternative="greater")
+  return(-log(x$p.value,10))
+}
+
+degSize <- seq(from = 50, to = 2000, by = 10)
+bkground <- 17000
+###########
+pathSize <- 25
+
+degsInPath <- 2
+
+degs.2 <- lapply(degSize, testDGEs.df)
+degs.2.Plot <- as.data.frame(cbind(degSize,unlist(degs.2)))
+colnames(degs.2.Plot) <- c("degSize","pval")
+
+degsInPath <- 5
+
+degs.5 <- lapply(degSize, testDGEs.df)
+degs.5.Plot <- as.data.frame(cbind(degSize,unlist(degs.5)))
+colnames(degs.5.Plot) <- c("degSize","pval")
+
+degsInPath <- 10
+
+degs.10 <- lapply(degSize, testDGEs.df)
+degs.10.Plot <- as.data.frame(cbind(degSize,unlist(degs.10)))
+colnames(degs.10.Plot) <- c("degSize","pval")
+
+degsInPath <- 15
+
+degs.15 <- lapply(degSize, testDGEs.df)
+degs.15.Plot <- as.data.frame(cbind(degSize,unlist(degs.15)))
+colnames(degs.15.Plot) <- c("degSize","pval")
+
+pl.25path <- ggplot() + geom_point(data=degs.2.Plot, aes(x=degSize, y=pval), color="green") + geom_point(data=degs.5.Plot, aes(x=degSize, y=pval), color="black") + geom_point(data=degs.10.Plot, aes(x=degSize, y=pval), color="blue") + geom_point(data=degs.15.Plot, aes(x=degSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, color = "red"), size=2) + ylim(0, 25) + ggtitle("25 Gene Pathway")
+
+###########
+pathSize <- 50
+
+degsInPath <- 2
+
+degs.2 <- lapply(degSize, testDGEs.df)
+degs.2.Plot <- as.data.frame(cbind(degSize,unlist(degs.2)))
+colnames(degs.2.Plot) <- c("degSize","pval")
+
+degsInPath <- 5
+
+degs.5 <- lapply(degSize, testDGEs.df)
+degs.5.Plot <- as.data.frame(cbind(degSize,unlist(degs.5)))
+colnames(degs.5.Plot) <- c("degSize","pval")
+
+degsInPath <- 10
+
+degs.10 <- lapply(degSize, testDGEs.df)
+degs.10.Plot <- as.data.frame(cbind(degSize,unlist(degs.10)))
+colnames(degs.10.Plot) <- c("degSize","pval")
+
+degsInPath <- 15
+
+degs.15 <- lapply(degSize, testDGEs.df)
+degs.15.Plot <- as.data.frame(cbind(degSize,unlist(degs.15)))
+colnames(degs.15.Plot) <- c("degSize","pval")
+
+pl.50path <- ggplot() + geom_point(data=degs.2.Plot, aes(x=degSize, y=pval), color="green") + geom_point(data=degs.5.Plot, aes(x=degSize, y=pval), color="black") + geom_point(data=degs.10.Plot, aes(x=degSize, y=pval), color="blue") + geom_point(data=degs.15.Plot, aes(x=degSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, color = "red"), size=2) + ylim(0, 25) + ggtitle("50 Gene Pathway")
+###########
+pathSize <- 100
+
+degsInPath <- 2
+
+degs.2 <- lapply(degSize, testDGEs.df)
+degs.2.Plot <- as.data.frame(cbind(degSize,unlist(degs.2)))
+colnames(degs.2.Plot) <- c("degSize","pval")
+
+degsInPath <- 5
+
+degs.5 <- lapply(degSize, testDGEs.df)
+degs.5.Plot <- as.data.frame(cbind(degSize,unlist(degs.5)))
+colnames(degs.5.Plot) <- c("degSize","pval")
+
+degsInPath <- 10
+
+degs.10 <- lapply(degSize, testDGEs.df)
+degs.10.Plot <- as.data.frame(cbind(degSize,unlist(degs.10)))
+colnames(degs.10.Plot) <- c("degSize","pval")
+
+degsInPath <- 15
+
+degs.15 <- lapply(degSize, testDGEs.df)
+degs.15.Plot <- as.data.frame(cbind(degSize,unlist(degs.15)))
+colnames(degs.15.Plot) <- c("degSize","pval")
+
+pl.100path <- ggplot() + geom_point(data=degs.2.Plot, aes(x=degSize, y=pval), color="green") + geom_point(data=degs.5.Plot, aes(x=degSize, y=pval), color="black") + geom_point(data=degs.10.Plot, aes(x=degSize, y=pval), color="blue") + geom_point(data=degs.15.Plot, aes(x=degSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, color = "red"), size=2) + ylim(0, 20) + ggtitle("100 Gene Pathway")
+###########
+pathSize <- 200
+
+degsInPath <- 2
+
+degs.2 <- lapply(degSize, testDGEs.df)
+degs2.Plot <- as.data.frame(cbind(degSize,unlist(degs.2)))
+colnames(degs.2.Plot) <- c("degSize","pval")
+
+degsInPath <- 5
+
+degs.5 <- lapply(degSize, testDGEs.df)
+degs.5.Plot <- as.data.frame(cbind(degSize,unlist(degs.5)))
+colnames(degs.5.Plot) <- c("degSize","pval")
+
+degsInPath <- 10
+
+degs.10 <- lapply(degSize, testDGEs.df)
+degs.10.Plot <- as.data.frame(cbind(degSize,unlist(degs.10)))
+colnames(degs.10.Plot) <- c("degSize","pval")
+
+degsInPath <- 15
+
+degs.15 <- lapply(degSize, testDGEs.df)
+degs.15.Plot <- as.data.frame(cbind(degSize,unlist(degs.15)))
+colnames(degs.15.Plot) <- c("degSize","pval")
+
+pl.200path <- ggplot() + geom_point(data=degs.2.Plot, aes(x=degSize, y=pval), color="green") + geom_point(data=degs.5.Plot, aes(x=degSize, y=pval), color="black") + geom_point(data=degs.10.Plot, aes(x=degSize, y=pval), color="blue") + geom_point(data=degs.15.Plot, aes(x=degSize, y=pval), color="red") + geom_hline(aes(yintercept=1.3, color = "red"), size=2) + ylim(0, 25) + ggtitle("200 Gene Pathway")
+```
+
+## Assemble Plots
+
+```{r,fig.width=20, fig.height=5}
+ggarrange(pl.25path, pl.50path, pl.100path,pl.200path, legend = FALSE, ncol=4, nrow=1) 
+```
+
+## Figure 4d
+
+```{r,fig.width=8, fig.height=8}
+
+pdf(paste0('pl100path.pdf'),width=8, height=8)
+pl.100path
+dev.off()
+
+pl.100path
+```
+
+## Figure 8a - Consider an experiment with large numbers differentially expressed genes and the impact of this on fisher.test pvals
+
+```{r, fig.width=6, fig.height=6}
+testDGEs.df <- function(degCount){
+  a <- data.frame(c(degsInPath,degCount),c(pathSize,20000-degCount))
+  x <- fisher.test(a, alternative="greater")
+  return(-log(x$p.value,10))
+}
+
+degSize <- seq(from = 1000, to = 6000, by = 10)
+
+###########
+pathSize <- 100
+
+degsInPath <- 20
+
+degs.20 <- lapply(degSize, testDGEs.df)
+degs.20.Plot <- as.data.frame(cbind(degSize,unlist(degs.20)))
+colnames(degs.20.Plot) <- c("degSize","pval")
+
+degsInPath <- 40
+
+degs.40 <- lapply(degSize, testDGEs.df)
+degs.40.Plot <- as.data.frame(cbind(degSize,unlist(degs.40)))
+colnames(degs.40.Plot) <- c("degSize","pval")
+
+degsInPath <- 60
+
+degs.60 <- lapply(degSize, testDGEs.df)
+degs.60.Plot <- as.data.frame(cbind(degSize,unlist(degs.60)))
+colnames(degs.60.Plot) <- c("degSize","pval")
+
+degsInPath <- 80
+
+degs.80 <- lapply(degSize, testDGEs.df)
+degs.80.Plot <- as.data.frame(cbind(degSize,unlist(degs.80)))
+colnames(degs.80.Plot) <- c("degSize","pval")
+
+pl.100 <- ggplot() + geom_point(data=degs.20.Plot, aes(x=degSize, y=pval), color="green") + geom_point(data=degs.40.Plot, aes(x=degSize, y=pval), color="black") + geom_point(data=degs.60.Plot, aes(x=degSize, y=pval), color="blue") + geom_point(data=degs.80.Plot, aes(x=degSize, y=pval), color="red") + ylab(label = '-log10 pvalue') + xlab(label = 'DEG Count') + ggtitle("100 Gene Pathway")
+
+#geom_hline(aes(yintercept=1.3, color = "red"), size=2) 
+
+h <- 1.3
+pl.100.pub <- pl.100 + scale_x_continuous(limits = c(1000, 6000),breaks = c(1000, 2000, 3000, 4000, 5000, 6000)) + scale_y_continuous(limits = c(0, 15),breaks = c(0, 5, 10, 15)) + geom_hline(aes(yintercept=h, color = "red"), size=2, show.legend=FALSE) + geom_text(aes(0,h,label = h, vjust = -0.5))
+
+pl.100.pub
+
+pdf(paste0('pl.100.pub.pdf'),width=6, height=6)
+pl.100.pub
+dev.off()
+```
+
+## Figure 8b Consider an experiment with large numbers differentially expressed genes and the impact of this on fisher.test pvals in a larger pathway
+
+```{r, fig.width=6, fig.height=6}
+testDGEs.df <- function(degCount){
+  a <- data.frame(c(degsInPath,degCount),c(pathSize,20000-degCount))
+  x <- fisher.test(a, alternative="greater")
+  return(-log(x$p.value,10))
+}
+
+degSize <- seq(from = 1000, to = 6000, by = 10)
+###########
+pathSize <- 1000
+
+degsInPath <- 200
+
+degs.200 <- lapply(degSize, testDGEs.df)
+degs.200.Plot <- as.data.frame(cbind(degSize,unlist(degs.200)))
+colnames(degs.200.Plot) <- c("degSize","pval")
+
+degsInPath <- 400
+
+degs.400 <- lapply(degSize, testDGEs.df)
+degs.400.Plot <- as.data.frame(cbind(degSize,unlist(degs.400)))
+colnames(degs.400.Plot) <- c("degSize","pval")
+
+degsInPath <- 600
+
+degs.600 <- lapply(degSize, testDGEs.df)
+degs.600.Plot <- as.data.frame(cbind(degSize,unlist(degs.600)))
+colnames(degs.600.Plot) <- c("degSize","pval")
+
+degsInPath <- 800
+
+degs.800 <- lapply(degSize, testDGEs.df)
+degs.800.Plot <- as.data.frame(cbind(degSize,unlist(degs.800)))
+colnames(degs.800.Plot) <- c("degSize","pval")
+
+pl.1000 <- ggplot() + geom_point(data=degs.200.Plot, aes(x=degSize, y=pval), color="green") + geom_point(data=degs.400.Plot, aes(x=degSize, y=pval), color="black") + geom_point(data=degs.600.Plot, aes(x=degSize, y=pval), color="blue") + geom_point(data=degs.800.Plot, aes(x=degSize, y=pval), color="red") + ylab(label = '-log10 pvalue') + xlab(label = 'DEG Count') + ggtitle("1000 Gene Pathway")
+
+#geom_hline(aes(yintercept=1.3, color = "red"), size=2) 
+
+h <- 1.3
+pl.1000.pub <- pl.1000 + scale_x_continuous(limits = c(1000, 6000),breaks = c(1000, 2000, 3000, 4000, 5000, 6000)) + scale_y_continuous(limits = c(0, 15),breaks = c(0, 5, 10, 15)) + geom_hline(aes(yintercept=h, color = "red"), size=2, show.legend=FALSE) + geom_text(aes(0,h,label = h, vjust = -0.5))
+
+pl.1000.pub
+
+pdf(paste0('pl.1000.pub.pdf'),width=6, height=6)
+pl.1000.pub
+dev.off()
+```
+
+## msigdb plots - Figure 4b
+
+```{r}
+msig7.2 <- read.xlsx("../shared_data/msigdb_genesetsInfo_v7.2_paperSubset.xlsx", colNames=TRUE, rowNames=TRUE)
+sub300 <- msig7.2 %>% filter(Size <= 300)
+plus300 <- msig7.2 %>% filter(Size > 300)
+boxplot7.2 <- ggplot(msig7.2, aes(Group, Size)) + geom_boxplot() + coord_cartesian(ylim = c(0, 300)) + 
+  scale_x_discrete(limits = c("HALLMARK", "c2cgp", "c2cp", "KEGG", "BIOCARTA", "PID", "REACTOME", "WP", "c5bp", "c5cc", "c5mf"))
+
+boxplot7.2
+pdf('boxplot7.2.pdf',width=10, height=10)
+boxplot7.2
+dev.off()
+
+table(plus300$Group)
+table(sub300$Group)
+table(msig7.2$Group)
+as.data.frame(msig7.2 %>% group_by(Group) %>% summarize(n(),median(Size), mean(Size)))
+length(msig7.2$Size)
+mean(msig7.2$Size)
+```
+
+# Figure 5
+
+## G1vrev volcano plots to support heatmaps - Figure 5a
+
+```{r, fig.width=20, fig.height=4}
+g1revDEst <- read.xlsx("../shared_data/G1vRev_data_vol_mod.xlsx", colNames=TRUE, rowNames=TRUE)
+g1revDE <- g1revDEst %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 1,"de","other"))
+g1revDE.58 <- g1revDEst %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 0.58,"de","other"))
+g1revDEdw <- g1revDEst %>% mutate(threshold = ifelse(adp <= 0.05 & logFC <= -1,"de","other"))
+g1revDEdw.58 <- g1revDEst %>% mutate(threshold = ifelse(adp <= 0.05 & logFC <=  -0.58,"de","other"))
+
+a <- ggplot(g1revDE) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        ggtitle("abs(logFC) >= 1, 102 DEGs") +
+        xlab("log2FC") + 
+        ylab("-log10(P-value)") +
+        scale_y_continuous(limits = c(0,13)) +
+        scale_x_continuous(limits = c(-2.2,2.2)) +
+        theme(legend.position = "none",
+              plot.title = element_text(size = rel(1.6), hjust = 0.5),
+              axis.title = element_text(size = rel(1.4)),
+              axis.text.x = element_text(size = rel(2)),
+              axis.text.y = element_text(size = rel(2)),
+              panel.background = element_rect(fill = "white"))
+
+b <- ggplot(g1revDE.58) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        ggtitle("abs(logFC) >= 0.58, 466 DEGs") +
+        xlab("log2FC") + 
+        ylab("-log10(P-value)") +
+        scale_y_continuous(limits = c(0,13)) +
+        scale_x_continuous(limits = c(-2.2,2.2)) +
+        theme(legend.position = "none",
+              plot.title = element_text(size = rel(1.6), hjust = 0.5),
+              axis.title = element_text(size = rel(1.4)),
+              axis.text.x = element_text(size = rel(2)),
+              axis.text.y = element_text(size = rel(2)),
+              panel.background = element_rect(fill = "white"))
+
+c <- ggplot(g1revDEdw) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        ggtitle("logFC <= -1, 62 DEGs") +
+        xlab("log2FC") + 
+        ylab("-log10(P-value)") +
+        scale_y_continuous(limits = c(0,13)) +
+        scale_x_continuous(limits = c(-2.2,2.2)) +
+        theme(legend.position = "none",
+              plot.title = element_text(size = rel(1.6), hjust = 0.5),
+              axis.title = element_text(size = rel(1.4)),
+              axis.text.x = element_text(size = rel(2)),
+              axis.text.y = element_text(size = rel(2)),
+              panel.background = element_rect(fill = "white"))
+
+d <- ggplot(g1revDEdw.58) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        ggtitle("logFC <= -0.58, 268 DEGs") +
+        xlab("log2FC") + 
+        ylab("-log10(P-value)") +
+        scale_y_continuous(limits = c(0,13)) +
+        scale_x_continuous(limits = c(-2.2,2.2)) +
+        theme(legend.position = "none",
+              plot.title = element_text(size = rel(1.6), hjust = 0.5),
+              axis.title = element_text(size = rel(1.4)),
+              axis.text.x = element_text(size = rel(2)),
+              axis.text.y = element_text(size = rel(2)),
+              panel.background = element_rect(fill = "white"))
+
+g1rev.filt.pub <- ggarrange(a,b,c,d, legend = FALSE, ncol=4, nrow=1)
+g1rev.filt.pub
+
+pdf('g1rev.filt.pdf',width=20, height=4)
+g1rev.filt.pub 
+dev.off()
+
+table(g1revDE$threshold)
+table(g1revDE.58$threshold)
+table(g1revDEdw$threshold)
+table(g1revDEdw.58$threshold)
+```
+
+## Hallmark E2F targets volcano plot - Figure 5b
+
+```{r,fig.width=4, fig.height=3}
+g1revterm <- read.xlsx("../shared_data/G1vRev_data_withTerm.xlsx", colNames=TRUE, rowNames=TRUE)
+
+g1revterm.Hit <- g1revterm %>% filter(GroupWithabsFC0.4 == "Yes")
+g1revterm.Other <- g1revterm %>% filter(GroupWithabsFC0.4 == "No")
+
+g1rev.termHit.pub <- ggplot() + geom_point(data=g1revterm.Other, aes(x=logFC, y=neglogP), color="darkgrey", alpha=0.4, size=2) + 
+  geom_point(data=g1revterm.Hit, aes(x=logFC, y=neglogP), color="blue", alpha=1, size=3) +
+        xlab("log2FC") + 
+        ylab("-log10(P-value)") +
+        scale_y_continuous(limits = c(0,15)) +
+        scale_x_continuous(limits = c(-1.75,1.75)) +
+        theme_classic() + theme(legend.position = "none",
+              plot.title = element_text(size = rel(1.6), hjust = 0.5),
+              axis.title = element_text(size = rel(1.4)),
+              axis.text.x = element_text(size = rel(2)),
+              axis.text.y = element_text(size = rel(2)),
+              panel.background = element_rect(fill = "white"))
+
+
+g1rev.termHit.pub
+
+pdf('g1rev.termHit.pdf')
+g1rev.termHit.pub
+dev.off()
+
+
+```
+
+# Figure 6a
+
+## Plotting the EvC KEGG summary to highlight PPAR results
+
+```{r, fig.width=6, fig.height=6}
+evc.KEGG <- read.xlsx("../shared_data/EvC_KEGG_Summary.xlsx", colNames=TRUE, rowNames=TRUE)
+evc.KEGG <- evc.KEGG %>% mutate(neglogP = -log10(pval))
+
+evc.KEGG.ppar <- evc.KEGG %>% filter(Group == "PPAR")
+evc.KEGG.other <- evc.KEGG %>% filter(Group == "Other")
+
+ppar.pub <- ggplot() + geom_jitter(data=evc.KEGG.other, aes(x=Method,y=neglogP), color="black", alpha=0.5, size=2, width=0.2) + geom_jitter(data=evc.KEGG.ppar, aes(x=Method,y=neglogP), color="red", alpha=1, size=4, width=0.2) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + theme_bw() + coord_flip()
+
+ppar.pub
+
+pdf('ppar.pub.pdf')
+ppar.pub
+dev.off()
+```
+
+# Figure 7 IL-17 signaling
+
+## Figure 7b - Plotting the hpm3 a vs c pathway results to examine the IL17
+
+```{r, fig.width=6, fig.height=6}
+avc.path <- read.xlsx("../shared_data/IL17_pathways_summaryFigure.xlsx", colNames=TRUE, rowNames=TRUE)
+avc.path <- avc.path %>% mutate(neglogP = -log10(pval))
+
+avc.path.il17best <- avc.path %>% filter(Group == "IL17best")
+avc.path.il17 <- avc.path %>% filter(Group == "IL17")
+avc.path.other <- avc.path %>% filter(Group == "Other")
+
+avc.IL17.pub <- ggplot() + geom_jitter(data=avc.path.other, aes(x=factor(Tool, level = c('Metacore','ipathway','IPA','gprofiler','GSEA','DAVID')),y=neglogP), color="darkgrey", alpha=0.2, size=1, width=0.2) + geom_jitter(data=avc.path.il17, aes(x=factor(Tool, level = c('Metacore','ipathway','IPA','gprofiler','GSEA', 'DAVID')),y=neglogP), color="blue", alpha=0.6, size=3, width=0.2) + geom_jitter(data=avc.path.il17best, aes(x=factor(Tool, level = c('Metacore','ipathway','IPA','gprofiler','GSEA','DAVID')),y=neglogP), color="red", alpha=1, size=4, width=0.2) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + theme_bw() + coord_flip()
+
+
+pdf('avc.IL17.pdf')
+avc.IL17.pub
+dev.off()
+
+avc.IL17.pub
+```
+
+## Figure 7c - Upset plot - Import and reformat data
+
+```{r}
+il17.upset <- read.xlsx("../shared_data/IL17_pathway_Pivot_PlusData_upset.xlsx", colNames=TRUE, rowNames=TRUE)
+il17.upset <- tibble::rownames_to_column(il17.upset, "Gene")
+tool <- colnames(il17.upset)[3:7]
+il17.upset[tool] = il17.upset[tool] == 1
+t(head(il17.upset[tool], 3))
+```
+
+## Generate Plot - Figure 7c 
+
+```{r}
+il17.upset$Direction <- factor(il17.upset$Direction, levels = c('No', 'Up', 'Down'))
+
+il17.upset.plot <- upset(
+  il17.upset,
+  tool,
+  name='Tool Group',
+  base_annotations=list(
+        'Gene Counts'=intersection_size(
+            counts=FALSE,
+            mapping=aes(fill=Direction)) + scale_fill_manual(values=c('No'='#B3B2B2','Up'='#E41A1C', 'Down'='#377EB8'))
+    ),
+  set_sizes=(upset_set_size(geom=geom_bar(width=0.4))) + theme(axis.ticks.x=element_line(),axis.text.x=element_text(angle=90)),
+  width_ratio=0.1)
+
+pdf('il17.upset.pdf',width=6, height=6)
+il17.upset.plot
+dev.off()
+
+il17.upset.plot
+```
+
+# Figure 8
+
+## Figure 8c - Cartoon volcano plots for SvC
+
+```{r,fig.width=1, fig.height=6}
+svcDE.st <- read.xlsx("../shared_data/musc_SkeVHeart_data_vol.xlsx", colNames=TRUE, rowNames=TRUE)
+
+svcDE <- svcDE.st %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 1,"de","other"))
+svcDE.2 <- svcDE.st %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 2,"de","other"))
+svcDE.4 <- svcDE.st %>% mutate(threshold = ifelse(adp <= 0.05 & abs(logFC) >= 4,"de","other"))
+svcDEup <- svcDE.st %>% mutate(threshold = ifelse(adp <= 0.05 & logFC >= 1,"de","other"))
+svcDEup.2 <- svcDE.st %>% mutate(threshold = ifelse(adp <= 0.05 & logFC >=  2,"de","other"))
+svcDEup.4 <- svcDE.st %>% mutate(threshold = ifelse(adp <= 0.05 & logFC >= 4,"de","other"))
+
+a <- ggplot(svcDE) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        scale_y_continuous(limits = c(0,55),labels = NULL, breaks = NULL) +
+        scale_x_continuous(limits = c(-12,12),labels = NULL, breaks = NULL) +
+        theme(legend.position = "none",
+              axis.title = element_blank(),
+              panel.background = element_rect(fill = "white"))
+
+b <- ggplot(svcDE.2) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        scale_y_continuous(limits = c(0,55),labels = NULL, breaks = NULL) +
+        scale_x_continuous(limits = c(-12,12),labels = NULL, breaks = NULL) +
+        theme(legend.position = "none",
+              axis.title = element_blank(),
+              panel.background = element_rect(fill = "white"))
+
+c <- ggplot(svcDE.4) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        scale_y_continuous(limits = c(0,55),labels = NULL, breaks = NULL) +
+        scale_x_continuous(limits = c(-12,12),labels = NULL, breaks = NULL) +
+        theme(legend.position = "none",
+              axis.title = element_blank(),
+              panel.background = element_rect(fill = "white"))
+
+d <- ggplot(svcDEup) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        scale_y_continuous(limits = c(0,55),labels = NULL, breaks = NULL) +
+        scale_x_continuous(limits = c(-12,12),labels = NULL, breaks = NULL) +
+        theme(legend.position = "none",
+              axis.title = element_blank(),
+              panel.background = element_rect(fill = "white"))
+
+e <- ggplot(svcDEup.2) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        scale_y_continuous(limits = c(0,55),labels = NULL, breaks = NULL) +
+        scale_x_continuous(limits = c(-12,12),labels = NULL, breaks = NULL) +
+        theme(legend.position = "none",
+              axis.title = element_blank(),
+              panel.background = element_rect(fill = "white"))
+
+f <- ggplot(svcDEup.4) +
+        geom_point(aes(x=logFC, y=-log10(adp), color=threshold)) +
+        scale_color_manual(values=c("red", "grey")) +
+        scale_y_continuous(limits = c(0,55),labels = NULL, breaks = NULL) +
+        scale_x_continuous(limits = c(-12,12),labels = NULL, breaks = NULL) +
+        theme(legend.position = "none",
+              axis.title = element_blank(),
+              panel.background = element_rect(fill = "white"))
+
+svcVol.pub <- ggarrange(a,b,c,d,e,f, legend = FALSE, ncol=1, nrow=6)
+svcVol.pub
+
+pdf('svcVol.pdf', width=1,height=1)
+svcVol.pub
+dev.off()
+```
+
+## Figure 8c - Plotting the Muscle Ske vs Cardiac GO:BP results to examine different degs thresholds
+
+```{r, fig.width=6, fig.height=6}
+svc.gpBP <- read.xlsx("../shared_data/musc_GOBP_tests.gprofiler_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+svc.gpBP <- svc.gpBP %>% mutate(neglogP = -log10(p_value))
+
+svc.gpBP.best <- svc.gpBP %>% filter(Hit == "Best")
+svc.gpBP.hit <- svc.gpBP %>% filter(Hit == "Hit")
+svc.gpBP.other <- svc.gpBP %>% filter(Hit == "Other")
+
+svc.pub <- ggplot() + geom_jitter(data=svc.gpBP.other, aes(x=factor(Run, level = c('updegs4FC','updegs2FC','updegs1FC','degs4FC','degs2FC','degs1FC')),y=neglogP), color="darkgrey", alpha=0.1, size=1, width=0.2) + geom_jitter(data=svc.gpBP.hit, aes(x=factor(Run, level = c('updegs4FC','updegs2FC','updegs1FC','degs4FC','degs2FC','degs1FC')),y=neglogP), color="blue", alpha=0.6, size=2, width=0.2) + geom_jitter(data=svc.gpBP.best, aes(x=factor(Run, level = c('updegs4FC','updegs2FC','updegs1FC','degs4FC','degs2FC','degs1FC')),y=neglogP), color="red", alpha=1, size=3, width=0.2) + geom_hline(aes(yintercept=1.3, color = "red"), size=1, show.legend=FALSE) + theme_bw() + coord_flip()
+
+svc.pub
+
+pdf('svc.pdf')
+svc.pub
+dev.off()
+```
+
+
+# Additional plots not used in the paper
+
+## Plotting the full EvC GSEA results
+
+```{r, fig.width=12, fig.height=6}
+EvC.gsea.select <- EvC.GSEA  %>% filter(Collection %in% c("h","c2cgp","c2cp","c5bp", "c5mf", "c5cc"))
+EvC.gsea.select <- tibble::rownames_to_column(EvC.gsea.select,"Term")
+EvC.gsea.select.nohit <- EvC.gsea.select %>% filter(Hit == "Other")
+EvC.gsea.select.hit <- EvC.gsea.select %>% filter(Hit == "Hit")
+
+ggplot() + geom_jitter(data=EvC.gsea.select.nohit, aes(x=Collection,y=FDR), color="black", alpha=0.3, size=0.6, width=0.1) + geom_jitter(data=EvC.gsea.select.hit, aes(x=Collection,y=FDR), color="red", alpha=1, size=2, width=0.1) + theme_bw() + coord_flip()
+```
+
+## Plotting the full G1Rev.RevDEGS gprofiler results
+
+```{r, fig.width=12, fig.height=6}
+G1vRev.RevDEGS.gprofiler <- read.xlsx("../g_profiler/g1vrev.RevDegs.gprofilerPlusOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+alp.val <- 1
+pt.size <- 2
+
+G1vRev.RevDEGS.gprofiler.nohit <- G1vRev.RevDEGS.gprofiler %>% filter(E2F.Hit == "Other")
+G1vRev.RevDEGS.gprofiler.low <- G1vRev.RevDEGS.gprofiler %>% filter(E2F.Hit == "Low")
+G1vRev.RevDEGS.gprofiler.hit <- G1vRev.RevDEGS.gprofiler %>% filter(E2F.Hit == "Hit")
+
+ggplot() + geom_jitter(data=G1vRev.RevDEGS.gprofiler.nohit, aes(x=source,y=p_value), color="black", alpha=alp.val, size=pt.size, width=0.1) + geom_jitter(data=G1vRev.RevDEGS.gprofiler.low, aes(x=source,y=p_value), color="blue", alpha=alp.val, size=pt.size, width=0.1) + geom_jitter(data=G1vRev.RevDEGS.gprofiler.hit, aes(x=source,y=p_value), color="red", alpha=alp.val, size=pt.size+1, width=0.1) + theme_bw() + coord_flip()
+```
+
+
+## G1vRev - DAVID Fold Change and Direction Analyses
+
+```{r, fig.width=15, fig.height=6}
+p.Cutoff <- 1
+
+G1vRev.DAVID <- read.xlsx("../DAVID/g1vRev.DEGS.1.DAVID_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+G1vRev.DAVID.FC.58 <- read.xlsx("../DAVID/g1vRev.DEGS.58.DAVID_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+G1vRev.DAVID.RevDEGS <- read.xlsx("../DAVID/g1vRev.revDEGS.1.DAVID_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+G1vRev.DAVID.RevDEGS.58 <- read.xlsx("../DAVID/g1vRev.revDEGS.58.DAVID_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+
+g1vrev.david.filt  <- G1vRev.DAVID %>% filter(Bonferroni <= p.Cutoff)
+g1vrev.david.filt  <- tibble::rownames_to_column(g1vrev.david.filt ,"Name")
+g1rev.david.nohit <- g1vrev.david.filt  %>% filter(Hit == "Other")
+g1rev.david.hit <- g1vrev.david.filt  %>% filter(Hit == "Hit")
+g1rev.david.plot <- ggplot() + geom_jitter(data=g1rev.david.nohit, aes(x=Category,y=Bonferroni), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=g1rev.david.hit, aes(x=Category,y=Bonferroni), color="red", alpha=1, size=2, width=0.1) + ggtitle("g1rev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+g1vrev.david.fc.58.filt  <- G1vRev.DAVID.FC.58 %>% filter(Bonferroni <= p.Cutoff)
+g1vrev.david.fc.58.filt  <- tibble::rownames_to_column(g1vrev.david.fc.58.filt ,"Name")
+g1rev.david.fc.58.nohit <- g1vrev.david.fc.58.filt  %>% filter(Hit == "Other")
+g1rev.david.fc.58.hit <- g1vrev.david.fc.58.filt  %>% filter(Hit == "Hit")
+g1rev.david.fc.58.plot <- ggplot() + geom_jitter(data=g1rev.david.fc.58.nohit, aes(x=Category,y=Bonferroni), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=g1rev.david.fc.58.hit, aes(x=Category,y=Bonferroni), color="red", alpha=1, size=2, width=0.1)  + ggtitle("g1rev.fc.58") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+g1vrev.david.revdegs.filt  <- G1vRev.DAVID.RevDEGS %>% filter(Bonferroni <= p.Cutoff)
+g1vrev.david.revdegs.filt  <- tibble::rownames_to_column(g1vrev.david.revdegs.filt ,"Name")
+g1rev.david.revdegs.nohit <- g1vrev.david.revdegs.filt  %>% filter(Hit == "Other")
+g1rev.david.revdegs.hit <- g1vrev.david.revdegs.filt  %>% filter(Hit == "Hit")
+g1rev.david.revdegs.plot <- ggplot() + geom_jitter(data=g1rev.david.revdegs.nohit, aes(x=Category,y=Bonferroni), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=g1rev.david.revdegs.hit, aes(x=Category,y=Bonferroni), color="red", alpha=1, size=2, width=0.1) + ggtitle("g1rev.revdegs") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+g1vrev.david.revdegs.58.filt  <- G1vRev.DAVID.RevDEGS.58 %>% filter(Bonferroni <= p.Cutoff)
+g1vrev.david.revdegs.58.filt  <- tibble::rownames_to_column(g1vrev.david.revdegs.58.filt ,"Name")
+g1rev.david.revdegs.58.nohit <- g1vrev.david.revdegs.58.filt  %>% filter(Hit == "Other")
+g1rev.david.revdegs.58.hit <- g1vrev.david.revdegs.58.filt  %>% filter(Hit == "Hit")
+g1rev.david.revdegs.58.plot <- ggplot() + geom_jitter(data=g1rev.david.revdegs.58.nohit, aes(x=Category,y=Bonferroni), color="black", alpha=0.4, size=0.6, width=0.1) + geom_jitter(data=g1rev.david.revdegs.58.hit, aes(x=Category,y=Bonferroni), color="red", alpha=1, size=2, width=0.1) + ggtitle("g1rev.revdegs.58") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+ggarrange(g1rev.david.plot,g1rev.david.fc.58.plot,g1rev.david.revdegs.plot,g1rev.david.revdegs.58.plot, legend = FALSE, ncol=2, nrow=2)
+```
+
+## G1vRev - gprofiler Fold Change and Direction Analyses
+
+```{r, fig.width=15, fig.height=6}
+p.Cutoff <- 0.1
+
+G1vRev.gpro <- read.xlsx("../g_profiler/g1vrev.Degs.1.gprofiler_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+G1vRev.gpro.FC.58 <- read.xlsx("../g_profiler/g1vrev.Degs.58.gprofiler_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+G1vRev.gpro.RevDEGS <- read.xlsx("../g_profiler/g1vrev.revDegs.1.gprofiler_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+G1vRev.gpro.RevDEGS.58 <- read.xlsx("../g_profiler/g1vrev.revDegs.58.gprofiler_withOverlaps.xlsx", colNames=TRUE, rowNames=TRUE)
+
+g1vrev.gpro.filt  <- G1vRev.gpro %>% filter(p_value <= p.Cutoff) 
+g1vrev.gpro.filt  <- tibble::rownames_to_column(g1vrev.gpro.filt ,"Name")  
+g1rev.gpro.nohit <- g1vrev.gpro.filt  %>% filter(Hit == "Other")  
+g1rev.gpro.hit <- g1vrev.gpro.filt  %>% filter(Hit == "Hit")  
+g1rev.gpro.plot <- ggplot() + geom_jitter(data=g1rev.gpro.nohit, aes(x=source,y=p_value), color="black", alpha=0.4, size=1, width=0.2) + geom_jitter(data=g1rev.gpro.hit, aes(x=source,y=p_value), color="red", alpha=1, size=2, width=0.2) + ggtitle("g1rev") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()   
+
+g1vrev.gpro.fc.58.filt  <- G1vRev.gpro.FC.58 %>% filter(p_value <= p.Cutoff) 
+g1vrev.gpro.fc.58.filt  <- tibble::rownames_to_column(g1vrev.gpro.fc.58.filt ,"Name")  
+g1rev.gpro.fc.58.nohit <- g1vrev.gpro.fc.58.filt  %>% filter(Hit == "Other")  
+g1rev.gpro.fc.58.hit <- g1vrev.gpro.fc.58.filt  %>% filter(Hit == "Hit")  
+g1rev.gpro.fc.58.plot <- ggplot() + geom_jitter(data=g1rev.gpro.fc.58.nohit, aes(x=source,y=p_value), color="black", alpha=0.4, size=1, width=0.2) + geom_jitter(data=g1rev.gpro.fc.58.hit, aes(x=source,y=p_value), color="red", alpha=1, size=2, width=0.2) + ggtitle("g1rev.fc.58") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()   
+
+g1vrev.gpro.revdegs.filt  <- G1vRev.gpro.RevDEGS %>% filter(p_value <= p.Cutoff) 
+g1vrev.gpro.revdegs.filt  <- tibble::rownames_to_column(g1vrev.gpro.revdegs.filt ,"Name")  
+g1rev.gpro.revdegs.nohit <- g1vrev.gpro.revdegs.filt  %>% filter(Hit == "Other")  
+g1rev.gpro.revdegs.hit <- g1vrev.gpro.revdegs.filt  %>% filter(Hit == "Hit")  
+g1rev.gpro.revdegs.plot <- ggplot() + geom_jitter(data=g1rev.gpro.revdegs.nohit, aes(x=source,y=p_value), color="black", alpha=0.4, size=1, width=0.2) + geom_jitter(data=g1rev.gpro.revdegs.hit, aes(x=source,y=p_value), color="red", alpha=1, size=2, width=0.2) + ggtitle("g1rev.revdegs") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+g1vrev.gpro.revdegs.58.filt  <- G1vRev.gpro.RevDEGS.58 %>% filter(p_value <= p.Cutoff) 
+g1vrev.gpro.revdegs.58.filt  <- tibble::rownames_to_column(g1vrev.gpro.revdegs.58.filt ,"Name")  
+g1rev.gpro.revdegs.58.nohit <- g1vrev.gpro.revdegs.58.filt  %>% filter(Hit == "Other")  
+g1rev.gpro.revdegs.58.hit <- g1vrev.gpro.revdegs.58.filt  %>% filter(Hit == "Hit")  
+g1rev.gpro.revdegs.58.plot <- ggplot() + geom_jitter(data=g1rev.gpro.revdegs.58.nohit, aes(x=source,y=p_value), color="black", alpha=0.4, size=1, width=0.2) + geom_jitter(data=g1rev.gpro.revdegs.58.hit, aes(x=source,y=p_value), color="red", alpha=1, size=2, width=0.2) + ggtitle("g1rev.revdegs.58") + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(color = "black", size=1)) + coord_flip()
+
+ggarrange(g1rev.gpro.plot,g1rev.gpro.fc.58.plot,g1rev.gpro.revdegs.plot,g1rev.gpro.revdegs.58.plot, legend = FALSE, ncol=2, nrow=2)    
+```
+
+
+## GSEA plots - not used in paper
+
+```{r}
+source("replotGSEA.R")
+
+replotGSEA("C:/Users/Charlie/ABRF_GBIRG_OntologyStudy/dataset_gsea/dataset_runs/avc_TNF.GseaPreranked.1613569188946", 
+           gene.set ="HALLMARK_TNFA_SIGNALING_VIA_NFKB", "A", metric.range = c(-50,50), enrichment.score.range = c(-1,1))
+
+replotGSEA("C:/Users/Charlie/ABRF_GBIRG_OntologyStudy/dataset_gsea/dataset_runs/evc_KEGG_PPAR.GseaPreranked.1613569183925", 
+           gene.set ="KEGG_PPAR_SIGNALING_PATHWAY", "A", metric.range = c(-50,50), enrichment.score.range = c(-1,1))
+
+replotGSEA("C:/Users/Charlie/ABRF_GBIRG_OntologyStudy/dataset_gsea/dataset_runs/g1vrev_E2F.GseaPreranked.1613569193955", 
+           gene.set ="HALLMARK_E2F_TARGETS", "A", metric.range = c(-50,50), enrichment.score.range = c(-1,1))
+
+replotGSEA("C:/Users/Charlie/ABRF_GBIRG_OntologyStudy/dataset_gsea/dataset_runs/svc_SKEMUSC.GseaPreranked.1613569198989", 
+           gene.set ="GO_SKELETAL_MUSCLE_CONTRACTION", "A", metric.range = c(-50,50), enrichment.score.range = c(-1,1))
+```
+
+
+
+
+
+
+
+## Summary Tables
+
+```{r}
+table(EvC.gsea.select$Collection,EvC.gsea.select$Hit)
+table(evc.gsea.filt$Collection,evc.gsea.filt$Hit)
+#table(EvC.gsea.select.hit$Collection,EvC.gsea.select.hit$Hit)
+#table(EvC.gsea.select.nohit$Collection,EvC.gsea.select.nohit$Hit)
+```
+
+## Session information
+
+```{r}
+sessionInfo()
+writeLines(capture.output(sessionInfo()), "sessionInfo.txt")
+```
